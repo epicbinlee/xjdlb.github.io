@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="始终">
 <meta property="og:description" content="本文描述了如何使用github pages和hexo搭建自己的博客。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-27T07:07:40.657Z">
+<meta property="og:updated_time" content="2018-03-27T07:12:32.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用github pages和hexo搭建自己的博客">
 <meta name="twitter:description" content="本文描述了如何使用github pages和hexo搭建自己的博客。">
@@ -325,11 +325,11 @@
 
       
         <p>本文描述了如何使用github pages和hexo搭建自己的博客。<br><a id="more"></a></p>
-<h2 id="1-安装node-js"><a href="#1-安装node-js" class="headerlink" title="1.安装node.js"></a>1.安装node.js</h2><ul>
+<h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><ul>
 <li><a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js下载地址</a></li>
 <li>下载node.js，并安装</li>
 </ul>
-<h2 id="2-安装git并配置ssh密钥"><a href="#2-安装git并配置ssh密钥" class="headerlink" title="2.安装git并配置ssh密钥"></a>2.安装git并配置ssh密钥</h2><ul>
+<h2 id="安装git并配置ssh密钥"><a href="#安装git并配置ssh密钥" class="headerlink" title="安装git并配置ssh密钥"></a>安装git并配置ssh密钥</h2><ul>
 <li>在客户端下载<a href="https://git-scm.com/downloads/" target="_blank" rel="noopener">git下载地址</a></li>
 <li>安装git</li>
 <li>在客户端右键打开git bash here</li>
@@ -345,11 +345,11 @@
 <li><p>添加密钥到github服务器中密钥管理<a href="https://github.com/settings/keys" target="_blank" rel="noopener">添加地址</a></p>
 </li>
 </ul>
-<h2 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3.安装hexo"></a>3.安装hexo</h2><ul>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><ul>
 <li>安装hexo、安装扩展插件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 安装hexo</span><br><span class="line">npm install hexo-cli g</span><br><span class="line"># 初始化博客文件夹</span><br><span class="line">hexo init blog</span><br><span class="line"># 切换到该路径</span><br><span class="line">cd blog</span><br><span class="line"># 安装hexo的扩展插件</span><br><span class="line">npm install</span><br><span class="line"># 安装其它插件</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-admin --save</span><br><span class="line">npm install hexo-generator-archive --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-tag --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="4-本地开发blog与本地测试"><a href="#4-本地开发blog与本地测试" class="headerlink" title="4.本地开发blog与本地测试"></a>4.本地开发blog与本地测试</h2><ul>
+<h2 id="本地开发blog与本地测试"><a href="#本地开发blog与本地测试" class="headerlink" title="本地开发blog与本地测试"></a>本地开发blog与本地测试</h2><ul>
 <li>添加自己的markdown到 blog/source/posts目录下</li>
 <li><p>生成静态页面并开启服务器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 生成静态页面</span><br><span class="line">hexo generate</span><br><span class="line"># 开启本地服务器</span><br><span class="line">hexo s</span><br><span class="line"># 或者</span><br><span class="line">hexo s -p 指定的port</span><br></pre></td></tr></table></figure>
@@ -357,11 +357,11 @@
 <li><p>打开浏览器，地址栏中输入：<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
 </li>
 </ul>
-<h2 id="5-服务端新建自己的博客仓库"><a href="#5-服务端新建自己的博客仓库" class="headerlink" title="5.服务端新建自己的博客仓库"></a>5.服务端新建自己的博客仓库</h2><ul>
+<h2 id="服务端新建自己的博客仓库"><a href="#服务端新建自己的博客仓库" class="headerlink" title="服务端新建自己的博客仓库"></a>服务端新建自己的博客仓库</h2><ul>
 <li>在 <a href="https://github.com/new" target="_blank" rel="noopener">https://github.com/new</a> 中新建自己的仓库</li>
 <li>其中Repository name要和Owner是一致的</li>
 </ul>
-<h2 id="6-客户端将hexo博客部署到github上"><a href="#6-客户端将hexo博客部署到github上" class="headerlink" title="6.客户端将hexo博客部署到github上"></a>6.客户端将hexo博客部署到github上</h2><ul>
+<h2 id="客户端将hexo博客部署到github上"><a href="#客户端将hexo博客部署到github上" class="headerlink" title="客户端将hexo博客部署到github上"></a>客户端将hexo博客部署到github上</h2><ul>
 <li><p>修改配置文件blog/config.yml，修改deploy项的内容</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Deployment 注释</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  # 类型</span><br><span class="line">  type: git</span><br><span class="line">  # 仓库</span><br><span class="line">  repo: git@github.com:xjdlb/xjdlb.github.io.git</span><br><span class="line">  # 分支</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 </li>
@@ -369,7 +369,7 @@
 </li>
 <li>注意：将xjdlb换成自己的用户名</li>
 </ul>
-<h2 id="7-客户端将自己的blog部署hexo"><a href="#7-客户端将自己的blog部署hexo" class="headerlink" title="7.客户端将自己的blog部署hexo"></a>7.客户端将自己的blog部署hexo</h2><ul>
+<h2 id="客户端将自己的blog部署hexo"><a href="#客户端将自己的blog部署hexo" class="headerlink" title="客户端将自己的blog部署hexo"></a>客户端将自己的blog部署hexo</h2><ul>
 <li><p>将自己的项目部署到github pages中</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 清空静态页面</span><br><span class="line">hexo clean</span><br><span class="line"># 生成静态页面</span><br><span class="line">hexo generate</span><br><span class="line"># 部署</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 </li>
@@ -377,7 +377,7 @@
 </li>
 <li>如我的博客地址是：<a href="http://xjdlb.github.io" target="_blank" rel="noopener">http://xjdlb.github.io</a></li>
 </ul>
-<h2 id="8-hexo命令缩写与组合"><a href="#8-hexo命令缩写与组合" class="headerlink" title="8.hexo命令缩写与组合"></a>8.hexo命令缩写与组合</h2><ul>
+<h2 id="hexo命令缩写与组合"><a href="#hexo命令缩写与组合" class="headerlink" title="hexo命令缩写与组合"></a>hexo命令缩写与组合</h2><ul>
 <li><p>含义</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g：hexo generate</span><br><span class="line">hexo c：hexo clean</span><br><span class="line">hexo s：hexo server</span><br><span class="line">hexo d：hexo deploy</span><br></pre></td></tr></table></figure>
 </li>
@@ -385,7 +385,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 清除、生成、启动</span><br><span class="line">hexo clean &amp;&amp; hexo g -s</span><br><span class="line"># 清除、生成、部署</span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="9-主题相关配置"><a href="#9-主题相关配置" class="headerlink" title="9.主题相关配置"></a>9.主题相关配置</h2><ul>
+<h2 id="主题相关配置"><a href="#主题相关配置" class="headerlink" title="主题相关配置"></a>主题相关配置</h2><ul>
 <li>在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo themes</a>中下载相关的主题</li>
 <li><p>下载方法在blog目录中克隆</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
@@ -394,12 +394,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="10-新建blog文件"><a href="#10-新建blog文件" class="headerlink" title="10.新建blog文件"></a>10.新建blog文件</h2><ul>
+<h2 id="新建blog文件"><a href="#新建blog文件" class="headerlink" title="新建blog文件"></a>新建blog文件</h2><ul>
 <li>hexo new “Hexo教程”</li>
 <li>添加标题及其分类信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2016-01-15 20:19:32</span><br><span class="line">tags: [SayHi]</span><br><span class="line">categories: SayHi</span><br><span class="line">toc: true</span><br><span class="line">mathjax: true</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="11-将github-pages绑定自己的域名"><a href="#11-将github-pages绑定自己的域名" class="headerlink" title="11.将github pages绑定自己的域名"></a>11.将github pages绑定自己的域名</h2><ul>
+<h2 id="将github-pages绑定自己的域名"><a href="#将github-pages绑定自己的域名" class="headerlink" title="将github pages绑定自己的域名"></a>将github pages绑定自己的域名</h2><ul>
 <li>在阿里云控制台找到域名管理</li>
 <li>在阿里云上购买自己的域名<a href="https://help.aliyun.com/product/35473.html" target="_blank" rel="noopener">注册地址</a></li>
 <li>在xjdlb/xjdlb.github.io/settings中Custom domain处添加自己的域名，不要http://和www</li>
@@ -617,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装node-js"><span class="nav-number">1.</span> <span class="nav-text">1.安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装git并配置ssh密钥"><span class="nav-number">2.</span> <span class="nav-text">2.安装git并配置ssh密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装hexo"><span class="nav-number">3.</span> <span class="nav-text">3.安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-本地开发blog与本地测试"><span class="nav-number">4.</span> <span class="nav-text">4.本地开发blog与本地测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-服务端新建自己的博客仓库"><span class="nav-number">5.</span> <span class="nav-text">5.服务端新建自己的博客仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-客户端将hexo博客部署到github上"><span class="nav-number">6.</span> <span class="nav-text">6.客户端将hexo博客部署到github上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-客户端将自己的blog部署hexo"><span class="nav-number">7.</span> <span class="nav-text">7.客户端将自己的blog部署hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-hexo命令缩写与组合"><span class="nav-number">8.</span> <span class="nav-text">8.hexo命令缩写与组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-主题相关配置"><span class="nav-number">9.</span> <span class="nav-text">9.主题相关配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-新建blog文件"><span class="nav-number">10.</span> <span class="nav-text">10.新建blog文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-将github-pages绑定自己的域名"><span class="nav-number">11.</span> <span class="nav-text">11.将github pages绑定自己的域名</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装node-js"><span class="nav-number">1.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装git并配置ssh密钥"><span class="nav-number">2.</span> <span class="nav-text">安装git并配置ssh密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hexo"><span class="nav-number">3.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地开发blog与本地测试"><span class="nav-number">4.</span> <span class="nav-text">本地开发blog与本地测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端新建自己的博客仓库"><span class="nav-number">5.</span> <span class="nav-text">服务端新建自己的博客仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端将hexo博客部署到github上"><span class="nav-number">6.</span> <span class="nav-text">客户端将hexo博客部署到github上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端将自己的blog部署hexo"><span class="nav-number">7.</span> <span class="nav-text">客户端将自己的blog部署hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo命令缩写与组合"><span class="nav-number">8.</span> <span class="nav-text">hexo命令缩写与组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题相关配置"><span class="nav-number">9.</span> <span class="nav-text">主题相关配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建blog文件"><span class="nav-number">10.</span> <span class="nav-text">新建blog文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将github-pages绑定自己的域名"><span class="nav-number">11.</span> <span class="nav-text">将github pages绑定自己的域名</span></a></li></ol></div>
             
 
           </div>
