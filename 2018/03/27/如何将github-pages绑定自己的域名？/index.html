@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="github,pages,配置," />
+  <meta name="keywords" content="github,pages,hexo," />
 
 
 
@@ -82,16 +82,16 @@
 
 
 <meta name="description" content="本文描述了如何在ubuntu服务器上快速搭建自己的shadowcoks代理服务器。">
-<meta name="keywords" content="github,pages,配置">
+<meta name="keywords" content="github,pages,hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何将github pages绑定自己的域名？">
+<meta property="og:title" content="github pages+hexo搭建自己的博客">
 <meta property="og:url" content="http://yoursite.com/2018/03/27/如何将github-pages绑定自己的域名？/index.html">
 <meta property="og:site_name" content="始终">
 <meta property="og:description" content="本文描述了如何在ubuntu服务器上快速搭建自己的shadowcoks代理服务器。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-27T06:31:19.953Z">
+<meta property="og:updated_time" content="2018-03-27T07:05:13.484Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何将github pages绑定自己的域名？">
+<meta name="twitter:title" content="github pages+hexo搭建自己的博客">
 <meta name="twitter:description" content="本文描述了如何在ubuntu服务器上快速搭建自己的shadowcoks代理服务器。">
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>如何将github pages绑定自己的域名？ | 始终</title>
+  <title>github pages+hexo搭建自己的博客 | 始终</title>
   
 
 
@@ -252,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">如何将github pages绑定自己的域名？</h1>
+          <h1 class="post-title" itemprop="name headline">github pages+hexo搭建自己的博客</h1>
         
 
         <div class="post-meta">
@@ -385,6 +385,57 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 清除、生成、启动</span><br><span class="line">hexo clean &amp;&amp; hexo g -s</span><br><span class="line"># 清除、生成、部署</span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h2 id="9-主题相关配置"><a href="#9-主题相关配置" class="headerlink" title="9.主题相关配置"></a>9.主题相关配置</h2><ul>
+<li>在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo themes</a>中下载相关的主题</li>
+<li><p>下载方法在blog目录中克隆</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在blog/config.yml中配置主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="10-新建blog文件"><a href="#10-新建blog文件" class="headerlink" title="10.新建blog文件"></a>10.新建blog文件</h2><ul>
+<li>hexo new “Hexo教程”</li>
+<li>添加标题及其分类信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2016-01-15 20:19:32</span><br><span class="line">tags: [SayHi]</span><br><span class="line">categories: SayHi</span><br><span class="line">toc: true</span><br><span class="line">mathjax: true</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="11-将github-pages绑定自己的域名"><a href="#11-将github-pages绑定自己的域名" class="headerlink" title="11.将github pages绑定自己的域名"></a>11.将github pages绑定自己的域名</h2><ul>
+<li>在阿里云控制台找到域名管理</li>
+<li>在阿里云上购买自己的域名<a href="https://help.aliyun.com/product/35473.html" target="_blank" rel="noopener">注册地址</a></li>
+<li>在xjdlb/xjdlb.github.io/settings中Custom domain处添加自己的域名，不要http://和www</li>
+<li>ping <a href="https://xjdlb.github.io/" target="_blank" rel="noopener">https://xjdlb.github.io/</a> 查看github pages的ip</li>
+<li>添加解析</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>记录类型</th>
+<th>主机记录</th>
+<th>解析线路</th>
+<th>记录值</th>
+<th>TTL值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>@</td>
+<td>默认</td>
+<td>151.101.41.147</td>
+<td>600</td>
+</tr>
+<tr>
+<td>A</td>
+<td>www</td>
+<td>默认</td>
+<td>151.101.41.147</td>
+<td>600</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>使用自己的域名测试</li>
+</ul>
 
       
     </div>
@@ -406,7 +457,7 @@
           
             <a href="/tags/pages/" rel="tag"># pages</a>
           
-            <a href="/tags/配置/" rel="tag"># 配置</a>
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
           
         </div>
       
@@ -566,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装node-js"><span class="nav-number">1.</span> <span class="nav-text">1.安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装git并配置ssh密钥"><span class="nav-number">2.</span> <span class="nav-text">2.安装git并配置ssh密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装hexo"><span class="nav-number">3.</span> <span class="nav-text">3.安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-本地开发blog与本地测试"><span class="nav-number">4.</span> <span class="nav-text">4.本地开发blog与本地测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-服务端新建自己的博客仓库"><span class="nav-number">5.</span> <span class="nav-text">5.服务端新建自己的博客仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-客户端将hexo博客部署到github上"><span class="nav-number">6.</span> <span class="nav-text">6.客户端将hexo博客部署到github上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-客户端将自己的blog部署hexo"><span class="nav-number">7.</span> <span class="nav-text">7.客户端将自己的blog部署hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-hexo命令缩写与组合"><span class="nav-number">8.</span> <span class="nav-text">8.hexo命令缩写与组合</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装node-js"><span class="nav-number">1.</span> <span class="nav-text">1.安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装git并配置ssh密钥"><span class="nav-number">2.</span> <span class="nav-text">2.安装git并配置ssh密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装hexo"><span class="nav-number">3.</span> <span class="nav-text">3.安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-本地开发blog与本地测试"><span class="nav-number">4.</span> <span class="nav-text">4.本地开发blog与本地测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-服务端新建自己的博客仓库"><span class="nav-number">5.</span> <span class="nav-text">5.服务端新建自己的博客仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-客户端将hexo博客部署到github上"><span class="nav-number">6.</span> <span class="nav-text">6.客户端将hexo博客部署到github上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-客户端将自己的blog部署hexo"><span class="nav-number">7.</span> <span class="nav-text">7.客户端将自己的blog部署hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-hexo命令缩写与组合"><span class="nav-number">8.</span> <span class="nav-text">8.hexo命令缩写与组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-主题相关配置"><span class="nav-number">9.</span> <span class="nav-text">9.主题相关配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-新建blog文件"><span class="nav-number">10.</span> <span class="nav-text">10.新建blog文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-将github-pages绑定自己的域名"><span class="nav-number">11.</span> <span class="nav-text">11.将github pages绑定自己的域名</span></a></li></ol></div>
             
 
           </div>
