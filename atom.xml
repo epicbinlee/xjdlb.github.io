@@ -34,9 +34,9 @@
       <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
     
     
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
@@ -58,9 +58,9 @@
       <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
     
     
-      <category term="ss" scheme="http://yoursite.com/tags/ss/"/>
-    
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="ss" scheme="http://yoursite.com/tags/ss/"/>
     
   </entry>
   
