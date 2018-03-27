@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>xjdlb</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="如何利用VPS搭建自己的ss服务器？以详细步骤安装配置启动过程1.安装ss123apt-get updatesudo apt-get install python-pip -ysudo pip install shadowsocks 2.配置1234567891011121314mkdir /etc/shadowsockstouch /etc/shadowsocks/ss_config.jsonv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xjdlb">
+<meta property="og:url" content="http://yoursite.com/2018/03/27/搭建ss服务器/index.html">
+<meta property="og:site_name" content="xjdlb">
+<meta property="og:description" content="如何利用VPS搭建自己的ss服务器？以详细步骤安装配置启动过程1.安装ss123apt-get updatesudo apt-get install python-pip -ysudo pip install shadowsocks 2.配置1234567891011121314mkdir /etc/shadowsockstouch /etc/shadowsocks/ss_config.jsonv">
+<meta property="og:updated_time" content="2018-03-27T03:05:26.256Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="xjdlb">
+<meta name="twitter:description" content="如何利用VPS搭建自己的ss服务器？以详细步骤安装配置启动过程1.安装ss123apt-get updatesudo apt-get install python-pip -ysudo pip install shadowsocks 2.配置1234567891011121314mkdir /etc/shadowsockstouch /etc/shadowsocks/ss_config.jsonv">
+  
+    <link rel="alternate" href="/atom.xml" title="xjdlb" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xjdlb</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-搭建ss服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/27/搭建ss服务器/" class="article-date">
+  <time datetime="2018-03-27T03:41:35.459Z" itemprop="datePublished">2018-03-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="如何利用VPS搭建自己的ss服务器？"><a href="#如何利用VPS搭建自己的ss服务器？" class="headerlink" title="如何利用VPS搭建自己的ss服务器？"></a>如何利用VPS搭建自己的ss服务器？</h1><h2 id="以详细步骤安装配置启动过程"><a href="#以详细步骤安装配置启动过程" class="headerlink" title="以详细步骤安装配置启动过程"></a>以详细步骤安装配置启动过程</h2><h3 id="1-安装ss"><a href="#1-安装ss" class="headerlink" title="1.安装ss"></a>1.安装ss</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">sudo apt-get install python-pip -y</span><br><span class="line">sudo pip install shadowsocks</span><br></pre></td></tr></table></figure>
+<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/shadowsocks</span><br><span class="line">touch /etc/shadowsocks/ss_config.json</span><br><span class="line">vim /etc/shadowsocks/ss_config.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;server&quot;: &quot;165.227.213.57&quot;,</span><br><span class="line">  &quot;port_password&quot;: &#123;</span><br><span class="line">      &quot;10001&quot;: &quot;112345678a!&quot;,</span><br><span class="line">      &quot;10002&quot;: &quot;112345678a!&quot;,</span><br><span class="line">      &quot;10003&quot;: &quot;112345678a!&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;local_port&quot;: 1080,</span><br><span class="line">  &quot;timeout&quot;: 600,</span><br><span class="line">  &quot;method&quot;: &quot;aes-256-cfb&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-启动"><a href="#3-启动" class="headerlink" title="3.启动"></a>3.启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">touch start.sh</span><br><span class="line">chmod 775 start.sh</span><br><span class="line">vim start.sh</span><br><span class="line"></span><br><span class="line">ssserver -c /etc/shadowsocks/ss_config.json -d start</span><br><span class="line">ssserver -c /etc/shadowsocks/ss_config_multiple.json -d start</span><br><span class="line">netstat -ntlp | grep python</span><br><span class="line"></span><br><span class="line">touch stop.sh</span><br><span class="line">chmod 775 stop.sh</span><br><span class="line">vim stop.sh</span><br><span class="line"></span><br><span class="line">ssserver -c /etc/shadowsocks/ss_config.json -d stop</span><br><span class="line">ssserver -c /etc/shadowsocks/ss_config_multiple.json -d stop</span><br><span class="line">netstat -ntlp | grep python</span><br></pre></td></tr></table></figure>
+<h2 id="用脚本实现一键安装"><a href="#用脚本实现一键安装" class="headerlink" title="用脚本实现一键安装"></a>用脚本实现一键安装</h2><h3 id="1-创建配置启动脚本"><a href="#1-创建配置启动脚本" class="headerlink" title="1.创建配置启动脚本"></a>1.创建配置启动脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">创建x脚本</span><br><span class="line">touch x &amp;&amp; chmod 775 x &amp;&amp; vim x</span><br><span class="line">直接复制到x脚本里面</span><br><span class="line">cd ~ &amp;&amp; touch ss_cfg.json</span><br><span class="line">ip=&quot;162.243.161.150&quot;</span><br><span class="line">echo &quot;&#123;&quot; &gt;&gt; ss_cfg.json</span><br><span class="line">echo &quot;\&quot;server\&quot;: \&quot;$&#123;ip&#125;\&quot;,&quot; &gt;&gt; ss_cfg.json</span><br><span class="line">echo &quot;\&quot;port_password\&quot;: &#123;&quot; &gt;&gt; ss_cfg.json</span><br><span class="line">echo &quot;\&quot;10001\&quot;: \&quot;helloworld\&quot;,&quot; &gt;&gt; ss_cfg.json</span><br><span class="line">echo &quot;\&quot;10002\&quot;: \&quot;helloworld\&quot;,&quot; &gt;&gt; ss_cfg.json</span><br><span class="line">echo &quot;\&quot;10003\&quot;: \&quot;helloworld\&quot;&quot; &gt;&gt; ss_cfg.json</span><br><span class="line">echo &quot;&#125;,&quot; &gt;&gt; ss_cfg.json</span><br><span class="line">echo &quot;\&quot;local_port\&quot;: 1080,&quot; &gt;&gt; ss_cfg.json</span><br><span class="line">echo &quot;\&quot;timeout\&quot;: 600,&quot; &gt;&gt; ss_cfg.json</span><br><span class="line">echo &quot;\&quot;method\&quot;: \&quot;aes-256-cfb\&quot;&quot; &gt;&gt; ss_cfg.json</span><br><span class="line">echo &quot;&#125;&quot; &gt;&gt; ss_cfg.json</span><br><span class="line">cd ~</span><br><span class="line">touch sta.sh &amp;&amp; chmod 775 sta.sh</span><br><span class="line">echo &quot;ssserver -c ~/ss_cfg.json -d start&quot; &gt;&gt; ~/sta.sh</span><br><span class="line">echo &quot;netstat -ntlp | grep python&quot; &gt;&gt; ~/sta.sh</span><br><span class="line">touch sto.sh &amp;&amp; chmod 775 sto.sh</span><br><span class="line">echo &quot;ssserver -c ~/ss_cfg.json -d stop&quot; &gt;&gt; ~/sto.sh</span><br><span class="line">echo &quot;netstat -ntlp | grep python&quot; &gt;&gt; ~/sto.sh</span><br><span class="line">echo &quot;-------------report-------------------&quot;</span><br><span class="line">echo &quot;the fie list as follows:&quot;</span><br><span class="line">ls</span><br><span class="line">echo &quot;-------------start ss-----------------&quot;</span><br><span class="line">./sta.sh</span><br><span class="line">echo &quot;-------------your ss config-----------&quot;</span><br><span class="line">echo &quot;ip=$&#123;ip&#125;&quot;</span><br><span class="line">echo &quot;port=10001, password=helloworld&quot;</span><br><span class="line">echo &quot;port=10002, password=helloworld&quot;</span><br><span class="line">echo &quot;port=10003, password=helloworld&quot;</span><br><span class="line">echo &quot;local_port=1080&quot;</span><br><span class="line">echo &quot;timeout=600&quot;</span><br><span class="line">echo &quot;method=aes-256-cfb&quot;</span><br><span class="line">echo &quot;-------------end---------------------&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="2-启动服务"><a href="#2-启动服务" class="headerlink" title="2.启动服务"></a>2.启动服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">运行x脚本</span><br><span class="line">./x</span><br><span class="line">启动服务</span><br><span class="line">./sta.sh</span><br><span class="line">关闭服务</span><br><span class="line">./sto.sh</span><br><span class="line">删除文件</span><br><span class="line">rm -rf x ss_cfg.json sta.sh sto.sh &amp;&amp; touch x &amp;&amp; chmod 775 x &amp;&amp; vim x</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/27/搭建ss服务器/" data-id="cjf94mewo00018cvbhpxckk7d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/27/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/27/搭建ss服务器/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/27/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 LeeBin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
