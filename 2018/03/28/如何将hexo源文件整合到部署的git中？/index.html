@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="列表,hexo,github,gitee,部署," />
+  <meta name="keywords" content="列表,hexo,配置,git," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="本文介绍了hexo博客github和gitee上部署时候遇到的坑。">
-<meta name="keywords" content="列表,hexo,github,gitee,部署">
+<meta name="description" content="本文介绍如何将hexo源文件整合到部署的git中，实现不携带源文件也能写博客，其中，发布和部署实现了自动化脚本操作。  先决条件 已经使用了hexo部署了自己的blog 源文件没有丢失  克隆 在github上克隆部署后的文件到本地客户端 使用git bash here进入git仓库 新建hexo分支并转换到hexo分支1git checkout -b hexo   拷贝 git仓库转换到hexo">
+<meta name="keywords" content="列表,hexo,配置,git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo部署在github和gitee上的坑">
-<meta property="og:url" content="http://yoursite.com/2018/03/28/hexo部署在github和gitee上的坑/index.html">
+<meta property="og:title" content="如何将hexo源文件整合到部署的git中？">
+<meta property="og:url" content="http://yoursite.com/2018/03/28/如何将hexo源文件整合到部署的git中？/index.html">
 <meta property="og:site_name" content="始终">
-<meta property="og:description" content="本文介绍了hexo博客github和gitee上部署时候遇到的坑。">
+<meta property="og:description" content="本文介绍如何将hexo源文件整合到部署的git中，实现不携带源文件也能写博客，其中，发布和部署实现了自动化脚本操作。  先决条件 已经使用了hexo部署了自己的blog 源文件没有丢失  克隆 在github上克隆部署后的文件到本地客户端 使用git bash here进入git仓库 新建hexo分支并转换到hexo分支1git checkout -b hexo   拷贝 git仓库转换到hexo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-28T06:40:12.342Z">
+<meta property="og:updated_time" content="2018-03-28T07:08:31.291Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo部署在github和gitee上的坑">
-<meta name="twitter:description" content="本文介绍了hexo博客github和gitee上部署时候遇到的坑。">
+<meta name="twitter:title" content="如何将hexo源文件整合到部署的git中？">
+<meta name="twitter:description" content="本文介绍如何将hexo源文件整合到部署的git中，实现不携带源文件也能写博客，其中，发布和部署实现了自动化脚本操作。  先决条件 已经使用了hexo部署了自己的blog 源文件没有丢失  克隆 在github上克隆部署后的文件到本地客户端 使用git bash here进入git仓库 新建hexo分支并转换到hexo分支1git checkout -b hexo   拷贝 git仓库转换到hexo">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/28/hexo部署在github和gitee上的坑/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/28/如何将hexo源文件整合到部署的git中？/"/>
 
 
 
 
 
-  <title>hexo部署在github和gitee上的坑 | 始终</title>
+  <title>如何将hexo源文件整合到部署的git中？ | 始终</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/28/hexo部署在github和gitee上的坑/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/28/如何将hexo源文件整合到部署的git中？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LeeBin">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo部署在github和gitee上的坑</h1>
+          <h1 class="post-title" itemprop="name headline">如何将hexo源文件整合到部署的git中？</h1>
         
 
         <div class="post-meta">
@@ -284,7 +284,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T10:00:53+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T14:46:11+08:00">
                 2018-03-28
               </time>
             
@@ -324,7 +324,7 @@
 
           
           
-             <span id="/2018/03/28/hexo部署在github和gitee上的坑/" class="leancloud_visitors" data-flag-title="hexo部署在github和gitee上的坑">
+             <span id="/2018/03/28/如何将hexo源文件整合到部署的git中？/" class="leancloud_visitors" data-flag-title="如何将hexo源文件整合到部署的git中？">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  90
+                  462
                 </span>
               
 
@@ -368,7 +368,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -389,10 +389,41 @@
       
 
       
-        <p>本文介绍了hexo博客github和gitee上部署时候遇到的坑。<br><a id="more"></a></p>
-<h2 id="遇到的坑列举如下"><a href="#遇到的坑列举如下" class="headerlink" title="遇到的坑列举如下"></a>遇到的坑列举如下</h2><ul>
-<li>gitee不支持个性化的域名绑定，所以不要试图申请阿里云的域名，将域名指向gitee pages。</li>
-<li>github pages支持个性化域名的绑定，需要在blog/source目录下新建CNAME文件，并写入自己域名。</li>
+        <p>本文介绍如何将hexo源文件整合到部署的git中，实现不携带源文件也能写博客，其中，发布和部署实现了自动化脚本操作。</p>
+<!-- xxxx -->
+<h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><ul>
+<li>已经使用了hexo部署了自己的blog</li>
+<li>源文件没有丢失</li>
+</ul>
+<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><ul>
+<li>在github上克隆部署后的文件到本地客户端</li>
+<li>使用git bash here进入git仓库</li>
+<li>新建hexo分支并转换到hexo分支<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b hexo</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h2><ul>
+<li>git仓库转换到hexo分支</li>
+<li>将源文件blog文件夹下的所有文件拷贝到上述git仓库中</li>
+</ul>
+<h2 id="创建自动化脚本"><a href="#创建自动化脚本" class="headerlink" title="创建自动化脚本"></a>创建自动化脚本</h2><ul>
+<li>在git仓库的根目录下创建脚本</li>
+<li><p>脚本1 create_new_page.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;hello&quot;</span><br><span class="line">yy=$(date +%Y)</span><br><span class="line">mm=$(date +%m)</span><br><span class="line">dd=$(date +%d)</span><br><span class="line">HH=$(date +%H)</span><br><span class="line">MM=$(date +%M)</span><br><span class="line">SS=$(date +%S)</span><br><span class="line">filename=&quot;11111&quot;</span><br><span class="line">filepostfix=&quot;.md&quot;</span><br><span class="line">cd source/_posts</span><br><span class="line">touch $filename$filepostfix</span><br><span class="line">echo &gt; $filename$filepostfix</span><br><span class="line">echo &quot;---&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;title: $filename&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;date: $yy-$mm-$dd $HH:$MM:$SS&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;tags: [列表,2222,3333,4444]&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;categories: 5555&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;toc: true&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;mathjax: true&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;---&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">cd ../..</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文本1 commit.txt</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;hello&quot;</span><br><span class="line">yy=$(date +%y)</span><br><span class="line">mm=$(date +%m)</span><br><span class="line">dd=$(date +%d)</span><br><span class="line">HH=$(date +%H)</span><br><span class="line">MM=$(date +%M)</span><br><span class="line">SS=$(date +%S)</span><br><span class="line">xW=$(date +%U)</span><br><span class="line">we=$(date +%a)</span><br><span class="line">xD=$(date +%j)</span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;</span><br><span class="line">$yy/$mm/$dd-$HH:$MM:$SS 新增了列表标签</span><br><span class="line">&quot;</span><br><span class="line">git push origin hexo</span><br><span class="line">git  log --oneline | head</span><br><span class="line">echo &quot;==================================&quot;</span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>脚本2 upload_and_deploy.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ehco &quot;push and deploy...&quot;</span><br><span class="line">sh commit.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本次修改完成直接在commit.txt中修改commit，然后运行upload_and_deploy.sh，即可上传代码到hexo分支，发布blog到master分支</p>
+</li>
+</ul>
+<h2 id="换个地点继续写作"><a href="#换个地点继续写作" class="headerlink" title="换个地点继续写作"></a>换个地点继续写作</h2><ul>
+<li>先决条件：电脑+网络+nodejs+hexo</li>
+<li>克隆仓库到本地</li>
+<li>在仓库中建立hexo配置脚本 init_hexo_after_clone.sh<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout hexo</span><br><span class="line">npm install hexo</span><br><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -415,11 +446,9 @@
           
             <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
           
-            <a href="/tags/github/" rel="tag"><i class="fa fa-tag"></i> github</a>
+            <a href="/tags/配置/" rel="tag"><i class="fa fa-tag"></i> 配置</a>
           
-            <a href="/tags/gitee/" rel="tag"><i class="fa fa-tag"></i> gitee</a>
-          
-            <a href="/tags/部署/" rel="tag"><i class="fa fa-tag"></i> 部署</a>
+            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
           
         </div>
       
@@ -432,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/27/hexo的主题相关配置/" rel="next" title="hexo的主题相关的配置">
-                <i class="fa fa-chevron-left"></i> hexo的主题相关的配置
+              <a href="/2018/03/28/hexo部署在github和gitee上的坑/" rel="next" title="hexo部署在github和gitee上的坑">
+                <i class="fa fa-chevron-left"></i> hexo部署在github和gitee上的坑
               </a>
             
           </div>
@@ -441,10 +470,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/28/如何将hexo源文件整合到部署的git中？/" rel="prev" title="如何将hexo源文件整合到部署的git中？">
-                如何将hexo源文件整合到部署的git中？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -583,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的坑列举如下"><span class="nav-number">1.</span> <span class="nav-text">遇到的坑列举如下</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先决条件"><span class="nav-number">1.</span> <span class="nav-text">先决条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆"><span class="nav-number">2.</span> <span class="nav-text">克隆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拷贝"><span class="nav-number">3.</span> <span class="nav-text">拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建自动化脚本"><span class="nav-number">4.</span> <span class="nav-text">创建自动化脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#换个地点继续写作"><span class="nav-number">5.</span> <span class="nav-text">换个地点继续写作</span></a></li></ol></div>
             
 
           </div>
