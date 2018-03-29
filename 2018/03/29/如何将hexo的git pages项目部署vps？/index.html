@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="始终">
 <meta property="og:description" content="本文介绍如何在vps上搭建自己的blog。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-29T13:02:47.617Z">
+<meta property="og:updated_time" content="2018-03-29T13:13:59.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何将hexo的git pages项目部署vps？">
 <meta name="twitter:description" content="本文介绍如何在vps上搭建自己的blog。">
@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  492
+                  507
                 </span>
               
 
@@ -368,7 +368,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -428,7 +428,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/conf.d/hexo.conf</span><br><span class="line">server &#123;</span><br><span class="line">    listen  80 ;</span><br><span class="line">    listen [::]:80;</span><br><span class="line">    root /var/www/blog;</span><br><span class="line">    server_name clearsky.me www.clearsky.me; #server_ip</span><br><span class="line">    access_log  /var/log/nginx/hexo_access.log;</span><br><span class="line">    error_log   /var/log/nginx/hexo_error.log;</span><br><span class="line">    error_page 404 =  /404.html;</span><br><span class="line">    location ~* ^.+\.(ico|gif|jpg|jpeg|png)$ &#123;</span><br><span class="line">        root /var/www/blog;</span><br><span class="line">        access_log   off;</span><br><span class="line">        expires      1d;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~* ^.+\.(css|js|txt|xml|swf|wav)$ &#123;</span><br><span class="line">        root /var/www/blog;</span><br><span class="line">        access_log   off;</span><br><span class="line">        expires      10m;</span><br><span class="line">    &#125;</span><br><span class="line">    location / &#123;</span><br><span class="line">        root /var/www/blog;</span><br><span class="line">        if (-f $request_filename) &#123;</span><br><span class="line">            rewrite ^/(.*)$  /$1 break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    location /nginx_status &#123;</span><br><span class="line">        stub_status on;</span><br><span class="line">        access_log off;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vim /etc/nginx/sites-available/default</span><br><span class="line">root /var/www/html;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重启nginx服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br><span class="line">#或者</span><br><span class="line">/etc/init.d/nginx stop</span><br><span class="line">/etc/init.d/nginx start</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><ul>
