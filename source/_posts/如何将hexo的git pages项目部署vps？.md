@@ -104,6 +104,9 @@ root /var/www/html;
 - 重启nginx服务器
 ```
 service nginx restart
+#或者
+/etc/init.d/nginx stop
+/etc/init.d/nginx start
 ```
 ## 后续
 - 修改本地的blog源文件，配置推送git服务器，推送到vps服务器上
