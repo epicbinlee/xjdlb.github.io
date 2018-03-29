@@ -65,7 +65,7 @@ chmod -R 775 /var/www/blog
 chown -R git /var/www/blog
 chgrp -R git /var/www/blog
 ```
-- 配nginx的站点文件
+- 配nginx的站点文件2处
 ```
 vim /etc/nginx/conf.d/hexo.conf
 server {
@@ -97,6 +97,9 @@ server {
         access_log off;
     }
 }
+
+vim /etc/nginx/sites-available/default
+root /var/www/html;
 ```
 - 重启nginx服务器
 ```
