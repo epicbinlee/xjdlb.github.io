@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-03T15:46:47.451Z</updated>
+  <updated>2018-04-03T17:24:54.773Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo如何开启语法高亮？</title>
+    <link href="http://yoursite.com/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/"/>
+    <id>http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/</id>
+    <published>2018-04-03T14:42:05.000Z</published>
+    <updated>2018-04-03T17:24:54.773Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍hexo有关语法高亮的配置方案。<br><a id="more"></a></p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul><li><p>配置主站点下的配置文件</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  tab_replace:</span></span><br></pre></td></tr></table></figure></li><li><p>代码后面添加名称，如```java code ```</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍hexo有关语法高亮的配置方案。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>如何去掉valine的Powered By信息？</title>
@@ -39,32 +65,6 @@
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo如何开启语法高亮？</title>
-    <link href="http://yoursite.com/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/"/>
-    <id>http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/</id>
-    <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-03T16:03:46.906Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍hexo有关语法高亮的配置方案。<br><a id="more"></a></p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul><li><p>配置主站点下的配置文件</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  tab_replace:</span></span><br></pre></td></tr></table></figure></li><li><p>代码后面添加名称，如<code>`</code>java code</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍hexo有关语法高亮的配置方案。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   
@@ -254,9 +254,9 @@
     
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
-      <category term="githubpages" scheme="http://yoursite.com/tags/githubpages/"/>
-    
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+      <category term="githubpages" scheme="http://yoursite.com/tags/githubpages/"/>
     
   </entry>
   
