@@ -16,31 +16,14 @@ mathjax: true
 
 ## 以详细步骤安装配置启动过程
 ### 1.安装ss
-```
+```bash
 apt-get update
 sudo apt-get install python-pip -y
 sudo pip install shadowsocks
 ```
 
 ### 2.配置
-{% codeblock [shell] %}
-mkdir /etc/shadowsocks
-touch /etc/shadowsocks/ss_config.json
-vim /etc/shadowsocks/ss_config.json
-{
-  "server": "165.227.213.57",
-  "port_password": {
-      "10001": "112345678a!",
-      "10002": "112345678a!",
-      "10003": "112345678a!"
-  },
-  "local_port": 1080,
-  "timeout": 600,
-  "method": "aes-256-cfb"
-}
-{% endcodeblock %}
-
-```
+```bash
 mkdir /etc/shadowsocks
 touch /etc/shadowsocks/ss_config.json
 vim /etc/shadowsocks/ss_config.json
@@ -57,7 +40,7 @@ vim /etc/shadowsocks/ss_config.json
 }
 ```
 ### 3.启动
-```
+```bash
 cd ~
 touch start.sh
 chmod 775 start.sh
@@ -77,7 +60,7 @@ netstat -ntlp | grep python
 ```
 ## 用脚本实现一键安装
 ### 1.创建配置启动脚本
-```shell
+```bash
 创建x脚本
 touch x && chmod 775 x && vim x
 直接复制到x脚本里面
