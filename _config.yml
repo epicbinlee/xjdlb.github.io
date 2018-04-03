@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 始终
+title: 初心
 subtitle:
 description: 路漫漫其修远兮，吾将上下而求索
 keywords:
@@ -79,8 +79,6 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy: 
   type: git
-  repo: 
-        github: git@github.com:xjdlb/xjdlb.github.io.git
-        gitee: git@gitee.com:bin_lee/bin_lee.git
+  repo: git@165.227.213.57:/home/git/blog.git
   branch: master
   
