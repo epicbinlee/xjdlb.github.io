@@ -104,6 +104,7 @@ chgrp -R git xxx.git
 git clone git@server_ip:/srv/git/repos/xxx.git
 ```
 ## 大招 将上述操作合并为git脚本
+- 合并如下：
 ```bash
 apt-get update
 echo "----------------------------------------"
