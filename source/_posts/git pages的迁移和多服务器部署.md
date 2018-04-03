@@ -41,7 +41,7 @@ deploy:
 ```
 - 更改repo为gitee仓库的url
 - 然后使用下面的脚本提交、推送、发布到gitee仓库，迁移就成功了
-```
+```bash
 echo "hello"
 yy=$(date +%y)
 mm=$(date +%m)
@@ -93,7 +93,7 @@ deploy:
 ```
 - 更改repo为gitee仓库的url
 - 然后使用下面的脚本提交、推送、发布到gitee仓库和github仓库，多服务器部署就成功了
-```
+```bash
 echo "hello"
 yy=$(date +%y)
 mm=$(date +%m)

@@ -11,7 +11,7 @@ mathjax: true
 <!-- more -->
 ## 基本程序实例
 - 计算文件夹下的文件数量
-```
+```bash
 #!/bin/bash
 echo "this is a shell print file's number in the local dir."
 ls > filename.log
@@ -25,7 +25,7 @@ rm -rf filename.log
 ```
 
 - 简单求和程序
-```
+```bash
 #!/bin/bash
 # author: leebin
 s=0
@@ -37,7 +37,7 @@ echo "the sum of 1+2+3+...+100 is $s"
 ```
 
 - 使用数组
-```
+```bash
 #!/bin/bash
 for x in morning noon afternoon evening
 	do
@@ -46,7 +46,7 @@ for x in morning noon afternoon evening
 ```
 
 - 使用函数
-```
+```bash
 #!/bin/bash
 function func1(){
 	echo AAA
@@ -57,7 +57,7 @@ echo Now this is the end of the script
 ```
 
 - 判断
-```
+```bash
 #!/bin/bash
 if [ -d /etc/mysql ]
 	then
@@ -68,7 +68,7 @@ fi
 ```
 
 - 判断硬盘是否已经满了
-```
+```bash
 #!/bin/bash
 # Author: LeeBin
 rate=$( df | grep "sda" | awk '{print $5}'| cut -d "%" -f 1 )
@@ -81,7 +81,7 @@ fi
 ```
 
 - until循环
-```
+```bash
 #!/bin/bash
 # Author:LeeBin
 i=1
@@ -95,7 +95,7 @@ echo "the sum is $s"
 ```
 
 - while循环
-```
+```bash
 #!/bin/bash
 function func1(){
       echo this is an example of a function
@@ -112,7 +112,7 @@ echo end of script
 ```
 
 - while循环求和
-```
+```bash
 #!/bin/bash
 # Author:LeeBin
 i=1
@@ -127,7 +127,7 @@ echo "the sum is $s"
 ```
 
 - 备份脚本
-```
+```bash
 #!/bin/sh
 # auto mail for system info
 # time
@@ -146,7 +146,7 @@ echo >> ~/app/shell/sysinfo
 ```
 
 - case语句
-```
+```bash
 #!/bin/bash
 # author: leebin
 read -p "Please choose yes/no: " -t 30 cho
@@ -166,7 +166,7 @@ esac
 ```
 
 - 批量解压缩
-```
+```bash
 #!/bin/bash
 # author: leebin
 cd /lamp
