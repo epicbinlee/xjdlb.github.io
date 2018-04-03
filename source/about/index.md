@@ -1,6 +1,8 @@
 ﻿---
 title: 关于我
 date: 2018-03-27 12:36:49
+type: "about"
+comments: false
 ---
 
 路漫漫其修远兮，吾将上下而求索。

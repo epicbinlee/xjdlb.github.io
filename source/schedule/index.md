@@ -3,7 +3,7 @@ title: 札记
 date: 2018-04-03 13:18:11
 tags: [列表]
 type: "schedule"
-comments: false
+comments: true
 ---
 
 ## 2018年4月
