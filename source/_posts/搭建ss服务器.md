@@ -23,7 +23,7 @@ sudo pip install shadowsocks
 ```
 
 ### 2.配置
-```
+```shell
 mkdir /etc/shadowsocks
 touch /etc/shadowsocks/ss_config.json
 vim /etc/shadowsocks/ss_config.json
