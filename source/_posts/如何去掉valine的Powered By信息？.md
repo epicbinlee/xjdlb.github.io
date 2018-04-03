@@ -17,6 +17,10 @@ mathjax: true
 blog/themes/next/layout/_third-party/comments/valine.swig
 ```
 
+{% codeblock lang:java %}
+blog/themes/next/layout/_third-party/comments/valine.swig
+{% endcodeblock %}
+
 - 配置如下
 ```
 {% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
