@@ -83,4 +83,9 @@ deploy:
         github: git@github.com:xjdlb/xjdlb.github.io.git
         gitee: git@gitee.com:bin_lee/bin_lee.git
   branch: master
-  
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
