@@ -16,14 +16,6 @@ mathjax: true
 ```
 blog/themes/next/layout/_third-party/comments/valine.swig
 ```
-
-{% codeblock lang:java %}
-blog/themes/next/layout/_third-party/comments/valine.swig
-public static void main(String[] args0){
-	System.out.println("this is a java program...");
-}
-{% endcodeblock %}
-
 - 配置如下
 ```
 {% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
