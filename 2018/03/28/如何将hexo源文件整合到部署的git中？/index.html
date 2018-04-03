@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="列表,hexo,配置,git," />
+  <meta name="keywords" content="列表,git,配置,hexo," />
 
 
 
@@ -82,14 +82,14 @@
 
 
 <meta name="description" content="本文介绍如何将hexo源文件整合到部署的git中，实现不携带源文件也能写博客，其中，发布和部署实现了自动化脚本操作。">
-<meta name="keywords" content="列表,hexo,配置,git">
+<meta name="keywords" content="列表,git,配置,hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何将hexo源文件整合到部署的git中？">
 <meta property="og:url" content="http://yoursite.com/2018/03/28/如何将hexo源文件整合到部署的git中？/index.html">
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文介绍如何将hexo源文件整合到部署的git中，实现不携带源文件也能写博客，其中，发布和部署实现了自动化脚本操作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-03T15:07:41.378Z">
+<meta property="og:updated_time" content="2018-04-03T15:44:40.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何将hexo源文件整合到部署的git中？">
 <meta name="twitter:description" content="本文介绍如何将hexo源文件整合到部署的git中，实现不携带源文件也能写博客，其中，发布和部署实现了自动化脚本操作。">
@@ -462,13 +462,13 @@
 <h2 id="创建自动化脚本"><a href="#创建自动化脚本" class="headerlink" title="创建自动化脚本"></a>创建自动化脚本</h2><ul>
 <li>在git仓库的根目录下创建脚本</li>
 <li><p>脚本1 create_new_page.sh</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"hello"</span></span><br><span class="line">yy=$(date +%Y)</span><br><span class="line">mm=$(date +%m)</span><br><span class="line">dd=$(date +%d)</span><br><span class="line">HH=$(date +%H)</span><br><span class="line">MM=$(date +%M)</span><br><span class="line">SS=$(date +%S)</span><br><span class="line">filename=<span class="string">"11111"</span></span><br><span class="line">filepostfix=<span class="string">".md"</span></span><br><span class="line">cd source/_posts</span><br><span class="line">touch $filename$filepostfix</span><br><span class="line">echo &gt; $filename$filepostfix</span><br><span class="line">echo <span class="string">"---"</span> <span class="meta">&gt;&gt; </span>$filename$filepostfix</span><br><span class="line">echo <span class="string">"title: $filename"</span> <span class="meta">&gt;&gt; </span>$filename$filepostfix</span><br><span class="line">echo <span class="string">"date: $yy-$mm-$dd $HH:$MM:$SS"</span> <span class="meta">&gt;&gt; </span>$filename$filepostfix</span><br><span class="line">echo <span class="string">"tags: [列表,2222,3333,4444]"</span> <span class="meta">&gt;&gt; </span>$filename$filepostfix</span><br><span class="line">echo <span class="string">"categories: 5555"</span> <span class="meta">&gt;&gt; </span>$filename$filepostfix</span><br><span class="line">echo <span class="string">"toc: true"</span> <span class="meta">&gt;&gt; </span>$filename$filepostfix</span><br><span class="line">echo <span class="string">"mathjax: true"</span> <span class="meta">&gt;&gt; </span>$filename$filepostfix</span><br><span class="line">echo <span class="string">"---"</span> <span class="meta">&gt;&gt; </span>$filename$filepostfix</span><br><span class="line">echo <span class="string">""</span> <span class="meta">&gt;&gt; </span>$filename$filepostfix</span><br><span class="line">echo <span class="string">"&lt;!-- more --&gt;"</span> <span class="meta">&gt;&gt; </span>$filename$filepostfix</span><br><span class="line">cd ../..</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span></span><br><span class="line">yy=$(date +%Y)</span><br><span class="line">mm=$(date +%m)</span><br><span class="line">dd=$(date +%d)</span><br><span class="line">HH=$(date +%H)</span><br><span class="line">MM=$(date +%M)</span><br><span class="line">SS=$(date +%S)</span><br><span class="line">filename=<span class="string">"11111"</span></span><br><span class="line">filepostfix=<span class="string">".md"</span></span><br><span class="line"><span class="built_in">cd</span> <span class="built_in">source</span>/_posts</span><br><span class="line">touch <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line"><span class="built_in">echo</span> &gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"---"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"title: <span class="variable">$filename</span>"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"date: <span class="variable">$yy</span>-<span class="variable">$mm</span>-<span class="variable">$dd</span> <span class="variable">$HH</span>:<span class="variable">$MM</span>:<span class="variable">$SS</span>"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"tags: [列表,2222,3333,4444]"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"categories: 5555"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"toc: true"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"mathjax: true"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"---"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">""</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"&lt;!-- more --&gt;"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line"><span class="built_in">cd</span> ../..</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>文本1 commit.txt</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"hello"</span></span><br><span class="line">yy=<span class="variable">$(date +%y)</span></span><br><span class="line">mm=<span class="variable">$(date +%m)</span></span><br><span class="line">dd=<span class="variable">$(date +%d)</span></span><br><span class="line">HH=<span class="variable">$(date +%H)</span></span><br><span class="line">MM=<span class="variable">$(date +%M)</span></span><br><span class="line">SS=<span class="variable">$(date +%S)</span></span><br><span class="line">xW=<span class="variable">$(date +%U)</span></span><br><span class="line">we=<span class="variable">$(date +%a)</span></span><br><span class="line">xD=<span class="variable">$(date +%j)</span></span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"</span></span><br><span class="line"><span class="string">$yy/$mm/$dd-$HH:$MM:$SS 新增了列表标签</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line">git push origin hexo</span><br><span class="line">git  log --oneline | head</span><br><span class="line">echo <span class="string">"=================================="</span></span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span></span><br><span class="line">yy=$(date +%y)</span><br><span class="line">mm=$(date +%m)</span><br><span class="line">dd=$(date +%d)</span><br><span class="line">HH=$(date +%H)</span><br><span class="line">MM=$(date +%M)</span><br><span class="line">SS=$(date +%S)</span><br><span class="line">xW=$(date +%U)</span><br><span class="line">we=$(date +%a)</span><br><span class="line">xD=$(date +%j)</span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"</span></span><br><span class="line"><span class="string"><span class="variable">$yy</span>/<span class="variable">$mm</span>/<span class="variable">$dd</span>-<span class="variable">$HH</span>:<span class="variable">$MM</span>:<span class="variable">$SS</span> 新增了列表标签</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line">git push origin hexo</span><br><span class="line">git  <span class="built_in">log</span> --oneline | head</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>脚本2 upload_and_deploy.sh</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ehco <span class="string">"push and deploy..."</span></span><br><span class="line"><span class="keyword">sh </span>commit.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ehco <span class="string">"push and deploy..."</span></span><br><span class="line">sh commit.txt</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>本次修改完成直接在commit.txt中修改commit，然后运行upload_and_deploy.sh，即可上传代码到hexo分支，发布blog到master分支</p>
 </li>
@@ -498,11 +498,11 @@
           
             <a href="/tags/列表/" rel="tag"><i class="fa fa-tag"></i> 列表</a>
           
-            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
           
             <a href="/tags/配置/" rel="tag"><i class="fa fa-tag"></i> 配置</a>
           
-            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
           
         </div>
       
@@ -607,7 +607,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -629,7 +629,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -734,7 +734,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.0k字</span>
+  <span class="post-count">博客全站共5.2k字</span>
 </div>
 
         

@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
+    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件 1blog/themes/next/layout/_third-party/comments/valine.swig 配置如下 1234567891011121314151617181920212223242526272829&#123;% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %&#125; &lt;script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"&gt;&lt;/script&gt; &lt;script src="//unpkg.com/valine/dist/Valine.min.js"&gt;&lt;/script&gt; &lt;script type="text/javascript"&gt; var GUEST = ['nick','mail','link']; var guest = '&#123;&#123; theme.valine.guest_info &#125;&#125;'; guest = guest.split(',').filter(item=&gt;&#123; return GUEST.indexOf(item)&gt;-1; &#125;); new Valine(&#123; el: '#comments' , verify: &#123;&#123; theme.valine.verify &#125;&#125;, notify: &#123;&#123; theme.valine.notify &#125;&#125;, appId: '&#123;&#123; theme.valine.appid &#125;&#125;', appKey: '&#123;&#123; theme.valine.appkey &#125;&#125;', placeholder: '&#123;&#123; theme.valine.placeholder &#125;&#125;', avatar:'&#123;&#123; theme.valine.avatar &#125;&#125;', guest_info:guest, pageSize:'&#123;&#123; theme.valine.pageSize &#125;&#125;' || 10, &#125;); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle &amp;&amp; infoEle.childNodes &amp;&amp; infoEle.childNodes.length &gt; 0)&#123; infoEle.childNodes.forEach(function(item) &#123; item.parentNode.removeChild(item); &#125;); &#125; &lt;/script&gt;&#123;% endif %&#125;]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>valine</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[如何在next配置站内的搜索引擎？]]></title>
     <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%9C%A8next%E9%85%8D%E7%BD%AE%E7%AB%99%E5%86%85%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[本文介绍如何在next配置站内的搜索引擎。 配置过程 安装hexo-generator-searchdb插件，以管理员身份打开cmd进入项目目录下，运行 1npm install hexo-generator-searchdb --save 在站点的-config.yml文件中增加 12345search: path: search.xml field: post format: html limit: 10000 配置theme/next/-config.yml文件 12345678910111213141516171819# Algolia Searchalgolia_search: enable: false hits: per_page: 10 labels: input_placeholder: Search for Posts hits_empty: "We didn't find any results for the search: $&#123;query&#125;" hits_stats: "$&#123;hits&#125; results found in $&#123;time&#125; ms"## Local search# Dependencies: https://github.com/flashlab/hexo-generator-searchlocal_search: enable: true # if auto, trigger search by changing input # if manual, trigger search by pressing enter key or search button trigger: auto # show top n results per article, show all results by setting to -1 top_n_per_article: 1]]></content>
@@ -35,8 +48,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>配置</tag>
         <tag>git</tag>
+        <tag>配置</tag>
         <tag>vps</tag>
       </tags>
   </entry>
@@ -49,8 +62,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>配置</tag>
         <tag>git</tag>
+        <tag>配置</tag>
       </tags>
   </entry>
   <entry>
@@ -62,9 +75,9 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>hexo</tag>
-        <tag>配置</tag>
         <tag>git</tag>
+        <tag>配置</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -91,9 +104,9 @@
       </categories>
       <tags>
         <tag>列表</tag>
+        <tag>配置</tag>
         <tag>githubpages</tag>
         <tag>hexo</tag>
-        <tag>配置</tag>
       </tags>
   </entry>
   <entry>
@@ -119,8 +132,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>配置</tag>
         <tag>git</tag>
+        <tag>配置</tag>
       </tags>
   </entry>
   <entry>

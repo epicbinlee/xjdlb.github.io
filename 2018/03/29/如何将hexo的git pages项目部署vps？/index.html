@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="列表,配置,git,vps," />
+  <meta name="keywords" content="列表,git,配置,vps," />
 
 
 
@@ -82,14 +82,14 @@
 
 
 <meta name="description" content="本文介绍如何在vps上搭建自己的blog。">
-<meta name="keywords" content="列表,配置,git,vps">
+<meta name="keywords" content="列表,git,配置,vps">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何将hexo的git pages项目部署vps？">
 <meta property="og:url" content="http://yoursite.com/2018/03/29/如何将hexo的git pages项目部署vps？/index.html">
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文介绍如何在vps上搭建自己的blog。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-03T15:07:22.050Z">
+<meta property="og:updated_time" content="2018-04-03T15:43:57.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何将hexo的git pages项目部署vps？">
 <meta name="twitter:description" content="本文介绍如何在vps上搭建自己的blog。">
@@ -461,7 +461,7 @@
 </ul>
 <h3 id="配置git用户和仓库"><a href="#配置git用户和仓库" class="headerlink" title="配置git用户和仓库"></a>配置git用户和仓库</h3><ul>
 <li><p>git用户权限设定（可以不需要）</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">740</span> /etc/sudoers</span><br><span class="line">vim /etc/sudoers</span><br><span class="line">#在root <span class="keyword">ALL</span>=(<span class="keyword">ALL</span>:<span class="keyword">ALL</span>) <span class="keyword">ALL</span>下面新增一行</span><br><span class="line">git <span class="keyword">ALL</span>=(<span class="keyword">ALL</span>:<span class="keyword">ALL</span>) <span class="keyword">ALL</span></span><br><span class="line">chmod <span class="number">440</span> /etc/sudoers</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chmod 740 /etc/sudoers</span><br><span class="line">vim /etc/sudoers</span><br><span class="line"><span class="comment">#在root ALL=(ALL:ALL) ALL下面新增一行</span></span><br><span class="line">git ALL=(ALL:ALL) ALL</span><br><span class="line">chmod 440 /etc/sudoers</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>配置git用户和仓库, 参考<a href="https://leebin.top/2018/03/27/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8ubuntu%E5%AE%9E%E7%8E%B0%E7%A7%81%E6%9C%89git%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E9%99%84ssh%E6%93%8D%E4%BD%9C%EF%BC%9F/" target="_blank" rel="noopener">在vps上构建私有git服务器</a></p>
 </li>
@@ -476,10 +476,10 @@
 </ul>
 <h3 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h3><ul>
 <li><p>新建站点文件夹</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /<span class="built_in">var</span>/www/blog</span><br><span class="line">chmod -R <span class="number">775</span> /<span class="built_in">var</span>/www/blog</span><br><span class="line">chown -R git /<span class="built_in">var</span>/www/blog</span><br><span class="line">chgrp -R git /<span class="built_in">var</span>/www/blog</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /var/www/blog</span><br><span class="line">chmod -R 775 /var/www/blog</span><br><span class="line">chown -R git /var/www/blog</span><br><span class="line">chgrp -R git /var/www/blog</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>配nginx的站点文件2处</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置1</span></span><br><span class="line"><span class="attribute">vim</span> /etc/nginx/conf.d/hexo.conf</span><br><span class="line">server &#123;</span><br><span class="line">    <span class="attribute">listen</span>  <span class="number">80</span> ;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">80</span>;</span><br><span class="line">    <span class="attribute">root</span> /var/www/blog;</span><br><span class="line">    <span class="attribute">server_name</span> clearsky.me www.clearsky.me; <span class="comment">#server_ip</span></span><br><span class="line">    <span class="attribute">access_log</span>  /var/log/nginx/hexo_access.log;</span><br><span class="line">    <span class="attribute">error_log</span>   /var/log/nginx/hexo_error.log;</span><br><span class="line">    <span class="attribute">error_page</span> <span class="number">404</span> =  /<span class="number">404</span>.html;</span><br><span class="line">    <span class="attribute">location</span> <span class="regexp">~* ^.+\.(ico|gif|jpg|jpeg|png)$</span> &#123;</span><br><span class="line">        <span class="attribute">root</span> /var/www/blog;</span><br><span class="line">        <span class="attribute">access_log</span>   <span class="literal">off</span>;</span><br><span class="line">        <span class="attribute">expires</span>      <span class="number">1d</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">location</span> <span class="regexp">~* ^.+\.(css|js|txt|xml|swf|wav)$</span> &#123;</span><br><span class="line">        <span class="attribute">root</span> /var/www/blog;</span><br><span class="line">        <span class="attribute">access_log</span>   <span class="literal">off</span>;</span><br><span class="line">        <span class="attribute">expires</span>      <span class="number">10m</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">root</span> /var/www/blog;</span><br><span class="line">        <span class="attribute">if</span> (-f <span class="variable">$request_filename</span>) &#123;</span><br><span class="line">            <span class="attribute">rewrite</span><span class="regexp"> ^/(.*)$</span>  /<span class="variable">$1</span> <span class="literal">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">location</span> /nginx_status &#123;</span><br><span class="line">        <span class="attribute">stub_status</span> <span class="literal">on</span>;</span><br><span class="line">        <span class="attribute">access_log</span> <span class="literal">off</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#配置2</span></span><br><span class="line"><span class="attribute">vim</span> /etc/nginx/sites-available/default</span><br><span class="line">root /var/www/html;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置1</span></span><br><span class="line">vim /etc/nginx/conf.d/hexo.conf</span><br><span class="line">server &#123;</span><br><span class="line">    listen  80 ;</span><br><span class="line">    listen [::]:80;</span><br><span class="line">    root /var/www/blog;</span><br><span class="line">    server_name clearsky.me www.clearsky.me; <span class="comment">#server_ip</span></span><br><span class="line">    access_log  /var/<span class="built_in">log</span>/nginx/hexo_access.log;</span><br><span class="line">    error_log   /var/<span class="built_in">log</span>/nginx/hexo_error.log;</span><br><span class="line">    error_page 404 =  /404.html;</span><br><span class="line">    location ~* ^.+\.(ico|gif|jpg|jpeg|png)$ &#123;</span><br><span class="line">        root /var/www/blog;</span><br><span class="line">        access_log   off;</span><br><span class="line">        expires      1d;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~* ^.+\.(css|js|txt|xml|swf|wav)$ &#123;</span><br><span class="line">        root /var/www/blog;</span><br><span class="line">        access_log   off;</span><br><span class="line">        expires      10m;</span><br><span class="line">    &#125;</span><br><span class="line">    location / &#123;</span><br><span class="line">        root /var/www/blog;</span><br><span class="line">        <span class="keyword">if</span> (-f <span class="variable">$request_filename</span>) &#123;</span><br><span class="line">            rewrite ^/(.*)$  /<span class="variable">$1</span> <span class="built_in">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    location /nginx_status &#123;</span><br><span class="line">        stub_status on;</span><br><span class="line">        access_log off;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#配置2</span></span><br><span class="line">vim /etc/nginx/sites-available/default</span><br><span class="line">root /var/www/html;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重启nginx服务器</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">/etc/init.d/nginx <span class="literal">stop</span></span><br><span class="line">/etc/init.d/nginx <span class="literal">start</span></span><br></pre></td></tr></table></figure>
@@ -508,9 +508,9 @@
           
             <a href="/tags/列表/" rel="tag"><i class="fa fa-tag"></i> 列表</a>
           
-            <a href="/tags/配置/" rel="tag"><i class="fa fa-tag"></i> 配置</a>
-          
             <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
+          
+            <a href="/tags/配置/" rel="tag"><i class="fa fa-tag"></i> 配置</a>
           
             <a href="/tags/vps/" rel="tag"><i class="fa fa-tag"></i> vps</a>
           
@@ -617,7 +617,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -639,7 +639,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -744,7 +744,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.0k字</span>
+  <span class="post-count">博客全站共5.2k字</span>
 </div>
 
         
