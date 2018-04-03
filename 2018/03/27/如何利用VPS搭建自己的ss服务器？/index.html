@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="列表,git,配置," />
+  <meta name="keywords" content="列表,配置,ss," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="本文介绍如何将github上的项目迁移到gitee上，如何实现源文件多服务器的部署。">
-<meta name="keywords" content="列表,git,配置">
+<meta name="description" content="本文描述了如何在ubuntu服务器上快速搭建自己的shadowcoks代理服务器。">
+<meta name="keywords" content="列表,配置,ss">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git pages的迁移和多服务器部署">
-<meta property="og:url" content="http://yoursite.com/2018/03/29/git pages的迁移和多服务器部署/index.html">
+<meta property="og:title" content="如何利用VPS搭建自己的ss服务器？">
+<meta property="og:url" content="http://yoursite.com/2018/03/27/如何利用VPS搭建自己的ss服务器？/index.html">
 <meta property="og:site_name" content="初心">
-<meta property="og:description" content="本文介绍如何将github上的项目迁移到gitee上，如何实现源文件多服务器的部署。">
+<meta property="og:description" content="本文描述了如何在ubuntu服务器上快速搭建自己的shadowcoks代理服务器。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-03T15:48:23.581Z">
+<meta property="og:updated_time" content="2018-04-03T15:39:57.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git pages的迁移和多服务器部署">
-<meta name="twitter:description" content="本文介绍如何将github上的项目迁移到gitee上，如何实现源文件多服务器的部署。">
+<meta name="twitter:title" content="如何利用VPS搭建自己的ss服务器？">
+<meta name="twitter:description" content="本文描述了如何在ubuntu服务器上快速搭建自己的shadowcoks代理服务器。">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/29/git pages的迁移和多服务器部署/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/27/如何利用VPS搭建自己的ss服务器？/"/>
 
 
 
 
 
-  <title>git pages的迁移和多服务器部署 | 初心</title>
+  <title>如何利用VPS搭建自己的ss服务器？ | 初心</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/29/git pages的迁移和多服务器部署/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/27/如何利用VPS搭建自己的ss服务器？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LeeBin">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">git pages的迁移和多服务器部署</h1>
+          <h1 class="post-title" itemprop="name headline">如何利用VPS搭建自己的ss服务器？</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-29T09:34:52+08:00">
-                2018-03-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T10:00:00+08:00">
+                2018-03-27
               </time>
             
 
@@ -369,8 +369,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/29/git pages的迁移和多服务器部署/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/29/git pages的迁移和多服务器部署/" itemprop="commentCount"></span>
+                <a href="/2018/03/27/如何利用VPS搭建自己的ss服务器？/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/27/如何利用VPS搭建自己的ss服务器？/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -378,7 +378,7 @@
 
           
           
-             <span id="/2018/03/29/git pages的迁移和多服务器部署/" class="leancloud_visitors" data-flag-title="git pages的迁移和多服务器部署">
+             <span id="/2018/03/27/如何利用VPS搭建自己的ss服务器？/" class="leancloud_visitors" data-flag-title="如何利用VPS搭建自己的ss服务器？">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  593
+                  472
                 </span>
               
 
@@ -443,37 +443,12 @@
       
 
       
-        <p>本文介绍如何将github上的项目迁移到gitee上，如何实现源文件多服务器的部署。<br><a id="more"></a></p>
-<h2 id="github-pages迁移到gitee服务器上"><a href="#github-pages迁移到gitee服务器上" class="headerlink" title="github pages迁移到gitee服务器上"></a>github pages迁移到gitee服务器上</h2><ul>
-<li>在gitee上新建一个和gitee用户名一样的git仓库，并且在pages标签开启pages服务</li>
-<li>克隆github pages仓库到本地，安装必要的插件，保证github pages能够与github服务器正常上传部署</li>
-<li><p>更改github仓库/.git/config文件</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion = <span class="number">0</span></span><br><span class="line">	filemode = <span class="keyword">false</span></span><br><span class="line">	bare = <span class="keyword">false</span></span><br><span class="line">	logallrefupdates = <span class="keyword">true</span></span><br><span class="line">	symlinks = <span class="keyword">false</span></span><br><span class="line">	ignorecase = <span class="keyword">true</span></span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = git<span class="variable">@github</span>.<span class="symbol">com:</span>xjdlb/xjdlb.github.io.git</span><br><span class="line">	fetch = +refs/heads/*<span class="symbol">:refs/remotes/origin/*</span></span><br><span class="line">[branch <span class="string">"master"</span>]</span><br><span class="line">	remote = origin</span><br><span class="line">	merge = refs/heads/master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改url为gitee仓库的url</p>
-</li>
-<li><p>更改github仓库/-config.yml文件</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repo</span>:</span><br><span class="line">        <span class="attribute">gitee</span>: git<span class="variable">@gitee</span>.<span class="attribute">com</span>:bin_lee/bin_lee.git</span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改repo为gitee仓库的url</p>
-</li>
-<li>然后使用下面的脚本提交、推送、发布到gitee仓库，迁移就成功了<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span></span><br><span class="line">yy=$(date +%y)</span><br><span class="line">mm=$(date +%m)</span><br><span class="line">dd=$(date +%d)</span><br><span class="line">HH=$(date +%H)</span><br><span class="line">MM=$(date +%M)</span><br><span class="line">SS=$(date +%S)</span><br><span class="line">xW=$(date +%U)</span><br><span class="line">we=$(date +%a)</span><br><span class="line">xD=$(date +%j)</span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"</span></span><br><span class="line"><span class="string"><span class="variable">$yy</span>/<span class="variable">$mm</span>/<span class="variable">$dd</span>-<span class="variable">$HH</span>:<span class="variable">$MM</span>:<span class="variable">$SS</span> 把github服务器上的pages迁移到gitee上</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">git push git@gitee.com:bin_lee/bin_lee.git hexo</span><br><span class="line">git  <span class="built_in">log</span> --oneline | head</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="迁移完成，实现多服务器部署"><a href="#迁移完成，实现多服务器部署" class="headerlink" title="迁移完成，实现多服务器部署"></a>迁移完成，实现多服务器部署</h2><ul>
-<li><p>更改github仓库/.git/config文件，改为主要的服务器地址</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion = <span class="number">0</span></span><br><span class="line">	filemode = <span class="keyword">false</span></span><br><span class="line">	bare = <span class="keyword">false</span></span><br><span class="line">	logallrefupdates = <span class="keyword">true</span></span><br><span class="line">	symlinks = <span class="keyword">false</span></span><br><span class="line">	ignorecase = <span class="keyword">true</span></span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = git<span class="variable">@github</span>.<span class="symbol">com:</span>xjdlb/xjdlb.github.io.git</span><br><span class="line">	fetch = +refs/heads/*<span class="symbol">:refs/remotes/origin/*</span></span><br><span class="line">[branch <span class="string">"master"</span>]</span><br><span class="line">	remote = origin</span><br><span class="line">	merge = refs/heads/master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改url为gitee仓库的url</p>
-</li>
-<li><p>更改github仓库/-config.yml文件</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repo</span>:</span><br><span class="line">        <span class="attribute">github</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:xjdlb/xjdlb.github.io.git</span><br><span class="line">        <span class="attribute">gitee</span>: git<span class="variable">@gitee</span>.<span class="attribute">com</span>:bin_lee/bin_lee.git</span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改repo为gitee仓库的url</p>
-</li>
-<li>然后使用下面的脚本提交、推送、发布到gitee仓库和github仓库，多服务器部署就成功了<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span></span><br><span class="line">yy=$(date +%y)</span><br><span class="line">mm=$(date +%m)</span><br><span class="line">dd=$(date +%d)</span><br><span class="line">HH=$(date +%H)</span><br><span class="line">MM=$(date +%M)</span><br><span class="line">SS=$(date +%S)</span><br><span class="line">xW=$(date +%U)</span><br><span class="line">we=$(date +%a)</span><br><span class="line">xD=$(date +%j)</span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"</span></span><br><span class="line"><span class="string"><span class="variable">$yy</span>/<span class="variable">$mm</span>/<span class="variable">$dd</span>-<span class="variable">$HH</span>:<span class="variable">$MM</span>:<span class="variable">$SS</span> 同时部署到两个服务器上测试</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line">git push git@github.com:xjdlb/xjdlb.github.io.git hexo</span><br><span class="line">git  <span class="built_in">log</span> --oneline | head</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">git push git@gitee.com:bin_lee/bin_lee.git hexo</span><br><span class="line">git  <span class="built_in">log</span> --oneline | head</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+        <p>本文描述了如何在ubuntu服务器上快速搭建自己的shadowcoks代理服务器。<br><a id="more"></a></p>
+<h2 id="以详细步骤安装配置启动过程"><a href="#以详细步骤安装配置启动过程" class="headerlink" title="以详细步骤安装配置启动过程"></a>以详细步骤安装配置启动过程</h2><h3 id="1-安装ss"><a href="#1-安装ss" class="headerlink" title="1.安装ss"></a>1.安装ss</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">sudo apt-get install python-pip -y</span><br><span class="line">sudo pip install shadowsocks</span><br></pre></td></tr></table></figure>
+<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/shadowsocks</span><br><span class="line">touch /etc/shadowsocks/ss_config.json</span><br><span class="line">vim /etc/shadowsocks/ss_config.json</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"server"</span>: <span class="string">"165.227.213.57"</span>,</span><br><span class="line">  <span class="string">"port_password"</span>: &#123;</span><br><span class="line">      <span class="string">"10001"</span>: <span class="string">"112345678a!"</span>,</span><br><span class="line">      <span class="string">"10002"</span>: <span class="string">"112345678a!"</span>,</span><br><span class="line">      <span class="string">"10003"</span>: <span class="string">"112345678a!"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"local_port"</span>: 1080,</span><br><span class="line">  <span class="string">"timeout"</span>: 600,</span><br><span class="line">  <span class="string">"method"</span>: <span class="string">"aes-256-cfb"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-启动"><a href="#3-启动" class="headerlink" title="3.启动"></a>3.启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">touch start.sh</span><br><span class="line">chmod 775 start.sh</span><br><span class="line">vim start.sh</span><br><span class="line"></span><br><span class="line">ssserver -c /etc/shadowsocks/ss_config.json -d start</span><br><span class="line">ssserver -c /etc/shadowsocks/ss_config_multiple.json -d start</span><br><span class="line">netstat -ntlp | grep python</span><br><span class="line"></span><br><span class="line">touch stop.sh</span><br><span class="line">chmod 775 stop.sh</span><br><span class="line">vim stop.sh</span><br><span class="line"></span><br><span class="line">ssserver -c /etc/shadowsocks/ss_config.json -d stop</span><br><span class="line">ssserver -c /etc/shadowsocks/ss_config_multiple.json -d stop</span><br><span class="line">netstat -ntlp | grep python</span><br></pre></td></tr></table></figure>
+<h2 id="用脚本实现一键安装"><a href="#用脚本实现一键安装" class="headerlink" title="用脚本实现一键安装"></a>用脚本实现一键安装</h2><h3 id="1-创建配置启动脚本"><a href="#1-创建配置启动脚本" class="headerlink" title="1.创建配置启动脚本"></a>1.创建配置启动脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">创建x脚本</span><br><span class="line">touch x &amp;&amp; chmod 775 x &amp;&amp; vim x</span><br><span class="line">直接复制到x脚本里面</span><br><span class="line"><span class="built_in">cd</span> ~ &amp;&amp; touch ss_cfg.json</span><br><span class="line">ip=<span class="string">"162.243.161.150"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"&#123;"</span> &gt;&gt; ss_cfg.json</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"\"server\": \"<span class="variable">$&#123;ip&#125;</span>\","</span> &gt;&gt; ss_cfg.json</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"\"port_password\": &#123;"</span> &gt;&gt; ss_cfg.json</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"\"10001\": \"helloworld\","</span> &gt;&gt; ss_cfg.json</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"\"10002\": \"helloworld\","</span> &gt;&gt; ss_cfg.json</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"\"10003\": \"helloworld\""</span> &gt;&gt; ss_cfg.json</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"&#125;,"</span> &gt;&gt; ss_cfg.json</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"\"local_port\": 1080,"</span> &gt;&gt; ss_cfg.json</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"\"timeout\": 600,"</span> &gt;&gt; ss_cfg.json</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"\"method\": \"aes-256-cfb\""</span> &gt;&gt; ss_cfg.json</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"&#125;"</span> &gt;&gt; ss_cfg.json</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">touch sta.sh &amp;&amp; chmod 775 sta.sh</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"ssserver -c ~/ss_cfg.json -d start"</span> &gt;&gt; ~/sta.sh</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"netstat -ntlp | grep python"</span> &gt;&gt; ~/sta.sh</span><br><span class="line">touch sto.sh &amp;&amp; chmod 775 sto.sh</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"ssserver -c ~/ss_cfg.json -d stop"</span> &gt;&gt; ~/sto.sh</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"netstat -ntlp | grep python"</span> &gt;&gt; ~/sto.sh</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"-------------report-------------------"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"the fie list as follows:"</span></span><br><span class="line">ls</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"-------------start ss-----------------"</span></span><br><span class="line">./sta.sh</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"-------------your ss config-----------"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"ip=<span class="variable">$&#123;ip&#125;</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"port=10001, password=helloworld"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"port=10002, password=helloworld"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"port=10003, password=helloworld"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"local_port=1080"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"timeout=600"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"method=aes-256-cfb"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"-------------end---------------------"</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-启动服务"><a href="#2-启动服务" class="headerlink" title="2.启动服务"></a>2.启动服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">运行x脚本</span><br><span class="line">./x</span><br><span class="line">启动服务</span><br><span class="line">./sta.sh</span><br><span class="line">关闭服务</span><br><span class="line">./sto.sh</span><br><span class="line">删除文件</span><br><span class="line">rm -rf x ss_cfg.json sta.sh sto.sh &amp;&amp; touch x &amp;&amp; chmod 775 x &amp;&amp; vim x</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -493,9 +468,9 @@
           
             <a href="/tags/列表/" rel="tag"><i class="fa fa-tag"></i> 列表</a>
           
-            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
-          
             <a href="/tags/配置/" rel="tag"><i class="fa fa-tag"></i> 配置</a>
+          
+            <a href="/tags/ss/" rel="tag"><i class="fa fa-tag"></i> ss</a>
           
         </div>
       
@@ -508,8 +483,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/28/如何将hexo源文件整合到部署的git中？/" rel="next" title="如何将hexo源文件整合到部署的git中？">
-                <i class="fa fa-chevron-left"></i> 如何将hexo源文件整合到部署的git中？
+              <a href="/2018/03/27/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -518,8 +493,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/29/如何将hexo的git pages项目部署vps？/" rel="prev" title="如何将hexo的git pages项目部署vps？">
-                如何将hexo的git pages项目部署vps？ <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/27/如何利用ubuntu实现私有git服务端-附ssh操作？/" rel="prev" title="如何利用ubuntu实现私有git服务端-附ssh操作？">
+                如何利用ubuntu实现私有git服务端-附ssh操作？ <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -662,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#github-pages迁移到gitee服务器上"><span class="nav-number">1.</span> <span class="nav-text">github pages迁移到gitee服务器上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移完成，实现多服务器部署"><span class="nav-number">2.</span> <span class="nav-text">迁移完成，实现多服务器部署</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#以详细步骤安装配置启动过程"><span class="nav-number">1.</span> <span class="nav-text">以详细步骤安装配置启动过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装ss"><span class="nav-number">1.1.</span> <span class="nav-text">1.安装ss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-配置"><span class="nav-number">1.2.</span> <span class="nav-text">2.配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-启动"><span class="nav-number">1.3.</span> <span class="nav-text">3.启动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用脚本实现一键安装"><span class="nav-number">2.</span> <span class="nav-text">用脚本实现一键安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建配置启动脚本"><span class="nav-number">2.1.</span> <span class="nav-text">1.创建配置启动脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-启动服务"><span class="nav-number">2.2.</span> <span class="nav-text">2.启动服务</span></a></li></ol></li></ol></div>
             
 
           </div>

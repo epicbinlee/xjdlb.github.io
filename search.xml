@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[hexo如何开启语法高亮？]]></title>
+    <url>%2F2018%2F04%2F03%2Fhexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍hexo有关语法高亮的配置方案。 配置过程 配置主站点下的配置文件 12345highlight: enable: true line_number: true auto_detect: true tab_replace: 代码后面添加名称，如java code]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
     <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件javablog/themes/next/layout/_third-party/comments/valine.swig1234567891011121314151617181920212223242526272829303132- 配置如下```js&#123;% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %&#125; &lt;script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"&gt;&lt;/script&gt; &lt;script src="//unpkg.com/valine/dist/Valine.min.js"&gt;&lt;/script&gt; &lt;script type="text/javascript"&gt; var GUEST = ['nick','mail','link']; var guest = '&#123;&#123; theme.valine.guest_info &#125;&#125;'; guest = guest.split(',').filter(item=&gt;&#123; return GUEST.indexOf(item)&gt;-1; &#125;); new Valine(&#123; el: '#comments' , verify: &#123;&#123; theme.valine.verify &#125;&#125;, notify: &#123;&#123; theme.valine.notify &#125;&#125;, appId: '&#123;&#123; theme.valine.appid &#125;&#125;', appKey: '&#123;&#123; theme.valine.appkey &#125;&#125;', placeholder: '&#123;&#123; theme.valine.placeholder &#125;&#125;', avatar:'&#123;&#123; theme.valine.avatar &#125;&#125;', guest_info:guest, pageSize:'&#123;&#123; theme.valine.pageSize &#125;&#125;' || 10, &#125;); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle &amp;&amp; infoEle.childNodes &amp;&amp; infoEle.childNodes.length &gt; 0)&#123; infoEle.childNodes.forEach(function(item) &#123; item.parentNode.removeChild(item); &#125;); &#125; &lt;/script&gt;&#123;% endif %&#125;]]></content>
@@ -105,8 +118,8 @@
       <tags>
         <tag>列表</tag>
         <tag>配置</tag>
-        <tag>githubpages</tag>
         <tag>hexo</tag>
+        <tag>githubpages</tag>
       </tags>
   </entry>
   <entry>
@@ -138,7 +151,7 @@
   </entry>
   <entry>
     <title><![CDATA[如何利用VPS搭建自己的ss服务器？]]></title>
-    <url>%2F2018%2F03%2F27%2F%E6%90%AD%E5%BB%BAss%E6%9C%8D%E5%8A%A1%E5%99%A8%2F</url>
+    <url>%2F2018%2F03%2F27%2F%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8VPS%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84ss%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[本文描述了如何在ubuntu服务器上快速搭建自己的shadowcoks代理服务器。 以详细步骤安装配置启动过程1.安装ss123apt-get updatesudo apt-get install python-pip -ysudo pip install shadowsocks 2.配置1234567891011121314mkdir /etc/shadowsockstouch /etc/shadowsocks/ss_config.jsonvim /etc/shadowsocks/ss_config.json&#123; "server": "165.227.213.57", "port_password": &#123; "10001": "112345678a!", "10002": "112345678a!", "10003": "112345678a!" &#125;, "local_port": 1080, "timeout": 600, "method": "aes-256-cfb"&#125; 3.启动12345678910111213141516cd ~touch start.shchmod 775 start.shvim start.shssserver -c /etc/shadowsocks/ss_config.json -d startssserver -c /etc/shadowsocks/ss_config_multiple.json -d startnetstat -ntlp | grep pythontouch stop.shchmod 775 stop.shvim stop.shssserver -c /etc/shadowsocks/ss_config.json -d stopssserver -c /etc/shadowsocks/ss_config_multiple.json -d stopnetstat -ntlp | grep python 用脚本实现一键安装1.创建配置启动脚本12345678910111213141516171819202122232425262728293031323334353637创建x脚本touch x &amp;&amp; chmod 775 x &amp;&amp; vim x直接复制到x脚本里面cd ~ &amp;&amp; touch ss_cfg.jsonip="162.243.161.150"echo "&#123;" &gt;&gt; ss_cfg.jsonecho "\"server\": \"$&#123;ip&#125;\"," &gt;&gt; ss_cfg.jsonecho "\"port_password\": &#123;" &gt;&gt; ss_cfg.jsonecho "\"10001\": \"helloworld\"," &gt;&gt; ss_cfg.jsonecho "\"10002\": \"helloworld\"," &gt;&gt; ss_cfg.jsonecho "\"10003\": \"helloworld\"" &gt;&gt; ss_cfg.jsonecho "&#125;," &gt;&gt; ss_cfg.jsonecho "\"local_port\": 1080," &gt;&gt; ss_cfg.jsonecho "\"timeout\": 600," &gt;&gt; ss_cfg.jsonecho "\"method\": \"aes-256-cfb\"" &gt;&gt; ss_cfg.jsonecho "&#125;" &gt;&gt; ss_cfg.jsoncd ~touch sta.sh &amp;&amp; chmod 775 sta.shecho "ssserver -c ~/ss_cfg.json -d start" &gt;&gt; ~/sta.shecho "netstat -ntlp | grep python" &gt;&gt; ~/sta.shtouch sto.sh &amp;&amp; chmod 775 sto.shecho "ssserver -c ~/ss_cfg.json -d stop" &gt;&gt; ~/sto.shecho "netstat -ntlp | grep python" &gt;&gt; ~/sto.shecho "-------------report-------------------"echo "the fie list as follows:"lsecho "-------------start ss-----------------"./sta.shecho "-------------your ss config-----------"echo "ip=$&#123;ip&#125;"echo "port=10001, password=helloworld"echo "port=10002, password=helloworld"echo "port=10003, password=helloworld"echo "local_port=1080"echo "timeout=600"echo "method=aes-256-cfb"echo "-------------end---------------------" 2.启动服务12345678运行x脚本./x启动服务./sta.sh关闭服务./sto.sh删除文件rm -rf x ss_cfg.json sta.sh sto.sh &amp;&amp; touch x &amp;&amp; chmod 775 x &amp;&amp; vim x]]></content>
       <categories>
         <category>配置</category>

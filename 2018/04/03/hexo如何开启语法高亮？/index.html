@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="列表,git,配置," />
+  <meta name="keywords" content="列表,配置,hexo," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="本文介绍如何将github上的项目迁移到gitee上，如何实现源文件多服务器的部署。">
-<meta name="keywords" content="列表,git,配置">
+<meta name="description" content="本文介绍hexo有关语法高亮的配置方案。">
+<meta name="keywords" content="列表,配置,hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git pages的迁移和多服务器部署">
-<meta property="og:url" content="http://yoursite.com/2018/03/29/git pages的迁移和多服务器部署/index.html">
+<meta property="og:title" content="hexo如何开启语法高亮？">
+<meta property="og:url" content="http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/index.html">
 <meta property="og:site_name" content="初心">
-<meta property="og:description" content="本文介绍如何将github上的项目迁移到gitee上，如何实现源文件多服务器的部署。">
+<meta property="og:description" content="本文介绍hexo有关语法高亮的配置方案。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-03T15:48:23.581Z">
+<meta property="og:updated_time" content="2018-04-03T15:55:06.804Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git pages的迁移和多服务器部署">
-<meta name="twitter:description" content="本文介绍如何将github上的项目迁移到gitee上，如何实现源文件多服务器的部署。">
+<meta name="twitter:title" content="hexo如何开启语法高亮？">
+<meta name="twitter:description" content="本文介绍hexo有关语法高亮的配置方案。">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/29/git pages的迁移和多服务器部署/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/"/>
 
 
 
 
 
-  <title>git pages的迁移和多服务器部署 | 初心</title>
+  <title>hexo如何开启语法高亮？ | 初心</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/29/git pages的迁移和多服务器部署/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LeeBin">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">git pages的迁移和多服务器部署</h1>
+          <h1 class="post-title" itemprop="name headline">hexo如何开启语法高亮？</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-29T09:34:52+08:00">
-                2018-03-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T22:42:05+08:00">
+                2018-04-03
               </time>
             
 
@@ -369,8 +369,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/29/git pages的迁移和多服务器部署/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/29/git pages的迁移和多服务器部署/" itemprop="commentCount"></span>
+                <a href="/2018/04/03/hexo如何开启语法高亮？/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/03/hexo如何开启语法高亮？/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -378,7 +378,7 @@
 
           
           
-             <span id="/2018/03/29/git pages的迁移和多服务器部署/" class="leancloud_visitors" data-flag-title="git pages的迁移和多服务器部署">
+             <span id="/2018/04/03/hexo如何开启语法高亮？/" class="leancloud_visitors" data-flag-title="hexo如何开启语法高亮？">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  593
+                  55
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  1
                 </span>
               
             </div>
@@ -443,35 +443,12 @@
       
 
       
-        <p>本文介绍如何将github上的项目迁移到gitee上，如何实现源文件多服务器的部署。<br><a id="more"></a></p>
-<h2 id="github-pages迁移到gitee服务器上"><a href="#github-pages迁移到gitee服务器上" class="headerlink" title="github pages迁移到gitee服务器上"></a>github pages迁移到gitee服务器上</h2><ul>
-<li>在gitee上新建一个和gitee用户名一样的git仓库，并且在pages标签开启pages服务</li>
-<li>克隆github pages仓库到本地，安装必要的插件，保证github pages能够与github服务器正常上传部署</li>
-<li><p>更改github仓库/.git/config文件</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion = <span class="number">0</span></span><br><span class="line">	filemode = <span class="keyword">false</span></span><br><span class="line">	bare = <span class="keyword">false</span></span><br><span class="line">	logallrefupdates = <span class="keyword">true</span></span><br><span class="line">	symlinks = <span class="keyword">false</span></span><br><span class="line">	ignorecase = <span class="keyword">true</span></span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = git<span class="variable">@github</span>.<span class="symbol">com:</span>xjdlb/xjdlb.github.io.git</span><br><span class="line">	fetch = +refs/heads/*<span class="symbol">:refs/remotes/origin/*</span></span><br><span class="line">[branch <span class="string">"master"</span>]</span><br><span class="line">	remote = origin</span><br><span class="line">	merge = refs/heads/master</span><br></pre></td></tr></table></figure>
+        <p>本文介绍hexo有关语法高亮的配置方案。<br><a id="more"></a></p>
+<h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul>
+<li><p>配置主站点下的配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  tab_replace:</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>更改url为gitee仓库的url</p>
-</li>
-<li><p>更改github仓库/-config.yml文件</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repo</span>:</span><br><span class="line">        <span class="attribute">gitee</span>: git<span class="variable">@gitee</span>.<span class="attribute">com</span>:bin_lee/bin_lee.git</span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改repo为gitee仓库的url</p>
-</li>
-<li>然后使用下面的脚本提交、推送、发布到gitee仓库，迁移就成功了<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span></span><br><span class="line">yy=$(date +%y)</span><br><span class="line">mm=$(date +%m)</span><br><span class="line">dd=$(date +%d)</span><br><span class="line">HH=$(date +%H)</span><br><span class="line">MM=$(date +%M)</span><br><span class="line">SS=$(date +%S)</span><br><span class="line">xW=$(date +%U)</span><br><span class="line">we=$(date +%a)</span><br><span class="line">xD=$(date +%j)</span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"</span></span><br><span class="line"><span class="string"><span class="variable">$yy</span>/<span class="variable">$mm</span>/<span class="variable">$dd</span>-<span class="variable">$HH</span>:<span class="variable">$MM</span>:<span class="variable">$SS</span> 把github服务器上的pages迁移到gitee上</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">git push git@gitee.com:bin_lee/bin_lee.git hexo</span><br><span class="line">git  <span class="built_in">log</span> --oneline | head</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="迁移完成，实现多服务器部署"><a href="#迁移完成，实现多服务器部署" class="headerlink" title="迁移完成，实现多服务器部署"></a>迁移完成，实现多服务器部署</h2><ul>
-<li><p>更改github仓库/.git/config文件，改为主要的服务器地址</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion = <span class="number">0</span></span><br><span class="line">	filemode = <span class="keyword">false</span></span><br><span class="line">	bare = <span class="keyword">false</span></span><br><span class="line">	logallrefupdates = <span class="keyword">true</span></span><br><span class="line">	symlinks = <span class="keyword">false</span></span><br><span class="line">	ignorecase = <span class="keyword">true</span></span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = git<span class="variable">@github</span>.<span class="symbol">com:</span>xjdlb/xjdlb.github.io.git</span><br><span class="line">	fetch = +refs/heads/*<span class="symbol">:refs/remotes/origin/*</span></span><br><span class="line">[branch <span class="string">"master"</span>]</span><br><span class="line">	remote = origin</span><br><span class="line">	merge = refs/heads/master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改url为gitee仓库的url</p>
-</li>
-<li><p>更改github仓库/-config.yml文件</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repo</span>:</span><br><span class="line">        <span class="attribute">github</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:xjdlb/xjdlb.github.io.git</span><br><span class="line">        <span class="attribute">gitee</span>: git<span class="variable">@gitee</span>.<span class="attribute">com</span>:bin_lee/bin_lee.git</span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改repo为gitee仓库的url</p>
-</li>
-<li>然后使用下面的脚本提交、推送、发布到gitee仓库和github仓库，多服务器部署就成功了<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span></span><br><span class="line">yy=$(date +%y)</span><br><span class="line">mm=$(date +%m)</span><br><span class="line">dd=$(date +%d)</span><br><span class="line">HH=$(date +%H)</span><br><span class="line">MM=$(date +%M)</span><br><span class="line">SS=$(date +%S)</span><br><span class="line">xW=$(date +%U)</span><br><span class="line">we=$(date +%a)</span><br><span class="line">xD=$(date +%j)</span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"</span></span><br><span class="line"><span class="string"><span class="variable">$yy</span>/<span class="variable">$mm</span>/<span class="variable">$dd</span>-<span class="variable">$HH</span>:<span class="variable">$MM</span>:<span class="variable">$SS</span> 同时部署到两个服务器上测试</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line">git push git@github.com:xjdlb/xjdlb.github.io.git hexo</span><br><span class="line">git  <span class="built_in">log</span> --oneline | head</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">git push git@gitee.com:bin_lee/bin_lee.git hexo</span><br><span class="line">git  <span class="built_in">log</span> --oneline | head</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
+<li><p>代码后面添加名称，如<code>java code</code></p>
 </li>
 </ul>
 
@@ -493,9 +470,9 @@
           
             <a href="/tags/列表/" rel="tag"><i class="fa fa-tag"></i> 列表</a>
           
-            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
-          
             <a href="/tags/配置/" rel="tag"><i class="fa fa-tag"></i> 配置</a>
+          
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
           
         </div>
       
@@ -508,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/28/如何将hexo源文件整合到部署的git中？/" rel="next" title="如何将hexo源文件整合到部署的git中？">
-                <i class="fa fa-chevron-left"></i> 如何将hexo源文件整合到部署的git中？
+              <a href="/2018/04/03/如何去掉valine的Powered By信息？/" rel="next" title="如何去掉valine的Powered By信息？">
+                <i class="fa fa-chevron-left"></i> 如何去掉valine的Powered By信息？
               </a>
             
           </div>
@@ -517,10 +494,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/29/如何将hexo的git pages项目部署vps？/" rel="prev" title="如何将hexo的git pages项目部署vps？">
-                如何将hexo的git pages项目部署vps？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -662,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#github-pages迁移到gitee服务器上"><span class="nav-number">1.</span> <span class="nav-text">github pages迁移到gitee服务器上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移完成，实现多服务器部署"><span class="nav-number">2.</span> <span class="nav-text">迁移完成，实现多服务器部署</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置过程"><span class="nav-number">1.</span> <span class="nav-text">配置过程</span></a></li></ol></div>
             
 
           </div>
