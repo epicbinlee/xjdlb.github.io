@@ -170,9 +170,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
       <category term="github" scheme="http://yoursite.com/tags/github/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
       <category term="gitee" scheme="http://yoursite.com/tags/gitee/"/>
     
@@ -202,9 +202,9 @@
     
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
-      <category term="githubpages" scheme="http://yoursite.com/tags/githubpages/"/>
-    
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+      <category term="githubpages" scheme="http://yoursite.com/tags/githubpages/"/>
     
   </entry>
   
@@ -228,11 +228,11 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
       <category term="github" scheme="http://yoursite.com/tags/github/"/>
     
       <category term="pages" scheme="http://yoursite.com/tags/pages/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   
