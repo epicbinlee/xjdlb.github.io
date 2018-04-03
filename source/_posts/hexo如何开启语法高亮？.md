@@ -20,5 +20,5 @@ highlight:
   auto_detect: true
   tab_replace:
 ```
-- 代码后面添加名称，如```java code ```
+- 代码后面添加名称，如\```java code \```
 
