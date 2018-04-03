@@ -23,7 +23,24 @@ sudo pip install shadowsocks
 ```
 
 ### 2.配置
-```shell
+{% codeblock [lang:shell] [title] [url] [link text] %}
+mkdir /etc/shadowsocks
+touch /etc/shadowsocks/ss_config.json
+vim /etc/shadowsocks/ss_config.json
+{
+  "server": "165.227.213.57",
+  "port_password": {
+      "10001": "112345678a!",
+      "10002": "112345678a!",
+      "10003": "112345678a!"
+  },
+  "local_port": 1080,
+  "timeout": 600,
+  "method": "aes-256-cfb"
+}
+{% endcodeblock %}
+
+```
 mkdir /etc/shadowsocks
 touch /etc/shadowsocks/ss_config.json
 vim /etc/shadowsocks/ss_config.json
