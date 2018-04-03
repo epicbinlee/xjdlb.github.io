@@ -31,7 +31,7 @@ git checkout -b hexo
 ## 创建自动化脚本
 - 在git仓库的根目录下创建脚本
 - 脚本1 create_new_page.sh
-```
+```bash
 echo "hello"
 yy=$(date +%Y)
 mm=$(date +%m)
@@ -57,7 +57,7 @@ echo "<!-- more -->" >> $filename$filepostfix
 cd ../..
 ```
 - 文本1 commit.txt
-```
+```bash
 echo "hello"
 yy=$(date +%y)
 mm=$(date +%m)
@@ -79,7 +79,7 @@ echo "=================================="
 hexo clean && hexo g -d
 ```
 - 脚本2 upload_and_deploy.sh
-```
+```bash
 ehco "push and deploy..."
 sh commit.txt
 ```

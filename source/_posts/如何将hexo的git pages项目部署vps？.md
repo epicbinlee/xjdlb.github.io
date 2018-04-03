@@ -31,7 +31,7 @@ apt-get install nginx
 
 ### 配置git用户和仓库
 - git用户权限设定（可以不需要）
-```
+```bash
 chmod 740 /etc/sudoers
 vim /etc/sudoers
 #在root ALL=(ALL:ALL) ALL下面新增一行
@@ -42,7 +42,7 @@ chmod 440 /etc/sudoers
 
 ### 配置git hooks
 - 在hexo.git/hooks/目录下修改post-update.sample为post-update，并覆盖加入
-```
+```bash
 #!/bin/bash
 GIT_REPO=/home/git/hexo.git
 TMP_GIT_CLONE=/tmp/hexo
@@ -59,14 +59,14 @@ chmod +x post-receive
 
 ### nginx配置
 - 新建站点文件夹
-```
+```bash
 mkdir -p /var/www/blog
 chmod -R 775 /var/www/blog
 chown -R git /var/www/blog
 chgrp -R git /var/www/blog
 ```
 - 配nginx的站点文件2处
-```
+```bash
 #配置1
 vim /etc/nginx/conf.d/hexo.conf
 server {
