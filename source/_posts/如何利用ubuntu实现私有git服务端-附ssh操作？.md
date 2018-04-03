@@ -29,14 +29,14 @@ passwd git
 
 ## 通过ssh客户端和服务器互连
 - 客户端生成ssh密钥
-```
+```bash
 git config --global user.name "你的GitHub用户名"
 git config --global user.email "你的GitHub注册邮箱"
 ssh-keygen -t rsa -C "你的GitHub注册邮箱"
 cat ~/.ssh/id_rsa.pub
 ```
 - 或者 上述操作可以集成为无交互的脚本在本地直接执行即可
-```
+```bash
 y=$(date +%y)
 m=$(date +%m)
 d=$(date +%d)
@@ -56,7 +56,7 @@ cat ~/.ssh/id_rsa.pub
 cd $path
 ```
 - 服务端安装ssh并实现xshell连接
-```
+```bash
 #安装
 sudo apt-get install openssh-server -y
 sudo ps -e |grep ssh
@@ -72,7 +72,7 @@ touch authorized_keys
 ```
 
 - 将上述生成的密钥文件添加到服务端
-```
+```bash
 echo "密钥" >> /root/.ssh/authorized_keys
 ```
 - 客户端测试连通性
@@ -93,18 +93,18 @@ cd /srv/git/repos
 git init --bare /srv/git/repos/xxx.git
 ```
 - 设置git仓库的访问权限
-```
+```bash
 cd /srv/git/repos
 chmod -R 775 xxx.git
 chown -R git xxx.git
 chgrp -R git xxx.git
 ```
 - 克隆git仓库并测试
-```
+```bash
 git clone git@server_ip:/srv/git/repos/xxx.git
 ```
 ## 大招 将上述操作合并为git脚本
-```
+```bash
 apt-get update
 echo "----------------------------------------"
 echo ">>> update finished..."
@@ -155,7 +155,7 @@ userdel -r git
 rm -rdf /srv/git/
 ```
 ## 如果服务器出现问题，保留gitlog迁移git的方法
-```
+```bash
 #在源服务器上裸克隆
 git clone --bare git://github.com/username/project.git
 cd project.git
