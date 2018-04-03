@@ -35,8 +35,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
         <tag>vps</tag>
       </tags>
   </entry>
@@ -49,8 +49,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -62,9 +62,9 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
-        <tag>配置</tag>
         <tag>hexo</tag>
+        <tag>配置</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -91,9 +91,9 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>配置</tag>
         <tag>githubpages</tag>
         <tag>hexo</tag>
+        <tag>配置</tag>
       </tags>
   </entry>
   <entry>
@@ -119,14 +119,14 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[如何利用VPS搭建自己的ss服务器？]]></title>
     <url>%2F2018%2F03%2F27%2F%E6%90%AD%E5%BB%BAss%E6%9C%8D%E5%8A%A1%E5%99%A8%2F</url>
-    <content type="text"><![CDATA[本文描述了如何在ubuntu服务器上快速搭建自己的shadowcoks代理服务器。 以详细步骤安装配置启动过程1.安装ss123apt-get updatesudo apt-get install python-pip -ysudo pip install shadowsocks 2.配置1234567891011121314mkdir /etc/shadowsockstouch /etc/shadowsocks/ss_config.jsonvim /etc/shadowsocks/ss_config.json&#123; "server": "165.227.213.57", "port_password": &#123; "10001": "112345678a!", "10002": "112345678a!", "10003": "112345678a!" &#125;, "local_port": 1080, "timeout": 600, "method": "aes-256-cfb"&#125; 3.启动12345678910111213141516cd ~touch start.shchmod 775 start.shvim start.shssserver -c /etc/shadowsocks/ss_config.json -d startssserver -c /etc/shadowsocks/ss_config_multiple.json -d startnetstat -ntlp | grep pythontouch stop.shchmod 775 stop.shvim stop.shssserver -c /etc/shadowsocks/ss_config.json -d stopssserver -c /etc/shadowsocks/ss_config_multiple.json -d stopnetstat -ntlp | grep python 用脚本实现一键安装1.创建配置启动脚本12345678910111213141516171819202122232425262728293031323334353637创建x脚本touch x &amp;&amp; chmod 775 x &amp;&amp; vim x直接复制到x脚本里面cd ~ &amp;&amp; touch ss_cfg.jsonip=&quot;162.243.161.150&quot;echo &quot;&#123;&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;server\&quot;: \&quot;$&#123;ip&#125;\&quot;,&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;port_password\&quot;: &#123;&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;10001\&quot;: \&quot;helloworld\&quot;,&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;10002\&quot;: \&quot;helloworld\&quot;,&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;10003\&quot;: \&quot;helloworld\&quot;&quot; &gt;&gt; ss_cfg.jsonecho &quot;&#125;,&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;local_port\&quot;: 1080,&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;timeout\&quot;: 600,&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;method\&quot;: \&quot;aes-256-cfb\&quot;&quot; &gt;&gt; ss_cfg.jsonecho &quot;&#125;&quot; &gt;&gt; ss_cfg.jsoncd ~touch sta.sh &amp;&amp; chmod 775 sta.shecho &quot;ssserver -c ~/ss_cfg.json -d start&quot; &gt;&gt; ~/sta.shecho &quot;netstat -ntlp | grep python&quot; &gt;&gt; ~/sta.shtouch sto.sh &amp;&amp; chmod 775 sto.shecho &quot;ssserver -c ~/ss_cfg.json -d stop&quot; &gt;&gt; ~/sto.shecho &quot;netstat -ntlp | grep python&quot; &gt;&gt; ~/sto.shecho &quot;-------------report-------------------&quot;echo &quot;the fie list as follows:&quot;lsecho &quot;-------------start ss-----------------&quot;./sta.shecho &quot;-------------your ss config-----------&quot;echo &quot;ip=$&#123;ip&#125;&quot;echo &quot;port=10001, password=helloworld&quot;echo &quot;port=10002, password=helloworld&quot;echo &quot;port=10003, password=helloworld&quot;echo &quot;local_port=1080&quot;echo &quot;timeout=600&quot;echo &quot;method=aes-256-cfb&quot;echo &quot;-------------end---------------------&quot; 2.启动服务12345678运行x脚本./x启动服务./sta.sh关闭服务./sto.sh删除文件rm -rf x ss_cfg.json sta.sh sto.sh &amp;&amp; touch x &amp;&amp; chmod 775 x &amp;&amp; vim x]]></content>
+    <content type="text"><![CDATA[本文描述了如何在ubuntu服务器上快速搭建自己的shadowcoks代理服务器。 以详细步骤安装配置启动过程1.安装ss123apt-get updatesudo apt-get install python-pip -ysudo pip install shadowsocks 2.配置1234567891011121314mkdir /etc/shadowsockstouch /etc/shadowsocks/ss_config.jsonvim /etc/shadowsocks/ss_config.json&#123; "server": "165.227.213.57", "port_password": &#123; "10001": "112345678a!", "10002": "112345678a!", "10003": "112345678a!" &#125;, "local_port": 1080, "timeout": 600, "method": "aes-256-cfb"&#125; 3.启动12345678910111213141516cd ~touch start.shchmod 775 start.shvim start.shssserver -c /etc/shadowsocks/ss_config.json -d startssserver -c /etc/shadowsocks/ss_config_multiple.json -d startnetstat -ntlp | grep pythontouch stop.shchmod 775 stop.shvim stop.shssserver -c /etc/shadowsocks/ss_config.json -d stopssserver -c /etc/shadowsocks/ss_config_multiple.json -d stopnetstat -ntlp | grep python 用脚本实现一键安装1.创建配置启动脚本12345678910111213141516171819202122232425262728293031323334353637创建x脚本touch x &amp;&amp; chmod 775 x &amp;&amp; vim x直接复制到x脚本里面cd ~ &amp;&amp; touch ss_cfg.jsonip="162.243.161.150"echo "&#123;" &gt;&gt; ss_cfg.jsonecho "\"server\": \"$&#123;ip&#125;\"," &gt;&gt; ss_cfg.jsonecho "\"port_password\": &#123;" &gt;&gt; ss_cfg.jsonecho "\"10001\": \"helloworld\"," &gt;&gt; ss_cfg.jsonecho "\"10002\": \"helloworld\"," &gt;&gt; ss_cfg.jsonecho "\"10003\": \"helloworld\"" &gt;&gt; ss_cfg.jsonecho "&#125;," &gt;&gt; ss_cfg.jsonecho "\"local_port\": 1080," &gt;&gt; ss_cfg.jsonecho "\"timeout\": 600," &gt;&gt; ss_cfg.jsonecho "\"method\": \"aes-256-cfb\"" &gt;&gt; ss_cfg.jsonecho "&#125;" &gt;&gt; ss_cfg.jsoncd ~touch sta.sh &amp;&amp; chmod 775 sta.shecho "ssserver -c ~/ss_cfg.json -d start" &gt;&gt; ~/sta.shecho "netstat -ntlp | grep python" &gt;&gt; ~/sta.shtouch sto.sh &amp;&amp; chmod 775 sto.shecho "ssserver -c ~/ss_cfg.json -d stop" &gt;&gt; ~/sto.shecho "netstat -ntlp | grep python" &gt;&gt; ~/sto.shecho "-------------report-------------------"echo "the fie list as follows:"lsecho "-------------start ss-----------------"./sta.shecho "-------------your ss config-----------"echo "ip=$&#123;ip&#125;"echo "port=10001, password=helloworld"echo "port=10002, password=helloworld"echo "port=10003, password=helloworld"echo "local_port=1080"echo "timeout=600"echo "method=aes-256-cfb"echo "-------------end---------------------" 2.启动服务12345678运行x脚本./x启动服务./sta.sh关闭服务./sto.sh删除文件rm -rf x ss_cfg.json sta.sh sto.sh &amp;&amp; touch x &amp;&amp; chmod 775 x &amp;&amp; vim x]]></content>
       <categories>
         <category>配置</category>
       </categories>
