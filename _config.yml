@@ -77,8 +77,10 @@ theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-deploy: 
+deploy:
   type: git
-  repo: git@165.227.213.57:/home/git/blog.git
+  repo:
+        github: git@github.com:xjdlb/xjdlb.github.io.git
+        gitee: git@gitee.com:bin_lee/bin_lee.git
   branch: master
   
