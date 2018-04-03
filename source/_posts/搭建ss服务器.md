@@ -60,7 +60,7 @@ netstat -ntlp | grep python
 ```
 ## 用脚本实现一键安装
 ### 1.创建配置启动脚本
-```
+```shell
 创建x脚本
 touch x && chmod 775 x && vim x
 直接复制到x脚本里面
