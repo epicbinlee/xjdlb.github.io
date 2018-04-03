@@ -13,7 +13,7 @@ mathjax: true
 
 ## 步骤
 - 找到配置文件
-``java
+```
 blog/themes/next/layout/_third-party/comments/valine.swig
 ```
 
