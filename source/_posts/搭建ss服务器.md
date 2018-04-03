@@ -1,7 +1,7 @@
 ---
 title: 如何利用VPS搭建自己的ss服务器？
 date: 2018-03-27 10:00:00
-tags: 
+tags:
 	- ss
 	- 配置
 	- 列表
@@ -16,14 +16,14 @@ mathjax: true
 
 ## 以详细步骤安装配置启动过程
 ### 1.安装ss
-```
+```bash
 apt-get update
 sudo apt-get install python-pip -y
 sudo pip install shadowsocks
 ```
 
 ### 2.配置
-```
+```shell
 mkdir /etc/shadowsocks
 touch /etc/shadowsocks/ss_config.json
 vim /etc/shadowsocks/ss_config.json
@@ -40,7 +40,7 @@ vim /etc/shadowsocks/ss_config.json
 }
 ```
 ### 3.启动
-```
+```shell
 cd ~
 touch start.sh
 chmod 775 start.sh
@@ -60,7 +60,7 @@ netstat -ntlp | grep python
 ```
 ## 用脚本实现一键安装
 ### 1.创建配置启动脚本
-```
+```shell
 创建x脚本
 touch x && chmod 775 x && vim x
 直接复制到x脚本里面
@@ -100,7 +100,7 @@ echo "method=aes-256-cfb"
 echo "-------------end---------------------"
 ```
 ### 2.启动服务
-```
+```shell
 运行x脚本
 ./x
 启动服务
