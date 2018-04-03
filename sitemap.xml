@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/04/03/linux%20shell%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0/</loc>
+    
+    <lastmod>2018-04-03T01:58:05.475Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/03/29/%E5%A6%82%E4%BD%95%E5%B0%86hexo%E7%9A%84git%20pages%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2vps%EF%BC%9F/</loc>
     
     <lastmod>2018-03-29T13:13:59.069Z</lastmod>
