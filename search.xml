@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[hexo如何开启语法高亮？]]></title>
-    <url>%2F2018%2F04%2F03%2Fhexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F%2F</url>
-    <content type="text"><![CDATA[本文介绍hexo有关语法高亮的配置方案。 配置过程 配置主站点下的配置文件 12345highlight: enable: true line_number: true auto_detect: true tab_replace: 代码后面添加名称，如`java code \`]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>列表</tag>
-        <tag>配置</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
     <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件javablog/themes/next/layout/_third-party/comments/valine.swig1234567891011121314151617181920212223242526272829303132- 配置如下```js&#123;% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %&#125; &lt;script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"&gt;&lt;/script&gt; &lt;script src="//unpkg.com/valine/dist/Valine.min.js"&gt;&lt;/script&gt; &lt;script type="text/javascript"&gt; var GUEST = ['nick','mail','link']; var guest = '&#123;&#123; theme.valine.guest_info &#125;&#125;'; guest = guest.split(',').filter(item=&gt;&#123; return GUEST.indexOf(item)&gt;-1; &#125;); new Valine(&#123; el: '#comments' , verify: &#123;&#123; theme.valine.verify &#125;&#125;, notify: &#123;&#123; theme.valine.notify &#125;&#125;, appId: '&#123;&#123; theme.valine.appid &#125;&#125;', appKey: '&#123;&#123; theme.valine.appkey &#125;&#125;', placeholder: '&#123;&#123; theme.valine.placeholder &#125;&#125;', avatar:'&#123;&#123; theme.valine.avatar &#125;&#125;', guest_info:guest, pageSize:'&#123;&#123; theme.valine.pageSize &#125;&#125;' || 10, &#125;); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle &amp;&amp; infoEle.childNodes &amp;&amp; infoEle.childNodes.length &gt; 0)&#123; infoEle.childNodes.forEach(function(item) &#123; item.parentNode.removeChild(item); &#125;); &#125; &lt;/script&gt;&#123;% endif %&#125;]]></content>
@@ -24,6 +11,19 @@
         <tag>列表</tag>
         <tag>配置</tag>
         <tag>valine</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo如何开启语法高亮？]]></title>
+    <url>%2F2018%2F04%2F03%2Fhexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍hexo有关语法高亮的配置方案。 配置过程 配置主站点下的配置文件 12345highlight: enable: true line_number: true auto_detect: true tab_replace: 代码后面添加名称，如`java code]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -118,8 +118,8 @@
       <tags>
         <tag>列表</tag>
         <tag>配置</tag>
-        <tag>hexo</tag>
         <tag>githubpages</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
