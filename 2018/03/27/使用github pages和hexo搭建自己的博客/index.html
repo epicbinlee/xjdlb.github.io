@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="列表,hexo,github,pages," />
+  <meta name="keywords" content="列表,github,pages,hexo," />
 
 
 
@@ -82,7 +82,7 @@
 
 
 <meta name="description" content="本文描述了如何使用github pages和hexo搭建自己的博客。">
-<meta name="keywords" content="列表,hexo,github,pages">
+<meta name="keywords" content="列表,github,pages,hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用github pages和hexo搭建自己的博客">
 <meta property="og:url" content="http://yoursite.com/2018/03/27/使用github pages和hexo搭建自己的博客/index.html">
@@ -453,25 +453,25 @@
 <li>安装git</li>
 <li>在客户端右键打开git bash here</li>
 <li><p>设置user.name和user.email</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global user.name <span class="string">"你的GitHub用户名"</span></span><br><span class="line">git<span class="built_in"> config </span>--global user.email <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>生成ssh密钥</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -<span class="built_in">t</span> rsa -C <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>显示密钥</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~<span class="regexp">/.ssh/i</span>d_rsa.pub</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加密钥到github服务器中密钥管理<a href="https://github.com/settings/keys" target="_blank" rel="noopener">添加地址</a></p>
 </li>
 </ul>
 <h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><ul>
-<li>安装hexo、安装扩展插件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 安装hexo</span><br><span class="line">npm install hexo-cli g</span><br><span class="line"># 初始化博客文件夹</span><br><span class="line">hexo init blog</span><br><span class="line"># 切换到该路径</span><br><span class="line">cd blog</span><br><span class="line"># 安装hexo的扩展插件</span><br><span class="line">npm install</span><br><span class="line"># 安装其它插件</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-admin --save</span><br><span class="line">npm install hexo-generator-archive --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-tag --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+<li>安装hexo、安装扩展插件<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装hexo</span></span><br><span class="line">npm <span class="keyword">install </span>hexo-cli g</span><br><span class="line"><span class="comment"># 初始化博客文件夹</span></span><br><span class="line">hexo init <span class="keyword">blog</span></span><br><span class="line"><span class="keyword"># </span>切换到该路径</span><br><span class="line">cd <span class="keyword">blog</span></span><br><span class="line"><span class="keyword"># </span>安装hexo的扩展插件</span><br><span class="line">npm <span class="keyword">install</span></span><br><span class="line"><span class="keyword"># </span>安装其它插件</span><br><span class="line">npm <span class="keyword">install </span>hexo-server --save</span><br><span class="line">npm <span class="keyword">install </span>hexo-admin --save</span><br><span class="line">npm <span class="keyword">install </span>hexo-generator-archive --save</span><br><span class="line">npm <span class="keyword">install </span>hexo-generator-feed --save</span><br><span class="line">npm <span class="keyword">install </span>hexo-generator-search --save</span><br><span class="line">npm <span class="keyword">install </span>hexo-generator-tag --save</span><br><span class="line">npm <span class="keyword">install </span>hexo-deployer-git --save</span><br><span class="line">npm <span class="keyword">install </span>hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="本地开发blog与本地测试"><a href="#本地开发blog与本地测试" class="headerlink" title="本地开发blog与本地测试"></a>本地开发blog与本地测试</h2><ul>
 <li>添加自己的markdown到 blog/source/posts目录下</li>
 <li><p>生成静态页面并开启服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 生成静态页面</span><br><span class="line">hexo generate</span><br><span class="line"># 开启本地服务器</span><br><span class="line">hexo s</span><br><span class="line"># 或者</span><br><span class="line">hexo s -p 指定的port</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 生成静态页面</span></span><br><span class="line">hexo generate</span><br><span class="line"><span class="meta">#</span><span class="bash"> 开启本地服务器</span></span><br><span class="line">hexo s</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line">hexo s -p 指定的port</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>打开浏览器，地址栏中输入：<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
 </li>
@@ -482,7 +482,7 @@
 </ul>
 <h2 id="客户端将hexo博客部署到github上"><a href="#客户端将hexo博客部署到github上" class="headerlink" title="客户端将hexo博客部署到github上"></a>客户端将hexo博客部署到github上</h2><ul>
 <li><p>修改配置文件blog/config.yml，修改deploy项的内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Deployment 注释</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  # 类型</span><br><span class="line">  type: git</span><br><span class="line">  # 仓库</span><br><span class="line">  repo: git@github.com:xjdlb/xjdlb.github.io.git</span><br><span class="line">  # 分支</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Deployment 注释</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Docs: https://hexo.io/docs/deployment.html</span></span></span><br><span class="line">deploy:</span><br><span class="line"><span class="meta">  #</span><span class="bash"> 类型</span></span><br><span class="line">  type: git</span><br><span class="line"><span class="meta">  #</span><span class="bash"> 仓库</span></span><br><span class="line">  repo: git@github.com:xjdlb/xjdlb.github.io.git</span><br><span class="line"><span class="meta">  #</span><span class="bash"> 分支</span></span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>注意：type: git中的冒号后面由空格</p>
 </li>
@@ -490,7 +490,7 @@
 </ul>
 <h2 id="客户端将自己的blog部署hexo"><a href="#客户端将自己的blog部署hexo" class="headerlink" title="客户端将自己的blog部署hexo"></a>客户端将自己的blog部署hexo</h2><ul>
 <li><p>将自己的项目部署到github pages中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 清空静态页面</span><br><span class="line">hexo clean</span><br><span class="line"># 生成静态页面</span><br><span class="line">hexo generate</span><br><span class="line"># 部署</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 清空静态页面</span></span><br><span class="line">hexo clean</span><br><span class="line"><span class="meta">#</span><span class="bash"> 生成静态页面</span></span><br><span class="line">hexo generate</span><br><span class="line"><span class="meta">#</span><span class="bash"> 部署</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>打开网页，输入 <a href="http://github_username.github.io" target="_blank" rel="noopener">http://github_username.github.io</a> 打开github上托管的博客</p>
 </li>
@@ -498,28 +498,28 @@
 </ul>
 <h2 id="hexo命令缩写与组合"><a href="#hexo命令缩写与组合" class="headerlink" title="hexo命令缩写与组合"></a>hexo命令缩写与组合</h2><ul>
 <li><p>含义</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g：hexo generate</span><br><span class="line">hexo c：hexo clean</span><br><span class="line">hexo s：hexo server</span><br><span class="line">hexo d：hexo deploy</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo g：hexo generate</span><br><span class="line">hexo c：hexo clean</span><br><span class="line">hexo s：hexo server</span><br><span class="line">hexo d：hexo deploy</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>组合</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 清除、生成、启动</span><br><span class="line">hexo clean &amp;&amp; hexo g -s</span><br><span class="line"># 清除、生成、部署</span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 清除、生成、启动</span></span><br><span class="line">hexo clean <span class="meta">&amp;&amp; hexo g -s</span></span><br><span class="line"><span class="meta"># 清除、生成、部署</span></span><br><span class="line">hexo clean <span class="meta">&amp;&amp; hexo g -d</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="主题相关配置"><a href="#主题相关配置" class="headerlink" title="主题相关配置"></a>主题相关配置</h2><ul>
 <li>在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo themes</a>中下载相关的主题</li>
 <li><p>下载方法在blog目录中克隆</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/iissnan/hexo-theme-<span class="keyword">next</span> themes/<span class="keyword">next</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在blog/config.yml中配置主题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: <span class="keyword">next</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="新建blog文件"><a href="#新建blog文件" class="headerlink" title="新建blog文件"></a>新建blog文件</h2><ul>
 <li>hexo new “Hexo教程”</li>
 <li><p>添加标题及其分类信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2016-01-15 20:19:32</span><br><span class="line">tags: [SayHi]</span><br><span class="line">categories: SayHi</span><br><span class="line">toc: true</span><br><span class="line">mathjax: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2016<span class="string">-01</span><span class="string">-15</span> 20:19:32</span><br><span class="line"><span class="keyword">tags:</span> [SayHi]</span><br><span class="line">categories: SayHi</span><br><span class="line">toc: true</span><br><span class="line">mathjax: true</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>或者 在blog目录下可以写成脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">yy=$(date +%Y)</span><br><span class="line">mm=$(date +%m)</span><br><span class="line">dd=$(date +%d)</span><br><span class="line">HH=$(date +%H)</span><br><span class="line">MM=$(date +%M)</span><br><span class="line">SS=$(date +%S)</span><br><span class="line">filename=&quot;11111&quot;</span><br><span class="line">filepostfix=&quot;.md&quot;</span><br><span class="line">cd source/_posts</span><br><span class="line">touch $filename$filepostfix</span><br><span class="line">echo &gt; $filename$filepostfix</span><br><span class="line">echo &quot;---&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;title: $filename&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;date: $yy-$mm-$dd $HH:$MM:$SS&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;tags: [2222,3333,4444]&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;categories: 5555&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;toc: true&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;mathjax: true&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">echo &quot;---&quot; &gt;&gt; $filename$filepostfix</span><br><span class="line">cd ../..</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yy</span>=$(date +%Y)</span><br><span class="line"><span class="attribute">mm</span>=$(date +%m)</span><br><span class="line"><span class="attribute">dd</span>=$(date +%d)</span><br><span class="line"><span class="attribute">HH</span>=$(date +%H)</span><br><span class="line"><span class="attribute">MM</span>=$(date +%M)</span><br><span class="line"><span class="attribute">SS</span>=$(date +%S)</span><br><span class="line"><span class="attribute">filename</span>=<span class="string">"11111"</span></span><br><span class="line"><span class="attribute">filepostfix</span>=<span class="string">".md"</span></span><br><span class="line">cd source/_posts</span><br><span class="line">touch <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line">echo &gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line">echo <span class="string">"---"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line">echo <span class="string">"title: <span class="variable">$filename</span>"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line">echo <span class="string">"date: <span class="variable">$yy</span>-<span class="variable">$mm</span>-<span class="variable">$dd</span> <span class="variable">$HH</span>:<span class="variable">$MM</span>:<span class="variable">$SS</span>"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line">echo <span class="string">"tags: [2222,3333,4444]"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line">echo <span class="string">"categories: 5555"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line">echo <span class="string">"toc: true"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line">echo <span class="string">"mathjax: true"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line">echo <span class="string">"---"</span> &gt;&gt; <span class="variable">$filename</span><span class="variable">$filepostfix</span></span><br><span class="line">cd <span class="built_in">..</span>/<span class="built_in">..</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="将github-pages绑定自己的域名"><a href="#将github-pages绑定自己的域名" class="headerlink" title="将github pages绑定自己的域名"></a>将github pages绑定自己的域名</h2><ul>
@@ -579,11 +579,11 @@
           
             <a href="/tags/列表/" rel="tag"><i class="fa fa-tag"></i> 列表</a>
           
-            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
-          
             <a href="/tags/github/" rel="tag"><i class="fa fa-tag"></i> github</a>
           
             <a href="/tags/pages/" rel="tag"><i class="fa fa-tag"></i> pages</a>
+          
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
           
         </div>
       
