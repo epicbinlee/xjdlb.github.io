@@ -151,11 +151,13 @@ echo "git clone git@${my_ip}:${project_path}"
 echo "----------------------------------------"
 ```
 ## 如果出错销毁服务端git
+- 删除用户和仓库
 ```
 userdel -r git
 rm -rdf /srv/git/
 ```
 ## 如果服务器出现问题，保留gitlog迁移git的方法
+- 使用镜像克隆保留gitlog
 ```bash
 #在源服务器上裸克隆
 git clone --bare git://github.com/username/project.git
