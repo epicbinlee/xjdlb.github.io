@@ -16,7 +16,7 @@ mathjax: true
 npm install hexo-generator-searchdb --save
 ```
 - 在站点的-config.yml文件中增加
-```json
+```
 search:
   path: search.xml
   field: post
@@ -24,7 +24,7 @@ search:
   limit: 10000
 ```
 - 配置theme/next/-config.yml文件
-```json
+```
 # Algolia Search
 algolia_search:
   enable: false
