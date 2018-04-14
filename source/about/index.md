@@ -18,11 +18,11 @@ comments: false
 - **教育2**：河南科技大学-学士-自动化-11/135
 
 ### 个人站点
-gitee: https://gitee.com/bin_lee/projects/
-website: http://www.lbtry.top/
-blog: https://leebin.top/
-email: xjd.binlee@qq.com
-wechat: godlovebinlee
+- **gitee**: https://gitee.com/bin_lee/projects/
+- **website**: http://www.lbtry.top/
+- **blog**: https://leebin.top/
+- **email**: xjd.binlee@qq.com
+- **wechat**: godlovebinlee
 
 ### 专业技能
 + **基础知识**：熟悉数据结构和算法基础，熟悉计算机网络，操作系统，数据库的基础知识； 了解 Linux 命令行，及简单的 Shell 编程。
@@ -38,10 +38,10 @@ wechat: godlovebinlee
 - **2017.02-今&emsp;&emsp;国家自然科学基金项目子课题**
 - **项目名称**：SD-WAN环境中Qos路由的研究及其在仿真平台的实现
 - **项目描述**：
-- 通过文献调研，总结SDN的发展趋势由局域网走向广域网。
-- 本项目提出SD-WAN（软件定义广域网）架构，重新定义传输交换节点的链路服务质量参数和节点服务质量参数。
-- 改进蚁群算法的下一跳路径选择概率计算模型，重新定义Qos路由策略。
-- 该项目探究了SDN横向发展的可能性，为SDN在广域网上的实现提供了方案。
+1. 通过文献调研，总结SDN的发展趋势由局域网走向广域网。
+2. 本项目提出SD-WAN（软件定义广域网）架构，重新定义传输交换节点的链路服务质量参数和节点服务质量参数。
+3. 改进蚁群算法的下一跳路径选择概率计算模型，重新定义Qos路由策略。
+4. 该项目探究了SDN横向发展的可能性，为SDN在广域网上的实现提供了方案。
 - **主要职责**：
 - 文献调研，总结软件定义的发展的和应用过程；
 - SD-WAN架构设计，定义了传输交换节点的链路服务质量参数和节点服务质量参数；
@@ -82,6 +82,7 @@ wechat: godlovebinlee
 - 对整体系统进行控制的模型选择的解构。
 
 ---
+
 - **2015.09-2016.04 数据挖掘实践项目**
 - **项目名称**：高校课程数据爬取系统
 - **项目描述**：
