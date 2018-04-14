@@ -25,22 +25,14 @@ email: xjd.binlee@qq.com
 wechat: godlovebinlee
 
 ### 专业技能
-**基础知识**：
-+ 熟悉数据结构和算法基础，熟悉计算机网络，操作系统，数据库的基础知识； 了解 Linux 命令行，及简单的 Shell 编程。
-**语&emsp;&emsp;言**：
-+ 熟悉 Java，熟悉多线程、与 NIO 等 java 高级特性的使用，并理解面向对象编程；Python 入门。
-**设计模式**：
-+ 熟悉单例，工厂，动态代理等设计模式的使用。 理解设计模式在 web 框架中的实现方式。
-**中间件**：
-+ 熟悉 WebService， ActiveMQ， JDBC 等中间件的使用，熟悉 SSM(Spring SpringMVC Mybatis)框架的使用。
-**大数据**：
-+ 理解 MR 计算模型， 了解 HDFS， HBase， Hive 等 Hadoop 生态的相关组件的基本使用。
-**云计算**：
-+ IaaS 层，了解 OpenStack 的搭建，及核心项目 Neutron 的工作机制。 PaaS 层，了解 Docker、 Kafka等中间件，日志系统等。
-**英&emsp;&emsp;语**：
-+ CET-6（510）， 优秀的英文阅读能力，能流畅阅读专业英文书籍与英文开源网站。
-**自我评价**：
-+ 优秀的动手实践能力，具有 CSDN、 StackOverflow 等开发 debug 经验；热衷于 LeetCode、CareerCup 等 OJ；迷恋 git 并掌握简单版本控制。
++ **基础知识**：熟悉数据结构和算法基础，熟悉计算机网络，操作系统，数据库的基础知识； 了解 Linux 命令行，及简单的 Shell 编程。
++ **语&emsp;&emsp;言**：熟悉 Java，熟悉多线程、与 NIO 等 java 高级特性的使用，并理解面向对象编程；Python 入门。
++ **设计模式**：熟悉单例，工厂，动态代理等设计模式的使用。 理解设计模式在 web 框架中的实现方式。
++ **中间件**：熟悉 WebService， ActiveMQ， JDBC 等中间件的使用，熟悉 SSM(Spring SpringMVC Mybatis)框架的使用。
++ **大数据**：理解 MR 计算模型， 了解 HDFS， HBase， Hive 等 Hadoop 生态的相关组件的基本使用。
++ **云计算**：IaaS 层，了解 OpenStack 的搭建，及核心项目 Neutron 的工作机制。 PaaS 层，了解 Docker、 Kafka等中间件，日志系统等。
++ **英&emsp;&emsp;语**：CET-6（510）， 优秀的英文阅读能力，能流畅阅读专业英文书籍与英文开源网站。
++ **自我评价**：优秀的动手实践能力，具有 CSDN、 StackOverflow 等开发 debug 经验；热衷于 LeetCode、CareerCup 等 OJ；迷恋 git 并掌握简单版本控制。
 
 ### 科研项目
 - **2017.02-今&emsp;&emsp;国家自然科学基金项目子课题**
@@ -60,6 +52,7 @@ wechat: godlovebinlee
 - 曲桦, 赵继红, 李彬. 一种 SD-WAN 环境中流量控制机制及装置[P]. 中国, 201810307475.3.
 - 曲桦, 仝梦菲, 李彬, 等. 软件定义网络中基于拥塞感知的智能重路由方法[P]. 中国（申请中）.
 
+---
 
 - **2017.03-2017.09&emsp;&emsp;国家自然科学基金项目子课题**
 - **项目名称**：SDN 网络中的用户应用感知架构及其应用感知仿真
@@ -87,6 +80,8 @@ wechat: godlovebinlee
 - 维护转发控制器Controller，编写订单等业务模型的代码；
 - 完成业务数据的持久化过程，并对对其测试；
 - 对整体系统进行控制的模型选择的解构。
+
+---
 - **2015.09-2016.04 数据挖掘实践项目**
 - **项目名称**：高校课程数据爬取系统
 - **项目描述**：
