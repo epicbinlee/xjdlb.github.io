@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-03T23:53:13.212Z</updated>
+  <updated>2018-04-03T17:24:54.773Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,30 +17,28 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>LC_001_TwoSum_HashMap</title>
-    <link href="http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/"/>
-    <id>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</id>
+    <title>hexo如何开启语法高亮？</title>
+    <link href="http://yoursite.com/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/"/>
+    <id>http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/</id>
     <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-03T23:53:13.212Z</updated>
+    <updated>2018-04-03T17:24:54.773Z</updated>
     
-    <content type="html"><![CDATA[<p>leetcode第001题，主要用到了hashmap数据结构。<br><a id="more"></a></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> LC;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/two-sum/description/</span></span><br><span class="line"><span class="comment"> * Given an array of integers,</span></span><br><span class="line"><span class="comment"> * return indices of the two numbers such that they add up to a specific target.</span></span><br><span class="line"><span class="comment"> * You may assume that each input would have exactly one solution,</span></span><br><span class="line"><span class="comment"> * and you may not use the same element twice.</span></span><br><span class="line"><span class="comment"> * Example:</span></span><br><span class="line"><span class="comment"> * Given nums = [2, 7, 11, 15], target = 9,</span></span><br><span class="line"><span class="comment"> * Because nums[0] + nums[1] = 2 + 7 = 9,</span></span><br><span class="line"><span class="comment"> * return [0, 1].</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LC_001_TwoSum_HashMap</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">10</span>;</span><br><span class="line">        System.out.println(Arrays.toString(twoSum(a, t)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> diff = target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(diff)) <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;map.get(diff), i&#125;;</span><br><span class="line">            map.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"-1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>本文介绍hexo有关语法高亮的配置方案。<br><a id="more"></a></p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul><li><p>配置主站点下的配置文件</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  tab_replace:</span></span><br></pre></td></tr></table></figure></li><li><p>代码后面添加名称，如```java code ```</p></li></ul>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;leetcode第001题，主要用到了hashmap数据结构。&lt;br&gt;
+      &lt;p&gt;本文介绍hexo有关语法高亮的配置方案。&lt;br&gt;
     
     </summary>
     
-      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
     
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-      <category term="basic algorithm" scheme="http://yoursite.com/tags/basic-algorithm/"/>
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   
@@ -71,28 +69,30 @@
   </entry>
   
   <entry>
-    <title>hexo如何开启语法高亮？</title>
-    <link href="http://yoursite.com/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/"/>
-    <id>http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/</id>
+    <title>LC_001_TwoSum_HashMap</title>
+    <link href="http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/"/>
+    <id>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</id>
     <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-03T17:24:54.773Z</updated>
+    <updated>2018-04-03T23:53:13.212Z</updated>
     
-    <content type="html"><![CDATA[<p>本文介绍hexo有关语法高亮的配置方案。<br><a id="more"></a></p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul><li><p>配置主站点下的配置文件</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  tab_replace:</span></span><br></pre></td></tr></table></figure></li><li><p>代码后面添加名称，如```java code ```</p></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>leetcode第001题，主要用到了hashmap数据结构。<br><a id="more"></a></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> LC;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/two-sum/description/</span></span><br><span class="line"><span class="comment"> * Given an array of integers,</span></span><br><span class="line"><span class="comment"> * return indices of the two numbers such that they add up to a specific target.</span></span><br><span class="line"><span class="comment"> * You may assume that each input would have exactly one solution,</span></span><br><span class="line"><span class="comment"> * and you may not use the same element twice.</span></span><br><span class="line"><span class="comment"> * Example:</span></span><br><span class="line"><span class="comment"> * Given nums = [2, 7, 11, 15], target = 9,</span></span><br><span class="line"><span class="comment"> * Because nums[0] + nums[1] = 2 + 7 = 9,</span></span><br><span class="line"><span class="comment"> * return [0, 1].</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LC_001_TwoSum_HashMap</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">10</span>;</span><br><span class="line">        System.out.println(Arrays.toString(twoSum(a, t)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> diff = target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(diff)) <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;map.get(diff), i&#125;;</span><br><span class="line">            map.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"-1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;本文介绍hexo有关语法高亮的配置方案。&lt;br&gt;
+      &lt;p&gt;leetcode第001题，主要用到了hashmap数据结构。&lt;br&gt;
     
     </summary>
     
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
     
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+      <category term="basic algorithm" scheme="http://yoursite.com/tags/basic-algorithm/"/>
     
   </entry>
   
