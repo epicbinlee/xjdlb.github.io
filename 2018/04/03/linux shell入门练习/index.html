@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  589
+                  467
                 </span>
               
 
@@ -446,40 +446,162 @@
         <p>本文介绍linux shell的入门程序，后期会陆续更新。<br><a id="more"></a></p>
 <h2 id="基本程序实例"><a href="#基本程序实例" class="headerlink" title="基本程序实例"></a>基本程序实例</h2><ul>
 <li><p>计算文件夹下的文件数量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"this is a shell print file's number in the local dir."</span></span><br><span class="line">ls &gt; filename.log</span><br><span class="line">y=1</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $( cat filename.log )</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"the file number is <span class="variable">$y</span>"</span></span><br><span class="line">		y=$(( <span class="variable">$y</span> + 1 ))</span><br><span class="line">	<span class="keyword">done</span></span><br><span class="line">rm -rf filename.log</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash
+echo &quot;this is a shell print file&#39;s number in the local dir.&quot;
+ls &gt; filename.log
+y=1
+for i in $( cat filename.log )
+  do
+      echo &quot;the file number is $y&quot;
+      y=$(( $y + 1 ))
+  done
+rm -rf filename.log
+</code></pre>
 </li>
 <li><p>简单求和程序</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># author: leebin</span></span><br><span class="line">s=0</span><br><span class="line"><span class="keyword">for</span>(( i=1; i&lt;=100; i=i+1 ))</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">		s=$(( <span class="variable">$s</span>+<span class="variable">$i</span> ))</span><br><span class="line">	<span class="keyword">done</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"the sum of 1+2+3+...+100 is <span class="variable">$s</span>"</span></span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash
+# author: leebin
+s=0
+for(( i=1; i&lt;=100; i=i+1 ))
+  do
+      s=$(( $s+$i ))
+  done
+echo &quot;the sum of 1+2+3+...+100 is $s&quot;
+</code></pre>
 </li>
 <li><p>使用数组</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> morning noon afternoon evening</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"This time is <span class="variable">$x</span>"</span></span><br><span class="line">	<span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash
+for x in morning noon afternoon evening
+  do
+      echo &quot;This time is $x&quot;
+  done
+</code></pre>
 </li>
 <li><p>使用函数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">func1</span></span>()&#123;</span><br><span class="line">	<span class="built_in">echo</span> AAA</span><br><span class="line">&#125;</span><br><span class="line">func1</span><br><span class="line"><span class="built_in">echo</span> this is the end of the loop</span><br><span class="line"><span class="built_in">echo</span> Now this is the end of the script</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash
+function func1(){
+  echo AAA
+}
+func1
+echo this is the end of the loop
+echo Now this is the end of the script
+</code></pre>
 </li>
 <li><p>判断</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">if</span> [ -d /etc/mysql ]</span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"the path is right!!"</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"the path is not right"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash
+if [ -d /etc/mysql ]
+  then
+      echo &quot;the path is right!!&quot;
+  else
+      echo &quot;the path is not right&quot;
+fi
+</code></pre>
 </li>
 <li><p>判断硬盘是否已经满了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># Author: LeeBin</span></span><br><span class="line">rate=$( df | grep <span class="string">"sda"</span> | awk <span class="string">'&#123;print $5&#125;'</span>| cut -d <span class="string">"%"</span> -f 1 )</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$rate</span> -ge 80 ]</span><br><span class="line">	<span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"Warning! /dev/sda1 is full!!"</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"/dev/sda1 is not full!!"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash
+# Author: LeeBin
+rate=$( df | grep &quot;sda&quot; | awk &#39;{print $5}&#39;| cut -d &quot;%&quot; -f 1 )
+if [ $rate -ge 80 ]
+  then
+      echo &quot;Warning! /dev/sda1 is full!!&quot;
+  else
+      echo &quot;/dev/sda1 is not full!!&quot;
+fi
+</code></pre>
 </li>
 <li><p>until循环</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># Author:LeeBin</span></span><br><span class="line">i=1</span><br><span class="line">s=0</span><br><span class="line">until [ <span class="variable">$i</span> -gt 100 ]</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">		s=$(( <span class="variable">$s</span>+<span class="variable">$i</span> ))</span><br><span class="line">		i=$(( <span class="variable">$i</span>+1 ))</span><br><span class="line">	<span class="keyword">done</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"the sum is <span class="variable">$s</span>"</span></span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash
+# Author:LeeBin
+i=1
+s=0
+until [ $i -gt 100 ]
+  do
+      s=$(( $s+$i ))
+      i=$(( $i+1 ))
+  done
+echo &quot;the sum is $s&quot;
+</code></pre>
 </li>
 <li><p>while循环</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">func1</span></span>()&#123;</span><br><span class="line">      <span class="built_in">echo</span> this is an example of a <span class="keyword">function</span></span><br><span class="line">&#125;</span><br><span class="line">count=1</span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$count</span> -le 5 ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    func1</span><br><span class="line">    count=$[ <span class="variable">$count</span>+1 ]</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">echo</span> end of loop</span><br><span class="line">func1</span><br><span class="line"><span class="built_in">echo</span> end of script</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash
+function func1(){
+    echo this is an example of a function
+}
+count=1
+while [ $count -le 5 ]
+do
+  func1
+  count=$[ $count+1 ]
+done
+echo end of loop
+func1
+echo end of script
+</code></pre>
 </li>
 <li><p>while循环求和</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># Author:LeeBin</span></span><br><span class="line">i=1</span><br><span class="line">s=0</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$i</span> -le 100 ]</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">		s=$(( <span class="variable">$s</span>+<span class="variable">$i</span> ))</span><br><span class="line">		i=$(( <span class="variable">$i</span>+1 ))</span><br><span class="line">	<span class="keyword">done</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"the sum is <span class="variable">$s</span>"</span></span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash
+# Author:LeeBin
+i=1
+s=0
+#
+while [ $i -le 100 ]
+  do
+      s=$(( $s+$i ))
+      i=$(( $i+1 ))
+  done
+echo &quot;the sum is $s&quot;
+</code></pre>
 </li>
 <li><p>备份脚本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment"># auto mail for system info</span></span><br><span class="line"><span class="comment"># time</span></span><br><span class="line">/bin/date +%F &gt;&gt; ~/app/shell/sysinfo</span><br><span class="line"><span class="built_in">echo</span> &gt;&gt; ~/app/shell/sysinfo</span><br><span class="line"><span class="comment"># disk info</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"disk info:"</span> &gt;&gt; ~/app/shell/sysinfo</span><br><span class="line">/bin/df -h &gt;&gt; ~/app/shell/sysinfo</span><br><span class="line"><span class="built_in">echo</span> &gt;&gt; ~/app/shell/sysinfo</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"online users"</span> &gt;&gt; ~/app/shell/sysinfo</span><br><span class="line">/usr/bin/who | /bin/grep -v root &gt;&gt; ~/app/shell/sysinfo</span><br><span class="line"><span class="built_in">echo</span> &gt;&gt; ~/app/shell/sysinfo</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"memory info:"</span> &gt;&gt; ~/app/shell/sysinfo</span><br><span class="line">/usr/bin/free -m &gt;&gt; ~/app/shell/sysinfo</span><br><span class="line"><span class="built_in">echo</span> &gt;&gt; ~/app/shell/sysinfo</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/sh
+# auto mail for system info
+# time
+/bin/date +%F &gt;&gt; ~/app/shell/sysinfo
+echo &gt;&gt; ~/app/shell/sysinfo
+# disk info
+echo &quot;disk info:&quot; &gt;&gt; ~/app/shell/sysinfo
+/bin/df -h &gt;&gt; ~/app/shell/sysinfo
+echo &gt;&gt; ~/app/shell/sysinfo
+echo &quot;online users&quot; &gt;&gt; ~/app/shell/sysinfo
+/usr/bin/who | /bin/grep -v root &gt;&gt; ~/app/shell/sysinfo
+echo &gt;&gt; ~/app/shell/sysinfo
+echo &quot;memory info:&quot; &gt;&gt; ~/app/shell/sysinfo
+/usr/bin/free -m &gt;&gt; ~/app/shell/sysinfo
+echo &gt;&gt; ~/app/shell/sysinfo
+</code></pre>
 </li>
 <li><p>case语句</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># author: leebin</span></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"Please choose yes/no: "</span> -t 30 cho</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$cho</span> <span class="keyword">in</span></span><br><span class="line">	<span class="string">"yes"</span>)</span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"Your choose is yes!!"</span></span><br><span class="line">		;;</span><br><span class="line">	<span class="string">"no"</span>)</span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"Your choose is no!!"</span></span><br><span class="line">		;;</span><br><span class="line">	*)</span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"Your choose is error!!"</span></span><br><span class="line">		;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"><span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash
+# author: leebin
+read -p &quot;Please choose yes/no: &quot; -t 30 cho
+#
+case $cho in
+  &quot;yes&quot;)
+      echo &quot;Your choose is yes!!&quot;
+      ;;
+  &quot;no&quot;)
+      echo &quot;Your choose is no!!&quot;
+      ;;
+  *)
+      echo &quot;Your choose is error!!&quot;
+      ;;
+esac
+#
+</code></pre>
 </li>
 <li><p>批量解压缩</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># author: leebin</span></span><br><span class="line"><span class="built_in">cd</span> /lamp</span><br><span class="line">ls *.tar.gz &gt; ls.log</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $( cat ls.log )</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">		tar -zxvf <span class="variable">$i</span> &amp;&gt; /dev/null</span><br><span class="line">	<span class="keyword">done</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">rm -rf /lamp/ls.log</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash
+# author: leebin
+cd /lamp
+ls *.tar.gz &gt; ls.log
+#
+for i in $( cat ls.log )
+  do
+      tar -zxvf $i &amp;&gt; /dev/null
+  done
+#
+rm -rf /lamp/ls.log
+</code></pre>
 </li>
 </ul>
 
@@ -735,7 +857,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.5k字</span>
+  <span class="post-count">博客全站共4.6k字</span>
 </div>
 
         

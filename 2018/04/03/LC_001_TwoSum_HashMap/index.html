@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  201
+                  167
                 </span>
               
 
@@ -444,7 +444,42 @@
 
       
         <p>leetcode第001题，主要用到了hashmap数据结构。<br><a id="more"></a></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> LC;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * https://leetcode.com/problems/two-sum/description/</span></span><br><span class="line"><span class="comment"> * Given an array of integers,</span></span><br><span class="line"><span class="comment"> * return indices of the two numbers such that they add up to a specific target.</span></span><br><span class="line"><span class="comment"> * You may assume that each input would have exactly one solution,</span></span><br><span class="line"><span class="comment"> * and you may not use the same element twice.</span></span><br><span class="line"><span class="comment"> * Example:</span></span><br><span class="line"><span class="comment"> * Given nums = [2, 7, 11, 15], target = 9,</span></span><br><span class="line"><span class="comment"> * Because nums[0] + nums[1] = 2 + 7 = 9,</span></span><br><span class="line"><span class="comment"> * return [0, 1].</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LC_001_TwoSum_HashMap</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">10</span>;</span><br><span class="line">        System.out.println(Arrays.toString(twoSum(a, t)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> diff = target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(diff)) <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;map.get(diff), i&#125;;</span><br><span class="line">            map.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"-1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre><code class="java">package LC;
+
+import java.util.Arrays;
+import java.util.HashMap;
+
+/**
+ * https://leetcode.com/problems/two-sum/description/
+ * Given an array of integers,
+ * return indices of the two numbers such that they add up to a specific target.
+ * You may assume that each input would have exactly one solution,
+ * and you may not use the same element twice.
+ * Example:
+ * Given nums = [2, 7, 11, 15], target = 9,
+ * Because nums[0] + nums[1] = 2 + 7 = 9,
+ * return [0, 1].
+ */
+
+public class LC_001_TwoSum_HashMap {
+    public static void main(String[] args) {
+        int[] a = {1, 2, 3, 4, 5, 7};
+        int t = 10;
+        System.out.println(Arrays.toString(twoSum(a, t)));
+    }
+
+    private static int[] twoSum(int[] nums, int target) {
+        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
+        for (int i = 0; i &lt; nums.length; i++) {
+            int diff = target - nums[i];
+            if (map.containsKey(diff)) return new int[]{map.get(diff), i};
+            map.put(nums[i], i);
+        }
+        throw new IllegalArgumentException(&quot;-1&quot;);
+    }
+}
+
+</code></pre>
 
       
     </div>
@@ -481,8 +516,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/03/如何在next配置站内的搜索引擎？/" rel="next" title="如何在next配置站内的搜索引擎？">
-                <i class="fa fa-chevron-left"></i> 如何在next配置站内的搜索引擎？
+              <a href="/2018/04/03/hexo如何开启语法高亮？/" rel="next" title="hexo如何开启语法高亮？">
+                <i class="fa fa-chevron-left"></i> hexo如何开启语法高亮？
               </a>
             
           </div>
@@ -490,10 +525,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/03/如何去掉valine的Powered By信息？/" rel="prev" title="如何去掉valine的Powered By信息？">
-                如何去掉valine的Powered By信息？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -700,7 +731,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.5k字</span>
+  <span class="post-count">博客全站共4.6k字</span>
 </div>
 
         

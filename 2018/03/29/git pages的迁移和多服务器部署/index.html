@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  593
+                  512
                 </span>
               
 
@@ -447,31 +447,98 @@
 <h2 id="github-pages迁移到gitee服务器上"><a href="#github-pages迁移到gitee服务器上" class="headerlink" title="github pages迁移到gitee服务器上"></a>github pages迁移到gitee服务器上</h2><ul>
 <li>在gitee上新建一个和gitee用户名一样的git仓库，并且在pages标签开启pages服务</li>
 <li>克隆github pages仓库到本地，安装必要的插件，保证github pages能够与github服务器正常上传部署</li>
-<li><p>更改github仓库/.git/config文件</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion = <span class="number">0</span></span><br><span class="line">	filemode = <span class="keyword">false</span></span><br><span class="line">	bare = <span class="keyword">false</span></span><br><span class="line">	logallrefupdates = <span class="keyword">true</span></span><br><span class="line">	symlinks = <span class="keyword">false</span></span><br><span class="line">	ignorecase = <span class="keyword">true</span></span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = git<span class="variable">@github</span>.<span class="symbol">com:</span>xjdlb/xjdlb.github.io.git</span><br><span class="line">	fetch = +refs/heads/*<span class="symbol">:refs/remotes/origin/*</span></span><br><span class="line">[branch <span class="string">"master"</span>]</span><br><span class="line">	remote = origin</span><br><span class="line">	merge = refs/heads/master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改url为gitee仓库的url</p>
-</li>
-<li><p>更改github仓库/-config.yml文件</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repo</span>:</span><br><span class="line">        <span class="attribute">gitee</span>: git<span class="variable">@gitee</span>.<span class="attribute">com</span>:bin_lee/bin_lee.git</span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改repo为gitee仓库的url</p>
-</li>
-<li>然后使用下面的脚本提交、推送、发布到gitee仓库，迁移就成功了<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span></span><br><span class="line">yy=$(date +%y)</span><br><span class="line">mm=$(date +%m)</span><br><span class="line">dd=$(date +%d)</span><br><span class="line">HH=$(date +%H)</span><br><span class="line">MM=$(date +%M)</span><br><span class="line">SS=$(date +%S)</span><br><span class="line">xW=$(date +%U)</span><br><span class="line">we=$(date +%a)</span><br><span class="line">xD=$(date +%j)</span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"</span></span><br><span class="line"><span class="string"><span class="variable">$yy</span>/<span class="variable">$mm</span>/<span class="variable">$dd</span>-<span class="variable">$HH</span>:<span class="variable">$MM</span>:<span class="variable">$SS</span> 把github服务器上的pages迁移到gitee上</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">git push git@gitee.com:bin_lee/bin_lee.git hexo</span><br><span class="line">git  <span class="built_in">log</span> --oneline | head</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
+<li>更改github仓库/.git/config文件<pre><code>[core]
+  repositoryformatversion = 0
+  filemode = false
+  bare = false
+  logallrefupdates = true
+  symlinks = false
+  ignorecase = true
+[remote &quot;origin&quot;]
+  url = git@github.com:xjdlb/xjdlb.github.io.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
+[branch &quot;master&quot;]
+  remote = origin
+  merge = refs/heads/master
+</code></pre></li>
+<li>更改url为gitee仓库的url</li>
+<li>更改github仓库/-config.yml文件<pre><code>deploy:
+type: git
+repo:
+      gitee: git@gitee.com:bin_lee/bin_lee.git
+branch: master
+</code></pre></li>
+<li>更改repo为gitee仓库的url</li>
+<li>然后使用下面的脚本提交、推送、发布到gitee仓库，迁移就成功了<pre><code class="bash">echo &quot;hello&quot;
+yy=$(date +%y)
+mm=$(date +%m)
+dd=$(date +%d)
+HH=$(date +%H)
+MM=$(date +%M)
+SS=$(date +%S)
+xW=$(date +%U)
+we=$(date +%a)
+xD=$(date +%j)
+git status
+git add .
+git commit -m &quot;
+$yy/$mm/$dd-$HH:$MM:$SS 把github服务器上的pages迁移到gitee上
+&quot;
+echo &quot;==================================&quot;
+git push git@gitee.com:bin_lee/bin_lee.git hexo
+git  log --oneline | head
+echo &quot;==================================&quot;
+hexo clean &amp;&amp; hexo g -d
+</code></pre>
 </li>
 </ul>
 <h2 id="迁移完成，实现多服务器部署"><a href="#迁移完成，实现多服务器部署" class="headerlink" title="迁移完成，实现多服务器部署"></a>迁移完成，实现多服务器部署</h2><ul>
-<li><p>更改github仓库/.git/config文件，改为主要的服务器地址</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion = <span class="number">0</span></span><br><span class="line">	filemode = <span class="keyword">false</span></span><br><span class="line">	bare = <span class="keyword">false</span></span><br><span class="line">	logallrefupdates = <span class="keyword">true</span></span><br><span class="line">	symlinks = <span class="keyword">false</span></span><br><span class="line">	ignorecase = <span class="keyword">true</span></span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">	url = git<span class="variable">@github</span>.<span class="symbol">com:</span>xjdlb/xjdlb.github.io.git</span><br><span class="line">	fetch = +refs/heads/*<span class="symbol">:refs/remotes/origin/*</span></span><br><span class="line">[branch <span class="string">"master"</span>]</span><br><span class="line">	remote = origin</span><br><span class="line">	merge = refs/heads/master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改url为gitee仓库的url</p>
-</li>
-<li><p>更改github仓库/-config.yml文件</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repo</span>:</span><br><span class="line">        <span class="attribute">github</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:xjdlb/xjdlb.github.io.git</span><br><span class="line">        <span class="attribute">gitee</span>: git<span class="variable">@gitee</span>.<span class="attribute">com</span>:bin_lee/bin_lee.git</span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改repo为gitee仓库的url</p>
-</li>
-<li>然后使用下面的脚本提交、推送、发布到gitee仓库和github仓库，多服务器部署就成功了<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span></span><br><span class="line">yy=$(date +%y)</span><br><span class="line">mm=$(date +%m)</span><br><span class="line">dd=$(date +%d)</span><br><span class="line">HH=$(date +%H)</span><br><span class="line">MM=$(date +%M)</span><br><span class="line">SS=$(date +%S)</span><br><span class="line">xW=$(date +%U)</span><br><span class="line">we=$(date +%a)</span><br><span class="line">xD=$(date +%j)</span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"</span></span><br><span class="line"><span class="string"><span class="variable">$yy</span>/<span class="variable">$mm</span>/<span class="variable">$dd</span>-<span class="variable">$HH</span>:<span class="variable">$MM</span>:<span class="variable">$SS</span> 同时部署到两个服务器上测试</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line">git push git@github.com:xjdlb/xjdlb.github.io.git hexo</span><br><span class="line">git  <span class="built_in">log</span> --oneline | head</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">git push git@gitee.com:bin_lee/bin_lee.git hexo</span><br><span class="line">git  <span class="built_in">log</span> --oneline | head</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"=================================="</span></span><br><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
+<li>更改github仓库/.git/config文件，改为主要的服务器地址<pre><code>[core]
+  repositoryformatversion = 0
+  filemode = false
+  bare = false
+  logallrefupdates = true
+  symlinks = false
+  ignorecase = true
+[remote &quot;origin&quot;]
+  url = git@github.com:xjdlb/xjdlb.github.io.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
+[branch &quot;master&quot;]
+  remote = origin
+  merge = refs/heads/master
+</code></pre></li>
+<li>更改url为gitee仓库的url</li>
+<li>更改github仓库/-config.yml文件<pre><code>deploy:
+type: git
+repo:
+      github: git@github.com:xjdlb/xjdlb.github.io.git
+      gitee: git@gitee.com:bin_lee/bin_lee.git
+branch: master
+</code></pre></li>
+<li>更改repo为gitee仓库的url</li>
+<li>然后使用下面的脚本提交、推送、发布到gitee仓库和github仓库，多服务器部署就成功了<pre><code class="bash">echo &quot;hello&quot;
+yy=$(date +%y)
+mm=$(date +%m)
+dd=$(date +%d)
+HH=$(date +%H)
+MM=$(date +%M)
+SS=$(date +%S)
+xW=$(date +%U)
+we=$(date +%a)
+xD=$(date +%j)
+git status
+git add .
+git commit -m &quot;
+$yy/$mm/$dd-$HH:$MM:$SS 同时部署到两个服务器上测试
+&quot;
+git push git@github.com:xjdlb/xjdlb.github.io.git hexo
+git  log --oneline | head
+echo &quot;==================================&quot;
+git push git@gitee.com:bin_lee/bin_lee.git hexo
+git  log --oneline | head
+echo &quot;==================================&quot;
+hexo clean &amp;&amp; hexo g -d
+</code></pre>
 </li>
 </ul>
 
@@ -727,7 +794,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.5k字</span>
+  <span class="post-count">博客全站共4.6k字</span>
 </div>
 
         

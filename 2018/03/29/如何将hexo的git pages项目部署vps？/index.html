@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  514
+                  453
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  2
                 </span>
               
             </div>
@@ -456,36 +456,84 @@
 <li>下文分为众多的详细步骤</li>
 </ul>
 <h3 id="安装git和nginx"><a href="#安装git和nginx" class="headerlink" title="安装git和nginx"></a>安装git和nginx</h3><ul>
-<li>安装软件git和nginx<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> update</span><br><span class="line">apt-<span class="builtin-name">get</span> install git</span><br><span class="line">apt-<span class="builtin-name">get</span> install nginx</span><br></pre></td></tr></table></figure>
-</li>
+<li>安装软件git和nginx<pre><code>apt-get update
+apt-get install git
+apt-get install nginx
+</code></pre></li>
 </ul>
 <h3 id="配置git用户和仓库"><a href="#配置git用户和仓库" class="headerlink" title="配置git用户和仓库"></a>配置git用户和仓库</h3><ul>
-<li><p>git用户权限设定（可以不需要）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chmod 740 /etc/sudoers</span><br><span class="line">vim /etc/sudoers</span><br><span class="line"><span class="comment">#在root ALL=(ALL:ALL) ALL下面新增一行</span></span><br><span class="line">git ALL=(ALL:ALL) ALL</span><br><span class="line">chmod 440 /etc/sudoers</span><br></pre></td></tr></table></figure>
+<li>git用户权限设定（可以不需要）<pre><code class="bash">chmod 740 /etc/sudoers
+vim /etc/sudoers
+#在root ALL=(ALL:ALL) ALL下面新增一行
+git ALL=(ALL:ALL) ALL
+chmod 440 /etc/sudoers
+</code></pre>
 </li>
-<li><p>配置git用户和仓库, 参考<a href="https://leebin.top/2018/03/27/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8ubuntu%E5%AE%9E%E7%8E%B0%E7%A7%81%E6%9C%89git%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E9%99%84ssh%E6%93%8D%E4%BD%9C%EF%BC%9F/" target="_blank" rel="noopener">在vps上构建私有git服务器</a></p>
-</li>
+<li>配置git用户和仓库, 参考<a href="https://leebin.top/2018/03/27/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8ubuntu%E5%AE%9E%E7%8E%B0%E7%A7%81%E6%9C%89git%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E9%99%84ssh%E6%93%8D%E4%BD%9C%EF%BC%9F/" target="_blank" rel="noopener">在vps上构建私有git服务器</a></li>
 </ul>
 <h3 id="配置git-hooks"><a href="#配置git-hooks" class="headerlink" title="配置git hooks"></a>配置git hooks</h3><ul>
-<li><p>在hexo.git/hooks/目录下修改post-update.sample为post-update，并覆盖加入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">GIT_REPO=/home/git/hexo.git</span><br><span class="line">TMP_GIT_CLONE=/tmp/hexo</span><br><span class="line">PUBLIC_WWW=/var/www/hexo</span><br><span class="line">rm -rf <span class="variable">$&#123;TMP_GIT_CLONE&#125;</span></span><br><span class="line">git <span class="built_in">clone</span> <span class="variable">$GIT_REPO</span> <span class="variable">$TMP_GIT_CLONE</span></span><br><span class="line">rm -rf <span class="variable">$&#123;PUBLIC_WWW&#125;</span>/*</span><br><span class="line">cp -rf <span class="variable">$&#123;TMP_GIT_CLONE&#125;</span>/* <span class="variable">$&#123;PUBLIC_WWW&#125;</span></span><br></pre></td></tr></table></figure>
+<li>在hexo.git/hooks/目录下修改post-update.sample为post-update，并覆盖加入<pre><code class="bash">#!/bin/bash
+GIT_REPO=/home/git/hexo.git
+TMP_GIT_CLONE=/tmp/hexo
+PUBLIC_WWW=/var/www/hexo
+rm -rf ${TMP_GIT_CLONE}
+git clone $GIT_REPO $TMP_GIT_CLONE
+rm -rf ${PUBLIC_WWW}/*
+cp -rf ${TMP_GIT_CLONE}/* ${PUBLIC_WWW}
+</code></pre>
 </li>
-<li><p>保证post-update有执行权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
+<li>保证post-update有执行权限<pre><code class="bash">chmod +x post-receive
+</code></pre>
 </li>
 </ul>
 <h3 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h3><ul>
-<li><p>新建站点文件夹</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /var/www/blog</span><br><span class="line">chmod -R 775 /var/www/blog</span><br><span class="line">chown -R git /var/www/blog</span><br><span class="line">chgrp -R git /var/www/blog</span><br></pre></td></tr></table></figure>
+<li>新建站点文件夹<pre><code class="bash">mkdir -p /var/www/blog
+chmod -R 775 /var/www/blog
+chown -R git /var/www/blog
+chgrp -R git /var/www/blog
+</code></pre>
 </li>
-<li><p>配nginx的站点文件2处</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置1</span></span><br><span class="line">vim /etc/nginx/conf.d/hexo.conf</span><br><span class="line">server &#123;</span><br><span class="line">    listen  80 ;</span><br><span class="line">    listen [::]:80;</span><br><span class="line">    root /var/www/blog;</span><br><span class="line">    server_name clearsky.me www.clearsky.me; <span class="comment">#server_ip</span></span><br><span class="line">    access_log  /var/<span class="built_in">log</span>/nginx/hexo_access.log;</span><br><span class="line">    error_log   /var/<span class="built_in">log</span>/nginx/hexo_error.log;</span><br><span class="line">    error_page 404 =  /404.html;</span><br><span class="line">    location ~* ^.+\.(ico|gif|jpg|jpeg|png)$ &#123;</span><br><span class="line">        root /var/www/blog;</span><br><span class="line">        access_log   off;</span><br><span class="line">        expires      1d;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~* ^.+\.(css|js|txt|xml|swf|wav)$ &#123;</span><br><span class="line">        root /var/www/blog;</span><br><span class="line">        access_log   off;</span><br><span class="line">        expires      10m;</span><br><span class="line">    &#125;</span><br><span class="line">    location / &#123;</span><br><span class="line">        root /var/www/blog;</span><br><span class="line">        <span class="keyword">if</span> (-f <span class="variable">$request_filename</span>) &#123;</span><br><span class="line">            rewrite ^/(.*)$  /<span class="variable">$1</span> <span class="built_in">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    location /nginx_status &#123;</span><br><span class="line">        stub_status on;</span><br><span class="line">        access_log off;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#配置2</span></span><br><span class="line">vim /etc/nginx/sites-available/default</span><br><span class="line">root /var/www/html;</span><br></pre></td></tr></table></figure>
+<li>配nginx的站点文件2处<pre><code class="bash">#配置1
+vim /etc/nginx/conf.d/hexo.conf
+server {
+  listen  80 ;
+  listen [::]:80;
+  root /var/www/blog;
+  server_name clearsky.me www.clearsky.me; #server_ip
+  access_log  /var/log/nginx/hexo_access.log;
+  error_log   /var/log/nginx/hexo_error.log;
+  error_page 404 =  /404.html;
+  location ~* ^.+\.(ico|gif|jpg|jpeg|png)$ {
+      root /var/www/blog;
+      access_log   off;
+      expires      1d;
+  }
+  location ~* ^.+\.(css|js|txt|xml|swf|wav)$ {
+      root /var/www/blog;
+      access_log   off;
+      expires      10m;
+  }
+  location / {
+      root /var/www/blog;
+      if (-f $request_filename) {
+          rewrite ^/(.*)$  /$1 break;
+      }
+  }
+  location /nginx_status {
+      stub_status on;
+      access_log off;
+  }
+}
+#配置2
+vim /etc/nginx/sites-available/default
+root /var/www/html;
+</code></pre>
 </li>
-<li><p>重启nginx服务器</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">/etc/init.d/nginx <span class="literal">stop</span></span><br><span class="line">/etc/init.d/nginx <span class="literal">start</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><ul>
+<li>重启nginx服务器<pre><code>service nginx restart
+#或者
+/etc/init.d/nginx stop
+/etc/init.d/nginx start
+</code></pre><h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2></li>
 <li>修改本地的blog源文件，配置推送git服务器，推送到vps服务器上</li>
 <li>参考<a href="https://leebin.top/2018/03/29/git%20pages%E7%9A%84%E8%BF%81%E7%A7%BB%E5%92%8C%E5%A4%9A%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" target="_blank" rel="noopener">git pages多服务器部署</a></li>
 </ul>
@@ -744,7 +792,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.5k字</span>
+  <span class="post-count">博客全站共4.6k字</span>
 </div>
 
         
