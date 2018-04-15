@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-03T23:53:13.212Z</updated>
+  <updated>2018-04-15T16:23:12.802Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,45 +17,17 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>LC_001_TwoSum_HashMap</title>
-    <link href="http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/"/>
-    <id>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</id>
-    <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-03T23:53:13.212Z</updated>
+    <title>使用kcptun加速ss服务</title>
+    <link href="http://yoursite.com/2018/04/15/%E4%BD%BF%E7%94%A8kcptun%E5%8A%A0%E9%80%9Fss%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://yoursite.com/2018/04/15/使用kcptun加速ss服务/</id>
+    <published>2018-04-15T15:55:21.000Z</published>
+    <updated>2018-04-15T16:23:12.802Z</updated>
     
-    <content type="html"><![CDATA[<p>leetcode第001题，主要用到了hashmap数据结构。<br><a id="more"></a></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre><code class="java">package LC;import java.util.Arrays;import java.util.HashMap;/** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */public class LC_001_TwoSum_HashMap {    public static void main(String[] args) {        int[] a = {1, 2, 3, 4, 5, 7};        int t = 10;        System.out.println(Arrays.toString(twoSum(a, t)));    }    private static int[] twoSum(int[] nums, int target) {        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();        for (int i = 0; i &lt; nums.length; i++) {            int diff = target - nums[i];            if (map.containsKey(diff)) return new int[]{map.get(diff), i};            map.put(nums[i], i);        }        throw new IllegalArgumentException(&quot;-1&quot;);    }}</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;leetcode第001题，主要用到了hashmap数据结构。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-      <category term="basic algorithm" scheme="http://yoursite.com/tags/basic-algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo如何开启语法高亮？</title>
-    <link href="http://yoursite.com/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/"/>
-    <id>http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/</id>
-    <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-03T17:24:54.773Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍hexo有关语法高亮的配置方案。<br><a id="more"></a></p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul><li>配置主站点下的配置文件<pre><code>highlight:enable: trueline_number: trueauto_detect: truetab_replace:</code></pre></li><li>代码后面添加名称，如```java code ```</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>本文介绍如何使用kcptun加速ss服务。<br><a id="more"></a></p><h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><h3 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备"></a>软件准备</h3><ul><li>安装组件<pre><code>apt-get updateapt-get upgradeapt-get install build-essential python-pip m2crypto supervisor</code></pre></li><li>安装ss<pre><code>pip install shadowsocks</code></pre></li><li>安装加密用软件 libsodium<pre><code>wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gztar zxvf libsodium-1.0.11.tar.gzcd libsodium-1.0.11./configuremake &amp;&amp; make checkmake installecho /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.confldconfig</code></pre></li></ul><h3 id="ss配置"><a href="#ss配置" class="headerlink" title="ss配置"></a>ss配置</h3><ul><li>ss服务器配置ss_config.json<pre><code>{&quot;server&quot;: &quot;127.0.0.1&quot;,&quot;port_password&quot;: {&quot;10001&quot;: &quot;helloworld&quot;,&quot;10002&quot;: &quot;helloworld&quot;,&quot;10003&quot;: &quot;helloworld&quot;},&quot;local_port&quot;: 1080,&quot;timeout&quot;: 600,&quot;method&quot;: &quot;chacha20&quot;,&quot;auth&quot;: true}</code></pre></li><li>启动和停止脚本<pre><code>ssserver -c /root/shadowsocks/ss_config.json -d startssserver -c /root/shadowsocks/ss_config.json -d stop</code></pre></li></ul><h3 id="kcptun配置"><a href="#kcptun配置" class="headerlink" title="kcptun配置"></a>kcptun配置</h3><ul><li>kcptun官网 <a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li>其中 kcptun-linux-amd64-20180316.tar.gz 为Linux版本</li><li>其中 kcptun-windows-amd64-20180316.tar.gz 为Windows版本</li><li><p>安装 kcptun</p><pre><code>mkdir /root/kcptuncd /root/kcptunln -sf /bin/bash /bin/shwget https://github.com/xtaci/kcptun/releases/download/v20161118/kcptun-linux-amd64-20161118.tar.gztar -zxf kcptun-linux-amd64-*.tar.gz</code></pre></li><li><p>配置kcptun的启动文件</p></li><li>启动文件<pre><code>vi /root/kcptun/start.sh</code></pre></li><li>启动脚本<pre><code>#!/bin/bashcd /root/kcptun/./server_linux_amd64 -c /root/kcptun/server-config.json &gt; kcptun.log 2&gt;&amp;1 &amp;echo &quot;Kcptun started.&quot;</code></pre></li><li>停止文件<pre><code>vi /root/kcptun/stop.sh</code></pre></li><li>停止脚本<pre><code>#!/bin/bashecho &quot;Stopping Kcptun...&quot;PID=`ps -ef | grep server_linux_amd64 | grep -v grep | awk &#39;{print $2}&#39;`if [ &quot;&quot; !=  &quot;$PID&quot; ]; thenecho &quot;killing $PID&quot;kill -9 $PIDfiecho &quot;Kcptun stoped.&quot;</code></pre></li><li>kcptun配置文件<pre><code>vi /root/kcptun/server-config.json</code></pre></li><li>配置代码<pre><code>{&quot;listen&quot;: &quot;:443&quot;,&quot;target&quot;: &quot;127.0.0.1:10001&quot;,&quot;key&quot;: &quot;helloworld&quot;,&quot;crypt&quot;: &quot;salsa20&quot;,&quot;mode&quot;: &quot;fast2&quot;,&quot;mtu&quot;: 1350,&quot;sndwnd&quot;: 1024,&quot;rcvwnd&quot;: 1024,&quot;datashard&quot;: 5,&quot;parityshard&quot;: 5,&quot;dscp&quot;: 46,&quot;nocomp&quot;: true,&quot;acknodelay&quot;: false,&quot;nodelay&quot;: 0,&quot;interval&quot;: 40,&quot;resend&quot;: 0,&quot;nc&quot;: 0,&quot;sockbuf&quot;: 4194304,&quot;keepalive&quot;: 10}</code></pre></li><li>启动或停止kcptun<pre><code>sh /root/kcptun/start.shsh /root/kcptun/stop.sh</code></pre></li></ul><h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h3 id="Windows环境中的kcptun配置"><a href="#Windows环境中的kcptun配置" class="headerlink" title="Windows环境中的kcptun配置"></a>Windows环境中的kcptun配置</h3><ul><li>kcptun官网 <a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li>client_windows_amd64.exe 放在全部英文目录下</li><li>在当前文件夹下，创建 run.vbs<pre><code>Dim RunKcptunSet fso = CreateObject(&quot;Scripting.FileSystemObject&quot;)Set WshShell = WScript.CreateObject(&quot;WScript.Shell&quot;)currentPath = fso.GetFile(Wscript.ScriptFullName).ParentFolder.Path &amp; &quot;\&quot;configFile = currentPath &amp; &quot;client-config.json&quot;logFile = currentPath &amp; &quot;kcptun.log&quot;exeConfig = currentPath &amp; &quot;client_windows_amd64.exe -c &quot; &amp; configFilecmdLine = &quot;cmd /c &quot; &amp; exeConfig &amp; &quot; &gt; &quot; &amp; logFile &amp; &quot; 2&gt;&amp;1&quot;WshShell.Run cmdLine, 0, False&#39;WScript.Sleep 1000&#39;Wscript.echo cmdLineSet WshShell = NothingSet fso = NothingWScript.quit</code></pre></li><li>在当前文件夹下，创建client-config.json<pre><code>{&quot;localaddr&quot;: &quot;:12345&quot;,&quot;remoteaddr&quot;: &quot;165.227.213.57:443&quot;,&quot;key&quot;: &quot;helloworld&quot;,&quot;crypt&quot;: &quot;salsa20&quot;,&quot;mode&quot;: &quot;fast2&quot;,&quot;conn&quot;: 1,&quot;autoexpire&quot;: 60,&quot;mtu&quot;: 1350,&quot;sndwnd&quot;: 128,&quot;rcvwnd&quot;: 1024,&quot;datashard&quot;: 5,&quot;parityshard&quot;: 5,&quot;dscp&quot;: 46,&quot;nocomp&quot;: true,&quot;acknodelay&quot;: false,&quot;nodelay&quot;: 0,&quot;interval&quot;: 40,&quot;resend&quot;: 0,&quot;nc&quot;: 0,&quot;sockbuf&quot;: 4194304,&quot;keepalive&quot;: 10}</code></pre></li><li>在当前文件夹下，创建stop.sh<pre><code>taskkill /f /im client_windows_amd64.exe</code></pre></li></ul>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;本文介绍hexo有关语法高亮的配置方案。&lt;br&gt;
+      &lt;p&gt;本文介绍如何使用kcptun加速ss服务。&lt;br&gt;
     
     </summary>
     
@@ -64,9 +36,11 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="kcptun" scheme="http://yoursite.com/tags/kcptun/"/>
+    
+      <category term="ss" scheme="http://yoursite.com/tags/ss/"/>
     
   </entry>
   
@@ -93,6 +67,60 @@
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo如何开启语法高亮？</title>
+    <link href="http://yoursite.com/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/"/>
+    <id>http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/</id>
+    <published>2018-04-03T14:42:05.000Z</published>
+    <updated>2018-04-03T17:24:54.773Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍hexo有关语法高亮的配置方案。<br><a id="more"></a></p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul><li>配置主站点下的配置文件<pre><code>highlight:enable: trueline_number: trueauto_detect: truetab_replace:</code></pre></li><li>代码后面添加名称，如```java code ```</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍hexo有关语法高亮的配置方案。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LC_001_TwoSum_HashMap</title>
+    <link href="http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/"/>
+    <id>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</id>
+    <published>2018-04-03T14:42:05.000Z</published>
+    <updated>2018-04-03T23:53:13.212Z</updated>
+    
+    <content type="html"><![CDATA[<p>leetcode第001题，主要用到了hashmap数据结构。<br><a id="more"></a></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre><code class="java">package LC;import java.util.Arrays;import java.util.HashMap;/** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */public class LC_001_TwoSum_HashMap {    public static void main(String[] args) {        int[] a = {1, 2, 3, 4, 5, 7};        int t = 10;        System.out.println(Arrays.toString(twoSum(a, t)));    }    private static int[] twoSum(int[] nums, int target) {        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();        for (int i = 0; i &lt; nums.length; i++) {            int diff = target - nums[i];            if (map.containsKey(diff)) return new int[]{map.get(diff), i};            map.put(nums[i], i);        }        throw new IllegalArgumentException(&quot;-1&quot;);    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;leetcode第001题，主要用到了hashmap数据结构。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+      <category term="basic algorithm" scheme="http://yoursite.com/tags/basic-algorithm/"/>
     
   </entry>
   
@@ -168,9 +196,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="vps" scheme="http://yoursite.com/tags/vps/"/>
     
@@ -196,9 +224,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
@@ -222,11 +250,11 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
-      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   
@@ -280,9 +308,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
       <category term="githubpages" scheme="http://yoursite.com/tags/githubpages/"/>
     
@@ -336,9 +364,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
