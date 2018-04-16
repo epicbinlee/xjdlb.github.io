@@ -81,8 +81,9 @@ ln -sf /bin/bash /bin/sh
 wget https://github.com/xtaci/kcptun/releases/download/v20161118/kcptun-linux-amd64-20161118.tar.gz
 tar -zxf kcptun-linux-amd64-*.tar.gz
 ```
+- 配置三个脚本start.sh, stop.sh, server-config.json
 
-- 启动脚本vi /root/kcptun/start.sh
+1. 启动脚本vi /root/kcptun/start.sh
 ```
 #!/bin/bash
 cd /root/kcptun/
@@ -90,7 +91,7 @@ cd /root/kcptun/
 echo "Kcptun started."
 ```
 
-- 停止脚本 vi /root/kcptun/stop.sh
+2. 停止脚本 vi /root/kcptun/stop.sh
 ```
 #!/bin/bash
 echo "Stopping Kcptun..."
@@ -102,7 +103,7 @@ fi
 echo "Kcptun stoped."
 ```
 
-- kcptun配置文件 vi /root/kcptun/server-config.json
+3. kcptun配置文件 vi /root/kcptun/server-config.json
 ```
 {
 "listen": ":443",
