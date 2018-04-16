@@ -38,9 +38,9 @@
     
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
-      <category term="ss" scheme="http://yoursite.com/tags/ss/"/>
-    
       <category term="kcptun" scheme="http://yoursite.com/tags/kcptun/"/>
+    
+      <category term="ss" scheme="http://yoursite.com/tags/ss/"/>
     
   </entry>
   
@@ -73,32 +73,6 @@
   </entry>
   
   <entry>
-    <title>如何去掉valine的Powered By信息？</title>
-    <link href="http://yoursite.com/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
-    <id>http://yoursite.com/2018/04/03/如何去掉valine的Powered By信息？/</id>
-    <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-03T22:57:22.570Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍如何去掉valine页面上的Powered By信息。<br><a id="more"></a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul><li>找到配置文件<pre><code>blog/themes/next/layout/_third-party/comments/valine.swig</code></pre></li><li>配置如下<pre><code>{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>  <script type="text/javascript">    var GUEST = ['nick','mail','link'];    var guest = '{{ theme.valine.guest_info }}';    guest = guest.split(',').filter(item=>{      return GUEST.indexOf(item)>-1;    });    new Valine({        el: '#comments' ,        verify: {{ theme.valine.verify }},        notify: {{ theme.valine.notify }},        appId: '{{ theme.valine.appid }}',        appKey: '{{ theme.valine.appkey }}',        placeholder: '{{ theme.valine.placeholder }}',        avatar:'{{ theme.valine.avatar }}',        guest_info:guest,        pageSize:'{{ theme.valine.pageSize }}' || 10,    });//新增以下代码即可，可以移除.info下所有子节点。var infoEle = document.querySelector('#comments .info');if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){  infoEle.childNodes.forEach(function(item) {item.parentNode.removeChild(item);  });}  </script>{% endif %}</code></pre></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍如何去掉valine页面上的Powered By信息。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
-    
-  </entry>
-  
-  <entry>
     <title>hexo如何开启语法高亮？</title>
     <link href="http://yoursite.com/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/"/>
     <id>http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/</id>
@@ -121,6 +95,32 @@
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何去掉valine的Powered By信息？</title>
+    <link href="http://yoursite.com/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
+    <id>http://yoursite.com/2018/04/03/如何去掉valine的Powered By信息？/</id>
+    <published>2018-04-03T14:42:05.000Z</published>
+    <updated>2018-04-03T22:57:22.570Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍如何去掉valine页面上的Powered By信息。<br><a id="more"></a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul><li>找到配置文件<pre><code>blog/themes/next/layout/_third-party/comments/valine.swig</code></pre></li><li>配置如下<pre><code>{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>  <script type="text/javascript">    var GUEST = ['nick','mail','link'];    var guest = '{{ theme.valine.guest_info }}';    guest = guest.split(',').filter(item=>{      return GUEST.indexOf(item)>-1;    });    new Valine({        el: '#comments' ,        verify: {{ theme.valine.verify }},        notify: {{ theme.valine.notify }},        appId: '{{ theme.valine.appid }}',        appKey: '{{ theme.valine.appkey }}',        placeholder: '{{ theme.valine.placeholder }}',        avatar:'{{ theme.valine.avatar }}',        guest_info:guest,        pageSize:'{{ theme.valine.pageSize }}' || 10,    });//新增以下代码即可，可以移除.info下所有子节点。var infoEle = document.querySelector('#comments .info');if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){  infoEle.childNodes.forEach(function(item) {item.parentNode.removeChild(item);  });}  </script>{% endif %}</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍如何去掉valine页面上的Powered By信息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
     
   </entry>
   
@@ -196,9 +196,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="vps" scheme="http://yoursite.com/tags/vps/"/>
     
@@ -224,9 +224,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
@@ -250,11 +250,11 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-      <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
   </entry>
   
@@ -364,9 +364,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
