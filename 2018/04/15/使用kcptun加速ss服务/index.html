@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="列表,配置,kcptun,ss," />
+  <meta name="keywords" content="列表,配置,ss,kcptun," />
 
 
 
@@ -82,14 +82,14 @@
 
 
 <meta name="description" content="本文介绍如何使用kcptun加速ss服务。">
-<meta name="keywords" content="列表,配置,kcptun,ss">
+<meta name="keywords" content="列表,配置,ss,kcptun">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用kcptun加速ss服务">
 <meta property="og:url" content="http://yoursite.com/2018/04/15/使用kcptun加速ss服务/index.html">
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文介绍如何使用kcptun加速ss服务。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-16T02:19:49.610Z">
+<meta property="og:updated_time" content="2018-04-16T02:23:39.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用kcptun加速ss服务">
 <meta name="twitter:description" content="本文介绍如何使用kcptun加速ss服务。">
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  620
+                  634
                 </span>
               
 
@@ -493,13 +493,15 @@ ssserver -c /root/shadowsocks/ss_config.json -d stop
 <li>kcptun官网 <a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li>
 <li>其中 kcptun-linux-amd64-20180316.tar.gz 为Linux版本</li>
 <li>其中 kcptun-windows-amd64-20180316.tar.gz 为Windows版本</li>
-<li><p>安装 kcptun</p>
-<pre><code>mkdir /root/kcptun
+<li>安装 kcptun<pre><code>mkdir /root/kcptun
 cd /root/kcptun
 ln -sf /bin/bash /bin/sh
 wget https://github.com/xtaci/kcptun/releases/download/v20161118/kcptun-linux-amd64-20161118.tar.gz
 tar -zxf kcptun-linux-amd64-*.tar.gz
 </code></pre></li>
+<li>配置三个脚本start.sh, stop.sh, server-config.json</li>
+</ul>
+<ol>
 <li><p>启动脚本vi /root/kcptun/start.sh</p>
 <pre><code>#!/bin/bash
 cd /root/kcptun/
@@ -539,8 +541,9 @@ echo &quot;Kcptun stoped.&quot;
 &quot;keepalive&quot;: 10
 }
 </code></pre></li>
-<li><p>启动或停止kcptun</p>
-<pre><code>sh /root/kcptun/start.sh
+</ol>
+<ul>
+<li>启动或停止kcptun<pre><code>sh /root/kcptun/start.sh
 sh /root/kcptun/stop.sh
 </code></pre></li>
 </ul>
@@ -621,9 +624,9 @@ chacha20
           
             <a href="/tags/配置/" rel="tag"><i class="fa fa-tag"></i> 配置</a>
           
-            <a href="/tags/kcptun/" rel="tag"><i class="fa fa-tag"></i> kcptun</a>
-          
             <a href="/tags/ss/" rel="tag"><i class="fa fa-tag"></i> ss</a>
+          
+            <a href="/tags/kcptun/" rel="tag"><i class="fa fa-tag"></i> kcptun</a>
           
         </div>
       
@@ -636,8 +639,8 @@ chacha20
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/03/hexo如何开启语法高亮？/" rel="next" title="hexo如何开启语法高亮？">
-                <i class="fa fa-chevron-left"></i> hexo如何开启语法高亮？
+              <a href="/2018/04/03/LC_001_TwoSum_HashMap/" rel="next" title="LC_001_TwoSum_HashMap">
+                <i class="fa fa-chevron-left"></i> LC_001_TwoSum_HashMap
               </a>
             
           </div>
@@ -851,7 +854,7 @@ chacha20
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.2k字</span>
+  <span class="post-count">博客全站共5.3k字</span>
 </div>
 
         
