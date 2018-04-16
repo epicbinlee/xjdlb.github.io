@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[使用kcptun加速ss服务]]></title>
     <url>%2F2018%2F04%2F15%2F%E4%BD%BF%E7%94%A8kcptun%E5%8A%A0%E9%80%9Fss%E6%9C%8D%E5%8A%A1%2F</url>
-    <content type="text"><![CDATA[本文介绍如何使用kcptun加速ss服务。 服务端软件准备 安装组件apt-get update apt-get upgrade apt-get install build-essential python-pip m2crypto supervisor 安装sspip install shadowsocks 安装加密用软件 libsodiumwget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz tar zxvf libsodium-1.0.11.tar.gz cd libsodium-1.0.11 ./configure make &amp;&amp; make check make install echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf ldconfig ss配置 ss服务器配置ss_config.json{ &quot;server&quot;: &quot;127.0.0.1&quot;, &quot;port_password&quot;: { &quot;10001&quot;: &quot;helloworld&quot;, &quot;10002&quot;: &quot;helloworld&quot;, &quot;10003&quot;: &quot;helloworld&quot; }, &quot;local_port&quot;: 1080, &quot;timeout&quot;: 600, &quot;method&quot;: &quot;chacha20&quot;, &quot;auth&quot;: true } 启动和停止脚本ssserver -c /root/shadowsocks/ss_config.json -d start ssserver -c /root/shadowsocks/ss_config.json -d stop kcptun配置 kcptun官网 https://github.com/xtaci/kcptun/releases 其中 kcptun-linux-amd64-20180316.tar.gz 为Linux版本 其中 kcptun-windows-amd64-20180316.tar.gz 为Windows版本 安装 kcptun mkdir /root/kcptun cd /root/kcptun ln -sf /bin/bash /bin/sh wget https://github.com/xtaci/kcptun/releases/download/v20161118/kcptun-linux-amd64-20161118.tar.gz tar -zxf kcptun-linux-amd64-*.tar.gz 配置kcptun的启动文件 启动文件vi /root/kcptun/start.sh 启动脚本#!/bin/bash cd /root/kcptun/ ./server_linux_amd64 -c /root/kcptun/server-config.json &gt; kcptun.log 2&gt;&amp;1 &amp; echo &quot;Kcptun started.&quot; 停止文件vi /root/kcptun/stop.sh 停止脚本#!/bin/bash echo &quot;Stopping Kcptun...&quot; PID=`ps -ef | grep server_linux_amd64 | grep -v grep | awk &#39;{print $2}&#39;` if [ &quot;&quot; != &quot;$PID&quot; ]; then echo &quot;killing $PID&quot; kill -9 $PID fi echo &quot;Kcptun stoped.&quot; kcptun配置文件vi /root/kcptun/server-config.json 配置代码{ &quot;listen&quot;: &quot;:443&quot;, &quot;target&quot;: &quot;127.0.0.1:10001&quot;, &quot;key&quot;: &quot;helloworld&quot;, &quot;crypt&quot;: &quot;salsa20&quot;, &quot;mode&quot;: &quot;fast2&quot;, &quot;mtu&quot;: 1350, &quot;sndwnd&quot;: 1024, &quot;rcvwnd&quot;: 1024, &quot;datashard&quot;: 5, &quot;parityshard&quot;: 5, &quot;dscp&quot;: 46, &quot;nocomp&quot;: true, &quot;acknodelay&quot;: false, &quot;nodelay&quot;: 0, &quot;interval&quot;: 40, &quot;resend&quot;: 0, &quot;nc&quot;: 0, &quot;sockbuf&quot;: 4194304, &quot;keepalive&quot;: 10 } 启动或停止kcptunsh /root/kcptun/start.sh sh /root/kcptun/stop.sh 客户端Windows环境中的kcptun配置 kcptun官网 https://github.com/xtaci/kcptun/releases client_windows_amd64.exe 放在全部英文目录下 在当前文件夹下，创建 run.vbsDim RunKcptun Set fso = CreateObject(&quot;Scripting.FileSystemObject&quot;) Set WshShell = WScript.CreateObject(&quot;WScript.Shell&quot;) currentPath = fso.GetFile(Wscript.ScriptFullName).ParentFolder.Path &amp; &quot;\&quot; configFile = currentPath &amp; &quot;client-config.json&quot; logFile = currentPath &amp; &quot;kcptun.log&quot; exeConfig = currentPath &amp; &quot;client_windows_amd64.exe -c &quot; &amp; configFile cmdLine = &quot;cmd /c &quot; &amp; exeConfig &amp; &quot; &gt; &quot; &amp; logFile &amp; &quot; 2&gt;&amp;1&quot; WshShell.Run cmdLine, 0, False &#39;WScript.Sleep 1000 &#39;Wscript.echo cmdLine Set WshShell = Nothing Set fso = Nothing WScript.quit 在当前文件夹下，创建client-config.json{ &quot;localaddr&quot;: &quot;:12345&quot;, &quot;remoteaddr&quot;: &quot;165.227.213.57:443&quot;, &quot;key&quot;: &quot;helloworld&quot;, &quot;crypt&quot;: &quot;salsa20&quot;, &quot;mode&quot;: &quot;fast2&quot;, &quot;conn&quot;: 1, &quot;autoexpire&quot;: 60, &quot;mtu&quot;: 1350, &quot;sndwnd&quot;: 128, &quot;rcvwnd&quot;: 1024, &quot;datashard&quot;: 5, &quot;parityshard&quot;: 5, &quot;dscp&quot;: 46, &quot;nocomp&quot;: true, &quot;acknodelay&quot;: false, &quot;nodelay&quot;: 0, &quot;interval&quot;: 40, &quot;resend&quot;: 0, &quot;nc&quot;: 0, &quot;sockbuf&quot;: 4194304, &quot;keepalive&quot;: 10 } 在当前文件夹下，创建stop.shtaskkill /f /im client_windows_amd64.exe]]></content>
+    <content type="text"><![CDATA[本文介绍如何使用kcptun加速ss服务。 软件准备 安装组件apt-get update apt-get upgrade apt-get install build-essential python-pip m2crypto supervisor 安装sspip install shadowsocks 安装加密用软件 libsodiumwget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz tar zxvf libsodium-1.0.11.tar.gz cd libsodium-1.0.11 ./configure make &amp;&amp; make check make install echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf ldconfig [可选] 配置supervisor, vi /etc/supervisor/conf.d/shadowsocks.conf [program:shadowsocks] command=ssserver -c /etc/shadowsocks.json autorestart=true user=root [可选] 使用supervisor supervisorctl reload supervisorctl status ss配置 ss服务器配置ss_config.json{ &quot;server&quot;: &quot;127.0.0.1&quot;, &quot;port_password&quot;: { &quot;10001&quot;: &quot;helloworld&quot;, &quot;10002&quot;: &quot;helloworld&quot;, &quot;10003&quot;: &quot;helloworld&quot; }, &quot;local_port&quot;: 1080, &quot;timeout&quot;: 600, &quot;method&quot;: &quot;chacha20&quot;, &quot;auth&quot;: true } 启动和停止脚本ssserver -c /root/shadowsocks/ss_config.json -d start ssserver -c /root/shadowsocks/ss_config.json -d stop kcptun配置 kcptun官网 https://github.com/xtaci/kcptun/releases 其中 kcptun-linux-amd64-20180316.tar.gz 为Linux版本 其中 kcptun-windows-amd64-20180316.tar.gz 为Windows版本 安装 kcptun mkdir /root/kcptun cd /root/kcptun ln -sf /bin/bash /bin/sh wget https://github.com/xtaci/kcptun/releases/download/v20161118/kcptun-linux-amd64-20161118.tar.gz tar -zxf kcptun-linux-amd64-*.tar.gz 启动脚本vi /root/kcptun/start.sh #!/bin/bash cd /root/kcptun/ ./server_linux_amd64 -c /root/kcptun/server-config.json &gt; kcptun.log 2&gt;&amp;1 &amp; echo &quot;Kcptun started.&quot; 停止脚本 vi /root/kcptun/stop.sh #!/bin/bash echo &quot;Stopping Kcptun...&quot; PID=`ps -ef | grep server_linux_amd64 | grep -v grep | awk &#39;{print $2}&#39;` if [ &quot;&quot; != &quot;$PID&quot; ]; then echo &quot;killing $PID&quot; kill -9 $PID fi echo &quot;Kcptun stoped.&quot; kcptun配置文件 vi /root/kcptun/server-config.json { &quot;listen&quot;: &quot;:443&quot;, &quot;target&quot;: &quot;127.0.0.1:10001&quot;, &quot;key&quot;: &quot;helloworld&quot;, &quot;crypt&quot;: &quot;salsa20&quot;, &quot;mode&quot;: &quot;fast2&quot;, &quot;mtu&quot;: 1350, &quot;sndwnd&quot;: 1024, &quot;rcvwnd&quot;: 1024, &quot;datashard&quot;: 5, &quot;parityshard&quot;: 5, &quot;dscp&quot;: 46, &quot;nocomp&quot;: true, &quot;acknodelay&quot;: false, &quot;nodelay&quot;: 0, &quot;interval&quot;: 40, &quot;resend&quot;: 0, &quot;nc&quot;: 0, &quot;sockbuf&quot;: 4194304, &quot;keepalive&quot;: 10 } 启动或停止kcptun sh /root/kcptun/start.sh sh /root/kcptun/stop.sh 客户端windows环境中的kcptun配置 kcptun官网 https://github.com/xtaci/kcptun/releases client_windows_amd64.exe 放在全部英文目录下 创建下面的三个文件：run.vbs, client-config.json, stop.sh 在当前文件夹下，创建 run.vbsDim RunKcptun Set fso = CreateObject(&quot;Scripting.FileSystemObject&quot;) Set WshShell = WScript.CreateObject(&quot;WScript.Shell&quot;) currentPath = fso.GetFile(Wscript.ScriptFullName).ParentFolder.Path &amp; &quot;\&quot; configFile = currentPath &amp; &quot;client-config.json&quot; logFile = currentPath &amp; &quot;kcptun.log&quot; exeConfig = currentPath &amp; &quot;client_windows_amd64.exe -c &quot; &amp; configFile cmdLine = &quot;cmd /c &quot; &amp; exeConfig &amp; &quot; &gt; &quot; &amp; logFile &amp; &quot; 2&gt;&amp;1&quot; WshShell.Run cmdLine, 0, False &#39;WScript.Sleep 1000 &#39;Wscript.echo cmdLine Set WshShell = Nothing Set fso = Nothing WScript.quit 在当前文件夹下，创建client-config.json{ &quot;localaddr&quot;: &quot;:12345&quot;, &quot;remoteaddr&quot;: &quot;165.227.213.57:443&quot;, &quot;key&quot;: &quot;helloworld&quot;, &quot;crypt&quot;: &quot;salsa20&quot;, &quot;mode&quot;: &quot;fast2&quot;, &quot;conn&quot;: 1, &quot;autoexpire&quot;: 60, &quot;mtu&quot;: 1350, &quot;sndwnd&quot;: 128, &quot;rcvwnd&quot;: 1024, &quot;datashard&quot;: 5, &quot;parityshard&quot;: 5, &quot;dscp&quot;: 46, &quot;nocomp&quot;: true, &quot;acknodelay&quot;: false, &quot;nodelay&quot;: 0, &quot;interval&quot;: 40, &quot;resend&quot;: 0, &quot;nc&quot;: 0, &quot;sockbuf&quot;: 4194304, &quot;keepalive&quot;: 10 } 在当前文件夹下，创建stop.shtaskkill /f /im client_windows_amd64.exe 客户端windows环境中的ss配置 使用本地的配置127.0.0.1 12345 helloworld(服务端ss的密码，不是kcptun的密码) chacha20]]></content>
       <categories>
         <category>配置</category>
       </categories>
@@ -12,19 +12,6 @@
         <tag>配置</tag>
         <tag>kcptun</tag>
         <tag>ss</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
-    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
-    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>列表</tag>
-        <tag>配置</tag>
-        <tag>valine</tag>
       </tags>
   </entry>
   <entry>
@@ -38,6 +25,19 @@
         <tag>列表</tag>
         <tag>配置</tag>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
+    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>valine</tag>
       </tags>
   </entry>
   <entry>
@@ -89,8 +89,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
         <tag>vps</tag>
       </tags>
   </entry>
@@ -103,8 +103,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -116,9 +116,9 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
         <tag>hexo</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -173,8 +173,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
