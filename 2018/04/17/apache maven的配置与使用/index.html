@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="本文介绍了apache maven的配置与使用过程。">
+<meta name="description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】。">
 <meta name="keywords" content="列表,配置,windows,maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="apache maven的配置与使用">
 <meta property="og:url" content="http://yoursite.com/2018/04/17/apache maven的配置与使用/index.html">
 <meta property="og:site_name" content="初心">
-<meta property="og:description" content="本文介绍了apache maven的配置与使用过程。">
+<meta property="og:description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-17T07:19:17.871Z">
+<meta property="og:updated_time" content="2018-04-17T08:20:16.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="apache maven的配置与使用">
-<meta name="twitter:description" content="本文介绍了apache maven的配置与使用过程。">
+<meta name="twitter:description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】。">
 
 
 
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,388
+                  1,789
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  10
                 </span>
               
             </div>
@@ -443,7 +443,7 @@
       
 
       
-        <p>本文介绍了apache maven的配置与使用过程。</p>
+        <p>本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】。</p>
 <a id="more"></a>
 <h2 id="需要先配置java和maven环境变量"><a href="#需要先配置java和maven环境变量" class="headerlink" title="需要先配置java和maven环境变量"></a>需要先配置java和maven环境变量</h2><ul>
 <li><p>CLASSPATH</p>
@@ -698,6 +698,80 @@ Hello World!
 mvn clean jboss-as:deploy
 </code></pre></li>
 </ul>
+<h2 id="eclipse上的maven项目"><a href="#eclipse上的maven项目" class="headerlink" title="eclipse上的maven项目"></a>eclipse上的maven项目</h2><ul>
+<li>创建 New-&gt;Other…-&gt;Maven-&gt;Maven Project</li>
+<li>use default workspace location</li>
+<li>archetypes maven-archetype-quickstart</li>
+<li>new maven project<pre><code>com.hikvision.big_data.data
+test_eclipse_maven
+0.0.1-SNAPSHOT
+com.hikvision.big_data.data.test_eclipse_maven
+</code></pre></li>
+<li><p>其中pom.xml</p>
+<pre><code>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+&lt;groupId&gt;com.hikvision.big_data.data&lt;/groupId&gt;
+&lt;artifactId&gt;test_eclipse_maven&lt;/artifactId&gt;
+&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+&lt;packaging&gt;jar&lt;/packaging&gt;
+&lt;name&gt;test_eclipse_maven&lt;/name&gt;
+&lt;url&gt;http://maven.apache.org&lt;/url&gt;
+&lt;properties&gt;
+  &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+&lt;/properties&gt;
+&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;junit&lt;/groupId&gt;
+    &lt;artifactId&gt;junit&lt;/artifactId&gt;
+    &lt;version&gt;3.8.1&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre></li>
+<li><p>在网站上找到自己需要的依赖 <a href="http://mvnrepository.com/" target="_blank" rel="noopener">http://mvnrepository.com/</a></p>
+<pre><code># 比如：我需要找到time相关的操作，直接mavenrepository中搜索time， 得到的Joda Time
+# 再用google搜索Joda Time，查看其用法
+# mavenrepository中的Joda Time依赖添加到pom.xml
+&lt;!-- https://mvnrepository.com/artifact/org.webjars.npm/d3-array --&gt;
+&lt;!-- https://mvnrepository.com/artifact/joda-time/joda-time --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;joda-time&lt;/groupId&gt;
+  &lt;artifactId&gt;joda-time&lt;/artifactId&gt;
+  &lt;version&gt;2.9.9&lt;/version&gt;
+&lt;/dependency&gt;
+# 保存自动下载
+# 使用everything搜索Joda Time发现已经在C:\Users\BinLee\.m2\repository\joda-time\joda-time\2.9.9\joda-time-2.9.9.jar下面
+</code></pre></li>
+<li>使用依赖<pre><code># 在窗口上project explorer&gt;maven dependencies查看需要的依赖类
+# 在需要地方直接插入
+# code
+package com.hikvision.big_data.data.test_eclipse_maven;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.LocalDateTime;
+/**
+* Hello world!
+*
+*/
+public class App {
+  public static void main(String[] args) {
+      System.out.println(&quot;Hello World!&quot;);
+      DateTime now = DateTime.now();
+      System.out.println(now);
+      Days maxValue = Days.MAX_VALUE;
+      System.out.println(maxValue);
+      System.out.println(LocalDateTime.now());
+  }
+}
+# output
+Hello World!
+2018-04-17T16:15:02.211+08:00
+P2147483647D
+2018-04-17T16:15:02.289
+</code></pre></li>
+</ul>
 
       
     </div>
@@ -734,8 +808,8 @@ mvn clean jboss-as:deploy
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/16/eclipse中的git基本配置/" rel="next" title="eclipse中的git基本配置">
-                <i class="fa fa-chevron-left"></i> eclipse中的git基本配置
+              <a href="/2018/04/17/常见的环境变量配置/" rel="next" title="常见的环境变量配置">
+                <i class="fa fa-chevron-left"></i> 常见的环境变量配置
               </a>
             
           </div>
@@ -743,10 +817,6 @@ mvn clean jboss-as:deploy
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/17/常见的环境变量配置/" rel="prev" title="常见的环境变量配置">
-                常见的环境变量配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -888,7 +958,7 @@ mvn clean jboss-as:deploy
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需要先配置java和maven环境变量"><span class="nav-number">1.</span> <span class="nav-text">需要先配置java和maven环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换maven的仓库为自定义的仓库"><span class="nav-number">2.</span> <span class="nav-text">更换maven的仓库为自定义的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven手动创建项目"><span class="nav-number">3.</span> <span class="nav-text">maven手动创建项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需要先配置java和maven环境变量"><span class="nav-number">1.</span> <span class="nav-text">需要先配置java和maven环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换maven的仓库为自定义的仓库"><span class="nav-number">2.</span> <span class="nav-text">更换maven的仓库为自定义的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven手动创建项目"><span class="nav-number">3.</span> <span class="nav-text">maven手动创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eclipse上的maven项目"><span class="nav-number">4.</span> <span class="nav-text">eclipse上的maven项目</span></a></li></ol></div>
             
 
           </div>
@@ -953,7 +1023,7 @@ mvn clean jboss-as:deploy
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共7.2k字</span>
+  <span class="post-count">博客全站共7.6k字</span>
 </div>
 
         
