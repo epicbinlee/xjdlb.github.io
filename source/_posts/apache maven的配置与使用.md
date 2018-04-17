@@ -8,7 +8,7 @@ toc: true
 mathjax: true
 ---
 
-本文介绍了apache maven的配置与使用过程。
+本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】。
 
 <!-- more -->
 
@@ -287,4 +287,85 @@ Hello World!
 # 前提是jboss web server已经成功启动
 # cmd
 mvn clean jboss-as:deploy
+```
+
+## eclipse上的maven项目
+- 创建 New->Other...->Maven->Maven Project
+- use default workspace location
+- archetypes maven-archetype-quickstart
+- new maven project
+```
+com.hikvision.big_data.data
+test_eclipse_maven
+0.0.1-SNAPSHOT
+com.hikvision.big_data.data.test_eclipse_maven
+```
+- 其中pom.xml
+```
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hikvision.big_data.data</groupId>
+  <artifactId>test_eclipse_maven</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>test_eclipse_maven</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+```
+
+- 在网站上找到自己需要的依赖 http://mvnrepository.com/
+```
+# 比如：我需要找到time相关的操作，直接mavenrepository中搜索time， 得到的Joda Time
+# 再用google搜索Joda Time，查看其用法
+# mavenrepository中的Joda Time依赖添加到pom.xml
+<!-- https://mvnrepository.com/artifact/org.webjars.npm/d3-array -->
+<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+<dependency>
+    <groupId>joda-time</groupId>
+    <artifactId>joda-time</artifactId>
+    <version>2.9.9</version>
+</dependency>
+# 保存自动下载
+# 使用everything搜索Joda Time发现已经在C:\Users\BinLee\.m2\repository\joda-time\joda-time\2.9.9\joda-time-2.9.9.jar下面
+```
+- 使用依赖
+```
+# 在窗口上project explorer>maven dependencies查看需要的依赖类
+# 在需要地方直接插入
+# code
+package com.hikvision.big_data.data.test_eclipse_maven;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.LocalDateTime;
+/**
+ * Hello world!
+ *
+ */
+public class App {
+	public static void main(String[] args) {
+		System.out.println("Hello World!");
+		DateTime now = DateTime.now();
+		System.out.println(now);
+		Days maxValue = Days.MAX_VALUE;
+		System.out.println(maxValue);
+		System.out.println(LocalDateTime.now());
+	}
+}
+# output
+Hello World!
+2018-04-17T16:15:02.211+08:00
+P2147483647D
+2018-04-17T16:15:02.289
 ```
