@@ -45,3 +45,11 @@ repository path: xjdlb/testgit.git
 - 新建本地的仓库，如：d:\\test.git
 - 继续coding
 - 返回上面上传代码操作
+
+## eclipse push 出现了 rejected-non-fast-forward错误
+- [他山之石](https://blog.csdn.net/chenshun123/article/details/46756087)
+- 打开windows>show view>other>git repositories
+- git repositories>remote>origin>绿色分支>右键>configure fetch>save and fetch
+- 此时可以看见remote tracking>origin/mater>右键>merge
+- 问题解决，可以上传了
+- add>commit>push
