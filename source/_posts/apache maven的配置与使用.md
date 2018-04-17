@@ -287,3 +287,4 @@ Hello World!
 # 前提是jboss web server已经成功启动
 # cmd
 mvn clean jboss-as:deploy
+```
