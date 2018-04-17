@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-17T03:13:45.226Z</updated>
+  <updated>2018-04-17T04:06:54.593Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常见的环境变量配置</title>
+    <link href="http://yoursite.com/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2018/04/17/常见的环境变量配置/</id>
+    <published>2018-04-17T03:49:36.000Z</published>
+    <updated>2018-04-17T04:06:54.593Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h2 id="windows常见的环境变量配置"><a href="#windows常见的环境变量配置" class="headerlink" title="windows常见的环境变量配置"></a>windows常见的环境变量配置</h2><ul><li><p>CLASSPATH</p><pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></pre></li><li><p>JAVA_HOME</p><pre><code>C:\app3\Java\jdk1.8.0_144</code></pre></li><li><p>JRE_HOME</p><pre><code>C:\app3\Java\jre1.8.0_144</code></pre></li></ul><p>MVN_HOME<br>C:\app3\apache-maven-3.5.3</p><ul><li>Path<pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;windows常见的环境变量配置&quot;&gt;&lt;a href=&quot;#windows常见的环境变量配置&quot; class=&quot;headerlink&quot; title=&quot;windows常见的环境变量配置&quot;&gt;&lt;/a&gt;windows常见的环境变量配置&lt;/h2
+      
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+      <category term="环境变量" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>eclipse中的git基本配置</title>
@@ -73,6 +105,34 @@
   </entry>
   
   <entry>
+    <title>LC_001_TwoSum_HashMap</title>
+    <link href="http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/"/>
+    <id>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</id>
+    <published>2018-04-03T14:42:05.000Z</published>
+    <updated>2018-04-03T23:53:13.212Z</updated>
+    
+    <content type="html"><![CDATA[<p>leetcode第001题，主要用到了hashmap数据结构。<br><a id="more"></a></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre><code class="java">package LC;import java.util.Arrays;import java.util.HashMap;/** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */public class LC_001_TwoSum_HashMap {    public static void main(String[] args) {        int[] a = {1, 2, 3, 4, 5, 7};        int t = 10;        System.out.println(Arrays.toString(twoSum(a, t)));    }    private static int[] twoSum(int[] nums, int target) {        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();        for (int i = 0; i &lt; nums.length; i++) {            int diff = target - nums[i];            if (map.containsKey(diff)) return new int[]{map.get(diff), i};            map.put(nums[i], i);        }        throw new IllegalArgumentException(&quot;-1&quot;);    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;leetcode第001题，主要用到了hashmap数据结构。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+      <category term="basic algorithm" scheme="http://yoursite.com/tags/basic-algorithm/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如何去掉valine的Powered By信息？</title>
     <link href="http://yoursite.com/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
     <id>http://yoursite.com/2018/04/03/如何去掉valine的Powered By信息？/</id>
@@ -121,34 +181,6 @@
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LC_001_TwoSum_HashMap</title>
-    <link href="http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/"/>
-    <id>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</id>
-    <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-03T23:53:13.212Z</updated>
-    
-    <content type="html"><![CDATA[<p>leetcode第001题，主要用到了hashmap数据结构。<br><a id="more"></a></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre><code class="java">package LC;import java.util.Arrays;import java.util.HashMap;/** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */public class LC_001_TwoSum_HashMap {    public static void main(String[] args) {        int[] a = {1, 2, 3, 4, 5, 7};        int t = 10;        System.out.println(Arrays.toString(twoSum(a, t)));    }    private static int[] twoSum(int[] nums, int target) {        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();        for (int i = 0; i &lt; nums.length; i++) {            int diff = target - nums[i];            if (map.containsKey(diff)) return new int[]{map.get(diff), i};            map.put(nums[i], i);        }        throw new IllegalArgumentException(&quot;-1&quot;);    }}</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;leetcode第001题，主要用到了hashmap数据结构。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
-    
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-      <category term="basic algorithm" scheme="http://yoursite.com/tags/basic-algorithm/"/>
     
   </entry>
   

@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[常见的环境变量配置]]></title>
+    <url>%2F2018%2F04%2F17%2F%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[windows常见的环境变量配置 CLASSPATH .;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar; JAVA_HOME C:\app3\Java\jdk1.8.0_144 JRE_HOME C:\app3\Java\jre1.8.0_144 MVN_HOMEC:\app3\apache-maven-3.5.3 PathC:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>windows</tag>
+        <tag>环境变量</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[eclipse中的git基本配置]]></title>
     <url>%2F2018%2F04%2F16%2Feclipse%E4%B8%AD%E7%9A%84git%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[本文介绍了如何使用git和eclipse进行代码的版本控制。 命令行模式操作 服务端注册github或者giteee账号 客户端下载git软件 使用命令生成本地的密钥 将秘钥添加到服务端的git中 服务端新建git仓库，客户端克隆到本地 客户端添加文件到仓库中，使用各种命令对该仓库进行版本控制 上述的属于git的基本操作详细步骤参考 如何利用ubuntu实现私有git服务端-附ssh操作？ eclipse中git上传代码 服务端已经添加了客户端的ssh密钥 服务端已经新建了仓库 客户端eclipse新建项目 在路径eclipse&gt;windows&gt;preference&gt;team&gt;git&gt;configuration下查看user和passwd的配置 在路径package explorer&gt;项目右键&gt;share project&gt;repository&gt;create，新建本地的仓库名字要和服务端的名字一致，如：d:\test.git，完成了新建仓库 在路径package explorer&gt;项目右键&gt;team&gt;add to index，完成文件的add 在路径package explorer&gt;项目右键&gt;team&gt;commit或者Ctrl+#，提交 接上一步，先填写commit message 接上一步，填写服务器地址remote name: origin url: git@github.com:xjdlb/testgit.git # git 地址 hostname: github.com # 域名 repository path: xjdlb/testgit.git 一路next就好了 他山之石 eclipse中git下载代码 在路径package explorer&gt;空白右键&gt;import&gt;Git&gt;Projects from Git，next 接上步，选择URI，包含了远程和本地 主要的分支 新建本地的仓库，如：d:\test.git 继续coding 返回上面上传代码操作]]></content>
@@ -29,6 +43,20 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[LC_001_TwoSum_HashMap]]></title>
+    <url>%2F2018%2F04%2F03%2FLC_001_TwoSum_HashMap%2F</url>
+    <content type="text"><![CDATA[leetcode第001题，主要用到了hashmap数据结构。 题解package LC; import java.util.Arrays; import java.util.HashMap; /** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */ public class LC_001_TwoSum_HashMap { public static void main(String[] args) { int[] a = {1, 2, 3, 4, 5, 7}; int t = 10; System.out.println(Arrays.toString(twoSum(a, t))); } private static int[] twoSum(int[] nums, int target) { HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) { int diff = target - nums[i]; if (map.containsKey(diff)) return new int[]{map.get(diff), i}; map.put(nums[i], i); } throw new IllegalArgumentException(&quot;-1&quot;); } }]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>leetcode</tag>
+        <tag>java</tag>
+        <tag>basic algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
     <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
@@ -52,20 +80,6 @@
         <tag>列表</tag>
         <tag>配置</tag>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[LC_001_TwoSum_HashMap]]></title>
-    <url>%2F2018%2F04%2F03%2FLC_001_TwoSum_HashMap%2F</url>
-    <content type="text"><![CDATA[leetcode第001题，主要用到了hashmap数据结构。 题解package LC; import java.util.Arrays; import java.util.HashMap; /** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */ public class LC_001_TwoSum_HashMap { public static void main(String[] args) { int[] a = {1, 2, 3, 4, 5, 7}; int t = 10; System.out.println(Arrays.toString(twoSum(a, t))); } private static int[] twoSum(int[] nums, int target) { HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) { int diff = target - nums[i]; if (map.containsKey(diff)) return new int[]{map.get(diff), i}; map.put(nums[i], i); } throw new IllegalArgumentException(&quot;-1&quot;); } }]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>列表</tag>
-        <tag>leetcode</tag>
-        <tag>java</tag>
-        <tag>basic algorithm</tag>
       </tags>
   </entry>
   <entry>
