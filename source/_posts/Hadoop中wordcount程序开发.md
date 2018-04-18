@@ -1,15 +1,16 @@
+
 ---
-title: Hadoop wordcount程序开发
+title: hadoop中wordcount程序开发
 date: 2018-04-17 17:17:34
-tags: [列表,maven,Hadoop]
+tags: [列表,maven,hadoop]
 categories: 开发
 toc: true
 mathjax: true
 ---
 
 本文介绍如何利用java和Hadoop组件开发wordcount程序。
-
 <!-- more -->
+
 ## 开发环境
 - windows
 - eclipse
