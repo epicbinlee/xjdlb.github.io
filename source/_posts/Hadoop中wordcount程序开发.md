@@ -1,16 +1,15 @@
 
 ---
 title: hadoop中wordcount程序开发
-date: 2018-04-17 17:17:34
+date: 2018-04-18 13:09:22
 tags: [列表,maven,hadoop]
 categories: 开发
 toc: true
 mathjax: true
 ---
 
-本文介绍如何利用java和Hadoop组件开发wordcount程序。
+本文介绍如何利用java和hadoop组件开发wordcount程序。
 <!-- more -->
-
 ## 开发环境
 - windows
 - eclipse
@@ -24,8 +23,9 @@ mathjax: true
 ## 添加依赖后maven报错
 - 报错
 ```
-Buiding Hadoop with Eclipse Maven - Missing artifact jdk.tools:jdk.tools:jar:1.6
+Buiding Hadoop with Eclipse / Maven - Missing artifact jdk.tools:jdk.tools:jar:1.6
 ```
+
 - 解决
 ```
 # cmd
