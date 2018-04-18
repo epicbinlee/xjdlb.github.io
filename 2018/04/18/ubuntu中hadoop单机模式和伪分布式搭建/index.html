@@ -84,14 +84,14 @@
 <meta name="description" content="本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？">
 <meta name="keywords" content="列表,hadoop">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu中hadoop单机模式搭建">
-<meta property="og:url" content="http://yoursite.com/2018/04/18/本文介绍如何搭建hadoop单机版本/index.html">
+<meta property="og:title" content="ubuntu中hadoop单机模式和伪分布式搭建">
+<meta property="og:url" content="http://yoursite.com/2018/04/18/ubuntu中hadoop单机模式和伪分布式搭建/index.html">
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-18T07:19:16.268Z">
+<meta property="og:updated_time" content="2018-04-18T14:07:33.347Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ubuntu中hadoop单机模式搭建">
+<meta name="twitter:title" content="ubuntu中hadoop单机模式和伪分布式搭建">
 <meta name="twitter:description" content="本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？">
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/18/本文介绍如何搭建hadoop单机版本/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/18/ubuntu中hadoop单机模式和伪分布式搭建/"/>
 
 
 
 
 
-  <title>ubuntu中hadoop单机模式搭建 | 初心</title>
+  <title>ubuntu中hadoop单机模式和伪分布式搭建 | 初心</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/18/本文介绍如何搭建hadoop单机版本/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/18/ubuntu中hadoop单机模式和伪分布式搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LeeBin">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ubuntu中hadoop单机模式搭建</h1>
+          <h1 class="post-title" itemprop="name headline">ubuntu中hadoop单机模式和伪分布式搭建</h1>
         
 
         <div class="post-meta">
@@ -369,8 +369,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/18/本文介绍如何搭建hadoop单机版本/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/18/本文介绍如何搭建hadoop单机版本/" itemprop="commentCount"></span>
+                <a href="/2018/04/18/ubuntu中hadoop单机模式和伪分布式搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/18/ubuntu中hadoop单机模式和伪分布式搭建/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -378,7 +378,7 @@
 
           
           
-             <span id="/2018/04/18/本文介绍如何搭建hadoop单机版本/" class="leancloud_visitors" data-flag-title="ubuntu中hadoop单机模式搭建">
+             <span id="/2018/04/18/ubuntu中hadoop单机模式和伪分布式搭建/" class="leancloud_visitors" data-flag-title="ubuntu中hadoop单机模式和伪分布式搭建">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  67
+                  1,005
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -444,14 +444,183 @@
 
       
         <p>本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？<br><a id="more"></a></p>
-<h2 id="ubuntu中的java环境变量配置"><a href="#ubuntu中的java环境变量配置" class="headerlink" title="ubuntu中的java环境变量配置"></a>ubuntu中的java环境变量配置</h2><pre><code>sudo vim /etc/profile
-export JAVA_HOME=/root/app/jdk1.8.0_171
+<h2 id="ubuntu开启root用户登录的方法"><a href="#ubuntu开启root用户登录的方法" class="headerlink" title="ubuntu开启root用户登录的方法"></a>ubuntu开启root用户登录的方法</h2><ul>
+<li>设置密码、添加信息<pre><code>sudo passwd -u root
+sudo passwd root
+su root
+cd /usr/share/lightdm/lightdm.conf.d/
+vim 50-unity-greeter.conf
+# 添加
+user-session=ubuntu
+greeter-show-manual-login=true
+all-guest=false
+# 重启
+reboot
+# 使用user和passwd进入root报错
+vim /root/.profile
+# 找到mesg n || true
+# 改为tty -s &amp;&amp; mesg n || true
+</code></pre></li>
+</ul>
+<h2 id="ubuntu中的java环境变量配置"><a href="#ubuntu中的java环境变量配置" class="headerlink" title="ubuntu中的java环境变量配置"></a>ubuntu中的java环境变量配置</h2><ul>
+<li>编辑 sudo vim /etc/profile<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171
 export JRE_HOME=/root/app/jdk1.8.0_171/jre
 export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 source /etc/profile
-java -version
-</code></pre><p>## </p>
+</code></pre></li>
+<li>验证<pre><code>java -version
+</code></pre></li>
+</ul>
+<h2 id="单机版hadoop配置"><a href="#单机版hadoop配置" class="headerlink" title="单机版hadoop配置"></a>单机版hadoop配置</h2><ul>
+<li><p><a href="http://hadoop.apache.org/docs/r3.1.0/hadoop-project-dist/hadoop-common/SingleCluster.html#Standalone_Operation" target="_blank" rel="noopener">官方文档</a></p>
+</li>
+<li><p>生成ssh密钥</p>
+<pre><code>cd ~
+ssh-keygen -t rsa -P &#39;&#39; -f ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+chmod 0600 ~/.ssh/authorized_keys
+ssh localhost
+</code></pre></li>
+<li><p>配置java环境</p>
+<pre><code>root@ubuntu:~# vim /etc/profile
+export JAVA_HOME=/root/app/jdk1.8.0_171
+export JRE_HOME=/root/app/jdk1.8.0_171/jre
+export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
+export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+</code></pre></li>
+<li><p>配置hadoop环境 vim /etc/profile</p>
+<pre><code>#HADOOP VARIABLES START
+export JAVA_HOME=/root/app/jdk1.8.0_171
+export HADOOP_HOME=/root/app/hadoop-3.1.0
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export YARN_HOME=$HADOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib&quot;
+#HADOOP VARIABLES END
+source /etc/profile
+</code></pre></li>
+<li><p>单机版测试</p>
+<pre><code>root@ubuntu:~# /root/app/hadoop-3.1.0/bin/hadoop jar /root/app/hadoop-3.1.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jar
+An example program must be given as the first argument.
+Valid program names are:
+aggregatewordcount: An Aggregate based map/reduce program that counts the words in the input files.
+aggregatewordhist: An Aggregate based map/reduce program that computes the histogram of the words in the input files.
+bbp: A map/reduce program that uses Bailey-Borwein-Plouffe to compute exact digits of Pi.
+dbcount: An example job that count the pageview counts from a database.
+distbbp: A map/reduce program that uses a BBP-type formula to compute exact bits of Pi.
+grep: A map/reduce program that counts the matches of a regex in the input.
+join: A job that effects a join over sorted, equally partitioned datasets
+multifilewc: A job that counts words from several files.
+pentomino: A map/reduce tile laying program to find solutions to pentomino problems.
+pi: A map/reduce program that estimates Pi using a quasi-Monte Carlo method.
+randomtextwriter: A map/reduce program that writes 10GB of random textual data per node.
+randomwriter: A map/reduce program that writes 10GB of random data per node.
+secondarysort: An example defining a secondary sort to the reduce.
+sort: A map/reduce program that sorts the data written by the random writer.
+sudoku: A sudoku solver.
+teragen: Generate data for the terasort
+terasort: Run the terasort
+teravalidate: Checking results of terasort
+wordcount: A map/reduce program that counts the words in the input files.
+wordmean: A map/reduce program that counts the average length of the words in the input files.
+wordmedian: A map/reduce program that counts the median length of the words in the input files.
+wordstandarddeviation: A map/reduce program that counts the standard deviation of the length of the words in the input files.
+</code></pre></li>
+<li><p>实例测试</p>
+<pre><code>/root/app/hadoop-3.1.0/bin/hadoop jar /root/app/hadoop-3.1.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jar grep ./input ./output &#39;dfs[a-z.]+&#39;
+cat ./output/*  # 查看结果
+rm -r ./output  # 删除结果
+# 结果
+root@ubuntu:~/app/hadoop-3.1.0# cat ./output/*  
+1    dfsadmin
+</code></pre></li>
+</ul>
+<h2 id="伪分布式"><a href="#伪分布式" class="headerlink" title="伪分布式"></a>伪分布式</h2><ul>
+<li><p>格式化hdfs</p>
+<pre><code>cd /root/app/hadoop-3.1.0
+./bin/hdfs namenode -format
+</code></pre></li>
+<li><p>添加变量到 vim /etc/profile</p>
+<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171
+export JRE_HOME=/root/app/jdk1.8.0_171/jre
+export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
+export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+#
+# HADOOP VARIABLES START
+export JAVA_HOME=/root/app/jdk1.8.0_171
+export HADOOP_HOME=/root/app/hadoop-3.1.0
+#
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin
+#
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export HADOOP_YARN_HOME=$HADOOP_HOME
+#
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib&quot;
+#
+export HDFS_DATANODE_USER=root
+export HDFS_NAMENODE_USER=root
+export HDFS_SECONDARYNAMENODE_USER=root
+#
+export YARN_RESOURCEMANAGER_USER=root
+export HADOOP_SECURE_DN_USER=yarn
+export YARN_NODEMANAGER_USER=root
+# HADOOP VARIABLES END
+</code></pre></li>
+<li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/core-site.xml</p>
+<pre><code>&lt;configuration&gt;
+     &lt;property&gt;
+          &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+          &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp&lt;/value&gt;
+     &lt;/property&gt;
+     &lt;property&gt;
+          &lt;name&gt;fs.defaultFS&lt;/name&gt;
+          &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
+     &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre></li>
+<li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/hdfs-site.xml</p>
+<pre><code>&lt;configuration&gt;
+      &lt;property&gt;
+           &lt;name&gt;dfs.replication&lt;/name&gt;
+           &lt;value&gt;2&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+           &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
+           &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp/dfs/name&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+           &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
+           &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp/dfs/data&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+          &lt;name&gt;dfs.http.address&lt;/name&gt;
+          &lt;value&gt;0.0.0.0:50070&lt;/value&gt;
+      &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre></li>
+<li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/hadoop-env.sh</p>
+<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171
+</code></pre></li>
+<li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/yarn-env.sh</p>
+<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171
+</code></pre></li>
+<li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/mapred-env.sh</p>
+<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171
+</code></pre></li>
+<li><p>Resource Manager <a href="http://localhost:8088" target="_blank" rel="noopener">http://localhost:8088</a></p>
+</li>
+<li>Web UI of the NameNode daemon <a href="http://localhost:50070" target="_blank" rel="noopener">http://localhost:50070</a></li>
+<li>HDFS NameNode web interface <a href="http://localhost:8042" target="_blank" rel="noopener">http://localhost:8042</a></li>
+</ul>
 
       
     </div>
@@ -484,8 +653,8 @@ java -version
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/17/常见的环境变量配置/" rel="next" title="常见的环境变量配置">
-                <i class="fa fa-chevron-left"></i> 常见的环境变量配置
+              <a href="/2018/04/18/Hadoop中wordcount程序开发/" rel="next" title="hadoop中wordcount程序开发">
+                <i class="fa fa-chevron-left"></i> hadoop中wordcount程序开发
               </a>
             
           </div>
@@ -493,10 +662,6 @@ java -version
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/18/Hadoop中wordcount程序开发/" rel="prev" title="hadoop中wordcount程序开发">
-                hadoop中wordcount程序开发 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -638,7 +803,7 @@ java -version
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu中的java环境变量配置"><span class="nav-number">1.</span> <span class="nav-text">ubuntu中的java环境变量配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu开启root用户登录的方法"><span class="nav-number">1.</span> <span class="nav-text">ubuntu开启root用户登录的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu中的java环境变量配置"><span class="nav-number">2.</span> <span class="nav-text">ubuntu中的java环境变量配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单机版hadoop配置"><span class="nav-number">3.</span> <span class="nav-text">单机版hadoop配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪分布式"><span class="nav-number">4.</span> <span class="nav-text">伪分布式</span></a></li></ol></div>
             
 
           </div>
@@ -703,7 +868,7 @@ java -version
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共7.8k字</span>
+  <span class="post-count">博客全站共8.8k字</span>
 </div>
 
         
