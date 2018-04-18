@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-18T14:07:33.347Z">
+<meta property="og:updated_time" content="2018-04-18T14:15:41.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu中hadoop单机模式和伪分布式搭建">
 <meta name="twitter:description" content="本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？">
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,005
+                  1,034
                 </span>
               
 
@@ -607,17 +607,23 @@ export YARN_NODEMANAGER_USER=root
       &lt;/property&gt;
 &lt;/configuration&gt;
 </code></pre></li>
-<li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/hadoop-env.sh</p>
-<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171
+<li><p>编辑 hadoop-env.sh</p>
+<pre><code>vim /root/app/hadoop-3.1.0/etc/hadoop/hadoop-env.sh
+export JAVA_HOME=/root/app/jdk1.8.0_171
 </code></pre></li>
-<li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/yarn-env.sh</p>
-<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171
+<li><p>编辑 yarn-env.sh</p>
+<pre><code>vim /root/app/hadoop-3.1.0/etc/hadoop/yarn-env.sh
+export JAVA_HOME=/root/app/jdk1.8.0_171
 </code></pre></li>
-<li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/mapred-env.sh</p>
-<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171
+<li><p>编辑 mapred-env.sh</p>
+<pre><code>vim /root/app/hadoop-3.1.0/etc/hadoop/mapred-env.sh
+export JAVA_HOME=/root/app/jdk1.8.0_171
 </code></pre></li>
-<li><p>Resource Manager <a href="http://localhost:8088" target="_blank" rel="noopener">http://localhost:8088</a></p>
-</li>
+<li>启动hadoop<pre><code>cd /root/app/hadoop-3.1.0
+./sbin/start-all.sh
+./sbin/stop-all.sh
+</code></pre></li>
+<li>Resource Manager <a href="http://localhost:8088" target="_blank" rel="noopener">http://localhost:8088</a></li>
 <li>Web UI of the NameNode daemon <a href="http://localhost:50070" target="_blank" rel="noopener">http://localhost:50070</a></li>
 <li>HDFS NameNode web interface <a href="http://localhost:8042" target="_blank" rel="noopener">http://localhost:8042</a></li>
 </ul>
@@ -653,8 +659,8 @@ export YARN_NODEMANAGER_USER=root
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/18/Hadoop中wordcount程序开发/" rel="next" title="hadoop中wordcount程序开发">
-                <i class="fa fa-chevron-left"></i> hadoop中wordcount程序开发
+              <a href="/2018/04/17/常见的环境变量配置/" rel="next" title="常见的环境变量配置">
+                <i class="fa fa-chevron-left"></i> 常见的环境变量配置
               </a>
             
           </div>
@@ -662,6 +668,10 @@ export YARN_NODEMANAGER_USER=root
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/18/Hadoop中wordcount程序开发/" rel="prev" title="hadoop中wordcount程序开发">
+                hadoop中wordcount程序开发 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>

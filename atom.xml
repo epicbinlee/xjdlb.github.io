@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-18T14:07:33.347Z</updated>
+  <updated>2018-04-18T06:16:35.307Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,30 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>ubuntu中hadoop单机模式和伪分布式搭建</title>
-    <link href="http://yoursite.com/2018/04/18/ubuntu%E4%B8%ADhadoop%E5%8D%95%E6%9C%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%AD%E5%BB%BA/"/>
-    <id>http://yoursite.com/2018/04/18/ubuntu中hadoop单机模式和伪分布式搭建/</id>
-    <published>2018-04-18T05:09:22.000Z</published>
-    <updated>2018-04-18T14:07:33.347Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？<br><a id="more"></a></p><h2 id="ubuntu开启root用户登录的方法"><a href="#ubuntu开启root用户登录的方法" class="headerlink" title="ubuntu开启root用户登录的方法"></a>ubuntu开启root用户登录的方法</h2><ul><li>设置密码、添加信息<pre><code>sudo passwd -u rootsudo passwd rootsu rootcd /usr/share/lightdm/lightdm.conf.d/vim 50-unity-greeter.conf# 添加user-session=ubuntugreeter-show-manual-login=trueall-guest=false# 重启reboot# 使用user和passwd进入root报错vim /root/.profile# 找到mesg n || true# 改为tty -s &amp;&amp; mesg n || true</code></pre></li></ul><h2 id="ubuntu中的java环境变量配置"><a href="#ubuntu中的java环境变量配置" class="headerlink" title="ubuntu中的java环境变量配置"></a>ubuntu中的java环境变量配置</h2><ul><li>编辑 sudo vim /etc/profile<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171export JRE_HOME=/root/app/jdk1.8.0_171/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/binsource /etc/profile</code></pre></li><li>验证<pre><code>java -version</code></pre></li></ul><h2 id="单机版hadoop配置"><a href="#单机版hadoop配置" class="headerlink" title="单机版hadoop配置"></a>单机版hadoop配置</h2><ul><li><p><a href="http://hadoop.apache.org/docs/r3.1.0/hadoop-project-dist/hadoop-common/SingleCluster.html#Standalone_Operation" target="_blank" rel="noopener">官方文档</a></p></li><li><p>生成ssh密钥</p><pre><code>cd ~ssh-keygen -t rsa -P &#39;&#39; -f ~/.ssh/id_rsacat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keyschmod 0600 ~/.ssh/authorized_keysssh localhost</code></pre></li><li><p>配置java环境</p><pre><code>root@ubuntu:~# vim /etc/profileexport JAVA_HOME=/root/app/jdk1.8.0_171export JRE_HOME=/root/app/jdk1.8.0_171/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</code></pre></li><li><p>配置hadoop环境 vim /etc/profile</p><pre><code>#HADOOP VARIABLES STARTexport JAVA_HOME=/root/app/jdk1.8.0_171export HADOOP_HOME=/root/app/hadoop-3.1.0export PATH=$PATH:$HADOOP_HOME/binexport PATH=$PATH:$HADOOP_HOME/sbinexport HADOOP_MAPRED_HOME=$HADOOP_HOMEexport HADOOP_COMMON_HOME=$HADOOP_HOMEexport HADOOP_HDFS_HOME=$HADOOP_HOMEexport YARN_HOME=$HADOOP_HOMEexport HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/nativeexport HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib&quot;#HADOOP VARIABLES ENDsource /etc/profile</code></pre></li><li><p>单机版测试</p><pre><code>root@ubuntu:~# /root/app/hadoop-3.1.0/bin/hadoop jar /root/app/hadoop-3.1.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jarAn example program must be given as the first argument.Valid program names are:aggregatewordcount: An Aggregate based map/reduce program that counts the words in the input files.aggregatewordhist: An Aggregate based map/reduce program that computes the histogram of the words in the input files.bbp: A map/reduce program that uses Bailey-Borwein-Plouffe to compute exact digits of Pi.dbcount: An example job that count the pageview counts from a database.distbbp: A map/reduce program that uses a BBP-type formula to compute exact bits of Pi.grep: A map/reduce program that counts the matches of a regex in the input.join: A job that effects a join over sorted, equally partitioned datasetsmultifilewc: A job that counts words from several files.pentomino: A map/reduce tile laying program to find solutions to pentomino problems.pi: A map/reduce program that estimates Pi using a quasi-Monte Carlo method.randomtextwriter: A map/reduce program that writes 10GB of random textual data per node.randomwriter: A map/reduce program that writes 10GB of random data per node.secondarysort: An example defining a secondary sort to the reduce.sort: A map/reduce program that sorts the data written by the random writer.sudoku: A sudoku solver.teragen: Generate data for the terasortterasort: Run the terasortteravalidate: Checking results of terasortwordcount: A map/reduce program that counts the words in the input files.wordmean: A map/reduce program that counts the average length of the words in the input files.wordmedian: A map/reduce program that counts the median length of the words in the input files.wordstandarddeviation: A map/reduce program that counts the standard deviation of the length of the words in the input files.</code></pre></li><li><p>实例测试</p><pre><code>/root/app/hadoop-3.1.0/bin/hadoop jar /root/app/hadoop-3.1.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jar grep ./input ./output &#39;dfs[a-z.]+&#39;cat ./output/*  # 查看结果rm -r ./output  # 删除结果# 结果root@ubuntu:~/app/hadoop-3.1.0# cat ./output/*  1    dfsadmin</code></pre></li></ul><h2 id="伪分布式"><a href="#伪分布式" class="headerlink" title="伪分布式"></a>伪分布式</h2><ul><li><p>格式化hdfs</p><pre><code>cd /root/app/hadoop-3.1.0./bin/hdfs namenode -format</code></pre></li><li><p>添加变量到 vim /etc/profile</p><pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171export JRE_HOME=/root/app/jdk1.8.0_171/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin## HADOOP VARIABLES STARTexport JAVA_HOME=/root/app/jdk1.8.0_171export HADOOP_HOME=/root/app/hadoop-3.1.0#export PATH=$PATH:$HADOOP_HOME/binexport PATH=$PATH:$HADOOP_HOME/sbin#export HADOOP_MAPRED_HOME=$HADOOP_HOMEexport HADOOP_COMMON_HOME=$HADOOP_HOMEexport HADOOP_HDFS_HOME=$HADOOP_HOMEexport HADOOP_YARN_HOME=$HADOOP_HOME#export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/nativeexport HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib&quot;#export HDFS_DATANODE_USER=rootexport HDFS_NAMENODE_USER=rootexport HDFS_SECONDARYNAMENODE_USER=root#export YARN_RESOURCEMANAGER_USER=rootexport HADOOP_SECURE_DN_USER=yarnexport YARN_NODEMANAGER_USER=root# HADOOP VARIABLES END</code></pre></li><li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/core-site.xml</p><pre><code>&lt;configuration&gt;     &lt;property&gt;          &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;          &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp&lt;/value&gt;     &lt;/property&gt;     &lt;property&gt;          &lt;name&gt;fs.defaultFS&lt;/name&gt;          &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;     &lt;/property&gt;&lt;/configuration&gt;</code></pre></li><li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/hdfs-site.xml</p><pre><code>&lt;configuration&gt;      &lt;property&gt;           &lt;name&gt;dfs.replication&lt;/name&gt;           &lt;value&gt;2&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;           &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;           &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp/dfs/name&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;           &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;           &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp/dfs/data&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;          &lt;name&gt;dfs.http.address&lt;/name&gt;          &lt;value&gt;0.0.0.0:50070&lt;/value&gt;      &lt;/property&gt;&lt;/configuration&gt;</code></pre></li><li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/hadoop-env.sh</p><pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171</code></pre></li><li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/yarn-env.sh</p><pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171</code></pre></li><li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/mapred-env.sh</p><pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171</code></pre></li><li><p>Resource Manager <a href="http://localhost:8088" target="_blank" rel="noopener">http://localhost:8088</a></p></li><li>Web UI of the NameNode daemon <a href="http://localhost:50070" target="_blank" rel="noopener">http://localhost:50070</a></li><li>HDFS NameNode web interface <a href="http://localhost:8042" target="_blank" rel="noopener">http://localhost:8042</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？&lt;br&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
-    
-  </entry>
   
   <entry>
     <title>hadoop中wordcount程序开发</title>
@@ -61,6 +37,30 @@
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
       <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
+    
+      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu中hadoop单机模式和伪分布式搭建</title>
+    <link href="http://yoursite.com/2018/04/18/ubuntu%E4%B8%ADhadoop%E5%8D%95%E6%9C%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%AD%E5%BB%BA/"/>
+    <id>http://yoursite.com/2018/04/18/ubuntu中hadoop单机模式和伪分布式搭建/</id>
+    <published>2018-04-18T05:09:22.000Z</published>
+    <updated>2018-04-18T14:15:41.496Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？<br><a id="more"></a></p><h2 id="ubuntu开启root用户登录的方法"><a href="#ubuntu开启root用户登录的方法" class="headerlink" title="ubuntu开启root用户登录的方法"></a>ubuntu开启root用户登录的方法</h2><ul><li>设置密码、添加信息<pre><code>sudo passwd -u rootsudo passwd rootsu rootcd /usr/share/lightdm/lightdm.conf.d/vim 50-unity-greeter.conf# 添加user-session=ubuntugreeter-show-manual-login=trueall-guest=false# 重启reboot# 使用user和passwd进入root报错vim /root/.profile# 找到mesg n || true# 改为tty -s &amp;&amp; mesg n || true</code></pre></li></ul><h2 id="ubuntu中的java环境变量配置"><a href="#ubuntu中的java环境变量配置" class="headerlink" title="ubuntu中的java环境变量配置"></a>ubuntu中的java环境变量配置</h2><ul><li>编辑 sudo vim /etc/profile<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171export JRE_HOME=/root/app/jdk1.8.0_171/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/binsource /etc/profile</code></pre></li><li>验证<pre><code>java -version</code></pre></li></ul><h2 id="单机版hadoop配置"><a href="#单机版hadoop配置" class="headerlink" title="单机版hadoop配置"></a>单机版hadoop配置</h2><ul><li><p><a href="http://hadoop.apache.org/docs/r3.1.0/hadoop-project-dist/hadoop-common/SingleCluster.html#Standalone_Operation" target="_blank" rel="noopener">官方文档</a></p></li><li><p>生成ssh密钥</p><pre><code>cd ~ssh-keygen -t rsa -P &#39;&#39; -f ~/.ssh/id_rsacat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keyschmod 0600 ~/.ssh/authorized_keysssh localhost</code></pre></li><li><p>配置java环境</p><pre><code>root@ubuntu:~# vim /etc/profileexport JAVA_HOME=/root/app/jdk1.8.0_171export JRE_HOME=/root/app/jdk1.8.0_171/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</code></pre></li><li><p>配置hadoop环境 vim /etc/profile</p><pre><code>#HADOOP VARIABLES STARTexport JAVA_HOME=/root/app/jdk1.8.0_171export HADOOP_HOME=/root/app/hadoop-3.1.0export PATH=$PATH:$HADOOP_HOME/binexport PATH=$PATH:$HADOOP_HOME/sbinexport HADOOP_MAPRED_HOME=$HADOOP_HOMEexport HADOOP_COMMON_HOME=$HADOOP_HOMEexport HADOOP_HDFS_HOME=$HADOOP_HOMEexport YARN_HOME=$HADOOP_HOMEexport HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/nativeexport HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib&quot;#HADOOP VARIABLES ENDsource /etc/profile</code></pre></li><li><p>单机版测试</p><pre><code>root@ubuntu:~# /root/app/hadoop-3.1.0/bin/hadoop jar /root/app/hadoop-3.1.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jarAn example program must be given as the first argument.Valid program names are:aggregatewordcount: An Aggregate based map/reduce program that counts the words in the input files.aggregatewordhist: An Aggregate based map/reduce program that computes the histogram of the words in the input files.bbp: A map/reduce program that uses Bailey-Borwein-Plouffe to compute exact digits of Pi.dbcount: An example job that count the pageview counts from a database.distbbp: A map/reduce program that uses a BBP-type formula to compute exact bits of Pi.grep: A map/reduce program that counts the matches of a regex in the input.join: A job that effects a join over sorted, equally partitioned datasetsmultifilewc: A job that counts words from several files.pentomino: A map/reduce tile laying program to find solutions to pentomino problems.pi: A map/reduce program that estimates Pi using a quasi-Monte Carlo method.randomtextwriter: A map/reduce program that writes 10GB of random textual data per node.randomwriter: A map/reduce program that writes 10GB of random data per node.secondarysort: An example defining a secondary sort to the reduce.sort: A map/reduce program that sorts the data written by the random writer.sudoku: A sudoku solver.teragen: Generate data for the terasortterasort: Run the terasortteravalidate: Checking results of terasortwordcount: A map/reduce program that counts the words in the input files.wordmean: A map/reduce program that counts the average length of the words in the input files.wordmedian: A map/reduce program that counts the median length of the words in the input files.wordstandarddeviation: A map/reduce program that counts the standard deviation of the length of the words in the input files.</code></pre></li><li><p>实例测试</p><pre><code>/root/app/hadoop-3.1.0/bin/hadoop jar /root/app/hadoop-3.1.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jar grep ./input ./output &#39;dfs[a-z.]+&#39;cat ./output/*  # 查看结果rm -r ./output  # 删除结果# 结果root@ubuntu:~/app/hadoop-3.1.0# cat ./output/*  1    dfsadmin</code></pre></li></ul><h2 id="伪分布式"><a href="#伪分布式" class="headerlink" title="伪分布式"></a>伪分布式</h2><ul><li><p>格式化hdfs</p><pre><code>cd /root/app/hadoop-3.1.0./bin/hdfs namenode -format</code></pre></li><li><p>添加变量到 vim /etc/profile</p><pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171export JRE_HOME=/root/app/jdk1.8.0_171/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin## HADOOP VARIABLES STARTexport JAVA_HOME=/root/app/jdk1.8.0_171export HADOOP_HOME=/root/app/hadoop-3.1.0#export PATH=$PATH:$HADOOP_HOME/binexport PATH=$PATH:$HADOOP_HOME/sbin#export HADOOP_MAPRED_HOME=$HADOOP_HOMEexport HADOOP_COMMON_HOME=$HADOOP_HOMEexport HADOOP_HDFS_HOME=$HADOOP_HOMEexport HADOOP_YARN_HOME=$HADOOP_HOME#export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/nativeexport HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib&quot;#export HDFS_DATANODE_USER=rootexport HDFS_NAMENODE_USER=rootexport HDFS_SECONDARYNAMENODE_USER=root#export YARN_RESOURCEMANAGER_USER=rootexport HADOOP_SECURE_DN_USER=yarnexport YARN_NODEMANAGER_USER=root# HADOOP VARIABLES END</code></pre></li><li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/core-site.xml</p><pre><code>&lt;configuration&gt;     &lt;property&gt;          &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;          &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp&lt;/value&gt;     &lt;/property&gt;     &lt;property&gt;          &lt;name&gt;fs.defaultFS&lt;/name&gt;          &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;     &lt;/property&gt;&lt;/configuration&gt;</code></pre></li><li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/hdfs-site.xml</p><pre><code>&lt;configuration&gt;      &lt;property&gt;           &lt;name&gt;dfs.replication&lt;/name&gt;           &lt;value&gt;2&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;           &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;           &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp/dfs/name&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;           &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;           &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp/dfs/data&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;          &lt;name&gt;dfs.http.address&lt;/name&gt;          &lt;value&gt;0.0.0.0:50070&lt;/value&gt;      &lt;/property&gt;&lt;/configuration&gt;</code></pre></li><li><p>编辑 hadoop-env.sh</p><pre><code>vim /root/app/hadoop-3.1.0/etc/hadoop/hadoop-env.shexport JAVA_HOME=/root/app/jdk1.8.0_171</code></pre></li><li><p>编辑 yarn-env.sh</p><pre><code>vim /root/app/hadoop-3.1.0/etc/hadoop/yarn-env.shexport JAVA_HOME=/root/app/jdk1.8.0_171</code></pre></li><li><p>编辑 mapred-env.sh</p><pre><code>vim /root/app/hadoop-3.1.0/etc/hadoop/mapred-env.shexport JAVA_HOME=/root/app/jdk1.8.0_171</code></pre></li><li>启动hadoop<pre><code>cd /root/app/hadoop-3.1.0./sbin/start-all.sh./sbin/stop-all.sh</code></pre></li><li>Resource Manager <a href="http://localhost:8088" target="_blank" rel="noopener">http://localhost:8088</a></li><li>Web UI of the NameNode daemon <a href="http://localhost:50070" target="_blank" rel="noopener">http://localhost:50070</a></li><li>HDFS NameNode web interface <a href="http://localhost:8042" target="_blank" rel="noopener">http://localhost:8042</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？&lt;br&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
       <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
     
@@ -179,6 +179,32 @@
   </entry>
   
   <entry>
+    <title>如何去掉valine的Powered By信息？</title>
+    <link href="http://yoursite.com/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
+    <id>http://yoursite.com/2018/04/03/如何去掉valine的Powered By信息？/</id>
+    <published>2018-04-03T14:42:05.000Z</published>
+    <updated>2018-04-18T05:52:10.339Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍如何去掉valine页面上的Powered By信息。<br><a id="more"></a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul><li>找到配置文件<pre><code>blog/themes/next/layout/_third-party/comments/valine.swig</code></pre></li><li>配置如下<pre><code>{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>  <script type="text/javascript">    var GUEST = ['nick','mail','link'];    var guest = '{{ theme.valine.guest_info }}';    guest = guest.split(',').filter(item=>{      return GUEST.indexOf(item)>-1;    });    new Valine({        el: '#comments' ,        verify: {{ theme.valine.verify }},        notify: {{ theme.valine.notify }},        appId: '{{ theme.valine.appid }}',        appKey: '{{ theme.valine.appkey }}',        placeholder: '{{ theme.valine.placeholder }}',        avatar:'{{ theme.valine.avatar }}',        guest_info:guest,        pageSize:'{{ theme.valine.pageSize }}' || 10,    });//新增以下代码即可，可以移除.info下所有子节点。var infoEle = document.querySelector('#comments .info');if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){  infoEle.childNodes.forEach(function(item) {item.parentNode.removeChild(item);  });}  </script>{% endif %}</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍如何去掉valine页面上的Powered By信息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LC_001_TwoSum_HashMap</title>
     <link href="http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/"/>
     <id>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</id>
@@ -203,32 +229,6 @@
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
     
       <category term="basic algorithm" scheme="http://yoursite.com/tags/basic-algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何去掉valine的Powered By信息？</title>
-    <link href="http://yoursite.com/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
-    <id>http://yoursite.com/2018/04/03/如何去掉valine的Powered By信息？/</id>
-    <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-18T05:52:10.339Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍如何去掉valine页面上的Powered By信息。<br><a id="more"></a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul><li>找到配置文件<pre><code>blog/themes/next/layout/_third-party/comments/valine.swig</code></pre></li><li>配置如下<pre><code>{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>  <script type="text/javascript">    var GUEST = ['nick','mail','link'];    var guest = '{{ theme.valine.guest_info }}';    guest = guest.split(',').filter(item=>{      return GUEST.indexOf(item)>-1;    });    new Valine({        el: '#comments' ,        verify: {{ theme.valine.verify }},        notify: {{ theme.valine.notify }},        appId: '{{ theme.valine.appid }}',        appKey: '{{ theme.valine.appkey }}',        placeholder: '{{ theme.valine.placeholder }}',        avatar:'{{ theme.valine.avatar }}',        guest_info:guest,        pageSize:'{{ theme.valine.pageSize }}' || 10,    });//新增以下代码即可，可以移除.info下所有子节点。var infoEle = document.querySelector('#comments .info');if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){  infoEle.childNodes.forEach(function(item) {item.parentNode.removeChild(item);  });}  </script>{% endif %}</code></pre></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍如何去掉valine页面上的Powered By信息。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
     
   </entry>
   
