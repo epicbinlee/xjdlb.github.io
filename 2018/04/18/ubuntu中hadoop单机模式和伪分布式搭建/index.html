@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-18T14:15:41.496Z">
+<meta property="og:updated_time" content="2018-04-18T14:19:43.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu中hadoop单机模式和伪分布式搭建">
 <meta name="twitter:description" content="本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？">
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,034
+                  1,068
                 </span>
               
 
@@ -540,7 +540,7 @@ root@ubuntu:~/app/hadoop-3.1.0# cat ./output/*
 1    dfsadmin
 </code></pre></li>
 </ul>
-<h2 id="伪分布式"><a href="#伪分布式" class="headerlink" title="伪分布式"></a>伪分布式</h2><ul>
+<h2 id="伪分布式hadoop配置"><a href="#伪分布式hadoop配置" class="headerlink" title="伪分布式hadoop配置"></a>伪分布式hadoop配置</h2><ul>
 <li><p>格式化hdfs</p>
 <pre><code>cd /root/app/hadoop-3.1.0
 ./bin/hdfs namenode -format
@@ -619,9 +619,21 @@ export JAVA_HOME=/root/app/jdk1.8.0_171
 <pre><code>vim /root/app/hadoop-3.1.0/etc/hadoop/mapred-env.sh
 export JAVA_HOME=/root/app/jdk1.8.0_171
 </code></pre></li>
-<li>启动hadoop<pre><code>cd /root/app/hadoop-3.1.0
+</ul>
+<h2 id="hadoop的使用"><a href="#hadoop的使用" class="headerlink" title="hadoop的使用"></a>hadoop的使用</h2><ul>
+<li><p>启动与停止</p>
+<pre><code>cd /root/app/hadoop-3.1.0
 ./sbin/start-all.sh
 ./sbin/stop-all.sh
+</code></pre></li>
+<li><p>查看服务</p>
+<pre><code>root@ubuntu:~/app/hadoop-3.1.0# jps
+23058 NameNode
+23491 SecondaryNameNode
+23753 ResourceManager
+23225 DataNode
+24427 Jps
+24030 NodeManager
 </code></pre></li>
 <li>Resource Manager <a href="http://localhost:8088" target="_blank" rel="noopener">http://localhost:8088</a></li>
 <li>Web UI of the NameNode daemon <a href="http://localhost:50070" target="_blank" rel="noopener">http://localhost:50070</a></li>
@@ -659,8 +671,8 @@ export JAVA_HOME=/root/app/jdk1.8.0_171
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/17/常见的环境变量配置/" rel="next" title="常见的环境变量配置">
-                <i class="fa fa-chevron-left"></i> 常见的环境变量配置
+              <a href="/2018/04/18/Hadoop中wordcount程序开发/" rel="next" title="hadoop中wordcount程序开发">
+                <i class="fa fa-chevron-left"></i> hadoop中wordcount程序开发
               </a>
             
           </div>
@@ -668,10 +680,6 @@ export JAVA_HOME=/root/app/jdk1.8.0_171
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/18/Hadoop中wordcount程序开发/" rel="prev" title="hadoop中wordcount程序开发">
-                hadoop中wordcount程序开发 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -813,7 +821,7 @@ export JAVA_HOME=/root/app/jdk1.8.0_171
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu开启root用户登录的方法"><span class="nav-number">1.</span> <span class="nav-text">ubuntu开启root用户登录的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu中的java环境变量配置"><span class="nav-number">2.</span> <span class="nav-text">ubuntu中的java环境变量配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单机版hadoop配置"><span class="nav-number">3.</span> <span class="nav-text">单机版hadoop配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪分布式"><span class="nav-number">4.</span> <span class="nav-text">伪分布式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu开启root用户登录的方法"><span class="nav-number">1.</span> <span class="nav-text">ubuntu开启root用户登录的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu中的java环境变量配置"><span class="nav-number">2.</span> <span class="nav-text">ubuntu中的java环境变量配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单机版hadoop配置"><span class="nav-number">3.</span> <span class="nav-text">单机版hadoop配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪分布式hadoop配置"><span class="nav-number">4.</span> <span class="nav-text">伪分布式hadoop配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hadoop的使用"><span class="nav-number">5.</span> <span class="nav-text">hadoop的使用</span></a></li></ol></div>
             
 
           </div>
