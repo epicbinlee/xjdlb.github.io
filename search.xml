@@ -15,6 +15,20 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[eclipse中的git基本配置]]></title>
+    <url>%2F2018%2F04%2F16%2Feclipse%E4%B8%AD%E7%9A%84git%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[本文介绍了如何使用git和eclipse进行代码的版本控制。 命令行模式操作 服务端注册github或者giteee账号 客户端下载git软件 使用命令生成本地的密钥 将秘钥添加到服务端的git中 服务端新建git仓库，客户端克隆到本地 客户端添加文件到仓库中，使用各种命令对该仓库进行版本控制 上述的属于git的基本操作详细步骤参考 如何利用ubuntu实现私有git服务端-附ssh操作？ eclipse中git上传代码 服务端已经添加了客户端的ssh密钥 服务端已经新建了仓库 客户端eclipse新建项目 在路径eclipse&gt;windows&gt;preference&gt;team&gt;git&gt;configuration下查看user和passwd的配置 在路径package explorer&gt;项目右键&gt;share project&gt;repository&gt;create，新建本地的仓库名字要和服务端的名字一致，如：d:\test.git，完成了新建仓库 在路径package explorer&gt;项目右键&gt;team&gt;add to index，完成文件的add 在路径package explorer&gt;项目右键&gt;team&gt;commit或者Ctrl+#，提交 接上一步，先填写commit message 接上一步，填写服务器地址remote name: origin url: git@github.com:xjdlb/testgit.git # git 地址 hostname: github.com # 域名 repository path: xjdlb/testgit.git 一路next就好了 他山之石 eclipse中git下载代码 在路径package explorer&gt;空白右键&gt;import&gt;Git&gt;Projects from Git，next 接上步，选择URI，包含了远程和本地 主要的分支 新建本地的仓库，如：d:\test.git 继续coding 返回上面上传代码操作 eclipse push 出现了 rejected-non-fast-forward错误 他山之石 打开windows&gt;show view&gt;other&gt;git repositories git repositories&gt;remote&gt;origin&gt;绿色分支&gt;右键&gt;configure fetch&gt;save and fetch 此时可以看见remote tracking&gt;origin/mater&gt;右键&gt;merge 问题解决，可以上传了 add&gt;commit&gt;push]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>git</tag>
+        <tag>eclipse</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[使用kcptun加速ss服务]]></title>
     <url>%2F2018%2F04%2F15%2F%E4%BD%BF%E7%94%A8kcptun%E5%8A%A0%E9%80%9Fss%E6%9C%8D%E5%8A%A1%2F</url>
     <content type="text"><![CDATA[本文介绍如何使用kcptun加速ss服务。 软件准备 安装组件apt-get update apt-get upgrade apt-get install build-essential python-pip m2crypto supervisor 安装sspip install shadowsocks 安装加密用软件 libsodiumwget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz tar zxvf libsodium-1.0.11.tar.gz cd libsodium-1.0.11 ./configure make &amp;&amp; make check make install echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf ldconfig [可选] 配置supervisor, vi /etc/supervisor/conf.d/shadowsocks.conf [program:shadowsocks] command=ssserver -c /etc/shadowsocks.json autorestart=true user=root [可选] 使用supervisor supervisorctl reload supervisorctl status ss配置 ss服务器配置ss_config.json{ &quot;server&quot;: &quot;127.0.0.1&quot;, &quot;port_password&quot;: { &quot;10001&quot;: &quot;helloworld&quot;, &quot;10002&quot;: &quot;helloworld&quot;, &quot;10003&quot;: &quot;helloworld&quot; }, &quot;local_port&quot;: 1080, &quot;timeout&quot;: 600, &quot;method&quot;: &quot;chacha20&quot;, &quot;auth&quot;: true } 启动和停止脚本ssserver -c /root/shadowsocks/ss_config.json -d start ssserver -c /root/shadowsocks/ss_config.json -d stop kcptun配置 kcptun官网 https://github.com/xtaci/kcptun/releases 其中 kcptun-linux-amd64-20180316.tar.gz 为Linux版本 其中 kcptun-windows-amd64-20180316.tar.gz 为Windows版本 安装 kcptunmkdir /root/kcptun cd /root/kcptun ln -sf /bin/bash /bin/sh wget https://github.com/xtaci/kcptun/releases/download/v20161118/kcptun-linux-amd64-20161118.tar.gz tar -zxf kcptun-linux-amd64-*.tar.gz 配置三个脚本start.sh, stop.sh, server-config.json 启动脚本vi /root/kcptun/start.sh #!/bin/bash cd /root/kcptun/ ./server_linux_amd64 -c /root/kcptun/server-config.json &gt; kcptun.log 2&gt;&amp;1 &amp; echo &quot;Kcptun started.&quot; 停止脚本 vi /root/kcptun/stop.sh #!/bin/bash echo &quot;Stopping Kcptun...&quot; PID=`ps -ef | grep server_linux_amd64 | grep -v grep | awk &#39;{print $2}&#39;` if [ &quot;&quot; != &quot;$PID&quot; ]; then echo &quot;killing $PID&quot; kill -9 $PID fi echo &quot;Kcptun stoped.&quot; kcptun配置文件 vi /root/kcptun/server-config.json { &quot;listen&quot;: &quot;:443&quot;, &quot;target&quot;: &quot;127.0.0.1:10001&quot;, &quot;key&quot;: &quot;helloworld&quot;, &quot;crypt&quot;: &quot;salsa20&quot;, &quot;mode&quot;: &quot;fast2&quot;, &quot;mtu&quot;: 1350, &quot;sndwnd&quot;: 1024, &quot;rcvwnd&quot;: 1024, &quot;datashard&quot;: 5, &quot;parityshard&quot;: 5, &quot;dscp&quot;: 46, &quot;nocomp&quot;: true, &quot;acknodelay&quot;: false, &quot;nodelay&quot;: 0, &quot;interval&quot;: 40, &quot;resend&quot;: 0, &quot;nc&quot;: 0, &quot;sockbuf&quot;: 4194304, &quot;keepalive&quot;: 10 } 启动或停止kcptunsh /root/kcptun/start.sh sh /root/kcptun/stop.sh 客户端windows环境中的kcptun配置 kcptun官网 https://github.com/xtaci/kcptun/releases client_windows_amd64.exe 放在全部英文目录下 创建下面的三个文件：run.vbs, client-config.json, stop.sh 在当前文件夹下，创建 run.vbsDim RunKcptun Set fso = CreateObject(&quot;Scripting.FileSystemObject&quot;) Set WshShell = WScript.CreateObject(&quot;WScript.Shell&quot;) currentPath = fso.GetFile(Wscript.ScriptFullName).ParentFolder.Path &amp; &quot;\&quot; configFile = currentPath &amp; &quot;client-config.json&quot; logFile = currentPath &amp; &quot;kcptun.log&quot; exeConfig = currentPath &amp; &quot;client_windows_amd64.exe -c &quot; &amp; configFile cmdLine = &quot;cmd /c &quot; &amp; exeConfig &amp; &quot; &gt; &quot; &amp; logFile &amp; &quot; 2&gt;&amp;1&quot; WshShell.Run cmdLine, 0, False &#39;WScript.Sleep 1000 &#39;Wscript.echo cmdLine Set WshShell = Nothing Set fso = Nothing WScript.quit 在当前文件夹下，创建client-config.json{ &quot;localaddr&quot;: &quot;:12345&quot;, &quot;remoteaddr&quot;: &quot;165.227.213.57:443&quot;, &quot;key&quot;: &quot;helloworld&quot;, &quot;crypt&quot;: &quot;salsa20&quot;, &quot;mode&quot;: &quot;fast2&quot;, &quot;conn&quot;: 1, &quot;autoexpire&quot;: 60, &quot;mtu&quot;: 1350, &quot;sndwnd&quot;: 128, &quot;rcvwnd&quot;: 1024, &quot;datashard&quot;: 5, &quot;parityshard&quot;: 5, &quot;dscp&quot;: 46, &quot;nocomp&quot;: true, &quot;acknodelay&quot;: false, &quot;nodelay&quot;: 0, &quot;interval&quot;: 40, &quot;resend&quot;: 0, &quot;nc&quot;: 0, &quot;sockbuf&quot;: 4194304, &quot;keepalive&quot;: 10 } 在当前文件夹下，创建stop.shtaskkill /f /im client_windows_amd64.exe 客户端windows环境中的ss配置 使用本地的配置127.0.0.1 12345 helloworld(服务端ss的密码，不是kcptun的密码) chacha20]]></content>
@@ -24,21 +38,22 @@
       <tags>
         <tag>列表</tag>
         <tag>配置</tag>
-        <tag>ss</tag>
         <tag>kcptun</tag>
+        <tag>ss</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[hexo如何开启语法高亮？]]></title>
-    <url>%2F2018%2F04%2F03%2Fhexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F%2F</url>
-    <content type="text"><![CDATA[本文介绍hexo有关语法高亮的配置方案。 配置过程 配置主站点下的配置文件highlight: enable: true line_number: true auto_detect: true tab_replace: 代码后面添加名称，如```java code ```]]></content>
+    <title><![CDATA[LC_001_TwoSum_HashMap]]></title>
+    <url>%2F2018%2F04%2F03%2FLC_001_TwoSum_HashMap%2F</url>
+    <content type="text"><![CDATA[leetcode第001题，主要用到了hashmap数据结构。 题解package LC; import java.util.Arrays; import java.util.HashMap; /** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */ public class LC_001_TwoSum_HashMap { public static void main(String[] args) { int[] a = {1, 2, 3, 4, 5, 7}; int t = 10; System.out.println(Arrays.toString(twoSum(a, t))); } private static int[] twoSum(int[] nums, int target) { HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) { int diff = target - nums[i]; if (map.containsKey(diff)) return new int[]{map.get(diff), i}; map.put(nums[i], i); } throw new IllegalArgumentException(&quot;-1&quot;); } }]]></content>
       <categories>
-        <category>配置</category>
+        <category>leetcode</category>
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>配置</tag>
-        <tag>hexo</tag>
+        <tag>leetcode</tag>
+        <tag>java</tag>
+        <tag>basic algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -55,17 +70,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LC_001_TwoSum_HashMap]]></title>
-    <url>%2F2018%2F04%2F03%2FLC_001_TwoSum_HashMap%2F</url>
-    <content type="text"><![CDATA[leetcode第001题，主要用到了hashmap数据结构。 题解package LC; import java.util.Arrays; import java.util.HashMap; /** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */ public class LC_001_TwoSum_HashMap { public static void main(String[] args) { int[] a = {1, 2, 3, 4, 5, 7}; int t = 10; System.out.println(Arrays.toString(twoSum(a, t))); } private static int[] twoSum(int[] nums, int target) { HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) { int diff = target - nums[i]; if (map.containsKey(diff)) return new int[]{map.get(diff), i}; map.put(nums[i], i); } throw new IllegalArgumentException(&quot;-1&quot;); } }]]></content>
+    <title><![CDATA[hexo如何开启语法高亮？]]></title>
+    <url>%2F2018%2F04%2F03%2Fhexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍hexo有关语法高亮的配置方案。 配置过程 配置主站点下的配置文件highlight: enable: true line_number: true auto_detect: true tab_replace: 代码后面添加名称，如```java code ```]]></content>
       <categories>
-        <category>leetcode</category>
+        <category>配置</category>
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>leetcode</tag>
-        <tag>java</tag>
-        <tag>basic algorithm</tag>
+        <tag>配置</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -131,8 +145,8 @@
       <tags>
         <tag>列表</tag>
         <tag>配置</tag>
-        <tag>hexo</tag>
         <tag>git</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
