@@ -198,21 +198,29 @@ export YARN_NODEMANAGER_USER=root
 </configuration>
 ```
 
-- 编辑/root/app/hadoop-3.1.0/etc/hadoop/hadoop-env.sh
+- 编辑 hadoop-env.sh
 ```
+vim /root/app/hadoop-3.1.0/etc/hadoop/hadoop-env.sh
 export JAVA_HOME=/root/app/jdk1.8.0_171
 ```
 
-- 编辑/root/app/hadoop-3.1.0/etc/hadoop/yarn-env.sh
+- 编辑 yarn-env.sh
 ```
+vim /root/app/hadoop-3.1.0/etc/hadoop/yarn-env.sh
 export JAVA_HOME=/root/app/jdk1.8.0_171
 ```
 
-- 编辑/root/app/hadoop-3.1.0/etc/hadoop/mapred-env.sh
+- 编辑 mapred-env.sh
 ```
+vim /root/app/hadoop-3.1.0/etc/hadoop/mapred-env.sh
 export JAVA_HOME=/root/app/jdk1.8.0_171
 ```
-
+- 启动hadoop
+```
+cd /root/app/hadoop-3.1.0
+./sbin/start-all.sh
+./sbin/stop-all.sh
+```
 - Resource Manager http://localhost:8088
 - Web UI of the NameNode daemon http://localhost:50070
 - HDFS NameNode web interface http://localhost:8042
