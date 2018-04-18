@@ -15,11 +15,11 @@ mathjax: true
 - windows
 - eclipse
 - maven
-    - Apache Hadoop Common 3.1
-    - Apache Hadoop Client Aggregator 3.1
-    - Hadoop Core 1.2
-    - Apache Hadoop HDFS 3.1
-    - Apache Hadoop MapReduce Core 3.1
+    1. Apache Hadoop Common 3.1
+    2. Apache Hadoop Client Aggregator 3.1
+    3. Hadoop Core 1.2
+    4. Apache Hadoop HDFS 3.1
+    5. Apache Hadoop MapReduce Core 3.1
 
 ## 添加依赖后maven报错
 - 报错
