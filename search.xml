@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hadoop wordcount程序开发]]></title>
+    <url>%2F2018%2F04%2F17%2FHadoop%E4%B8%ADwordcount%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[本文介绍如何利用java和Hadoop组件开发wordcount程序。 开发环境 windows eclipse maven Apache Hadoop Common 3.1 Apache Hadoop Client Aggregator 3.1 Hadoop Core 1.2 Apache Hadoop HDFS 3.1 Apache Hadoop MapReduce Core 3.1 添加依赖后maven报错 报错Buiding Hadoop with Eclipse Maven - Missing artifact jdk.tools:jdk.tools:jar:1.6 解决# cmd C:\Users\BinLee&gt;java -version java version &quot;1.8.0_144&quot; Java(TM) SE Runtime Environment (build 1.8.0_144-b01) Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode) # # 添加下面的依赖到maven的pom.xml &lt;dependency&gt; &lt;groupId&gt;jdk.tools&lt;/groupId&gt; &lt;artifactId&gt;jdk.tools&lt;/artifactId&gt; &lt;version&gt;1.8.0_144&lt;/version&gt; &lt;scope&gt;system&lt;/scope&gt; &lt;systemPath&gt;${JAVA_HOME}/lib/tools.jar&lt;/systemPath&gt; &lt;/dependency&gt;]]></content>
+      <categories>
+        <category>开发</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>maven</tag>
+        <tag>Hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[常见的环境变量配置]]></title>
     <url>%2F2018%2F04%2F17%2F%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[本文介绍常见的环境变量配置方法。 windows常见的环境变量配置 CLASSPATH .;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar; JAVA_HOME C:\app3\Java\jdk1.8.0_144 JRE_HOME C:\app3\Java\jre1.8.0_144 MVN_HOMEC:\app3\apache-maven-3.5.3 Path C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;]]></content>
@@ -23,9 +36,9 @@
       </categories>
       <tags>
         <tag>列表</tag>
+        <tag>maven</tag>
         <tag>配置</tag>
         <tag>windows</tag>
-        <tag>maven</tag>
       </tags>
   </entry>
   <entry>
@@ -37,8 +50,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
         <tag>eclipse</tag>
       </tags>
   </entry>
@@ -54,6 +67,19 @@
         <tag>配置</tag>
         <tag>kcptun</tag>
         <tag>ss</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
+    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>valine</tag>
       </tags>
   </entry>
   <entry>
@@ -81,19 +107,6 @@
         <tag>leetcode</tag>
         <tag>java</tag>
         <tag>basic algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
-    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
-    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>列表</tag>
-        <tag>配置</tag>
-        <tag>valine</tag>
       </tags>
   </entry>
   <entry>
@@ -131,8 +144,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
         <tag>vps</tag>
       </tags>
   </entry>
@@ -145,8 +158,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -158,8 +171,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
         <tag>hexo</tag>
       </tags>
   </entry>
@@ -215,8 +228,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
