@@ -122,7 +122,7 @@ root@ubuntu:~/app/hadoop-3.1.0# cat ./output/*
 1	dfsadmin
 ```
 
-## 伪分布式
+## 伪分布式hadoop配置
 
 - 格式化hdfs
 ```
@@ -215,11 +215,24 @@ export JAVA_HOME=/root/app/jdk1.8.0_171
 vim /root/app/hadoop-3.1.0/etc/hadoop/mapred-env.sh
 export JAVA_HOME=/root/app/jdk1.8.0_171
 ```
-- 启动hadoop
+
+## hadoop的使用
+- 启动与停止
 ```
 cd /root/app/hadoop-3.1.0
 ./sbin/start-all.sh
 ./sbin/stop-all.sh
+```
+
+- 查看服务
+```
+root@ubuntu:~/app/hadoop-3.1.0# jps
+23058 NameNode
+23491 SecondaryNameNode
+23753 ResourceManager
+23225 DataNode
+24427 Jps
+24030 NodeManager
 ```
 - Resource Manager http://localhost:8088
 - Web UI of the NameNode daemon http://localhost:50070
