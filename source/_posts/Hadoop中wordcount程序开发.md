@@ -110,7 +110,6 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
 ```
 
