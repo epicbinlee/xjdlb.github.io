@@ -8,7 +8,7 @@ toc: true
 mathjax: true
 ---
 
-本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】。
+本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】，maven详细讲解：[他山之石](https://www.yiibai.com/maven/)
 
 <!-- more -->
 
@@ -367,4 +367,44 @@ Hello World!
 2018-04-17T16:15:02.211+08:00
 P2147483647D
 2018-04-17T16:15:02.289
+```
+
+- eclipse上的maven插件M2Eclipse
+```
+help menu > install new software > input the url as follow
+http://download.eclipse.org/technology/m2e/releases/
+# 备注插件官网
+http://www.eclipse.org/m2e/
+# 该插件可以解决mvn install报错问题
+```
+
+## 关于maven源码打包
+- 命令行方式，[他山之石](https://blog.csdn.net/symgdwyh/article/details/4407945)
+```
+cd {项目目录下}
+mvn source:jar
+mvn source:test-jar
+```
+
+- eclipse中pom.xml结尾加入插件，然后执行maven install
+```
+...
+	</dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
 ```
