@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[hexo构建博客搜索框加载中的解决方案]]></title>
+    <url>%2F2018%2F04%2F19%2Fhexo%E6%9E%84%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%90%9C%E7%B4%A2%E6%A1%86%E5%8A%A0%E8%BD%BD%E4%B8%AD%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%2F</url>
+    <content type="text"><![CDATA[本文介绍nodejs+hexo+github+markdown搭建博客后，点击搜素框，一直在加载中的解决方案。 问题与现象 nodejs+hexo+github+markdown搭建博客后，点击搜素框，一直在加载中的解决方案。 原因 开发的markdown中出现了非utf-8的字符。 访问可以查找错误出现的位置：https://leebin.top/search.xml 解决方案 逐个排查每个markdown文件，直到找到非utf-8字符，删除，重新部署，点击搜索框测试。 访问：https://leebin.top/search.xml 发现可以解析成源文件。]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hadoop中wordcount程序开发]]></title>
     <url>%2F2018%2F04%2F19%2FHadoop%E4%B8%ADwordcount%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%2F</url>
     <content type="text"><![CDATA[本文介绍如何利用java和hadoop组件开发wordcount程序。 开发与测试环境 windows eclipse maven，常见的组件如下： Apache Hadoop Common 3.1 Apache Hadoop Client Aggregator 3.1 Hadoop Core 1.2 Apache Hadoop HDFS 3.1 Apache Hadoop MapReduce Core 3.1 ubuntu中hadoop单机模式，搭建过程参考: 如何hadoop单机版 添加依赖后maven报错 报错 Buiding Hadoop with Eclipse / Maven - Missing artifact jdk.tools:jdk.tools:jar:1.6 解决 # cmd C:\Users\BinLee&gt;java -version java version &quot;1.8.0_144&quot; Java(TM) SE Runtime Environment (build 1.8.0_144-b01) Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode) # 添加下面的依赖到maven的pom.xml &lt;dependency&gt; &lt;groupId&gt;jdk.tools&lt;/groupId&gt; &lt;artifactId&gt;jdk.tools&lt;/artifactId&gt; &lt;version&gt;1.8.0_144&lt;/version&gt; &lt;scope&gt;system&lt;/scope&gt; &lt;systemPath&gt;${JAVA_HOME}/lib/tools.jar&lt;/systemPath&gt; &lt;/dependency&gt; wordcount程序开发 pom.xml &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt; &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; &lt;groupId&gt;com.jordiburgos&lt;/groupId&gt; &lt;artifactId&gt;wordcount&lt;/artifactId&gt; &lt;packaging&gt;jar&lt;/packaging&gt; &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt; &lt;name&gt;wordcount&lt;/name&gt; &lt;url&gt;http://jordiburgos.com&lt;/url&gt; &lt;properties&gt; &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt; &lt;/properties&gt; &lt;repositories&gt; &lt;repository&gt; &lt;id&gt;cloudera&lt;/id&gt; &lt;url&gt;https://repository.cloudera.com/artifactory/cloudera-repos/&lt;/url&gt; &lt;/repository&gt; &lt;/repositories&gt; &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt; &lt;artifactId&gt;hadoop-common&lt;/artifactId&gt; &lt;version&gt;2.2.0&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt; &lt;artifactId&gt;hadoop-core&lt;/artifactId&gt; &lt;version&gt;1.2.1&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;jdk.tools&lt;/groupId&gt; &lt;artifactId&gt;jdk.tools&lt;/artifactId&gt; &lt;version&gt;1.7&lt;/version&gt; &lt;scope&gt;system&lt;/scope&gt; &lt;systemPath&gt;${java.home}/../lib/tools.jar&lt;/systemPath&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;junit&lt;/groupId&gt; &lt;artifactId&gt;junit&lt;/artifactId&gt; &lt;version&gt;3.8.1&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;/dependencies&gt; &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt; &lt;version&gt;2.4&lt;/version&gt; &lt;executions&gt; &lt;execution&gt; &lt;id&gt;distro-assembly&lt;/id&gt; &lt;phase&gt;package&lt;/phase&gt; &lt;goals&gt; &lt;goal&gt;single&lt;/goal&gt; &lt;/goals&gt; &lt;configuration&gt; &lt;descriptors&gt; &lt;descriptor&gt;assembly.xml&lt;/descriptor&gt; &lt;/descriptors&gt; &lt;/configuration&gt; &lt;/execution&gt; &lt;/executions&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;/project&gt; wordcount.java package com.jordiburgos; import java.io.IOException; import java.util.*; import org.apache.hadoop.fs.Path; import org.apache.hadoop.conf.*; import org.apache.hadoop.io.*; import org.apache.hadoop.mapreduce.*; import org.apache.hadoop.mapreduce.lib.input.FileInputFormat; import org.apache.hadoop.mapreduce.lib.input.TextInputFormat; import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat; import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat; public class WordCount { public static class Map extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; { private final static IntWritable one = new IntWritable(1); private Text word = new Text(); public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException { String line = value.toString(); StringTokenizer tokenizer = new StringTokenizer(line); while (tokenizer.hasMoreTokens()) { word.set(tokenizer.nextToken()); context.write(word, one); } } } public static class Reduce extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; { public void reduce(Text key, Iterable&lt;IntWritable&gt; values, Context context) throws IOException, InterruptedException { int sum = 0; for (IntWritable val : values) { sum += val.get(); } context.write(key, new IntWritable(sum)); } } public static void main(String[] args) throws Exception { Configuration conf = new Configuration(); Job job = new Job(conf, &quot;wordcount&quot;); job.setJarByClass(WordCount.class); job.setOutputKeyClass(Text.class); job.setOutputValueClass(IntWritable.class); job.setMapperClass(Map.class); job.setReducerClass(Reduce.class); job.setInputFormatClass(TextInputFormat.class); job.setOutputFormatClass(TextOutputFormat.class); FileInputFormat.addInputPath(job, new Path(args[0])); FileOutputFormat.setOutputPath(job, new Path(args[1])); job.waitForCompletion(true); } } 使用maven打包程序 打包命令 项目右键&gt;run as&gt;maven build 打包后jar的结构 C:. └─wordcount ├─com │ └─jordiburgos └─META-INF └─maven └─com.jordiburgos └─wordcount 在hadoop上运行程序 上传待分析的文本到hdfs # 本地创建input文件夹和a.txt文件 cd /root/app/hadoop-3.1.0 mkdir input vim a.txt # # 创建文件夹 hadoop fs -mkdir hdfs://localhost:9001/tmp # # 上传文件到hdfs hadoop fs -put /root/app/hadoop-3.1.0/input hdfs://127.0.0.1:9001/tmp 运行jar程序 cd /root/app/hadoop-3.1.0 bin/hadoop jar wordcount.jar com.jordiburgos.WordCount hdfs://localhost:9001/tmp/input/ file:///root/app/hadoop-3.1.0/output/ 在linux中查看输出文件 cd /root/app/hadoop-3.1.0/output root@ubuntu:~/app/hadoop-3.1.0/output# ls part-r-00000 _SUCCESS root@ubuntu:~/app/hadoop-3.1.0/output# cat part-r-00000 0000 1 aaaa 1 ddfh 1 ff 1 ggg 1 hj 1 iiiii 1 sss 1]]></content>
@@ -95,19 +107,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
-    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
-    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>列表</tag>
-        <tag>配置</tag>
-        <tag>valine</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[LC_001_TwoSum_HashMap]]></title>
     <url>%2F2018%2F04%2F03%2FLC_001_TwoSum_HashMap%2F</url>
     <content type="text"><![CDATA[leetcode第001题，主要用到了hashmap数据结构。 题解package LC; import java.util.Arrays; import java.util.HashMap; /** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */ public class LC_001_TwoSum_HashMap { public static void main(String[] args) { int[] a = {1, 2, 3, 4, 5, 7}; int t = 10; System.out.println(Arrays.toString(twoSum(a, t))); } private static int[] twoSum(int[] nums, int target) { HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) { int diff = target - nums[i]; if (map.containsKey(diff)) return new int[]{map.get(diff), i}; map.put(nums[i], i); } throw new IllegalArgumentException(&quot;-1&quot;); } }]]></content>
@@ -119,6 +118,19 @@
         <tag>leetcode</tag>
         <tag>java</tag>
         <tag>basic algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
+    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>valine</tag>
       </tags>
   </entry>
   <entry>
