@@ -9,8 +9,11 @@ mathjax: true
 ---
 
 本文介绍如何利用java和hadoop组件开发wordcount程序。
+
 <!-- more -->
+
 ## 开发环境
+
 - windows
 - eclipse
 - maven
@@ -21,6 +24,7 @@ mathjax: true
 5. Apache Hadoop MapReduce Core 3.1
 
 ## 添加依赖后maven报错
+
 - 报错
 ```
 Buiding Hadoop with Eclipse / Maven - Missing artifact jdk.tools:jdk.tools:jar:1.6
@@ -42,7 +46,9 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)
     <systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
 </dependency>
 ```
+
 ## wordcount程序开发
+
 - pom.xml
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -167,6 +173,7 @@ public class WordCount {
 ```
 
 ## 使用maven打包程序
+
 - 打包命令
 ```
 项目右键>run as>maven build
@@ -185,6 +192,7 @@ C:.
 ```
 
 ## 在hadoop上运行程序
+
 - 上传待分析的文本到hdfs
 ```
 # 本地创建input文件夹和a.txt文件
@@ -198,11 +206,13 @@ hadoop fs -mkdir hdfs://localhost:9001/tmp
 # 上传文件到hdfs
 hadoop fs -put /root/app/hadoop-3.1.0/input hdfs://127.0.0.1:9001/tmp
 ```
+
 - 运行jar程序
 ```
 cd /root/app/hadoop-3.1.0
 bin/hadoop jar wordcount.jar com.jordiburgos.WordCount hdfs://localhost:9001/tmp/input/ file:///root/app/hadoop-3.1.0/output/
 ```
+
 - 在linux中查看输出文件
 ```
 cd /root/app/hadoop-3.1.0/output
