@@ -12,16 +12,17 @@ mathjax: true
 
 <!-- more -->
 
-## 开发环境
+## 开发与测试环境
 
 - windows
 - eclipse
-- maven
+- maven，常见的组件如下：
 1. Apache Hadoop Common 3.1
 2. Apache Hadoop Client Aggregator 3.1
 3. Hadoop Core 1.2
 4. Apache Hadoop HDFS 3.1
 5. Apache Hadoop MapReduce Core 3.1
+- ubuntu中hadoop单机模式，搭建过程参考: [如何hadoop单机版](https://leebin.top/2018/04/18/ubuntu%E4%B8%ADhadoop%E5%8D%95%E6%9C%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%AD%E5%BB%BA/)
 
 ## 添加依赖后maven报错
 
