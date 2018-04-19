@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[hadoop中wordcount程序开发]]></title>
+    <url>%2F2018%2F04%2F19%2FHadoop%E4%B8%ADwordcount%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[本文介绍如何利用java和hadoop组件开发wordcount程序。 开发环境 windows eclipse maven Apache Hadoop Common 3.1 Apache Hadoop Client Aggregator 3.1 Hadoop Core 1.2 Apache Hadoop HDFS 3.1 Apache Hadoop MapReduce Core 3.1 添加依赖后maven报错 报错 Buiding Hadoop with Eclipse / Maven - Missing artifact jdk.tools:jdk.tools:jar:1.6 解决 # cmd C:\Users\BinLee&gt;java -version java version &quot;1.8.0_144&quot; Java(TM) SE Runtime Environment (build 1.8.0_144-b01) Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode) # 添加下面的依赖到maven的pom.xml &lt;dependency&gt; &lt;groupId&gt;jdk.tools&lt;/groupId&gt; &lt;artifactId&gt;jdk.tools&lt;/artifactId&gt; &lt;version&gt;1.8.0_144&lt;/version&gt; &lt;scope&gt;system&lt;/scope&gt; &lt;systemPath&gt;${JAVA_HOME}/lib/tools.jar&lt;/systemPath&gt; &lt;/dependency&gt; wordcount程序开发 pom.xml` 4.0.0 com.jordiburgos wordcount jar 1.0-SNAPSHOT wordcount http://jordiburgos.com &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt; &lt;repository&gt; &lt;id&gt;cloudera&lt;/id&gt; &lt;url&gt;https://repository.cloudera.com/artifactory/cloudera-repos/&lt;/url&gt; &lt;/repository&gt; &lt;dependency&gt; &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt; &lt;artifactId&gt;hadoop-common&lt;/artifactId&gt; &lt;version&gt;2.2.0&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt; &lt;artifactId&gt;hadoop-core&lt;/artifactId&gt; &lt;version&gt;1.2.1&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;jdk.tools&lt;/groupId&gt; &lt;artifactId&gt;jdk.tools&lt;/artifactId&gt; &lt;version&gt;1.7&lt;/version&gt; &lt;scope&gt;system&lt;/scope&gt; &lt;systemPath&gt;${java.home}/../lib/tools.jar&lt;/systemPath&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;junit&lt;/groupId&gt; &lt;artifactId&gt;junit&lt;/artifactId&gt; &lt;version&gt;3.8.1&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; maven-assembly-plugin 2.4 distro-assembly package single assembly.xml - wordcount.java package com.jordiburgos;import java.io.IOException;import java.util.;import org.apache.hadoop.fs.Path;import org.apache.hadoop.conf.;import org.apache.hadoop.io.;import org.apache.hadoop.mapreduce.;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;public class WordCount { public static class Map extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; { private final static IntWritable one = new IntWritable(1); private Text word = new Text(); public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException { String line = value.toString(); StringTokenizer tokenizer = new StringTokenizer(line); while (tokenizer.hasMoreTokens()) { word.set(tokenizer.nextToken()); context.write(word, one); } } } public static class Reduce extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; { public void reduce(Text key, Iterable values, Context context) throws IOException, InterruptedException { int sum = 0; for (IntWritable val : values) { sum += val.get(); } context.write(key, new IntWritable(sum)); } } public static void main(String[] args) throws Exception { Configuration conf = new Configuration(); Job job = new Job(conf, “wordcount”); job.setJarByClass(WordCount.class); job.setOutputKeyClass(Text.class); job.setOutputValueClass(IntWritable.class); job.setMapperClass(Map.class); job.setReducerClass(Reduce.class); job.setInputFormatClass(TextInputFormat.class); job.setOutputFormatClass(TextOutputFormat.class); FileInputFormat.addInputPath(job, new Path(args[0])); FileOutputFormat.setOutputPath(job, new Path(args[1])); job.waitForCompletion(true); }} ## 使用maven打包程序 - 打包命令 项目右键&gt;run as&gt;maven build - 打包后jar的结构 C:.└─wordcount ├─com │ └─jordiburgos └─META-INF └─maven └─com.jordiburgos └─wordcount ## 在hadoop上运行程序 - 上传待分析的文本到hdfs 本地创建input文件夹和a.txt文件cd /root/app/hadoop-3.1.0mkdir inputvim a.txt# 创建文件夹hadoop fs -mkdir hdfs://localhost:9001/tmp# 上传文件到hdfshadoop fs -put /root/app/hadoop-3.1.0/input hdfs://127.0.0.1:9001/tmp - 运行jar程序 cd /root/app/hadoop-3.1.0bin/hadoop jar wordcount.jar com.jordiburgos.WordCount hdfs://localhost:9001/tmp/input/ file:///root/app/hadoop-3.1.0/output/ - 在linux中查看输出文件 cd /root/app/hadoop-3.1.0/outputroot@ubuntu:~/app/hadoop-3.1.0/output# lspart-r-00000 _SUCCESSroot@ubuntu:~/app/hadoop-3.1.0/output# cat part-r-000000000 1aaaa 1ddfh 1ff 1ggg 1hj 1iiiii 1sss 1`]]></content>
+      <categories>
+        <category>开发</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>maven</tag>
+        <tag>hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ubuntu中hadoop单机模式和伪分布式搭建]]></title>
     <url>%2F2018%2F04%2F18%2Fubuntu%E4%B8%ADhadoop%E5%8D%95%E6%9C%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%AD%E5%BB%BA%2F</url>
     <content type="text"><![CDATA[本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？ ubuntu开启root用户登录的方法 设置密码、添加信息sudo passwd -u root sudo passwd root su root cd /usr/share/lightdm/lightdm.conf.d/ vim 50-unity-greeter.conf # 添加 user-session=ubuntu greeter-show-manual-login=true all-guest=false # 重启 reboot # 使用user和passwd进入root报错 vim /root/.profile # 找到mesg n || true # 改为tty -s &amp;&amp; mesg n || true ubuntu中的java环境变量配置 编辑 sudo vim /etc/profileexport JAVA_HOME=/root/app/jdk1.8.0_171 export JRE_HOME=/root/app/jdk1.8.0_171/jre export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin source /etc/profile 验证java -version 单机版hadoop配置 官方文档 生成ssh密钥 cd ~ ssh-keygen -t rsa -P &#39;&#39; -f ~/.ssh/id_rsa cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys chmod 0600 ~/.ssh/authorized_keys ssh localhost 配置java环境 root@ubuntu:~# vim /etc/profile export JAVA_HOME=/root/app/jdk1.8.0_171 export JRE_HOME=/root/app/jdk1.8.0_171/jre export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin 配置hadoop环境 vim /etc/profile #HADOOP VARIABLES START export JAVA_HOME=/root/app/jdk1.8.0_171 export HADOOP_HOME=/root/app/hadoop-3.1.0 export PATH=$PATH:$HADOOP_HOME/bin export PATH=$PATH:$HADOOP_HOME/sbin export HADOOP_MAPRED_HOME=$HADOOP_HOME export HADOOP_COMMON_HOME=$HADOOP_HOME export HADOOP_HDFS_HOME=$HADOOP_HOME export YARN_HOME=$HADOOP_HOME export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native export HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib&quot; #HADOOP VARIABLES END source /etc/profile 单机版测试 root@ubuntu:~# /root/app/hadoop-3.1.0/bin/hadoop jar /root/app/hadoop-3.1.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jar An example program must be given as the first argument. Valid program names are: aggregatewordcount: An Aggregate based map/reduce program that counts the words in the input files. aggregatewordhist: An Aggregate based map/reduce program that computes the histogram of the words in the input files. bbp: A map/reduce program that uses Bailey-Borwein-Plouffe to compute exact digits of Pi. dbcount: An example job that count the pageview counts from a database. distbbp: A map/reduce program that uses a BBP-type formula to compute exact bits of Pi. grep: A map/reduce program that counts the matches of a regex in the input. join: A job that effects a join over sorted, equally partitioned datasets multifilewc: A job that counts words from several files. pentomino: A map/reduce tile laying program to find solutions to pentomino problems. pi: A map/reduce program that estimates Pi using a quasi-Monte Carlo method. randomtextwriter: A map/reduce program that writes 10GB of random textual data per node. randomwriter: A map/reduce program that writes 10GB of random data per node. secondarysort: An example defining a secondary sort to the reduce. sort: A map/reduce program that sorts the data written by the random writer. sudoku: A sudoku solver. teragen: Generate data for the terasort terasort: Run the terasort teravalidate: Checking results of terasort wordcount: A map/reduce program that counts the words in the input files. wordmean: A map/reduce program that counts the average length of the words in the input files. wordmedian: A map/reduce program that counts the median length of the words in the input files. wordstandarddeviation: A map/reduce program that counts the standard deviation of the length of the words in the input files. 实例测试 /root/app/hadoop-3.1.0/bin/hadoop jar /root/app/hadoop-3.1.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jar grep ./input ./output &#39;dfs[a-z.]+&#39; cat ./output/* # 查看结果 rm -r ./output # 删除结果 # 结果 root@ubuntu:~/app/hadoop-3.1.0# cat ./output/* 1 dfsadmin 伪分布式hadoop配置 格式化hdfs cd /root/app/hadoop-3.1.0 ./bin/hdfs namenode -format 添加变量到 vim /etc/profile export JAVA_HOME=/root/app/jdk1.8.0_171 export JRE_HOME=/root/app/jdk1.8.0_171/jre export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin # # HADOOP VARIABLES START export JAVA_HOME=/root/app/jdk1.8.0_171 export HADOOP_HOME=/root/app/hadoop-3.1.0 # export PATH=$PATH:$HADOOP_HOME/bin export PATH=$PATH:$HADOOP_HOME/sbin # export HADOOP_MAPRED_HOME=$HADOOP_HOME export HADOOP_COMMON_HOME=$HADOOP_HOME export HADOOP_HDFS_HOME=$HADOOP_HOME export HADOOP_YARN_HOME=$HADOOP_HOME # export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native export HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib&quot; # export HDFS_DATANODE_USER=root export HDFS_NAMENODE_USER=root export HDFS_SECONDARYNAMENODE_USER=root # export YARN_RESOURCEMANAGER_USER=root export HADOOP_SECURE_DN_USER=yarn export YARN_NODEMANAGER_USER=root # HADOOP VARIABLES END 编辑/root/app/hadoop-3.1.0/etc/hadoop/core-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;hadoop.tmp.dir&lt;/name&gt; &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;fs.defaultFS&lt;/name&gt; &lt;value&gt;hdfs://localhost:9000&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; 编辑/root/app/hadoop-3.1.0/etc/hadoop/hdfs-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;dfs.replication&lt;/name&gt; &lt;value&gt;2&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt; &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp/dfs/name&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt; &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp/dfs/data&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.http.address&lt;/name&gt; &lt;value&gt;0.0.0.0:50070&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; 编辑 hadoop-env.sh vim /root/app/hadoop-3.1.0/etc/hadoop/hadoop-env.sh export JAVA_HOME=/root/app/jdk1.8.0_171 编辑 yarn-env.sh vim /root/app/hadoop-3.1.0/etc/hadoop/yarn-env.sh export JAVA_HOME=/root/app/jdk1.8.0_171 编辑 mapred-env.sh vim /root/app/hadoop-3.1.0/etc/hadoop/mapred-env.sh export JAVA_HOME=/root/app/jdk1.8.0_171 hadoop的使用 启动与停止 cd /root/app/hadoop-3.1.0 ./sbin/start-all.sh ./sbin/stop-all.sh 查看服务 root@ubuntu:~/app/hadoop-3.1.0# jps 23058 NameNode 23491 SecondaryNameNode 23753 ResourceManager 23225 DataNode 24427 Jps 24030 NodeManager Resource Manager http://localhost:8088 Web UI of the NameNode daemon http://localhost:50070 HDFS NameNode web interface http://localhost:8042]]></content>
@@ -9,19 +22,6 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>hadoop</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[hadoop中wordcount程序开发]]></title>
-    <url>%2F2018%2F04%2F18%2FHadoop%E4%B8%ADwordcount%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%2F</url>
-    <content type="text"><![CDATA[本文介绍如何利用java和hadoop组件开发wordcount程序。 开发环境 windows eclipse maven Apache Hadoop Common 3.1 Apache Hadoop Client Aggregator 3.1 Hadoop Core 1.2 Apache Hadoop HDFS 3.1 Apache Hadoop MapReduce Core 3.1 添加依赖后maven报错 报错 Buiding Hadoop with Eclipse / Maven - Missing artifact jdk.tools:jdk.tools:jar:1.6 解决 # cmd C:\Users\BinLee&gt;java -version java version &quot;1.8.0_144&quot; Java(TM) SE Runtime Environment (build 1.8.0_144-b01) Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode) # 添加下面的依赖到maven的pom.xml &lt;dependency&gt; &lt;groupId&gt;jdk.tools&lt;/groupId&gt; &lt;artifactId&gt;jdk.tools&lt;/artifactId&gt; &lt;version&gt;1.8.0_144&lt;/version&gt; &lt;scope&gt;system&lt;/scope&gt; &lt;systemPath&gt;${JAVA_HOME}/lib/tools.jar&lt;/systemPath&gt; &lt;/dependency&gt;]]></content>
-      <categories>
-        <category>开发</category>
-      </categories>
-      <tags>
-        <tag>列表</tag>
-        <tag>maven</tag>
         <tag>hadoop</tag>
       </tags>
   </entry>
@@ -82,6 +82,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[hexo如何开启语法高亮？]]></title>
+    <url>%2F2018%2F04%2F03%2Fhexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍hexo有关语法高亮的配置方案。 配置过程 配置主站点下的配置文件highlight: enable: true line_number: true auto_detect: true tab_replace: 代码后面添加名称，如```java code ```]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LC_001_TwoSum_HashMap]]></title>
     <url>%2F2018%2F04%2F03%2FLC_001_TwoSum_HashMap%2F</url>
     <content type="text"><![CDATA[leetcode第001题，主要用到了hashmap数据结构。 题解package LC; import java.util.Arrays; import java.util.HashMap; /** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */ public class LC_001_TwoSum_HashMap { public static void main(String[] args) { int[] a = {1, 2, 3, 4, 5, 7}; int t = 10; System.out.println(Arrays.toString(twoSum(a, t))); } private static int[] twoSum(int[] nums, int target) { HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) { int diff = target - nums[i]; if (map.containsKey(diff)) return new int[]{map.get(diff), i}; map.put(nums[i], i); } throw new IllegalArgumentException(&quot;-1&quot;); } }]]></content>
@@ -106,19 +119,6 @@
         <tag>列表</tag>
         <tag>配置</tag>
         <tag>valine</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[hexo如何开启语法高亮？]]></title>
-    <url>%2F2018%2F04%2F03%2Fhexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F%2F</url>
-    <content type="text"><![CDATA[本文介绍hexo有关语法高亮的配置方案。 配置过程 配置主站点下的配置文件highlight: enable: true line_number: true auto_detect: true tab_replace: 代码后面添加名称，如```java code ```]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>列表</tag>
-        <tag>配置</tag>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -184,8 +184,8 @@
       <tags>
         <tag>列表</tag>
         <tag>配置</tag>
-        <tag>git</tag>
         <tag>hexo</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
