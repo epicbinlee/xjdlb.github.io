@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/04/17/maven%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2018-04-19T13:07:26.834Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/04/19/hexo%E6%9E%84%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%90%9C%E7%B4%A2%E6%A1%86%E5%8A%A0%E8%BD%BD%E4%B8%AD%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
     
     <lastmod>2018-04-19T06:44:10.398Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://yoursite.com/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2018-04-18T06:15:56.491Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/17/maven%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/</loc>
-    
-    <lastmod>2018-04-18T06:14:10.363Z</lastmod>
     
   </url>
   

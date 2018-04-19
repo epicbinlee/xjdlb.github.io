@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="列表,maven,配置,windows," />
+  <meta name="keywords" content="列表,配置,maven,windows," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】。">
-<meta name="keywords" content="列表,maven,配置,windows">
+<meta name="description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】，maven详细讲解：他山之石">
+<meta name="keywords" content="列表,配置,maven,windows">
 <meta property="og:type" content="article">
 <meta property="og:title" content="apache maven的配置与使用">
 <meta property="og:url" content="http://yoursite.com/2018/04/17/maven的配置与使用/index.html">
 <meta property="og:site_name" content="初心">
-<meta property="og:description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】。">
+<meta property="og:description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】，maven详细讲解：他山之石">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-18T06:14:10.363Z">
+<meta property="og:updated_time" content="2018-04-19T13:07:26.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="apache maven的配置与使用">
-<meta name="twitter:description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】。">
+<meta name="twitter:description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】，maven详细讲解：他山之石">
 
 
 
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,787
+                  1,918
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  11
                 </span>
               
             </div>
@@ -443,7 +443,7 @@
       
 
       
-        <p>本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】。</p>
+        <p>本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】，maven详细讲解：<a href="https://www.yiibai.com/maven/" target="_blank" rel="noopener">他山之石</a></p>
 <a id="more"></a>
 <h2 id="需要先配置java和maven环境变量"><a href="#需要先配置java和maven环境变量" class="headerlink" title="需要先配置java和maven环境变量"></a>需要先配置java和maven环境变量</h2><ul>
 <li><p>CLASSPATH</p>
@@ -743,7 +743,8 @@ xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.o
 # 保存自动下载
 # 使用everything搜索Joda Time发现已经在C:\Users\BinLee\.m2\repository\joda-time\joda-time\2.9.9\joda-time-2.9.9.jar下面
 </code></pre></li>
-<li>使用依赖<pre><code># 在窗口上project explorer&gt;maven dependencies查看需要的依赖类
+<li><p>使用依赖</p>
+<pre><code># 在窗口上project explorer&gt;maven dependencies查看需要的依赖类
 # 在需要地方直接插入
 # code
 package com.hikvision.big_data.data.test_eclipse_maven;
@@ -770,6 +771,41 @@ Hello World!
 P2147483647D
 2018-04-17T16:15:02.289
 </code></pre></li>
+<li><p>eclipse上的maven插件M2Eclipse</p>
+<pre><code>help menu &gt; install new software &gt; input the url as follow
+http://download.eclipse.org/technology/m2e/releases/
+# 备注插件官网
+http://www.eclipse.org/m2e/
+# 该插件可以解决mvn install报错问题
+</code></pre></li>
+</ul>
+<h2 id="关于maven源码打包"><a href="#关于maven源码打包" class="headerlink" title="关于maven源码打包"></a>关于maven源码打包</h2><ul>
+<li><p>命令行方式，<a href="https://blog.csdn.net/symgdwyh/article/details/4407945" target="_blank" rel="noopener">他山之石</a></p>
+<pre><code>cd {项目目录下}
+mvn source:jar
+mvn source:test-jar
+</code></pre></li>
+<li><p>eclipse中pom.xml结尾加入插件，然后执行maven install</p>
+<pre><code>...
+  &lt;/dependencies&gt;
+  &lt;build&gt;
+      &lt;plugins&gt;
+          &lt;plugin&gt;
+              &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+              &lt;artifactId&gt;maven-source-plugin&lt;/artifactId&gt;
+              &lt;executions&gt;
+                  &lt;execution&gt;
+                      &lt;id&gt;attach-sources&lt;/id&gt;
+                      &lt;goals&gt;
+                          &lt;goal&gt;jar&lt;/goal&gt;
+                      &lt;/goals&gt;
+                  &lt;/execution&gt;
+              &lt;/executions&gt;
+          &lt;/plugin&gt;
+      &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+</code></pre></li>
 </ul>
 
       
@@ -790,9 +826,9 @@ P2147483647D
           
             <a href="/tags/列表/" rel="tag"><i class="fa fa-tag"></i> 列表</a>
           
-            <a href="/tags/maven/" rel="tag"><i class="fa fa-tag"></i> maven</a>
-          
             <a href="/tags/配置/" rel="tag"><i class="fa fa-tag"></i> 配置</a>
+          
+            <a href="/tags/maven/" rel="tag"><i class="fa fa-tag"></i> maven</a>
           
             <a href="/tags/windows/" rel="tag"><i class="fa fa-tag"></i> windows</a>
           
@@ -961,7 +997,7 @@ P2147483647D
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需要先配置java和maven环境变量"><span class="nav-number">1.</span> <span class="nav-text">需要先配置java和maven环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换maven的仓库为自定义的仓库"><span class="nav-number">2.</span> <span class="nav-text">更换maven的仓库为自定义的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven手动创建项目"><span class="nav-number">3.</span> <span class="nav-text">maven手动创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eclipse上的maven项目"><span class="nav-number">4.</span> <span class="nav-text">eclipse上的maven项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需要先配置java和maven环境变量"><span class="nav-number">1.</span> <span class="nav-text">需要先配置java和maven环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换maven的仓库为自定义的仓库"><span class="nav-number">2.</span> <span class="nav-text">更换maven的仓库为自定义的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven手动创建项目"><span class="nav-number">3.</span> <span class="nav-text">maven手动创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eclipse上的maven项目"><span class="nav-number">4.</span> <span class="nav-text">eclipse上的maven项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于maven源码打包"><span class="nav-number">5.</span> <span class="nav-text">关于maven源码打包</span></a></li></ol></div>
             
 
           </div>
@@ -1026,7 +1062,7 @@ P2147483647D
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共9.6k字</span>
+  <span class="post-count">博客全站共9.8k字</span>
 </div>
 
         
