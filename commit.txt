@@ -13,11 +13,7 @@ xD=$(date +%j)
 git status
 git add .
 git commit -m "
-<<<<<<< HEAD
-$yy/$mm/$dd-$HH:$MM:$SS migrate test
-=======
-$yy/$mm/$dd-$HH:$MM:$SS two server and new local repository
->>>>>>> 6825bf951021f53c835e3345978a529af3b9f5b7
+$yy/$mm/$dd-$HH:$MM:$SS version-1.0
 "
 
 git push git@github.com:xjdlb/xjdlb.github.io.git hexo
