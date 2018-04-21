@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
+    <loc>http://yoursite.com/schedule/index.html</loc>
     
     <lastmod>2018-04-21T05:52:38.669Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/schedule/index.html</loc>
+    <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2018-04-21T05:52:38.669Z</lastmod>
     
@@ -163,14 +163,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</loc>
+    <loc>http://yoursite.com/2018/04/19/Hadoop%E4%B8%ADwordcount%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</loc>
     
     <lastmod>2018-04-21T05:52:38.657Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/04/19/Hadoop%E4%B8%ADwordcount%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</loc>
+    <loc>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</loc>
     
     <lastmod>2018-04-21T05:52:38.657Z</lastmod>
     
