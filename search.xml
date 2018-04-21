@@ -89,21 +89,8 @@
       <tags>
         <tag>列表</tag>
         <tag>配置</tag>
-        <tag>ss</tag>
         <tag>kcptun</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[hexo如何开启语法高亮？]]></title>
-    <url>%2F2018%2F04%2F03%2Fhexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F%2F</url>
-    <content type="text"><![CDATA[本文介绍hexo有关语法高亮的配置方案。 配置过程 配置主站点下的配置文件highlight: enable: true line_number: true auto_detect: true tab_replace: 代码后面添加名称，如```java code ```]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>列表</tag>
-        <tag>配置</tag>
-        <tag>hexo</tag>
+        <tag>ss</tag>
       </tags>
   </entry>
   <entry>
@@ -118,6 +105,19 @@
         <tag>leetcode</tag>
         <tag>java</tag>
         <tag>basic algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo如何开启语法高亮？]]></title>
+    <url>%2F2018%2F04%2F03%2Fhexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍hexo有关语法高亮的配置方案。 配置过程 配置主站点下的配置文件highlight: enable: true line_number: true auto_detect: true tab_replace: 代码后面添加名称，如```java code ```]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
