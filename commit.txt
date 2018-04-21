@@ -13,7 +13,7 @@ xD=$(date +%j)
 git status
 git add .
 git commit -m "
-$yy/$mm/$dd-$HH:$MM:$SS 同时部署到两个服务器上测试
+$yy/$mm/$dd-$HH:$MM:$SS migrate test
 "
 
 git push git@github.com:xjdlb/xjdlb.github.io.git hexo
