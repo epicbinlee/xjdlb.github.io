@@ -6,4 +6,5 @@ HH=$(date +%H)
 MM=$(date +%M)
 SS=$(date +%S)
 
+cd ../..
 tar -zcvf blog1.0-$yy.$mm.$dd-$HH.$MM.$SS.tar.gz blog-1.0

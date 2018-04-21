@@ -13,7 +13,7 @@ xD=$(date +%j)
 git status
 git add .
 git commit -m "
-$yy/$mm/$dd-$HH:$MM:$SS version-1.0
+$yy/$mm/$dd-$HH:$MM:$SS add pkg-bolg.sh
 "
 
 git push git@github.com:xjdlb/xjdlb.github.io.git hexo
