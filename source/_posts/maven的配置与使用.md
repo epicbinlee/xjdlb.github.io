@@ -30,7 +30,9 @@ C:\app3\Java\jre1.8.0_144
 ```
 
 - MVN_HOME
+```
 C:\app3\apache-maven-3.5.3
+```
 
 - Path
 ```
