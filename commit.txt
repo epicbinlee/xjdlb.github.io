@@ -27,3 +27,8 @@ git  log --oneline | head
 echo "=================================="
 
 hexo clean && hexo g -d
+
+echo "=================================="
+
+cd ../..
+tar -zcvf blog1.0-$yy.$mm.$dd-$HH.$MM.$SS.tar.gz blog-1.0
