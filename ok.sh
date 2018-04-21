@@ -1,0 +1,1 @@
+sh upload-deploy.sh && sh pkg-blog.sh
