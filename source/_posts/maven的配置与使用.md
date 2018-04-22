@@ -12,7 +12,7 @@ mathjax: true
 
 <!-- more -->
 
-## 需要先配置java和maven环境变量
+## **需要先配置java和maven环境变量**
 
 - CLASSPATH
 ```
@@ -39,7 +39,7 @@ C:\app3\apache-maven-3.5.3
 C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;
 ```
 
-## 更换maven的仓库为自定义的仓库
+## **更换maven的仓库为自定义的仓库**
 - 创建目标位置如，d:\maven\repo
 - 拷贝C:\app3\apache-maven-3.5.3\conf\settings.xml文件到d:\maven
 - 修改两处的settings.xml文件
@@ -50,7 +50,7 @@ C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;
 <localRepository>d:\maven\repo</localRepository>
 ```
 
-## maven手动创建项目
+## **maven手动创建项目**
 - [他山之石](https://www.cnblogs.com/yjmyzz/p/3495762.html)
 
 - 创建项目
@@ -306,10 +306,18 @@ http://www.eclipse.org/m2e/
 # 该插件可以解决mvn install报错问题
 ```
 
-- 创建 New->Other...->Maven->Maven Project
-- use default workspace location
-- archetypes maven-archetype-quickstart
-- new maven project
+- eclipse中的maven配置
+```
+windows > preferences > maven > installations > maven > $(maven_home) > apply
+windows > preferences > maven > users seting > user setting > C:\app3\apache-maven-3.5.3\conf\settings.xml
+windows > preferences > maven > users seting > local repository > C:\Users\BinLee\.m2\repository
+```
+
+- 创建maven项目
+1. 创建 New->Other...->Maven->Maven Project
+2. use default workspace location
+3. archetypes maven-archetype-quickstart
+4. new maven project
 ```
 com.hikvision.big_data.data
 test_eclipse_maven
@@ -317,7 +325,7 @@ test_eclipse_maven
 com.hikvision.big_data.data.test_eclipse_maven
 ```
 
-- 其中pom.xml
+5. 其中pom.xml
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -342,7 +350,7 @@ com.hikvision.big_data.data.test_eclipse_maven
 </project>
 ```
 
-- 在网站上找到自己需要的依赖 http://mvnrepository.com/
+6. 在网站上找到自己需要的依赖 http://mvnrepository.com/
 ```
 # 比如：我需要找到time相关的操作，直接mavenrepository中搜索time， 得到的Joda Time
 # 再用google搜索Joda Time，查看其用法
@@ -358,7 +366,7 @@ com.hikvision.big_data.data.test_eclipse_maven
 # 使用everything搜索Joda Time发现已经在C:\Users\BinLee\.m2\repository\joda-time\joda-time\2.9.9\joda-time-2.9.9.jar下面
 ```
 
-- 使用依赖
+7. 使用依赖
 ```
 # 在窗口上project explorer>maven dependencies查看需要的依赖类
 # 在需要地方直接插入
@@ -388,7 +396,7 @@ P2147483647D
 2018-04-17T16:15:02.289
 ```
 
-## 关于maven源码打包
+## **关于maven源码打包**
 - 命令行方式，[他山之石](https://blog.csdn.net/symgdwyh/article/details/4407945)
 ```
 cd {项目目录下}
@@ -418,7 +426,7 @@ mvn source:test-jar
     </build>
 </project>
 ```
-## 利用idea运行maven install报错的问题解决
+## **利用idea运行maven install报错的问题解决**
 - 参考 [他山之石](http://tieba.baidu.com/p/4810060893?traceid=)
 - 右边maven projects > lifecycle > install
 - 不要点击plugins > install会报错
