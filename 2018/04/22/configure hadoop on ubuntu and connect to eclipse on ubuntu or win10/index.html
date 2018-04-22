@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows10 respectively.">
+<meta name="description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows 10 respectively.">
 <meta name="keywords" content="列表,hadoop,eclipse,configuration">
 <meta property="og:type" content="article">
-<meta property="og:title" content="configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10">
-<meta property="og:url" content="http://yoursite.com/2018/04/22/configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10/index.html">
+<meta property="og:title" content="configure hadoop on ubuntu and connect to eclipse on ubuntu or win10">
+<meta property="og:url" content="http://yoursite.com/2018/04/22/configure hadoop on ubuntu and connect to eclipse on ubuntu or win10/index.html">
 <meta property="og:site_name" content="初心">
-<meta property="og:description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows10 respectively.">
+<meta property="og:description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows 10 respectively.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-22T05:53:30.460Z">
+<meta property="og:updated_time" content="2018-04-22T08:29:43.032Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10">
-<meta name="twitter:description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows10 respectively.">
+<meta name="twitter:title" content="configure hadoop on ubuntu and connect to eclipse on ubuntu or win10">
+<meta name="twitter:description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows 10 respectively.">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/22/configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/22/configure hadoop on ubuntu and connect to eclipse on ubuntu or win10/"/>
 
 
 
 
 
-  <title>configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10 | 初心</title>
+  <title>configure hadoop on ubuntu and connect to eclipse on ubuntu or win10 | 初心</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/configure hadoop on ubuntu and connect to eclipse on ubuntu or win10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LeeBin">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10</h1>
+          <h1 class="post-title" itemprop="name headline">configure hadoop on ubuntu and connect to eclipse on ubuntu or win10</h1>
         
 
         <div class="post-meta">
@@ -369,8 +369,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/22/configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/22/configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10/" itemprop="commentCount"></span>
+                <a href="/2018/04/22/configure hadoop on ubuntu and connect to eclipse on ubuntu or win10/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/22/configure hadoop on ubuntu and connect to eclipse on ubuntu or win10/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -378,7 +378,7 @@
 
           
           
-             <span id="/2018/04/22/configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10/" class="leancloud_visitors" data-flag-title="configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10">
+             <span id="/2018/04/22/configure hadoop on ubuntu and connect to eclipse on ubuntu or win10/" class="leancloud_visitors" data-flag-title="configure hadoop on ubuntu and connect to eclipse on ubuntu or win10">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  537
+                  700
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -443,7 +443,7 @@
       
 
       
-        <p>This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows10 respectively.</p>
+        <p>This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows 10 respectively.</p>
 <a id="more"></a>
 <h2 id="prerequisites"><a href="#prerequisites" class="headerlink" title="prerequisites"></a><strong>prerequisites</strong></h2><ul>
 <li><strong>server</strong></li>
@@ -487,19 +487,16 @@ mesg n || true
 tty -s &amp;&amp; mesg n || true
 </code></pre></li>
 <li><strong>configure jdk for ubuntu</strong></li>
-<li><p>jdk 1.8 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">download</a></p>
-<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171
+<li>jdk 1.8 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">download</a><pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171
 export JRE_HOME=/root/app/jdk1.8.0_171/jre
 export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 source /etc/profile
 java -version
 </code></pre></li>
-<li><p><strong>configure hadoop2.7.6</strong></p>
-</li>
 </ul>
-<ol>
-<li><p>append <em>JAVA_HOME</em> to stat script</p>
+<h2 id="configure-hadoop2-7-6"><a href="#configure-hadoop2-7-6" class="headerlink" title="configure hadoop2.7.6"></a><strong>configure hadoop2.7.6</strong></h2><ul>
+<li><p><strong>append <em>JAVA_HOME</em> to stat script</strong></p>
 <pre><code>step 1:
 vim /root/app/hadoop/etc/hadoop/hadoop-env.sh
 # export JAVA_HOME=${JAVA_HOME}
@@ -511,71 +508,69 @@ vim /root/app/hadoop/etc/hadoop/yarn-env.sh
 # export JAVA_HOME=/home/y/libexec/jdk1.6.0/
 export JAVA_HOME=/root/app/jdk1.8.0_171
 </code></pre></li>
-<li><p>configure core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml</p>
+<li><p><strong>configure core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml</strong></p>
 <pre><code>step 1:
 vim /root/app/hadoop/etc/hadoop/core-site.xml
 &lt;configuration&gt;
+   &lt;property&gt;
+      &lt;name&gt;fs.default.name&lt;/name&gt;
+      &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
+  &lt;/property&gt;
   &lt;property&gt;
-     &lt;name&gt;fs.default.name&lt;/name&gt;
-     &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
- &lt;/property&gt;
- &lt;property&gt;
-     &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
-     &lt;value&gt;/root/app/hadoop/tmp&lt;/value&gt;
- &lt;/property&gt;
+      &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+      &lt;value&gt;/root/app/hadoop/tmp&lt;/value&gt;
+  &lt;/property&gt;
 &lt;/configuration&gt;
 ###########################################
 step 2:
 vim /root/app/hadoop/etc/hadoop/hdfs-site.xml
 &lt;configuration&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.name.dir&lt;/name&gt;
+      &lt;value&gt;/root/app/hadoop/hdfs/name&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.data.dir&lt;/name&gt;
+      &lt;value&gt;/root/app/hadoop/hdfs/data&lt;/value&gt;
+  &lt;/property&gt;
  &lt;property&gt;
-     &lt;name&gt;dfs.name.dir&lt;/name&gt;
-     &lt;value&gt;/root/app/hadoop/hdfs/name&lt;/value&gt;
- &lt;/property&gt;
- &lt;property&gt;
-     &lt;name&gt;dfs.data.dir&lt;/name&gt;
-     &lt;value&gt;/root/app/hadoop/hdfs/data&lt;/value&gt;
- &lt;/property&gt;
-&lt;property&gt;
-     &lt;name&gt;dfs.permissions&lt;/name&gt;
-     &lt;value&gt;false&lt;/value&gt;
- &lt;/property&gt;
- &lt;property&gt;
-     &lt;name&gt;dfs.replication&lt;/name&gt;
-     &lt;value&gt;1&lt;/value&gt;
-     &lt;description&gt;defult 3, less than numbers of datanode&lt;/description&gt;
- &lt;/property&gt;
+      &lt;name&gt;dfs.permissions&lt;/name&gt;
+      &lt;value&gt;false&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.replication&lt;/name&gt;
+      &lt;value&gt;1&lt;/value&gt;
+      &lt;description&gt;defult 3, less than numbers of datanode&lt;/description&gt;
+  &lt;/property&gt;
 &lt;/configuration&gt;
 ###########################################
 step 3:
 vim /root/app/hadoop/etc/hadoop/mapred-site.xml
 &lt;configuration&gt;
- &lt;property&gt;
-     &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
-     &lt;value&gt;yarn&lt;/value&gt;
- &lt;/property&gt;
- &lt;property&gt;
-     &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;
-     &lt;value&gt;localhost:10020&lt;/value&gt;
-     &lt;description&gt;MapReduce JobHistory Server IPC host:port&lt;/description&gt;
- &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+      &lt;value&gt;yarn&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;
+      &lt;value&gt;localhost:10020&lt;/value&gt;
+      &lt;description&gt;MapReduce JobHistory Server IPC host:port&lt;/description&gt;
+  &lt;/property&gt;
 &lt;/configuration&gt;
 ###########################################
 step 4:
 vim /root/app/hadoop/etc/hadoop/yarn-site.xml
 &lt;configuration&gt;
- &lt;property&gt;
-         &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
-         &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
- &lt;/property&gt;
- &lt;property&gt;
-         &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;
-         &lt;value&gt;localhost:8099&lt;/value&gt;
- &lt;/property&gt;
+  &lt;property&gt;
+          &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+          &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+          &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;
+          &lt;value&gt;localhost:8099&lt;/value&gt;
+  &lt;/property&gt;
 &lt;/configuration&gt;
 </code></pre></li>
-</ol>
-<ul>
 <li><p><strong>create floder for hadoop work directory</strong></p>
 <pre><code>cd /root/app/hadoop
 mkdir hdfs -p hdfs/data hdfs/name
@@ -607,6 +602,26 @@ root@ubuntu:~/app/hadoop# jps
 ./sbin/stop-all.sh
 </code></pre></li>
 </ol>
+<h2 id="connect-to-hadoop-with-eclipse"><a href="#connect-to-hadoop-with-eclipse" class="headerlink" title="connect to hadoop with eclipse"></a><strong>connect to hadoop with eclipse</strong></h2><ul>
+<li><strong>install plugin in eclipse on ubuntu</strong><pre><code>1 copy to hadoop-eclipse-plugin-2.7.2.jar to ${eclipse_home}/dropins;
+2 open eclipse;
+3 open menu &gt; windows &gt; show view &gt; other &gt; mapreduce tools &gt; map/reduce locations;
+4 map/reduce locations &gt; right click &gt; edit hadoop location;
+location name: XXX
+map/reduce master:
+  host: localhost
+  port: 50020
+dfs master:
+  host: localhost
+  port: 9000
+5 open dfs locations, you will find the file in hdfs.
+</code></pre></li>
+<li><strong>install plugin in eclipse on windows 10</strong><pre><code>1 on win10, your eclipse serves as a clinet, you can connect your server with ip, so you should firstly replace *localhost* with your server ip in all etc files, such as core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml;
+2 repeat the step 1,2,3,4 above;
+3 map/reduce locations &gt; right click &gt; edit hadoop location &gt; advace parameters, replace *hadoop.tmp.dir* with your own address in /hdfs-site.xml;
+4 enjoy the local developing and the remote debuging.
+</code></pre></li>
+</ul>
 
       
     </div>
@@ -793,7 +808,7 @@ root@ubuntu:~/app/hadoop# jps
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#prerequisites"><span class="nav-number">1.</span> <span class="nav-text">prerequisites</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pretreatment-for-ubuntu-virtual-machine"><span class="nav-number">2.</span> <span class="nav-text">pretreatment for ubuntu virtual machine</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#prerequisites"><span class="nav-number">1.</span> <span class="nav-text">prerequisites</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pretreatment-for-ubuntu-virtual-machine"><span class="nav-number">2.</span> <span class="nav-text">pretreatment for ubuntu virtual machine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configure-hadoop2-7-6"><span class="nav-number">3.</span> <span class="nav-text">configure hadoop2.7.6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#connect-to-hadoop-with-eclipse"><span class="nav-number">4.</span> <span class="nav-text">connect to hadoop with eclipse</span></a></li></ol></div>
             
 
           </div>
@@ -858,7 +873,7 @@ root@ubuntu:~/app/hadoop# jps
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.3k字</span>
+  <span class="post-count">博客全站共10.5k字</span>
 </div>
 
         
