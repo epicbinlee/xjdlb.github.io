@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows 10 respectively.">
+<meta name="description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and win10 respectively.">
 <meta name="keywords" content="列表,hadoop,eclipse,configuration">
 <meta property="og:type" content="article">
 <meta property="og:title" content="configure hadoop on ubuntu and connect to eclipse on ubuntu or win10">
 <meta property="og:url" content="http://yoursite.com/2018/04/22/configure hadoop on ubuntu and connect to eclipse on ubuntu or win10/index.html">
 <meta property="og:site_name" content="初心">
-<meta property="og:description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows 10 respectively.">
+<meta property="og:description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and win10 respectively.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-22T08:29:43.032Z">
+<meta property="og:updated_time" content="2018-04-22T08:34:41.549Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="configure hadoop on ubuntu and connect to eclipse on ubuntu or win10">
-<meta name="twitter:description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows 10 respectively.">
+<meta name="twitter:description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and win10 respectively.">
 
 
 
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  700
+                  698
                 </span>
               
 
@@ -443,13 +443,13 @@
       
 
       
-        <p>This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows 10 respectively.</p>
+        <p>This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and win10 respectively.</p>
 <a id="more"></a>
 <h2 id="prerequisites"><a href="#prerequisites" class="headerlink" title="prerequisites"></a><strong>prerequisites</strong></h2><ul>
 <li><strong>server</strong></li>
 </ul>
 <ol>
-<li>windows 10</li>
+<li>win10</li>
 <li>vmware workstation pro 12</li>
 <li>Ubuntu 16.04.4 LTS</li>
 <li>hadoop 2.7.6 <a href="http://hadoop.apache.org/releases.html" target="_blank" rel="noopener">download</a></li>
@@ -462,7 +462,7 @@
 <li>hadoop-eclipse-plugin-2.7.2.jar <a href="https://download.csdn.net/download/tondayong1981/9432425" target="_blank" rel="noopener">download</a></li>
 </ol>
 <ul>
-<li><strong>windows 10 client</strong></li>
+<li><strong>win10 client</strong></li>
 </ul>
 <ol>
 <li>eclipse neon <a href="http://www.eclipse.org/downloads/packages/release/Neon/3" target="_blank" rel="noopener">download</a></li>
@@ -479,7 +479,7 @@ greeter-show-manual-login=true
 all-guest=false
 # reboot
 reboot
-# 使用user和passwd进入root报错
+# login in ubuntu with root and get a error report
 vim /root/.profile
 # locate to
 mesg n || true
@@ -616,7 +616,7 @@ dfs master:
   port: 9000
 5 open dfs locations, you will find the file in hdfs.
 </code></pre></li>
-<li><strong>install plugin in eclipse on windows 10</strong><pre><code>1 on win10, your eclipse serves as a clinet, you can connect your server with ip, so you should firstly replace *localhost* with your server ip in all etc files, such as core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml;
+<li><strong>install plugin in eclipse on win10</strong><pre><code>1 on win10, your eclipse serves as a clinet, you can connect your server with ip, so you should firstly replace *localhost* with your server ip in all etc files, such as core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml;
 2 repeat the step 1,2,3,4 above;
 3 map/reduce locations &gt; right click &gt; edit hadoop location &gt; advace parameters, replace *hadoop.tmp.dir* with your own address in /hdfs-site.xml;
 4 enjoy the local developing and the remote debuging.
