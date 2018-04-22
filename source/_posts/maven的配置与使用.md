@@ -290,7 +290,22 @@ Hello World!
 mvn clean jboss-as:deploy
 ```
 
-## eclipse上的maven项目
+## **eclipse上的maven项目**
+- 打开eclipse进行java配置，然后关闭
+```
+windows > preferences > java > installed jres > add jdk floder and jre floder
+select jdk floder > apply
+```
+
+- eclipse上的maven插件M2Eclipse
+```
+help menu > install new software > input the url as follow
+http://download.eclipse.org/technology/m2e/releases/
+# 备注插件官网
+http://www.eclipse.org/m2e/
+# 该插件可以解决mvn install报错问题
+```
+
 - 创建 New->Other...->Maven->Maven Project
 - use default workspace location
 - archetypes maven-archetype-quickstart
@@ -301,6 +316,7 @@ test_eclipse_maven
 0.0.1-SNAPSHOT
 com.hikvision.big_data.data.test_eclipse_maven
 ```
+
 - 其中pom.xml
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -341,6 +357,7 @@ com.hikvision.big_data.data.test_eclipse_maven
 # 保存自动下载
 # 使用everything搜索Joda Time发现已经在C:\Users\BinLee\.m2\repository\joda-time\joda-time\2.9.9\joda-time-2.9.9.jar下面
 ```
+
 - 使用依赖
 ```
 # 在窗口上project explorer>maven dependencies查看需要的依赖类
@@ -369,15 +386,6 @@ Hello World!
 2018-04-17T16:15:02.211+08:00
 P2147483647D
 2018-04-17T16:15:02.289
-```
-
-- eclipse上的maven插件M2Eclipse
-```
-help menu > install new software > input the url as follow
-http://download.eclipse.org/technology/m2e/releases/
-# 备注插件官网
-http://www.eclipse.org/m2e/
-# 该插件可以解决mvn install报错问题
 ```
 
 ## 关于maven源码打包
