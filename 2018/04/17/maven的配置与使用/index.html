@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】，maven详细讲解：他山之石">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-22T10:28:04.496Z">
+<meta property="og:updated_time" content="2018-04-22T10:46:13.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="apache maven的配置与使用">
 <meta name="twitter:description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】，maven详细讲解：他山之石">
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,979
+                  2,032
                 </span>
               
 
@@ -445,7 +445,7 @@
       
         <p>本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】，maven详细讲解：<a href="https://www.yiibai.com/maven/" target="_blank" rel="noopener">他山之石</a></p>
 <a id="more"></a>
-<h2 id="需要先配置java和maven环境变量"><a href="#需要先配置java和maven环境变量" class="headerlink" title="需要先配置java和maven环境变量"></a>需要先配置java和maven环境变量</h2><ul>
+<h2 id="需要先配置java和maven环境变量"><a href="#需要先配置java和maven环境变量" class="headerlink" title="需要先配置java和maven环境变量"></a><strong>需要先配置java和maven环境变量</strong></h2><ul>
 <li><p>CLASSPATH</p>
 <pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;
 </code></pre></li>
@@ -462,7 +462,7 @@
 <pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;
 </code></pre></li>
 </ul>
-<h2 id="更换maven的仓库为自定义的仓库"><a href="#更换maven的仓库为自定义的仓库" class="headerlink" title="更换maven的仓库为自定义的仓库"></a>更换maven的仓库为自定义的仓库</h2><ul>
+<h2 id="更换maven的仓库为自定义的仓库"><a href="#更换maven的仓库为自定义的仓库" class="headerlink" title="更换maven的仓库为自定义的仓库"></a><strong>更换maven的仓库为自定义的仓库</strong></h2><ul>
 <li>创建目标位置如，d:\maven\repo</li>
 <li>拷贝C:\app3\apache-maven-3.5.3\conf\settings.xml文件到d:\maven</li>
 <li>修改两处的settings.xml文件</li>
@@ -471,7 +471,7 @@
 &lt;localRepository&gt;d:\maven\repo&lt;/localRepository&gt;
 </code></pre></li>
 </ul>
-<h2 id="maven手动创建项目"><a href="#maven手动创建项目" class="headerlink" title="maven手动创建项目"></a>maven手动创建项目</h2><ul>
+<h2 id="maven手动创建项目"><a href="#maven手动创建项目" class="headerlink" title="maven手动创建项目"></a><strong>maven手动创建项目</strong></h2><ul>
 <li><p><a href="https://www.cnblogs.com/yjmyzz/p/3495762.html" target="_blank" rel="noopener">他山之石</a></p>
 </li>
 <li><p>创建项目</p>
@@ -710,8 +710,16 @@ http://download.eclipse.org/technology/m2e/releases/
 http://www.eclipse.org/m2e/
 # 该插件可以解决mvn install报错问题
 </code></pre></li>
-<li><p>创建 New-&gt;Other…-&gt;Maven-&gt;Maven Project</p>
+<li><p>eclipse中的maven配置</p>
+<pre><code>windows &gt; preferences &gt; maven &gt; installations &gt; maven &gt; $(maven_home) &gt; apply
+windows &gt; preferences &gt; maven &gt; users seting &gt; user setting &gt; C:\app3\apache-maven-3.5.3\conf\settings.xml
+windows &gt; preferences &gt; maven &gt; users seting &gt; local repository &gt; C:\Users\BinLee\.m2\repository
+</code></pre></li>
+<li><p>创建maven项目</p>
 </li>
+</ul>
+<ol>
+<li>创建 New-&gt;Other…-&gt;Maven-&gt;Maven Project</li>
 <li>use default workspace location</li>
 <li>archetypes maven-archetype-quickstart</li>
 <li><p>new maven project</p>
@@ -731,15 +739,15 @@ xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.o
 &lt;name&gt;test_eclipse_maven&lt;/name&gt;
 &lt;url&gt;http://maven.apache.org&lt;/url&gt;
 &lt;properties&gt;
-  &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+ &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
 &lt;/properties&gt;
 &lt;dependencies&gt;
-  &lt;dependency&gt;
-    &lt;groupId&gt;junit&lt;/groupId&gt;
-    &lt;artifactId&gt;junit&lt;/artifactId&gt;
-    &lt;version&gt;3.8.1&lt;/version&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
-  &lt;/dependency&gt;
+ &lt;dependency&gt;
+   &lt;groupId&gt;junit&lt;/groupId&gt;
+   &lt;artifactId&gt;junit&lt;/artifactId&gt;
+   &lt;version&gt;3.8.1&lt;/version&gt;
+   &lt;scope&gt;test&lt;/scope&gt;
+ &lt;/dependency&gt;
 &lt;/dependencies&gt;
 &lt;/project&gt;
 </code></pre></li>
@@ -750,9 +758,9 @@ xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.o
 &lt;!-- https://mvnrepository.com/artifact/org.webjars.npm/d3-array --&gt;
 &lt;!-- https://mvnrepository.com/artifact/joda-time/joda-time --&gt;
 &lt;dependency&gt;
-  &lt;groupId&gt;joda-time&lt;/groupId&gt;
-  &lt;artifactId&gt;joda-time&lt;/artifactId&gt;
-  &lt;version&gt;2.9.9&lt;/version&gt;
+ &lt;groupId&gt;joda-time&lt;/groupId&gt;
+ &lt;artifactId&gt;joda-time&lt;/artifactId&gt;
+ &lt;version&gt;2.9.9&lt;/version&gt;
 &lt;/dependency&gt;
 # 保存自动下载
 # 使用everything搜索Joda Time发现已经在C:\Users\BinLee\.m2\repository\joda-time\joda-time\2.9.9\joda-time-2.9.9.jar下面
@@ -770,14 +778,14 @@ import org.joda.time.LocalDateTime;
 *
 */
 public class App {
-  public static void main(String[] args) {
-      System.out.println(&quot;Hello World!&quot;);
-      DateTime now = DateTime.now();
-      System.out.println(now);
-      Days maxValue = Days.MAX_VALUE;
-      System.out.println(maxValue);
-      System.out.println(LocalDateTime.now());
-  }
+ public static void main(String[] args) {
+     System.out.println(&quot;Hello World!&quot;);
+     DateTime now = DateTime.now();
+     System.out.println(now);
+     Days maxValue = Days.MAX_VALUE;
+     System.out.println(maxValue);
+     System.out.println(LocalDateTime.now());
+ }
 }
 # output
 Hello World!
@@ -785,8 +793,8 @@ Hello World!
 P2147483647D
 2018-04-17T16:15:02.289
 </code></pre></li>
-</ul>
-<h2 id="关于maven源码打包"><a href="#关于maven源码打包" class="headerlink" title="关于maven源码打包"></a>关于maven源码打包</h2><ul>
+</ol>
+<h2 id="关于maven源码打包"><a href="#关于maven源码打包" class="headerlink" title="关于maven源码打包"></a><strong>关于maven源码打包</strong></h2><ul>
 <li><p>命令行方式，<a href="https://blog.csdn.net/symgdwyh/article/details/4407945" target="_blank" rel="noopener">他山之石</a></p>
 <pre><code>cd {项目目录下}
 mvn source:jar
@@ -812,7 +820,7 @@ mvn source:test-jar
       &lt;/plugins&gt;
   &lt;/build&gt;
 &lt;/project&gt;
-</code></pre><h2 id="利用idea运行maven-install报错的问题解决"><a href="#利用idea运行maven-install报错的问题解决" class="headerlink" title="利用idea运行maven install报错的问题解决"></a>利用idea运行maven install报错的问题解决</h2></li>
+</code></pre><h2 id="利用idea运行maven-install报错的问题解决"><a href="#利用idea运行maven-install报错的问题解决" class="headerlink" title="利用idea运行maven install报错的问题解决"></a><strong>利用idea运行maven install报错的问题解决</strong></h2></li>
 <li>参考 <a href="http://tieba.baidu.com/p/4810060893?traceid=" target="_blank" rel="noopener">他山之石</a></li>
 <li>右边maven projects &gt; lifecycle &gt; install</li>
 <li>不要点击plugins &gt; install会报错</li>
@@ -853,8 +861,8 @@ mvn source:test-jar
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/17/常见的环境变量配置/" rel="next" title="常见的环境变量配置">
-                <i class="fa fa-chevron-left"></i> 常见的环境变量配置
+              <a href="/2018/04/16/eclipse中的git基本配置/" rel="next" title="eclipse中的git基本配置">
+                <i class="fa fa-chevron-left"></i> eclipse中的git基本配置
               </a>
             
           </div>
@@ -863,8 +871,8 @@ mvn source:test-jar
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/18/ubuntu中hadoop单机模式和伪分布式搭建/" rel="prev" title="ubuntu中hadoop单机模式和伪分布式搭建">
-                ubuntu中hadoop单机模式和伪分布式搭建 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/17/常见的环境变量配置/" rel="prev" title="常见的环境变量配置">
+                常见的环境变量配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1072,7 +1080,7 @@ mvn source:test-jar
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.5k字</span>
+  <span class="post-count">博客全站共10.6k字</span>
 </div>
 
         
