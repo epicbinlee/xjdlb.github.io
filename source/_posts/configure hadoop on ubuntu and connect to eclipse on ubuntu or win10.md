@@ -8,13 +8,13 @@ toc: true
 mathjax: true
 ---
 
-This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows 10 respectively.
+This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and win10 respectively.
 
 <!-- more -->
 
 ## **prerequisites**
 - **server**
-1. windows 10
+1. win10
 2. vmware workstation pro 12
 3. Ubuntu 16.04.4 LTS
 4. hadoop 2.7.6 [download](http://hadoop.apache.org/releases.html)
@@ -23,7 +23,7 @@ This article describes how to configure hadoop2.7.6 on ubuntu and connect to had
 1. eclipse neon [download](http://www.eclipse.org/downloads/packages/release/Neon/3)
 2. hadoop-eclipse-plugin-2.7.2.jar [download](https://download.csdn.net/download/tondayong1981/9432425)
 
-- **windows 10 client**
+- **win10 client**
 1. eclipse neon [download](http://www.eclipse.org/downloads/packages/release/Neon/3)
 2. hadoop-eclipse-plugin-2.7.2.jar [download](https://download.csdn.net/download/tondayong1981/9432425)
 
@@ -40,7 +40,7 @@ greeter-show-manual-login=true
 all-guest=false
 # reboot
 reboot
-# 使用user和passwd进入root报错
+# login in ubuntu with root and get a error report
 vim /root/.profile
 # locate to
 mesg n || true
@@ -188,7 +188,7 @@ dfs master:
     port: 9000
 5 open dfs locations, you will find the file in hdfs.
 ```
-- **install plugin in eclipse on windows 10**
+- **install plugin in eclipse on win10**
 ```
 1 on win10, your eclipse serves as a clinet, you can connect your server with ip, so you should firstly replace *localhost* with your server ip in all etc files, such as core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml;
 2 repeat the step 1,2,3,4 above;
