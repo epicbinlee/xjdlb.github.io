@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-22T05:08:15.253Z</updated>
+  <updated>2018-04-22T05:53:30.460Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/04/22/configure%20hadoop%202.7.6%20on%20ubuntu%20and%20connect%20to%20eclipse%20neon%20on%20ubuntu%20and%20windows%2010/"/>
     <id>http://yoursite.com/2018/04/22/configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10/</id>
     <published>2018-04-22T04:49:06.000Z</published>
-    <updated>2018-04-22T05:08:15.253Z</updated>
+    <updated>2018-04-22T05:53:30.460Z</updated>
     
-    <content type="html"><![CDATA[<p>This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows10 respectively.</p><a id="more"></a><h2 id="prerequisites"><a href="#prerequisites" class="headerlink" title="prerequisites"></a><strong>prerequisites</strong></h2><ul><li><strong>server</strong></li></ul><ol><li>windows 10</li><li>vmware workstation pro 12</li><li>Ubuntu 16.04.4 LTS</li><li>hadoop 2.7.6 <a href="http://hadoop.apache.org/releases.html" target="_blank" rel="noopener">download</a></li></ol><ul><li><strong>ubuntu clinet</strong></li></ul><ol><li>eclipse neon <a href="http://www.eclipse.org/downloads/packages/release/Neon/3" target="_blank" rel="noopener">download</a></li><li>hadoop-eclipse-plugin-2.7.2.jar <a href="https://download.csdn.net/download/tondayong1981/9432425" target="_blank" rel="noopener">download</a></li></ol><ul><li><strong>windows 10 client</strong></li></ul><ol><li>eclipse neon <a href="http://www.eclipse.org/downloads/packages/release/Neon/3" target="_blank" rel="noopener">download</a></li><li>hadoop-eclipse-plugin-2.7.2.jar <a href="https://download.csdn.net/download/tondayong1981/9432425" target="_blank" rel="noopener">download</a></li></ol><h2 id="pretreatment-for-ubuntu-virtual-machine"><a href="#pretreatment-for-ubuntu-virtual-machine" class="headerlink" title="pretreatment for ubuntu virtual machine"></a><strong>pretreatment for ubuntu virtual machine</strong></h2><ul><li><hr></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows10 respectively.</p><a id="more"></a><h2 id="prerequisites"><a href="#prerequisites" class="headerlink" title="prerequisites"></a><strong>prerequisites</strong></h2><ul><li><strong>server</strong></li></ul><ol><li>windows 10</li><li>vmware workstation pro 12</li><li>Ubuntu 16.04.4 LTS</li><li>hadoop 2.7.6 <a href="http://hadoop.apache.org/releases.html" target="_blank" rel="noopener">download</a></li></ol><ul><li><strong>ubuntu clinet</strong></li></ul><ol><li>eclipse neon <a href="http://www.eclipse.org/downloads/packages/release/Neon/3" target="_blank" rel="noopener">download</a></li><li>hadoop-eclipse-plugin-2.7.2.jar <a href="https://download.csdn.net/download/tondayong1981/9432425" target="_blank" rel="noopener">download</a></li></ol><ul><li><strong>windows 10 client</strong></li></ul><ol><li>eclipse neon <a href="http://www.eclipse.org/downloads/packages/release/Neon/3" target="_blank" rel="noopener">download</a></li><li>hadoop-eclipse-plugin-2.7.2.jar <a href="https://download.csdn.net/download/tondayong1981/9432425" target="_blank" rel="noopener">download</a></li></ol><h2 id="pretreatment-for-ubuntu-virtual-machine"><a href="#pretreatment-for-ubuntu-virtual-machine" class="headerlink" title="pretreatment for ubuntu virtual machine"></a><strong>pretreatment for ubuntu virtual machine</strong></h2><ul><li><strong>enable the user-passwd input box on the login screen</strong><pre><code>sudo passwd rootsu rootcd /usr/share/lightdm/lightdm.conf.d/vim 50-unity-greeter.conf# adduser-session=ubuntugreeter-show-manual-login=trueall-guest=false# rebootreboot# 使用user和passwd进入root报错vim /root/.profile# locate tomesg n || true# change totty -s &amp;&amp; mesg n || true</code></pre></li><li><strong>configure jdk for ubuntu</strong></li><li><p>jdk 1.8 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">download</a></p><pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171export JRE_HOME=/root/app/jdk1.8.0_171/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/binsource /etc/profilejava -version</code></pre></li><li><p><strong>configure hadoop2.7.6</strong></p></li></ul><ol><li><p>append <em>JAVA_HOME</em> to stat script</p><pre><code>step 1:vim /root/app/hadoop/etc/hadoop/hadoop-env.sh# export JAVA_HOME=${JAVA_HOME}export JAVA_HOME=/root/app/jdk1.8.0_171###########################################step 2:vim /root/app/hadoop/etc/hadoop/yarn-env.sh# some Java parameters# export JAVA_HOME=/home/y/libexec/jdk1.6.0/export JAVA_HOME=/root/app/jdk1.8.0_171</code></pre></li><li><p>configure core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml</p><pre><code>step 1:vim /root/app/hadoop/etc/hadoop/core-site.xml&lt;configuration&gt;  &lt;property&gt;     &lt;name&gt;fs.default.name&lt;/name&gt;     &lt;value&gt;hdfs://localhost:9000&lt;/value&gt; &lt;/property&gt; &lt;property&gt;     &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;     &lt;value&gt;/root/app/hadoop/tmp&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt;###########################################step 2:vim /root/app/hadoop/etc/hadoop/hdfs-site.xml&lt;configuration&gt; &lt;property&gt;     &lt;name&gt;dfs.name.dir&lt;/name&gt;     &lt;value&gt;/root/app/hadoop/hdfs/name&lt;/value&gt; &lt;/property&gt; &lt;property&gt;     &lt;name&gt;dfs.data.dir&lt;/name&gt;     &lt;value&gt;/root/app/hadoop/hdfs/data&lt;/value&gt; &lt;/property&gt;&lt;property&gt;     &lt;name&gt;dfs.permissions&lt;/name&gt;     &lt;value&gt;false&lt;/value&gt; &lt;/property&gt; &lt;property&gt;     &lt;name&gt;dfs.replication&lt;/name&gt;     &lt;value&gt;1&lt;/value&gt;     &lt;description&gt;defult 3, less than numbers of datanode&lt;/description&gt; &lt;/property&gt;&lt;/configuration&gt;###########################################step 3:vim /root/app/hadoop/etc/hadoop/mapred-site.xml&lt;configuration&gt; &lt;property&gt;     &lt;name&gt;mapreduce.framework.name&lt;/name&gt;     &lt;value&gt;yarn&lt;/value&gt; &lt;/property&gt; &lt;property&gt;     &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;     &lt;value&gt;localhost:10020&lt;/value&gt;     &lt;description&gt;MapReduce JobHistory Server IPC host:port&lt;/description&gt; &lt;/property&gt;&lt;/configuration&gt;###########################################step 4:vim /root/app/hadoop/etc/hadoop/yarn-site.xml&lt;configuration&gt; &lt;property&gt;         &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;         &lt;value&gt;mapreduce_shuffle&lt;/value&gt; &lt;/property&gt; &lt;property&gt;         &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;         &lt;value&gt;localhost:8099&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt;</code></pre></li></ol><ul><li><p><strong>create floder for hadoop work directory</strong></p><pre><code>cd /root/app/hadoopmkdir hdfs -p hdfs/data hdfs/namemkdir tmp</code></pre></li><li><p><strong>format hdfs and start/stop hadoop</strong></p></li></ul><ol><li>format hdfs<pre><code># keep all hadoop process stopped./sbin/stop-all.sh# remove tmp directoryrm -rdf tmp/# format hdfs only oncebin/hdfs namenode -format# see if the format is successfultree hdfs/</code></pre></li><li>start/stop hadoop<pre><code># start hadoop./sbin/start-all.shroot@ubuntu:~/app/hadoop# jps63809 Jps63474 NodeManager62950 DataNode63335 ResourceManager62775 NameNode63163 SecondaryNameNode# stop hadoop./sbin/stop-all.sh</code></pre></li></ol>]]></content>
     
     <summary type="html">
     
@@ -36,9 +36,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
-    
       <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
+    
+      <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
     
       <category term="configuration" scheme="http://yoursite.com/tags/configuration/"/>
     
@@ -88,9 +88,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
-    
       <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
+    
+      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
     
   </entry>
   
@@ -166,9 +166,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
       <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
     
@@ -257,6 +257,32 @@
   </entry>
   
   <entry>
+    <title>如何去掉valine的Powered By信息？</title>
+    <link href="http://yoursite.com/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
+    <id>http://yoursite.com/2018/04/03/如何去掉valine的Powered By信息？/</id>
+    <published>2018-04-03T14:42:05.000Z</published>
+    <updated>2018-04-21T05:52:38.665Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍如何去掉valine页面上的Powered By信息。<br><a id="more"></a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul><li>找到配置文件<pre><code>blog/themes/next/layout/_third-party/comments/valine.swig</code></pre></li><li>配置如下<pre><code>{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>  <script type="text/javascript">    var GUEST = ['nick','mail','link'];    var guest = '{{ theme.valine.guest_info }}';    guest = guest.split(',').filter(item=>{      return GUEST.indexOf(item)>-1;    });    new Valine({        el: '#comments' ,        verify: {{ theme.valine.verify }},        notify: {{ theme.valine.notify }},        appId: '{{ theme.valine.appid }}',        appKey: '{{ theme.valine.appkey }}',        placeholder: '{{ theme.valine.placeholder }}',        avatar:'{{ theme.valine.avatar }}',        guest_info:guest,        pageSize:'{{ theme.valine.pageSize }}' || 10,    });//新增以下代码即可，可以移除.info下所有子节点。var infoEle = document.querySelector('#comments .info');if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){  infoEle.childNodes.forEach(function(item) {item.parentNode.removeChild(item);  });}  </script>{% endif %}</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍如何去掉valine页面上的Powered By信息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LC_001_TwoSum_HashMap</title>
     <link href="http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/"/>
     <id>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</id>
@@ -281,32 +307,6 @@
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
     
       <category term="basic algorithm" scheme="http://yoursite.com/tags/basic-algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何去掉valine的Powered By信息？</title>
-    <link href="http://yoursite.com/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
-    <id>http://yoursite.com/2018/04/03/如何去掉valine的Powered By信息？/</id>
-    <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-21T05:52:38.665Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍如何去掉valine页面上的Powered By信息。<br><a id="more"></a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul><li>找到配置文件<pre><code>blog/themes/next/layout/_third-party/comments/valine.swig</code></pre></li><li>配置如下<pre><code>{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>  <script type="text/javascript">    var GUEST = ['nick','mail','link'];    var guest = '{{ theme.valine.guest_info }}';    guest = guest.split(',').filter(item=>{      return GUEST.indexOf(item)>-1;    });    new Valine({        el: '#comments' ,        verify: {{ theme.valine.verify }},        notify: {{ theme.valine.notify }},        appId: '{{ theme.valine.appid }}',        appKey: '{{ theme.valine.appkey }}',        placeholder: '{{ theme.valine.placeholder }}',        avatar:'{{ theme.valine.avatar }}',        guest_info:guest,        pageSize:'{{ theme.valine.pageSize }}' || 10,    });//新增以下代码即可，可以移除.info下所有子节点。var infoEle = document.querySelector('#comments .info');if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){  infoEle.childNodes.forEach(function(item) {item.parentNode.removeChild(item);  });}  </script>{% endif %}</code></pre></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍如何去掉valine页面上的Powered By信息。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
     
   </entry>
   

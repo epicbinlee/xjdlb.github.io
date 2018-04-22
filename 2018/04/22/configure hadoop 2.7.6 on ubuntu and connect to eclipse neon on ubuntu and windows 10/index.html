@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="列表,eclipse,hadoop,configuration," />
+  <meta name="keywords" content="列表,hadoop,eclipse,configuration," />
 
 
 
@@ -82,14 +82,14 @@
 
 
 <meta name="description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows10 respectively.">
-<meta name="keywords" content="列表,eclipse,hadoop,configuration">
+<meta name="keywords" content="列表,hadoop,eclipse,configuration">
 <meta property="og:type" content="article">
 <meta property="og:title" content="configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10">
 <meta property="og:url" content="http://yoursite.com/2018/04/22/configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10/index.html">
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows10 respectively.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-22T05:08:15.253Z">
+<meta property="og:updated_time" content="2018-04-22T05:53:30.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10">
 <meta name="twitter:description" content="This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows10 respectively.">
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  82
+                  537
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -469,9 +469,144 @@
 <li>hadoop-eclipse-plugin-2.7.2.jar <a href="https://download.csdn.net/download/tondayong1981/9432425" target="_blank" rel="noopener">download</a></li>
 </ol>
 <h2 id="pretreatment-for-ubuntu-virtual-machine"><a href="#pretreatment-for-ubuntu-virtual-machine" class="headerlink" title="pretreatment for ubuntu virtual machine"></a><strong>pretreatment for ubuntu virtual machine</strong></h2><ul>
-<li><hr>
+<li><strong>enable the user-passwd input box on the login screen</strong><pre><code>sudo passwd root
+su root
+cd /usr/share/lightdm/lightdm.conf.d/
+vim 50-unity-greeter.conf
+# add
+user-session=ubuntu
+greeter-show-manual-login=true
+all-guest=false
+# reboot
+reboot
+# 使用user和passwd进入root报错
+vim /root/.profile
+# locate to
+mesg n || true
+# change to
+tty -s &amp;&amp; mesg n || true
+</code></pre></li>
+<li><strong>configure jdk for ubuntu</strong></li>
+<li><p>jdk 1.8 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">download</a></p>
+<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171
+export JRE_HOME=/root/app/jdk1.8.0_171/jre
+export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
+export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+source /etc/profile
+java -version
+</code></pre></li>
+<li><p><strong>configure hadoop2.7.6</strong></p>
 </li>
 </ul>
+<ol>
+<li><p>append <em>JAVA_HOME</em> to stat script</p>
+<pre><code>step 1:
+vim /root/app/hadoop/etc/hadoop/hadoop-env.sh
+# export JAVA_HOME=${JAVA_HOME}
+export JAVA_HOME=/root/app/jdk1.8.0_171
+###########################################
+step 2:
+vim /root/app/hadoop/etc/hadoop/yarn-env.sh
+# some Java parameters
+# export JAVA_HOME=/home/y/libexec/jdk1.6.0/
+export JAVA_HOME=/root/app/jdk1.8.0_171
+</code></pre></li>
+<li><p>configure core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml</p>
+<pre><code>step 1:
+vim /root/app/hadoop/etc/hadoop/core-site.xml
+&lt;configuration&gt;
+  &lt;property&gt;
+     &lt;name&gt;fs.default.name&lt;/name&gt;
+     &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
+ &lt;/property&gt;
+ &lt;property&gt;
+     &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+     &lt;value&gt;/root/app/hadoop/tmp&lt;/value&gt;
+ &lt;/property&gt;
+&lt;/configuration&gt;
+###########################################
+step 2:
+vim /root/app/hadoop/etc/hadoop/hdfs-site.xml
+&lt;configuration&gt;
+ &lt;property&gt;
+     &lt;name&gt;dfs.name.dir&lt;/name&gt;
+     &lt;value&gt;/root/app/hadoop/hdfs/name&lt;/value&gt;
+ &lt;/property&gt;
+ &lt;property&gt;
+     &lt;name&gt;dfs.data.dir&lt;/name&gt;
+     &lt;value&gt;/root/app/hadoop/hdfs/data&lt;/value&gt;
+ &lt;/property&gt;
+&lt;property&gt;
+     &lt;name&gt;dfs.permissions&lt;/name&gt;
+     &lt;value&gt;false&lt;/value&gt;
+ &lt;/property&gt;
+ &lt;property&gt;
+     &lt;name&gt;dfs.replication&lt;/name&gt;
+     &lt;value&gt;1&lt;/value&gt;
+     &lt;description&gt;defult 3, less than numbers of datanode&lt;/description&gt;
+ &lt;/property&gt;
+&lt;/configuration&gt;
+###########################################
+step 3:
+vim /root/app/hadoop/etc/hadoop/mapred-site.xml
+&lt;configuration&gt;
+ &lt;property&gt;
+     &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+     &lt;value&gt;yarn&lt;/value&gt;
+ &lt;/property&gt;
+ &lt;property&gt;
+     &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;
+     &lt;value&gt;localhost:10020&lt;/value&gt;
+     &lt;description&gt;MapReduce JobHistory Server IPC host:port&lt;/description&gt;
+ &lt;/property&gt;
+&lt;/configuration&gt;
+###########################################
+step 4:
+vim /root/app/hadoop/etc/hadoop/yarn-site.xml
+&lt;configuration&gt;
+ &lt;property&gt;
+         &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+         &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+ &lt;/property&gt;
+ &lt;property&gt;
+         &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;
+         &lt;value&gt;localhost:8099&lt;/value&gt;
+ &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre></li>
+</ol>
+<ul>
+<li><p><strong>create floder for hadoop work directory</strong></p>
+<pre><code>cd /root/app/hadoop
+mkdir hdfs -p hdfs/data hdfs/name
+mkdir tmp
+</code></pre></li>
+<li><p><strong>format hdfs and start/stop hadoop</strong></p>
+</li>
+</ul>
+<ol>
+<li>format hdfs<pre><code># keep all hadoop process stopped
+./sbin/stop-all.sh
+# remove tmp directory
+rm -rdf tmp/
+# format hdfs only once
+bin/hdfs namenode -format
+# see if the format is successful
+tree hdfs/
+</code></pre></li>
+<li>start/stop hadoop<pre><code># start hadoop
+./sbin/start-all.sh
+root@ubuntu:~/app/hadoop# jps
+63809 Jps
+63474 NodeManager
+62950 DataNode
+63335 ResourceManager
+62775 NameNode
+63163 SecondaryNameNode
+# stop hadoop
+./sbin/stop-all.sh
+</code></pre></li>
+</ol>
 
       
     </div>
@@ -491,9 +626,9 @@
           
             <a href="/tags/列表/" rel="tag"><i class="fa fa-tag"></i> 列表</a>
           
-            <a href="/tags/eclipse/" rel="tag"><i class="fa fa-tag"></i> eclipse</a>
-          
             <a href="/tags/hadoop/" rel="tag"><i class="fa fa-tag"></i> hadoop</a>
+          
+            <a href="/tags/eclipse/" rel="tag"><i class="fa fa-tag"></i> eclipse</a>
           
             <a href="/tags/configuration/" rel="tag"><i class="fa fa-tag"></i> configuration</a>
           
@@ -723,7 +858,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共9.9k字</span>
+  <span class="post-count">博客全站共10.3k字</span>
 </div>
 
         
