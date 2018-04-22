@@ -28,4 +28,146 @@ This article describes how to configure hadoop2.7.6 on ubuntu and connect to had
 2. hadoop-eclipse-plugin-2.7.2.jar [download](https://download.csdn.net/download/tondayong1981/9432425)
 
 ## **pretreatment for ubuntu virtual machine**
-- ****
+- **enable the user-passwd input box on the login screen**
+```
+sudo passwd root
+su root
+cd /usr/share/lightdm/lightdm.conf.d/
+vim 50-unity-greeter.conf
+# add
+user-session=ubuntu
+greeter-show-manual-login=true
+all-guest=false
+# reboot
+reboot
+# 使用user和passwd进入root报错
+vim /root/.profile
+# locate to
+mesg n || true
+# change to
+tty -s && mesg n || true
+```
+- **configure jdk for ubuntu**
+- jdk 1.8 [download](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+```
+export JAVA_HOME=/root/app/jdk1.8.0_171
+export JRE_HOME=/root/app/jdk1.8.0_171/jre
+export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
+export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+source /etc/profile
+java -version
+```
+
+- **configure hadoop2.7.6**
+1. append *JAVA_HOME* to stat script
+```
+step 1:
+vim /root/app/hadoop/etc/hadoop/hadoop-env.sh
+# export JAVA_HOME=${JAVA_HOME}
+export JAVA_HOME=/root/app/jdk1.8.0_171
+###########################################
+step 2:
+vim /root/app/hadoop/etc/hadoop/yarn-env.sh
+# some Java parameters
+# export JAVA_HOME=/home/y/libexec/jdk1.6.0/
+export JAVA_HOME=/root/app/jdk1.8.0_171
+```
+
+2. configure core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml
+```
+step 1:
+vim /root/app/hadoop/etc/hadoop/core-site.xml
+<configuration>
+	 <property>
+	    <name>fs.default.name</name>
+		<value>hdfs://localhost:9000</value>
+	</property>
+	<property>
+		<name>hadoop.tmp.dir</name>
+		<value>/root/app/hadoop/tmp</value>
+	</property>
+</configuration>
+###########################################
+step 2:
+vim /root/app/hadoop/etc/hadoop/hdfs-site.xml
+<configuration>
+	<property>
+		<name>dfs.name.dir</name>
+		<value>/root/app/hadoop/hdfs/name</value>
+	</property>
+	<property>
+		<name>dfs.data.dir</name>
+		<value>/root/app/hadoop/hdfs/data</value>
+	</property>
+   <property>
+        <name>dfs.permissions</name>
+        <value>false</value>
+    </property>
+	<property>
+		<name>dfs.replication</name>
+		<value>1</value>
+		<description>defult 3, less than numbers of datanode</description>
+	</property>
+</configuration>
+###########################################
+step 3:
+vim /root/app/hadoop/etc/hadoop/mapred-site.xml
+<configuration>
+	<property>
+		<name>mapreduce.framework.name</name>
+		<value>yarn</value>
+	</property>
+    <property>
+        <name>mapreduce.jobhistory.address</name>
+        <value>localhost:10020</value>
+        <description>MapReduce JobHistory Server IPC host:port</description>
+    </property>
+</configuration>
+###########################################
+step 4:
+vim /root/app/hadoop/etc/hadoop/yarn-site.xml
+<configuration>
+	<property>
+			<name>yarn.nodemanager.aux-services</name>
+			<value>mapreduce_shuffle</value>
+	</property>
+	<property>
+			<name>yarn.resourcemanager.webapp.address</name>
+			<value>localhost:8099</value>
+	</property>
+</configuration>
+```
+
+- **create floder for hadoop work directory**
+```
+cd /root/app/hadoop
+mkdir hdfs -p hdfs/data hdfs/name
+mkdir tmp
+```
+
+- **format hdfs and start/stop hadoop**
+1. format hdfs
+```
+# keep all hadoop process stopped
+./sbin/stop-all.sh
+# remove tmp directory
+rm -rdf tmp/
+# format hdfs only once
+bin/hdfs namenode -format
+# see if the format is successful
+tree hdfs/
+```
+2. start/stop hadoop
+```
+# start hadoop
+./sbin/start-all.sh
+root@ubuntu:~/app/hadoop# jps
+63809 Jps
+63474 NodeManager
+62950 DataNode
+63335 ResourceManager
+62775 NameNode
+63163 SecondaryNameNode
+# stop hadoop
+./sbin/stop-all.sh
+```
