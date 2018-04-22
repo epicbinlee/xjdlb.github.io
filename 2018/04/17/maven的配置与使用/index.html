@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】，maven详细讲解：他山之石">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-21T05:52:38.663Z">
+<meta property="og:updated_time" content="2018-04-22T10:28:04.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="apache maven的配置与使用">
 <meta name="twitter:description" content="本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】，maven详细讲解：他山之石">
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,952
+                  1,979
                 </span>
               
 
@@ -698,11 +698,24 @@ Hello World!
 mvn clean jboss-as:deploy
 </code></pre></li>
 </ul>
-<h2 id="eclipse上的maven项目"><a href="#eclipse上的maven项目" class="headerlink" title="eclipse上的maven项目"></a>eclipse上的maven项目</h2><ul>
-<li>创建 New-&gt;Other…-&gt;Maven-&gt;Maven Project</li>
+<h2 id="eclipse上的maven项目"><a href="#eclipse上的maven项目" class="headerlink" title="eclipse上的maven项目"></a><strong>eclipse上的maven项目</strong></h2><ul>
+<li><p>打开eclipse进行java配置，然后关闭</p>
+<pre><code>windows &gt; preferences &gt; java &gt; installed jres &gt; add jdk floder and jre floder
+select jdk floder &gt; apply
+</code></pre></li>
+<li><p>eclipse上的maven插件M2Eclipse</p>
+<pre><code>help menu &gt; install new software &gt; input the url as follow
+http://download.eclipse.org/technology/m2e/releases/
+# 备注插件官网
+http://www.eclipse.org/m2e/
+# 该插件可以解决mvn install报错问题
+</code></pre></li>
+<li><p>创建 New-&gt;Other…-&gt;Maven-&gt;Maven Project</p>
+</li>
 <li>use default workspace location</li>
 <li>archetypes maven-archetype-quickstart</li>
-<li>new maven project<pre><code>com.hikvision.big_data.data
+<li><p>new maven project</p>
+<pre><code>com.hikvision.big_data.data
 test_eclipse_maven
 0.0.1-SNAPSHOT
 com.hikvision.big_data.data.test_eclipse_maven
@@ -771,13 +784,6 @@ Hello World!
 2018-04-17T16:15:02.211+08:00
 P2147483647D
 2018-04-17T16:15:02.289
-</code></pre></li>
-<li><p>eclipse上的maven插件M2Eclipse</p>
-<pre><code>help menu &gt; install new software &gt; input the url as follow
-http://download.eclipse.org/technology/m2e/releases/
-# 备注插件官网
-http://www.eclipse.org/m2e/
-# 该插件可以解决mvn install报错问题
 </code></pre></li>
 </ul>
 <h2 id="关于maven源码打包"><a href="#关于maven源码打包" class="headerlink" title="关于maven源码打包"></a>关于maven源码打包</h2><ul>
