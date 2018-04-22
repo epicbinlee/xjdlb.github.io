@@ -1,6 +1,6 @@
 
 ---
-title: configure hadoop 2.7.6 on ubuntu and connect to eclipse neon on ubuntu and windows 10
+title: configure hadoop on ubuntu and connect to eclipse on ubuntu or win10
 date: 2018-04-22 12:49:06
 tags: [列表,eclipse,hadoop,configuration]
 categories: configuration
@@ -8,7 +8,7 @@ toc: true
 mathjax: true
 ---
 
-This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows10 respectively.
+This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and windows 10 respectively.
 
 <!-- more -->
 
@@ -58,8 +58,8 @@ source /etc/profile
 java -version
 ```
 
-- **configure hadoop2.7.6**
-1. append *JAVA_HOME* to stat script
+## **configure hadoop2.7.6**
+- **append *JAVA_HOME* to stat script**
 ```
 step 1:
 vim /root/app/hadoop/etc/hadoop/hadoop-env.sh
@@ -73,7 +73,7 @@ vim /root/app/hadoop/etc/hadoop/yarn-env.sh
 export JAVA_HOME=/root/app/jdk1.8.0_171
 ```
 
-2. configure core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml
+- **configure core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml**
 ```
 step 1:
 vim /root/app/hadoop/etc/hadoop/core-site.xml
@@ -170,4 +170,28 @@ root@ubuntu:~/app/hadoop# jps
 63163 SecondaryNameNode
 # stop hadoop
 ./sbin/stop-all.sh
+```
+
+## **connect to hadoop with eclipse**
+- **install plugin in eclipse on ubuntu**
+```
+1 copy to hadoop-eclipse-plugin-2.7.2.jar to ${eclipse_home}/dropins;
+2 open eclipse;
+3 open menu > windows > show view > other > mapreduce tools > map/reduce locations;
+4 map/reduce locations > right click > edit hadoop location;
+location name: XXX
+map/reduce master:
+    host: localhost
+    port: 50020
+dfs master:
+    host: localhost
+    port: 9000
+5 open dfs locations, you will find the file in hdfs.
+```
+- **install plugin in eclipse on windows 10**
+```
+1 on win10, your eclipse serves as a clinet, you can connect your server with ip, so you should firstly replace *localhost* with your server ip in all etc files, such as core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml;
+2 repeat the step 1,2,3,4 above;
+3 map/reduce locations > right click > edit hadoop location > advace parameters, replace *hadoop.tmp.dir* with your own address in /hdfs-site.xml;
+4 enjoy the local developing and the remote debuging.
 ```
