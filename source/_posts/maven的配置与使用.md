@@ -397,6 +397,7 @@ P2147483647D
 ```
 
 ## **关于maven源码打包**
+
 - 命令行方式，[他山之石](https://blog.csdn.net/symgdwyh/article/details/4407945)
 ```
 cd {项目目录下}
@@ -426,7 +427,9 @@ mvn source:test-jar
     </build>
 </project>
 ```
+
 ## **利用idea运行maven install报错的问题解决**
+
 - 参考 [他山之石](http://tieba.baidu.com/p/4810060893?traceid=)
 - 右边maven projects > lifecycle > install
 - 不要点击plugins > install会报错
