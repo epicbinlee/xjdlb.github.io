@@ -1,4 +1,4 @@
-﻿echo "hello"
+﻿echo "start to upload files to git..."
 yy=$(date +%y)
 mm=$(date +%m)
 dd=$(date +%d)
@@ -25,5 +25,7 @@ git push git@gitee.com:bin_lee/bin_lee.git hexo
 git  log --oneline | head
 
 echo "=================================="
+
+echo "start to deploy website to github..."
 
 hexo clean && hexo g -d
