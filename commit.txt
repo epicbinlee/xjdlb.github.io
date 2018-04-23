@@ -1,31 +1,28 @@
-﻿echo "start to upload files to git..."
+echo "============================"
+echo "start to upload files to git..."
+echo "============================"
 yy=$(date +%y)
 mm=$(date +%m)
 dd=$(date +%d)
 HH=$(date +%H)
 MM=$(date +%M)
 SS=$(date +%S)
-
 xW=$(date +%U)
 we=$(date +%a)
 xD=$(date +%j)
-
 git status
 git add .
 git commit -m "
-$yy/$mm/$dd-$HH:$MM:$SS add pkg-bolg.sh
+$yy/$mm/$dd-$HH:$MM:$SS new post 23
 "
-
 git push git@github.com:xjdlb/xjdlb.github.io.git hexo
 git  log --oneline | head
-
 echo "=================================="
-
 git push git@gitee.com:bin_lee/bin_lee.git hexo
 git  log --oneline | head
-
 echo "=================================="
-
+echo ""
+echo "=================================="
 echo "start to deploy website to github..."
-
+echo "=================================="
 hexo clean && hexo g -d
