@@ -8,7 +8,7 @@ toc: true
 mathjax: true
 ---
 
-This article describes how to write the wordcount program on eclipse and run it on local Hadoop.
+This article describes how to write the wordcount program on eclipse and run it on local hadoop.
 
 <!-- more -->
 
@@ -27,7 +27,7 @@ This article describes how to write the wordcount program on eclipse and run it 
 
 - **create project**
 ```
-new > other > map reduce program > fix the boses with name, ${HADOOP_HOME} > finish
+new > other > map reduce program > fix the boxes with name, ${HADOOP_HOME} > finish
 ```
 
 - **coding**

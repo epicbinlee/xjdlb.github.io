@@ -1,2 +1,2 @@
-﻿ehco "push and deploy..."
+ehco "push and deploy..."
 sh commit.txt

@@ -1,4 +1,4 @@
-﻿echo "hello"
+echo "hello"
 yy=$(date +%y)
 mm=$(date +%m)
 dd=$(date +%d)

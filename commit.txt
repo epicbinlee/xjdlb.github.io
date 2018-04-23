@@ -27,4 +27,3 @@ git  log --oneline | head
 echo "=================================="
 
 hexo clean && hexo g -d
-
