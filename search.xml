@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[usage of scp]]></title>
+    <url>%2F2018%2F04%2F23%2Fusage%20of%20scp%2F</url>
+    <content type="text"><![CDATA[this article describes how download/upload files from server using scp command line. usage of scp download file from server scp root@servername:/path/filename /tmp/local_destination scp root@192.168.0.101:/home/kimi/test.txt /home/kimi/test.txt upload file to server scp /path/local_filename root@servername:/path scp /var/www/test.php root@192.168.0.101:/var/www/ download directory to client scp -r root@servername:remote_dir/ /tmp/local_dir scp -r root@192.168.0.101:/home/kimi/test /tmp/local_dir upload directory to server scp -r /tmp/local_dir root@servername:remote_dir scp -P 22 -r test root@192.168.0.101:/var/www/]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>cmd</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[write wordcount program on eclipse and run on hadoop in win10]]></title>
     <url>%2F2018%2F04%2F23%2Fwrite%20wordcount%20program%20on%20eclipse%20and%20run%20on%20hadoop%20in%20win10%2F</url>
     <content type="text"><![CDATA[This article describes how to write the wordcount program on eclipse and run it on local hadoop. prerequisites server win10 hadoop 2.7.6 client win10 eclipse neon hadoop-eclipse-plugin-2.7.2.jar create project and coding create project new &gt; other &gt; map reduce program &gt; fix the boxes with name, ${HADOOP_HOME} &gt; finish coding package com.hikvision.bigdata.hadoop.hadoop_wordcount; import java.io.IOException; import java.util.StringTokenizer; import org.apache.hadoop.conf.Configuration; import org.apache.hadoop.fs.Path; import org.apache.hadoop.io.IntWritable; import org.apache.hadoop.io.LongWritable; import org.apache.hadoop.io.Text; import org.apache.hadoop.mapreduce.Job; import org.apache.hadoop.mapreduce.Mapper; import org.apache.hadoop.mapreduce.Reducer; import org.apache.hadoop.mapreduce.lib.input.FileInputFormat; import org.apache.hadoop.mapreduce.lib.input.TextInputFormat; import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat; import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat; import org.apache.log4j.BasicConfigurator; /** * wordcount */ public class WordCount { public static void main(String[] args) throws Exception { BasicConfigurator.configure(); System.out.println(&quot;Hello World!&quot;); Configuration conf = new Configuration(); @SuppressWarnings(&quot;deprecation&quot;) Job job = new Job(conf, &quot;wordcount&quot;); job.setJarByClass(WordCount.class); job.setOutputKeyClass(Text.class); job.setOutputValueClass(IntWritable.class); job.setMapperClass(Map.class); job.setReducerClass(Reduce.class); job.setInputFormatClass(TextInputFormat.class); job.setOutputFormatClass(TextOutputFormat.class); FileInputFormat.addInputPath(job, new Path(args[0])); FileOutputFormat.setOutputPath(job, new Path(args[1])); job.waitForCompletion(true); } public static class Map extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; { private final static IntWritable one = new IntWritable(1); private Text word = new Text(); public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException { String line = value.toString(); StringTokenizer tokenizer = new StringTokenizer(line); while (tokenizer.hasMoreTokens()) { word.set(tokenizer.nextToken()); context.write(word, one); } } } public static class Reduce extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; { public void reduce(Text key, Iterable&lt;IntWritable&gt; values, Context context) throws IOException, InterruptedException { int sum = 0; for (IntWritable val : values) { sum += val.get(); } context.write(key, new IntWritable(sum)); } } } configure program configure hadoop step 1: core-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;fs.default.name&lt;/name&gt; &lt;value&gt;hdfs://localhost:9000&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;hadoop.tmp.dir&lt;/name&gt; &lt;value&gt;/root/app/hadoop/tmp&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; ########################################### step 2: hdfs-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;dfs.name.dir&lt;/name&gt; &lt;value&gt;/root/app/hadoop/hdfs/name&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.data.dir&lt;/name&gt; &lt;value&gt;/root/app/hadoop/hdfs/data&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.permissions&lt;/name&gt; &lt;value&gt;false&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.replication&lt;/name&gt; &lt;value&gt;1&lt;/value&gt; &lt;description&gt;defult 3, less than numbers of datanode&lt;/description&gt; &lt;/property&gt; &lt;/configuration&gt; ########################################### step 3: mapred-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;mapreduce.framework.name&lt;/name&gt; &lt;value&gt;yarn&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt; &lt;value&gt;localhost:10020&lt;/value&gt; &lt;description&gt;MapReduce JobHistory Server IPC host:port&lt;/description&gt; &lt;/property&gt; &lt;/configuration&gt; ########################################### step 4: yarn-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt; &lt;value&gt;mapreduce_shuffle&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt; &lt;value&gt;localhost:8099&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; format namenode cd bin hdfs namenode -format # format only once start hadoop and upload data to hdfs cd ${HADOOP_HOME} input cmd to open cmd line cd sbin start-all.cmd # # hadoop fs -mkdir /data hadoop fs -put D:\a.txt /data/a.txt configure input and output path for program in eclipse1 project name &gt; right clieck &gt; run as &gt; run configuration &gt; java application &gt; new 2 fix the boxes with the program name, main class, run name, and arguments 3 the arguments as follows: hdfs://localhost:9000/data/a.txt hdfs://localhost:9000/data/output run program precondition delete the output floder on hdfs data is ready input/output path is configured in eclipse hadoop is running run programproject name &gt; right clieck &gt; run as &gt; run on hadoop &gt; select the main class &gt; enjoy the ouput]]></content>
@@ -49,8 +62,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>hadoop</tag>
         <tag>maven</tag>
+        <tag>hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -74,8 +87,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>maven</tag>
         <tag>配置</tag>
+        <tag>maven</tag>
         <tag>windows</tag>
       </tags>
   </entry>
@@ -102,9 +115,9 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>eclipse</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
+        <tag>eclipse</tag>
       </tags>
   </entry>
   <entry>
@@ -117,21 +130,8 @@
       <tags>
         <tag>列表</tag>
         <tag>配置</tag>
-        <tag>kcptun</tag>
         <tag>ss</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
-    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
-    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>列表</tag>
-        <tag>配置</tag>
-        <tag>valine</tag>
+        <tag>kcptun</tag>
       </tags>
   </entry>
   <entry>
@@ -162,6 +162,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
+    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>valine</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[如何在next配置站内的搜索引擎？]]></title>
     <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%9C%A8next%E9%85%8D%E7%BD%AE%E7%AB%99%E5%86%85%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[本文介绍如何在next配置站内的搜索引擎。 配置过程 安装hexo-generator-searchdb插件，以管理员身份打开cmd进入项目目录下，运行npm install hexo-generator-searchdb --save 在站点的-config.yml文件中增加search: path: search.xml field: post format: html limit: 10000 配置theme/next/-config.yml文件# Algolia Search algolia_search: enable: false hits: per_page: 10 labels: input_placeholder: Search for Posts hits_empty: &quot;We didn&#39;t find any results for the search: ${query}&quot; hits_stats: &quot;${hits} results found in ${time} ms&quot; # # Local search # Dependencies: https://github.com/flashlab/hexo-generator-search local_search: enable: true # if auto, trigger search by changing input # if manual, trigger search by pressing enter key or search button trigger: auto # show top n results per article, show all results by setting to -1 top_n_per_article: 1]]></content>
@@ -183,8 +196,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>shell</tag>
         <tag>linux</tag>
+        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -196,8 +209,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
         <tag>vps</tag>
       </tags>
   </entry>
@@ -210,8 +223,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -223,8 +236,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
         <tag>hexo</tag>
       </tags>
   </entry>
@@ -280,8 +293,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>git</tag>
         <tag>配置</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
