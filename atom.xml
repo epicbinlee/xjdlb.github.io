@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-23T11:51:29.908Z</updated>
+  <updated>2018-04-23T12:31:10.206Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>how to download 1080p videos form youtube</title>
+    <link href="http://yoursite.com/2018/04/23/how%20to%20download%201080p%20videos%20form%20youtube/"/>
+    <id>http://yoursite.com/2018/04/23/how to download 1080p videos form youtube/</id>
+    <published>2018-04-23T12:36:16.000Z</published>
+    <updated>2018-04-23T12:31:10.206Z</updated>
+    
+    <content type="html"><![CDATA[<p>the article describes how to download 1080p videos form youtube with your foreigen vps/ecs.</p><a id="more"></a><h2 id="general-method"><a href="#general-method" class="headerlink" title="general method"></a>general method</h2><ul><li>chrome browser</li><li>copy the link of the video from youtube</li><li>paste the link to the input box of <a href="https://en.savefrom.net/" target="_blank" rel="noopener">https://en.savefrom.net/</a></li><li>download videos though chrome</li></ul><h2 id="advance-method"><a href="#advance-method" class="headerlink" title="advance method"></a>advance method</h2><ul><li>login in your foreign vps</li><li>such as: ubuntu from digitalocean</li><li>use the following cmd to download the video<pre><code>apt-get install youtube-dl -yyoutube-dl -f 22 your_video_link</code></pre></li></ul><h2 id="ultimate-method"><a href="#ultimate-method" class="headerlink" title="ultimate method"></a>ultimate method</h2><ul><li><p>use the following cmd to analysis all videos and audios about your_video_link</p><pre><code>youtube-dl -F your_video_link</code></pre></li><li><p>use the following cmd to download videos and audios with the specified code</p><pre><code>youtube-dl -f 10 your_video_link</code></pre></li><li><p>install the tools of video and audio</p><pre><code>apt-get install ffmpeg -y</code></pre></li><li><p>merge the video and audio</p><pre><code>ffmpeg -i /tmp/a.wav -i /tmp/a.avi /tmp/out.avi</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;the article describes how to download 1080p videos form youtube with your foreigen vps/ecs.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="configuration" scheme="http://yoursite.com/categories/configuration/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="vps" scheme="http://yoursite.com/tags/vps/"/>
+    
+      <category term="youtube" scheme="http://yoursite.com/tags/youtube/"/>
+    
+  </entry>
   
   <entry>
     <title>usage of scp</title>
@@ -71,32 +97,6 @@
   </entry>
   
   <entry>
-    <title>how to download 1080p videos form youtube</title>
-    <link href="http://yoursite.com/2018/04/23/how%20to%20download%201080p%20videos%20form%20youtube/"/>
-    <id>http://yoursite.com/2018/04/23/how to download 1080p videos form youtube/</id>
-    <published>2018-04-23T06:36:16.000Z</published>
-    <updated>2018-04-23T12:26:47.681Z</updated>
-    
-    <content type="html"><![CDATA[<p>the article describes how to download 1080p videos form youtube with your foreigen vps/ecs.</p><a id="more"></a><h2 id="general-method"><a href="#general-method" class="headerlink" title="general method"></a>general method</h2><ul><li>chrome browser</li><li>copy the link of the video from youtube</li><li>paste the link to the input box of <a href="https://en.savefrom.net/" target="_blank" rel="noopener">https://en.savefrom.net/</a></li><li>download videos though chrome</li></ul><h2 id="advanced-method"><a href="#advanced-method" class="headerlink" title="advanced method"></a>advanced method</h2><ul><li>login in your foreign vps</li><li>such as: ubuntu from digitalocean</li><li>use the following cmd to download the video<pre><code>apt-get install youtube-dl -yyoutube-dl -f 22 your_video_link</code></pre></li></ul><h2 id="ultimate-method"><a href="#ultimate-method" class="headerlink" title="ultimate method"></a>ultimate method</h2><ul><li><p>use the following cmd to analysis all videos and audios about your_video_link</p><pre><code>youtube-dl -F your_video_link</code></pre></li><li><p>use the following cmd to download videos and audios with the specified code</p><pre><code>youtube-dl -f 10 your_video_link</code></pre></li><li><p>install the tools of video and audio</p><pre><code>apt-get install ffmpeg -y</code></pre></li><li><p>merge the video and audio</p><pre><code>ffmpeg -i /tmp/a.wav -i /tmp/a.avi /tmp/out.avi</code></pre></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;the article describes how to download 1080p videos form youtube with your foreigen vps/ecs.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="configuration" scheme="http://yoursite.com/categories/configuration/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="vps" scheme="http://yoursite.com/tags/vps/"/>
-    
-      <category term="youtube" scheme="http://yoursite.com/tags/youtube/"/>
-    
-  </entry>
-  
-  <entry>
     <title>configure hadoop on ubuntu and connect to eclipse on ubuntu or win10</title>
     <link href="http://yoursite.com/2018/04/22/configure%20hadoop%20on%20ubuntu%20and%20connect%20to%20eclipse%20on%20ubuntu%20or%20win10/"/>
     <id>http://yoursite.com/2018/04/22/configure hadoop on ubuntu and connect to eclipse on ubuntu or win10/</id>
@@ -116,9 +116,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
-    
       <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
+    
+      <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
     
       <category term="configuration" scheme="http://yoursite.com/tags/configuration/"/>
     
@@ -168,9 +168,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
-    
       <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
+    
+      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
     
   </entry>
   
@@ -246,9 +246,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
       <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
     
@@ -274,11 +274,11 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
-    
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
     
   </entry>
   
@@ -311,28 +311,30 @@
   </entry>
   
   <entry>
-    <title>如何去掉valine的Powered By信息？</title>
-    <link href="http://yoursite.com/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
-    <id>http://yoursite.com/2018/04/03/如何去掉valine的Powered By信息？/</id>
+    <title>LC_001_TwoSum_HashMap</title>
+    <link href="http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/"/>
+    <id>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</id>
     <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-21T05:52:38.665Z</updated>
+    <updated>2018-04-21T05:52:38.657Z</updated>
     
-    <content type="html"><![CDATA[<p>本文介绍如何去掉valine页面上的Powered By信息。<br><a id="more"></a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul><li>找到配置文件<pre><code>blog/themes/next/layout/_third-party/comments/valine.swig</code></pre></li><li>配置如下<pre><code>{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>  <script type="text/javascript">    var GUEST = ['nick','mail','link'];    var guest = '{{ theme.valine.guest_info }}';    guest = guest.split(',').filter(item=>{      return GUEST.indexOf(item)>-1;    });    new Valine({        el: '#comments' ,        verify: {{ theme.valine.verify }},        notify: {{ theme.valine.notify }},        appId: '{{ theme.valine.appid }}',        appKey: '{{ theme.valine.appkey }}',        placeholder: '{{ theme.valine.placeholder }}',        avatar:'{{ theme.valine.avatar }}',        guest_info:guest,        pageSize:'{{ theme.valine.pageSize }}' || 10,    });//新增以下代码即可，可以移除.info下所有子节点。var infoEle = document.querySelector('#comments .info');if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){  infoEle.childNodes.forEach(function(item) {item.parentNode.removeChild(item);  });}  </script>{% endif %}</code></pre></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>leetcode第001题，主要用到了hashmap数据结构。<br><a id="more"></a></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre><code class="java">package LC;import java.util.Arrays;import java.util.HashMap;/** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */public class LC_001_TwoSum_HashMap {    public static void main(String[] args) {        int[] a = {1, 2, 3, 4, 5, 7};        int t = 10;        System.out.println(Arrays.toString(twoSum(a, t)));    }    private static int[] twoSum(int[] nums, int target) {        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();        for (int i = 0; i &lt; nums.length; i++) {            int diff = target - nums[i];            if (map.containsKey(diff)) return new int[]{map.get(diff), i};            map.put(nums[i], i);        }        throw new IllegalArgumentException(&quot;-1&quot;);    }}</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;本文介绍如何去掉valine页面上的Powered By信息。&lt;br&gt;
+      &lt;p&gt;leetcode第001题，主要用到了hashmap数据结构。&lt;br&gt;
     
     </summary>
     
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
     
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
     
-      <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+      <category term="basic algorithm" scheme="http://yoursite.com/tags/basic-algorithm/"/>
     
   </entry>
   
@@ -363,30 +365,28 @@
   </entry>
   
   <entry>
-    <title>LC_001_TwoSum_HashMap</title>
-    <link href="http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/"/>
-    <id>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</id>
+    <title>如何去掉valine的Powered By信息？</title>
+    <link href="http://yoursite.com/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
+    <id>http://yoursite.com/2018/04/03/如何去掉valine的Powered By信息？/</id>
     <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-21T05:52:38.657Z</updated>
+    <updated>2018-04-21T05:52:38.665Z</updated>
     
-    <content type="html"><![CDATA[<p>leetcode第001题，主要用到了hashmap数据结构。<br><a id="more"></a></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre><code class="java">package LC;import java.util.Arrays;import java.util.HashMap;/** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */public class LC_001_TwoSum_HashMap {    public static void main(String[] args) {        int[] a = {1, 2, 3, 4, 5, 7};        int t = 10;        System.out.println(Arrays.toString(twoSum(a, t)));    }    private static int[] twoSum(int[] nums, int target) {        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();        for (int i = 0; i &lt; nums.length; i++) {            int diff = target - nums[i];            if (map.containsKey(diff)) return new int[]{map.get(diff), i};            map.put(nums[i], i);        }        throw new IllegalArgumentException(&quot;-1&quot;);    }}</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>本文介绍如何去掉valine页面上的Powered By信息。<br><a id="more"></a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul><li>找到配置文件<pre><code>blog/themes/next/layout/_third-party/comments/valine.swig</code></pre></li><li>配置如下<pre><code>{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>  <script type="text/javascript">    var GUEST = ['nick','mail','link'];    var guest = '{{ theme.valine.guest_info }}';    guest = guest.split(',').filter(item=>{      return GUEST.indexOf(item)>-1;    });    new Valine({        el: '#comments' ,        verify: {{ theme.valine.verify }},        notify: {{ theme.valine.notify }},        appId: '{{ theme.valine.appid }}',        appKey: '{{ theme.valine.appkey }}',        placeholder: '{{ theme.valine.placeholder }}',        avatar:'{{ theme.valine.avatar }}',        guest_info:guest,        pageSize:'{{ theme.valine.pageSize }}' || 10,    });//新增以下代码即可，可以移除.info下所有子节点。var infoEle = document.querySelector('#comments .info');if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){  infoEle.childNodes.forEach(function(item) {item.parentNode.removeChild(item);  });}  </script>{% endif %}</code></pre></li></ul>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;leetcode第001题，主要用到了hashmap数据结构。&lt;br&gt;
+      &lt;p&gt;本文介绍如何去掉valine页面上的Powered By信息。&lt;br&gt;
     
     </summary>
     
-      <category term="leetcode" scheme="http://yoursite.com/categories/leetcode/"/>
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
     
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-      <category term="basic algorithm" scheme="http://yoursite.com/tags/basic-algorithm/"/>
+      <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
     
   </entry>
   
