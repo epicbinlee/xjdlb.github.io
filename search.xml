@@ -1,652 +1,338 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title>how to download 1080p videos form youtube</title>
-      <link href="/2018/04/23/how%20to%20download%201080p%20videos%20form%20youtube/"/>
-      <url>/2018/04/23/how%20to%20download%201080p%20videos%20form%20youtube/</url>
-      <content type="html"><![CDATA[<p>the article describes how to download 1080p videos form youtube with your foreigen vps/ecs.</p><a id="more"></a><h2 id="general-method"><a href="#general-method" class="headerlink" title="general method"></a>general method</h2><ul><li>chrome browser</li><li>copy the link of the video from youtube</li><li>paste the link to the input box of <a href="https://en.savefrom.net/" target="_blank" rel="noopener">https://en.savefrom.net/</a></li><li>download videos though chrome</li></ul><h2 id="advance-method"><a href="#advance-method" class="headerlink" title="advance method"></a>advance method</h2><ul><li>login in your foreign vps</li><li>such as: ubuntu from digitalocean</li><li>use the following cmd to download the video<pre><code>apt-get install youtube-dl -yyoutube-dl -f 22 your_video_link</code></pre></li></ul><h2 id="ultimate-method"><a href="#ultimate-method" class="headerlink" title="ultimate method"></a>ultimate method</h2><ul><li><p>use the following cmd to analysis all videos and audios about your_video_link</p><pre><code>youtube-dl -F your_video_link</code></pre></li><li><p>use the following cmd to download videos and audios with the specified code</p><pre><code>youtube-dl -f 10 your_video_link</code></pre></li><li><p>install the tools of video and audio</p><pre><code>apt-get install ffmpeg -y</code></pre></li><li><p>merge the video and audio</p><pre><code>ffmpeg -i /tmp/a.wav -i /tmp/a.avi /tmp/out.avi</code></pre></li></ul>]]></content>
-      
+<search>
+  <entry>
+    <title><![CDATA[how to download 1080p videos from youtube]]></title>
+    <url>%2F2018%2F04%2F23%2Fhow%20to%20download%201080p%20videos%20from%20youtube%2F</url>
+    <content type="text"><![CDATA[the article describes how to download 1080p videos form youtube with your foreigen vps/ecs. general method chrome browser copy the link of the video from youtube paste the link to the input box of https://en.savefrom.net/ download videos though chrome advance method login in your foreign vps such as: ubuntu from digitalocean use the following cmd to download the videoapt-get install youtube-dl -y youtube-dl -f 22 your_video_link ultimate method use the following cmd to analysis all videos and audios about your_video_link youtube-dl -F your_video_link use the following cmd to download videos and audios with the specified code youtube-dl -f 10 your_video_link install the tools of video and audio apt-get install ffmpeg -y merge the video and audio ffmpeg -i /tmp/a.wav -i /tmp/a.avi /tmp/out.avi]]></content>
       <categories>
-          
-          <category> configuration </category>
-          
+        <category>configuration</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> vps </tag>
-            
-            <tag> youtube </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>usage of scp</title>
-      <link href="/2018/04/23/usage%20of%20scp/"/>
-      <url>/2018/04/23/usage%20of%20scp/</url>
-      <content type="html"><![CDATA[<p>this article describes how download/upload files from server using scp command line.</p><a id="more"></a><h2 id="usage-of-scp"><a href="#usage-of-scp" class="headerlink" title="usage of scp"></a>usage of scp</h2><ol><li><p>download file from server</p><pre><code>scp root@servername:/path/filename /tmp/local_destinationscp root@192.168.0.101:/home/kimi/test.txt /home/kimi/test.txt</code></pre></li><li><p>upload file to server</p><pre><code>scp /path/local_filename root@servername:/path  scp /var/www/test.php root@192.168.0.101:/var/www/</code></pre></li><li><p>download directory to client</p><pre><code>scp -r root@servername:remote_dir/ /tmp/local_dir scp -r root@192.168.0.101:/home/kimi/test /tmp/local_dir</code></pre></li><li><p>upload directory to server</p><pre><code>scp -r /tmp/local_dir root@servername:remote_dirscp -P 22 -r test root@192.168.0.101:/var/www/</code></pre></li></ol>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>vps</tag>
+        <tag>youtube</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[usage of scp]]></title>
+    <url>%2F2018%2F04%2F23%2Fusage%20of%20scp%2F</url>
+    <content type="text"><![CDATA[this article describes how download/upload files from server using scp command line. usage of scp download file from server scp root@servername:/path/filename /tmp/local_destination scp root@192.168.0.101:/home/kimi/test.txt /home/kimi/test.txt upload file to server scp /path/local_filename root@servername:/path scp /var/www/test.php root@192.168.0.101:/var/www/ download directory to client scp -r root@servername:remote_dir/ /tmp/local_dir scp -r root@192.168.0.101:/home/kimi/test /tmp/local_dir upload directory to server scp -r /tmp/local_dir root@servername:remote_dir scp -P 22 -r test root@192.168.0.101:/var/www/]]></content>
       <categories>
-          
-          <category> linux </category>
-          
+        <category>linux</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> linux </tag>
-            
-            <tag> cmd </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>write wordcount program on eclipse and run on hadoop in win10</title>
-      <link href="/2018/04/23/write%20wordcount%20program%20on%20eclipse%20and%20run%20on%20hadoop%20in%20win10/"/>
-      <url>/2018/04/23/write%20wordcount%20program%20on%20eclipse%20and%20run%20on%20hadoop%20in%20win10/</url>
-      <content type="html"><![CDATA[<p>This article describes how to write the wordcount program on eclipse and run it on local hadoop.</p><a id="more"></a><h2 id="prerequisites"><a href="#prerequisites" class="headerlink" title="prerequisites"></a><strong>prerequisites</strong></h2><ul><li><strong>server</strong></li></ul><ol><li>win10</li><li>hadoop 2.7.6</li></ol><ul><li><strong>client</strong></li></ul><ol><li>win10</li><li>eclipse neon</li><li>hadoop-eclipse-plugin-2.7.2.jar</li></ol><h2 id="create-project-and-coding"><a href="#create-project-and-coding" class="headerlink" title="create project and coding"></a><strong>create project and coding</strong></h2><ul><li><p><strong>create project</strong></p><pre><code>new &gt; other &gt; map reduce program &gt; fix the boxes with name, ${HADOOP_HOME} &gt; finish</code></pre></li><li><p><strong>coding</strong></p><pre><code>package com.hikvision.bigdata.hadoop.hadoop_wordcount;import java.io.IOException;import java.util.StringTokenizer;import org.apache.hadoop.conf.Configuration;import org.apache.hadoop.fs.Path;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.LongWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Job;import org.apache.hadoop.mapreduce.Mapper;import org.apache.hadoop.mapreduce.Reducer;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;import org.apache.log4j.BasicConfigurator;/*** wordcount*/public class WordCount {  public static void main(String[] args) throws Exception {      BasicConfigurator.configure();      System.out.println(&quot;Hello World!&quot;);      Configuration conf = new Configuration();      @SuppressWarnings(&quot;deprecation&quot;)      Job job = new Job(conf, &quot;wordcount&quot;);      job.setJarByClass(WordCount.class);      job.setOutputKeyClass(Text.class);      job.setOutputValueClass(IntWritable.class);      job.setMapperClass(Map.class);      job.setReducerClass(Reduce.class);      job.setInputFormatClass(TextInputFormat.class);      job.setOutputFormatClass(TextOutputFormat.class);      FileInputFormat.addInputPath(job, new Path(args[0]));      FileOutputFormat.setOutputPath(job, new Path(args[1]));      job.waitForCompletion(true);  }  public static class Map extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; {      private final static IntWritable one = new IntWritable(1);      private Text word = new Text();      public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {          String line = value.toString();          StringTokenizer tokenizer = new StringTokenizer(line);          while (tokenizer.hasMoreTokens()) {              word.set(tokenizer.nextToken());              context.write(word, one);          }      }  }  public static class Reduce extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; {      public void reduce(Text key, Iterable&lt;IntWritable&gt; values, Context context)              throws IOException, InterruptedException {          int sum = 0;          for (IntWritable val : values) {              sum += val.get();          }          context.write(key, new IntWritable(sum));      }  }}</code></pre></li></ul><h2 id="configure-program"><a href="#configure-program" class="headerlink" title="configure program"></a><strong>configure program</strong></h2><ul><li><p><strong>configure hadoop</strong></p><pre><code>step 1:core-site.xml&lt;configuration&gt; &lt;property&gt;    &lt;name&gt;fs.default.name&lt;/name&gt;    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;&lt;/property&gt;&lt;property&gt;    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;    &lt;value&gt;/root/app/hadoop/tmp&lt;/value&gt;&lt;/property&gt;&lt;/configuration&gt;###########################################step 2:hdfs-site.xml&lt;configuration&gt;&lt;property&gt;    &lt;name&gt;dfs.name.dir&lt;/name&gt;    &lt;value&gt;/root/app/hadoop/hdfs/name&lt;/value&gt;&lt;/property&gt;&lt;property&gt;    &lt;name&gt;dfs.data.dir&lt;/name&gt;    &lt;value&gt;/root/app/hadoop/hdfs/data&lt;/value&gt;&lt;/property&gt;&lt;property&gt;    &lt;name&gt;dfs.permissions&lt;/name&gt;    &lt;value&gt;false&lt;/value&gt;&lt;/property&gt;&lt;property&gt;    &lt;name&gt;dfs.replication&lt;/name&gt;    &lt;value&gt;1&lt;/value&gt;    &lt;description&gt;defult 3, less than numbers of datanode&lt;/description&gt;&lt;/property&gt;&lt;/configuration&gt;###########################################step 3:mapred-site.xml&lt;configuration&gt;&lt;property&gt;    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;    &lt;value&gt;yarn&lt;/value&gt;&lt;/property&gt;&lt;property&gt;    &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;    &lt;value&gt;localhost:10020&lt;/value&gt;    &lt;description&gt;MapReduce JobHistory Server IPC host:port&lt;/description&gt;&lt;/property&gt;&lt;/configuration&gt;###########################################step 4:yarn-site.xml&lt;configuration&gt;&lt;property&gt;        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;&lt;/property&gt;&lt;property&gt;        &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;        &lt;value&gt;localhost:8099&lt;/value&gt;&lt;/property&gt;&lt;/configuration&gt;</code></pre></li><li><p><strong>format namenode</strong></p><pre><code>cd binhdfs namenode -format# format only once</code></pre></li><li><p><strong>start hadoop and upload data to hdfs</strong></p><pre><code>cd ${HADOOP_HOME}input cmd to open cmd linecd sbinstart-all.cmd##hadoop fs -mkdir /datahadoop fs -put D:\a.txt /data/a.txt</code></pre></li><li><strong>configure input and output path for program in eclipse</strong><pre><code>1 project name &gt; right clieck &gt; run as &gt; run configuration &gt; java application &gt; new2 fix the boxes with the program name, main class, run name, and arguments3 the arguments as follows:hdfs://localhost:9000/data/a.txt hdfs://localhost:9000/data/output</code></pre></li></ul><h2 id="run-program"><a href="#run-program" class="headerlink" title="run program"></a><strong>run program</strong></h2><ul><li><strong>precondition</strong></li></ul><ol><li>delete the output floder on hdfs</li><li>data is ready</li><li>input/output path is configured in eclipse</li><li>hadoop is running</li></ol><ul><li><strong>run program</strong><pre><code>project name &gt; right clieck &gt; run as &gt; run on hadoop &gt; select the main class &gt; enjoy the ouput</code></pre></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>linux</tag>
+        <tag>cmd</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[write wordcount program on eclipse and run on hadoop in win10]]></title>
+    <url>%2F2018%2F04%2F23%2Fwrite%20wordcount%20program%20on%20eclipse%20and%20run%20on%20hadoop%20in%20win10%2F</url>
+    <content type="text"><![CDATA[This article describes how to write the wordcount program on eclipse and run it on local hadoop. prerequisites server win10 hadoop 2.7.6 client win10 eclipse neon hadoop-eclipse-plugin-2.7.2.jar create project and coding create project new &gt; other &gt; map reduce program &gt; fix the boxes with name, ${HADOOP_HOME} &gt; finish coding package com.hikvision.bigdata.hadoop.hadoop_wordcount; import java.io.IOException; import java.util.StringTokenizer; import org.apache.hadoop.conf.Configuration; import org.apache.hadoop.fs.Path; import org.apache.hadoop.io.IntWritable; import org.apache.hadoop.io.LongWritable; import org.apache.hadoop.io.Text; import org.apache.hadoop.mapreduce.Job; import org.apache.hadoop.mapreduce.Mapper; import org.apache.hadoop.mapreduce.Reducer; import org.apache.hadoop.mapreduce.lib.input.FileInputFormat; import org.apache.hadoop.mapreduce.lib.input.TextInputFormat; import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat; import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat; import org.apache.log4j.BasicConfigurator; /** * wordcount */ public class WordCount { public static void main(String[] args) throws Exception { BasicConfigurator.configure(); System.out.println(&quot;Hello World!&quot;); Configuration conf = new Configuration(); @SuppressWarnings(&quot;deprecation&quot;) Job job = new Job(conf, &quot;wordcount&quot;); job.setJarByClass(WordCount.class); job.setOutputKeyClass(Text.class); job.setOutputValueClass(IntWritable.class); job.setMapperClass(Map.class); job.setReducerClass(Reduce.class); job.setInputFormatClass(TextInputFormat.class); job.setOutputFormatClass(TextOutputFormat.class); FileInputFormat.addInputPath(job, new Path(args[0])); FileOutputFormat.setOutputPath(job, new Path(args[1])); job.waitForCompletion(true); } public static class Map extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; { private final static IntWritable one = new IntWritable(1); private Text word = new Text(); public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException { String line = value.toString(); StringTokenizer tokenizer = new StringTokenizer(line); while (tokenizer.hasMoreTokens()) { word.set(tokenizer.nextToken()); context.write(word, one); } } } public static class Reduce extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; { public void reduce(Text key, Iterable&lt;IntWritable&gt; values, Context context) throws IOException, InterruptedException { int sum = 0; for (IntWritable val : values) { sum += val.get(); } context.write(key, new IntWritable(sum)); } } } configure program configure hadoop step 1: core-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;fs.default.name&lt;/name&gt; &lt;value&gt;hdfs://localhost:9000&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;hadoop.tmp.dir&lt;/name&gt; &lt;value&gt;/root/app/hadoop/tmp&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; ########################################### step 2: hdfs-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;dfs.name.dir&lt;/name&gt; &lt;value&gt;/root/app/hadoop/hdfs/name&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.data.dir&lt;/name&gt; &lt;value&gt;/root/app/hadoop/hdfs/data&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.permissions&lt;/name&gt; &lt;value&gt;false&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.replication&lt;/name&gt; &lt;value&gt;1&lt;/value&gt; &lt;description&gt;defult 3, less than numbers of datanode&lt;/description&gt; &lt;/property&gt; &lt;/configuration&gt; ########################################### step 3: mapred-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;mapreduce.framework.name&lt;/name&gt; &lt;value&gt;yarn&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt; &lt;value&gt;localhost:10020&lt;/value&gt; &lt;description&gt;MapReduce JobHistory Server IPC host:port&lt;/description&gt; &lt;/property&gt; &lt;/configuration&gt; ########################################### step 4: yarn-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt; &lt;value&gt;mapreduce_shuffle&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt; &lt;value&gt;localhost:8099&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; format namenode cd bin hdfs namenode -format # format only once start hadoop and upload data to hdfs cd ${HADOOP_HOME} input cmd to open cmd line cd sbin start-all.cmd # # hadoop fs -mkdir /data hadoop fs -put D:\a.txt /data/a.txt configure input and output path for program in eclipse1 project name &gt; right clieck &gt; run as &gt; run configuration &gt; java application &gt; new 2 fix the boxes with the program name, main class, run name, and arguments 3 the arguments as follows: hdfs://localhost:9000/data/a.txt hdfs://localhost:9000/data/output run program precondition delete the output floder on hdfs data is ready input/output path is configured in eclipse hadoop is running run programproject name &gt; right clieck &gt; run as &gt; run on hadoop &gt; select the main class &gt; enjoy the ouput]]></content>
       <categories>
-          
-          <category> configuration </category>
-          
+        <category>configuration</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> hadoop </tag>
-            
-            <tag> configuration </tag>
-            
-            <tag> coding </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>configure hadoop on ubuntu and connect to eclipse on ubuntu or win10</title>
-      <link href="/2018/04/22/configure%20hadoop%20on%20ubuntu%20and%20connect%20to%20eclipse%20on%20ubuntu%20or%20win10/"/>
-      <url>/2018/04/22/configure%20hadoop%20on%20ubuntu%20and%20connect%20to%20eclipse%20on%20ubuntu%20or%20win10/</url>
-      <content type="html"><![CDATA[<p>This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and win10 respectively.</p><a id="more"></a><h2 id="prerequisites"><a href="#prerequisites" class="headerlink" title="prerequisites"></a><strong>prerequisites</strong></h2><ul><li><strong>server</strong></li></ul><ol><li>win10</li><li>vmware workstation pro 12</li><li>Ubuntu 16.04.4 LTS</li><li>hadoop 2.7.6 <a href="http://hadoop.apache.org/releases.html" target="_blank" rel="noopener">download</a></li></ol><ul><li><strong>ubuntu clinet</strong></li></ul><ol><li>eclipse neon <a href="http://www.eclipse.org/downloads/packages/release/Neon/3" target="_blank" rel="noopener">download</a></li><li>hadoop-eclipse-plugin-2.7.2.jar <a href="https://download.csdn.net/download/tondayong1981/9432425" target="_blank" rel="noopener">download</a></li></ol><ul><li><strong>win10 client</strong></li></ul><ol><li>eclipse neon <a href="http://www.eclipse.org/downloads/packages/release/Neon/3" target="_blank" rel="noopener">download</a></li><li>hadoop-eclipse-plugin-2.7.2.jar <a href="https://download.csdn.net/download/tondayong1981/9432425" target="_blank" rel="noopener">download</a></li></ol><h2 id="pretreatment-for-ubuntu-virtual-machine"><a href="#pretreatment-for-ubuntu-virtual-machine" class="headerlink" title="pretreatment for ubuntu virtual machine"></a><strong>pretreatment for ubuntu virtual machine</strong></h2><ul><li><strong>enable the user-passwd input box on the login screen</strong><pre><code>sudo passwd rootsu rootcd /usr/share/lightdm/lightdm.conf.d/vim 50-unity-greeter.conf# adduser-session=ubuntugreeter-show-manual-login=trueall-guest=false# rebootreboot# login in ubuntu with root and get a error reportvim /root/.profile# locate tomesg n || true# change totty -s &amp;&amp; mesg n || true</code></pre></li><li><strong>configure jdk for ubuntu</strong></li><li>jdk 1.8 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">download</a><pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171export JRE_HOME=/root/app/jdk1.8.0_171/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/binsource /etc/profilejava -version</code></pre></li></ul><h2 id="configure-hadoop2-7-6"><a href="#configure-hadoop2-7-6" class="headerlink" title="configure hadoop2.7.6"></a><strong>configure hadoop2.7.6</strong></h2><ul><li><p><strong>append <em>JAVA_HOME</em> to stat script</strong></p><pre><code>step 1:vim /root/app/hadoop/etc/hadoop/hadoop-env.sh# export JAVA_HOME=${JAVA_HOME}export JAVA_HOME=/root/app/jdk1.8.0_171###########################################step 2:vim /root/app/hadoop/etc/hadoop/yarn-env.sh# some Java parameters# export JAVA_HOME=/home/y/libexec/jdk1.6.0/export JAVA_HOME=/root/app/jdk1.8.0_171</code></pre></li><li><p><strong>configure core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml</strong></p><pre><code>step 1:vim /root/app/hadoop/etc/hadoop/core-site.xml&lt;configuration&gt;   &lt;property&gt;      &lt;name&gt;fs.default.name&lt;/name&gt;      &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;  &lt;/property&gt;  &lt;property&gt;      &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;      &lt;value&gt;/root/app/hadoop/tmp&lt;/value&gt;  &lt;/property&gt;&lt;/configuration&gt;###########################################step 2:vim /root/app/hadoop/etc/hadoop/hdfs-site.xml&lt;configuration&gt;  &lt;property&gt;      &lt;name&gt;dfs.name.dir&lt;/name&gt;      &lt;value&gt;/root/app/hadoop/hdfs/name&lt;/value&gt;  &lt;/property&gt;  &lt;property&gt;      &lt;name&gt;dfs.data.dir&lt;/name&gt;      &lt;value&gt;/root/app/hadoop/hdfs/data&lt;/value&gt;  &lt;/property&gt; &lt;property&gt;      &lt;name&gt;dfs.permissions&lt;/name&gt;      &lt;value&gt;false&lt;/value&gt;  &lt;/property&gt;  &lt;property&gt;      &lt;name&gt;dfs.replication&lt;/name&gt;      &lt;value&gt;1&lt;/value&gt;      &lt;description&gt;defult 3, less than numbers of datanode&lt;/description&gt;  &lt;/property&gt;&lt;/configuration&gt;###########################################step 3:vim /root/app/hadoop/etc/hadoop/mapred-site.xml&lt;configuration&gt;  &lt;property&gt;      &lt;name&gt;mapreduce.framework.name&lt;/name&gt;      &lt;value&gt;yarn&lt;/value&gt;  &lt;/property&gt;  &lt;property&gt;      &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;      &lt;value&gt;localhost:10020&lt;/value&gt;      &lt;description&gt;MapReduce JobHistory Server IPC host:port&lt;/description&gt;  &lt;/property&gt;&lt;/configuration&gt;###########################################step 4:vim /root/app/hadoop/etc/hadoop/yarn-site.xml&lt;configuration&gt;  &lt;property&gt;          &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;          &lt;value&gt;mapreduce_shuffle&lt;/value&gt;  &lt;/property&gt;  &lt;property&gt;          &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;          &lt;value&gt;localhost:8099&lt;/value&gt;  &lt;/property&gt;&lt;/configuration&gt;</code></pre></li><li><p><strong>create floder for hadoop work directory</strong></p><pre><code>cd /root/app/hadoopmkdir hdfs -p hdfs/data hdfs/namemkdir tmp</code></pre></li><li><p><strong>format hdfs and start/stop hadoop</strong></p></li></ul><ol><li>format hdfs<pre><code># keep all hadoop process stopped./sbin/stop-all.sh# remove tmp directoryrm -rdf tmp/# format hdfs only oncebin/hdfs namenode -format# see if the format is successfultree hdfs/</code></pre></li><li>start/stop hadoop<pre><code># start hadoop./sbin/start-all.shroot@ubuntu:~/app/hadoop# jps63809 Jps63474 NodeManager62950 DataNode63335 ResourceManager62775 NameNode63163 SecondaryNameNode# stop hadoop./sbin/stop-all.sh</code></pre></li></ol><h2 id="connect-to-hadoop-with-eclipse"><a href="#connect-to-hadoop-with-eclipse" class="headerlink" title="connect to hadoop with eclipse"></a><strong>connect to hadoop with eclipse</strong></h2><ul><li><strong>install plugin in eclipse on ubuntu</strong><pre><code>1 copy to hadoop-eclipse-plugin-2.7.2.jar to ${eclipse_home}/dropins;2 open eclipse;3 open menu &gt; windows &gt; show view &gt; other &gt; mapreduce tools &gt; map/reduce locations;4 map/reduce locations &gt; right click &gt; edit hadoop location;location name: XXXmap/reduce master:  host: localhost  port: 50020dfs master:  host: localhost  port: 90005 open dfs locations, you will find the file in hdfs.</code></pre></li><li><strong>install plugin in eclipse on win10</strong><pre><code>1 on win10, your eclipse serves as a clinet, you can connect your server with ip, so you should firstly replace *localhost* with your server ip in all etc files, such as core-site.xml, hdfs-site.xml,  mapred-site.xml, yarn-site.xml;2 repeat the step 1,2,3,4 above;3 map/reduce locations &gt; right click &gt; edit hadoop location &gt; advace parameters, replace *hadoop.tmp.dir* with your own address in /hdfs-site.xml;4 enjoy the local developing and the remote debuging.</code></pre></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>hadoop</tag>
+        <tag>configuration</tag>
+        <tag>coding</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[configure hadoop on ubuntu and connect to eclipse on ubuntu or win10]]></title>
+    <url>%2F2018%2F04%2F22%2Fconfigure%20hadoop%20on%20ubuntu%20and%20connect%20to%20eclipse%20on%20ubuntu%20or%20win10%2F</url>
+    <content type="text"><![CDATA[This article describes how to configure hadoop2.7.6 on ubuntu and connect to hadoop2.7.6 using eclipse on ubuntu and win10 respectively. prerequisites server win10 vmware workstation pro 12 Ubuntu 16.04.4 LTS hadoop 2.7.6 download ubuntu clinet eclipse neon download hadoop-eclipse-plugin-2.7.2.jar download win10 client eclipse neon download hadoop-eclipse-plugin-2.7.2.jar download pretreatment for ubuntu virtual machine enable the user-passwd input box on the login screensudo passwd root su root cd /usr/share/lightdm/lightdm.conf.d/ vim 50-unity-greeter.conf # add user-session=ubuntu greeter-show-manual-login=true all-guest=false # reboot reboot # login in ubuntu with root and get a error report vim /root/.profile # locate to mesg n || true # change to tty -s &amp;&amp; mesg n || true configure jdk for ubuntu jdk 1.8 downloadexport JAVA_HOME=/root/app/jdk1.8.0_171 export JRE_HOME=/root/app/jdk1.8.0_171/jre export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin source /etc/profile java -version configure hadoop2.7.6 append JAVA_HOME to stat script step 1: vim /root/app/hadoop/etc/hadoop/hadoop-env.sh # export JAVA_HOME=${JAVA_HOME} export JAVA_HOME=/root/app/jdk1.8.0_171 ########################################### step 2: vim /root/app/hadoop/etc/hadoop/yarn-env.sh # some Java parameters # export JAVA_HOME=/home/y/libexec/jdk1.6.0/ export JAVA_HOME=/root/app/jdk1.8.0_171 configure core-site.xml, hdfs-site.xml, mapred-site.xml, yarn-site.xml step 1: vim /root/app/hadoop/etc/hadoop/core-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;fs.default.name&lt;/name&gt; &lt;value&gt;hdfs://localhost:9000&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;hadoop.tmp.dir&lt;/name&gt; &lt;value&gt;/root/app/hadoop/tmp&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; ########################################### step 2: vim /root/app/hadoop/etc/hadoop/hdfs-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;dfs.name.dir&lt;/name&gt; &lt;value&gt;/root/app/hadoop/hdfs/name&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.data.dir&lt;/name&gt; &lt;value&gt;/root/app/hadoop/hdfs/data&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.permissions&lt;/name&gt; &lt;value&gt;false&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.replication&lt;/name&gt; &lt;value&gt;1&lt;/value&gt; &lt;description&gt;defult 3, less than numbers of datanode&lt;/description&gt; &lt;/property&gt; &lt;/configuration&gt; ########################################### step 3: vim /root/app/hadoop/etc/hadoop/mapred-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;mapreduce.framework.name&lt;/name&gt; &lt;value&gt;yarn&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt; &lt;value&gt;localhost:10020&lt;/value&gt; &lt;description&gt;MapReduce JobHistory Server IPC host:port&lt;/description&gt; &lt;/property&gt; &lt;/configuration&gt; ########################################### step 4: vim /root/app/hadoop/etc/hadoop/yarn-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt; &lt;value&gt;mapreduce_shuffle&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt; &lt;value&gt;localhost:8099&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; create floder for hadoop work directory cd /root/app/hadoop mkdir hdfs -p hdfs/data hdfs/name mkdir tmp format hdfs and start/stop hadoop format hdfs# keep all hadoop process stopped ./sbin/stop-all.sh # remove tmp directory rm -rdf tmp/ # format hdfs only once bin/hdfs namenode -format # see if the format is successful tree hdfs/ start/stop hadoop# start hadoop ./sbin/start-all.sh root@ubuntu:~/app/hadoop# jps 63809 Jps 63474 NodeManager 62950 DataNode 63335 ResourceManager 62775 NameNode 63163 SecondaryNameNode # stop hadoop ./sbin/stop-all.sh connect to hadoop with eclipse install plugin in eclipse on ubuntu1 copy to hadoop-eclipse-plugin-2.7.2.jar to ${eclipse_home}/dropins; 2 open eclipse; 3 open menu &gt; windows &gt; show view &gt; other &gt; mapreduce tools &gt; map/reduce locations; 4 map/reduce locations &gt; right click &gt; edit hadoop location; location name: XXX map/reduce master: host: localhost port: 50020 dfs master: host: localhost port: 9000 5 open dfs locations, you will find the file in hdfs. install plugin in eclipse on win101 on win10, your eclipse serves as a clinet, you can connect your server with ip, so you should firstly replace *localhost* with your server ip in all etc files, such as core-site.xml, hdfs-site.xml, mapred-site.xml, yarn-site.xml; 2 repeat the step 1,2,3,4 above; 3 map/reduce locations &gt; right click &gt; edit hadoop location &gt; advace parameters, replace *hadoop.tmp.dir* with your own address in /hdfs-site.xml; 4 enjoy the local developing and the remote debuging.]]></content>
       <categories>
-          
-          <category> configuration </category>
-          
+        <category>configuration</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> hadoop </tag>
-            
-            <tag> eclipse </tag>
-            
-            <tag> configuration </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>hexo构建博客搜索框加载中的解决方案</title>
-      <link href="/2018/04/19/hexo%E6%9E%84%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%90%9C%E7%B4%A2%E6%A1%86%E5%8A%A0%E8%BD%BD%E4%B8%AD%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-      <url>/2018/04/19/hexo%E6%9E%84%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%90%9C%E7%B4%A2%E6%A1%86%E5%8A%A0%E8%BD%BD%E4%B8%AD%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
-      <content type="html"><![CDATA[<p>本文介绍nodejs+hexo+github+markdown搭建博客后，点击搜素框，一直在加载中的解决方案。</p><a id="more"></a><h2 id="问题与现象"><a href="#问题与现象" class="headerlink" title="问题与现象"></a>问题与现象</h2><ul><li>nodejs+hexo+github+markdown搭建博客后，点击搜素框，一直在加载中的解决方案。</li></ul><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><ul><li>开发的markdown中出现了非utf-8的字符。</li><li>访问可以查找错误出现的位置：<a href="https://leebin.top/search.xml" target="_blank" rel="noopener">https://leebin.top/search.xml</a></li></ul><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul><li>逐个排查每个markdown文件，直到找到非utf-8字符，删除，重新部署，点击搜索框测试。</li><li>访问：<a href="https://leebin.top/search.xml" target="_blank" rel="noopener">https://leebin.top/search.xml</a> 发现可以解析成源文件。</li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>hadoop</tag>
+        <tag>eclipse</tag>
+        <tag>configuration</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo构建博客搜索框加载中的解决方案]]></title>
+    <url>%2F2018%2F04%2F19%2Fhexo%E6%9E%84%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%90%9C%E7%B4%A2%E6%A1%86%E5%8A%A0%E8%BD%BD%E4%B8%AD%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%2F</url>
+    <content type="text"><![CDATA[本文介绍nodejs+hexo+github+markdown搭建博客后，点击搜素框，一直在加载中的解决方案。 问题与现象 nodejs+hexo+github+markdown搭建博客后，点击搜素框，一直在加载中的解决方案。 原因 开发的markdown中出现了非utf-8的字符。 访问可以查找错误出现的位置：https://leebin.top/search.xml 解决方案 逐个排查每个markdown文件，直到找到非utf-8字符，删除，重新部署，点击搜索框测试。 访问：https://leebin.top/search.xml 发现可以解析成源文件。]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>hadoop中wordcount程序开发</title>
-      <link href="/2018/04/19/Hadoop%E4%B8%ADwordcount%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/"/>
-      <url>/2018/04/19/Hadoop%E4%B8%ADwordcount%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</url>
-      <content type="html"><![CDATA[<p>本文介绍如何利用java和hadoop组件开发wordcount程序。</p><a id="more"></a><h2 id="开发与测试环境"><a href="#开发与测试环境" class="headerlink" title="开发与测试环境"></a>开发与测试环境</h2><ul><li>windows</li><li>eclipse</li><li>maven，常见的组件如下：</li></ul><ol><li>Apache Hadoop Common 3.1</li><li>Apache Hadoop Client Aggregator 3.1</li><li>Hadoop Core 1.2</li><li>Apache Hadoop HDFS 3.1</li><li>Apache Hadoop MapReduce Core 3.1</li></ol><ul><li>ubuntu中hadoop单机模式，搭建过程参考: <a href="https://leebin.top/2018/04/18/ubuntu%E4%B8%ADhadoop%E5%8D%95%E6%9C%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%AD%E5%BB%BA/" target="_blank" rel="noopener">如何hadoop单机版</a></li></ul><h2 id="添加依赖后maven报错"><a href="#添加依赖后maven报错" class="headerlink" title="添加依赖后maven报错"></a>添加依赖后maven报错</h2><ul><li><p>报错</p><pre><code>Buiding Hadoop with Eclipse / Maven - Missing artifact jdk.tools:jdk.tools:jar:1.6</code></pre></li><li><p>解决</p><pre><code># cmdC:\Users\BinLee&gt;java -versionjava version &quot;1.8.0_144&quot;Java(TM) SE Runtime Environment (build 1.8.0_144-b01)Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)# 添加下面的依赖到maven的pom.xml&lt;dependency&gt;  &lt;groupId&gt;jdk.tools&lt;/groupId&gt;  &lt;artifactId&gt;jdk.tools&lt;/artifactId&gt;  &lt;version&gt;1.8.0_144&lt;/version&gt;  &lt;scope&gt;system&lt;/scope&gt;  &lt;systemPath&gt;${JAVA_HOME}/lib/tools.jar&lt;/systemPath&gt;&lt;/dependency&gt;</code></pre></li></ul><h2 id="wordcount程序开发"><a href="#wordcount程序开发" class="headerlink" title="wordcount程序开发"></a>wordcount程序开发</h2><ul><li><p>pom.xml</p><pre><code>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt;  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;  &lt;groupId&gt;com.jordiburgos&lt;/groupId&gt;  &lt;artifactId&gt;wordcount&lt;/artifactId&gt;  &lt;packaging&gt;jar&lt;/packaging&gt;  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;  &lt;name&gt;wordcount&lt;/name&gt;  &lt;url&gt;http://jordiburgos.com&lt;/url&gt;  &lt;properties&gt;      &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;  &lt;/properties&gt;  &lt;repositories&gt;      &lt;repository&gt;          &lt;id&gt;cloudera&lt;/id&gt;          &lt;url&gt;https://repository.cloudera.com/artifactory/cloudera-repos/&lt;/url&gt;      &lt;/repository&gt;  &lt;/repositories&gt;  &lt;dependencies&gt;      &lt;dependency&gt;          &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt;          &lt;artifactId&gt;hadoop-common&lt;/artifactId&gt;          &lt;version&gt;2.2.0&lt;/version&gt;      &lt;/dependency&gt;      &lt;dependency&gt;          &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt;          &lt;artifactId&gt;hadoop-core&lt;/artifactId&gt;          &lt;version&gt;1.2.1&lt;/version&gt;      &lt;/dependency&gt;      &lt;dependency&gt;          &lt;groupId&gt;jdk.tools&lt;/groupId&gt;          &lt;artifactId&gt;jdk.tools&lt;/artifactId&gt;          &lt;version&gt;1.7&lt;/version&gt;          &lt;scope&gt;system&lt;/scope&gt;          &lt;systemPath&gt;${java.home}/../lib/tools.jar&lt;/systemPath&gt;      &lt;/dependency&gt;      &lt;dependency&gt;          &lt;groupId&gt;junit&lt;/groupId&gt;          &lt;artifactId&gt;junit&lt;/artifactId&gt;          &lt;version&gt;3.8.1&lt;/version&gt;          &lt;scope&gt;test&lt;/scope&gt;      &lt;/dependency&gt;  &lt;/dependencies&gt;  &lt;build&gt;      &lt;plugins&gt;          &lt;plugin&gt;              &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;              &lt;version&gt;2.4&lt;/version&gt;              &lt;executions&gt;                  &lt;execution&gt;                      &lt;id&gt;distro-assembly&lt;/id&gt;                      &lt;phase&gt;package&lt;/phase&gt;                      &lt;goals&gt;                          &lt;goal&gt;single&lt;/goal&gt;                      &lt;/goals&gt;                      &lt;configuration&gt;                          &lt;descriptors&gt;                              &lt;descriptor&gt;assembly.xml&lt;/descriptor&gt;                          &lt;/descriptors&gt;                      &lt;/configuration&gt;                  &lt;/execution&gt;              &lt;/executions&gt;          &lt;/plugin&gt;      &lt;/plugins&gt;  &lt;/build&gt;&lt;/project&gt;</code></pre></li><li><p>wordcount.java</p><pre><code>package com.jordiburgos;import java.io.IOException;import java.util.*;import org.apache.hadoop.fs.Path;import org.apache.hadoop.conf.*;import org.apache.hadoop.io.*;import org.apache.hadoop.mapreduce.*;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;public class WordCount {  public static class Map extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; {      private final static IntWritable one = new IntWritable(1);      private Text word = new Text();      public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {          String line = value.toString();          StringTokenizer tokenizer = new StringTokenizer(line);          while (tokenizer.hasMoreTokens()) {              word.set(tokenizer.nextToken());              context.write(word, one);          }      }  }  public static class Reduce extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; {      public void reduce(Text key, Iterable&lt;IntWritable&gt; values, Context context)              throws IOException, InterruptedException {          int sum = 0;          for (IntWritable val : values) {              sum += val.get();          }          context.write(key, new IntWritable(sum));      }  }  public static void main(String[] args) throws Exception {      Configuration conf = new Configuration();      Job job = new Job(conf, &quot;wordcount&quot;);      job.setJarByClass(WordCount.class);      job.setOutputKeyClass(Text.class);      job.setOutputValueClass(IntWritable.class);      job.setMapperClass(Map.class);      job.setReducerClass(Reduce.class);      job.setInputFormatClass(TextInputFormat.class);      job.setOutputFormatClass(TextOutputFormat.class);      FileInputFormat.addInputPath(job, new Path(args[0]));      FileOutputFormat.setOutputPath(job, new Path(args[1]));      job.waitForCompletion(true);  }}</code></pre></li></ul><h2 id="使用maven打包程序"><a href="#使用maven打包程序" class="headerlink" title="使用maven打包程序"></a>使用maven打包程序</h2><ul><li><p>打包命令</p><pre><code>项目右键&gt;run as&gt;maven build</code></pre></li><li><p>打包后jar的结构</p><pre><code>C:.└─wordcount  ├─com  │  └─jordiburgos  └─META-INF      └─maven          └─com.jordiburgos              └─wordcount</code></pre></li></ul><h2 id="在hadoop上运行程序"><a href="#在hadoop上运行程序" class="headerlink" title="在hadoop上运行程序"></a>在hadoop上运行程序</h2><ul><li><p>上传待分析的文本到hdfs</p><pre><code># 本地创建input文件夹和a.txt文件cd /root/app/hadoop-3.1.0mkdir inputvim a.txt## 创建文件夹hadoop fs -mkdir hdfs://localhost:9001/tmp## 上传文件到hdfshadoop fs -put /root/app/hadoop-3.1.0/input hdfs://127.0.0.1:9001/tmp</code></pre></li><li><p>运行jar程序</p><pre><code>cd /root/app/hadoop-3.1.0bin/hadoop jar wordcount.jar com.jordiburgos.WordCount hdfs://localhost:9001/tmp/input/ file:///root/app/hadoop-3.1.0/output/</code></pre></li><li><p>在linux中查看输出文件</p><pre><code>cd /root/app/hadoop-3.1.0/outputroot@ubuntu:~/app/hadoop-3.1.0/output# lspart-r-00000  _SUCCESSroot@ubuntu:~/app/hadoop-3.1.0/output# cat part-r-000000000    1aaaa    1ddfh    1ff    1ggg    1hj    1iiiii    1sss    1</code></pre></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hadoop中wordcount程序开发]]></title>
+    <url>%2F2018%2F04%2F19%2FHadoop%E4%B8%ADwordcount%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[本文介绍如何利用java和hadoop组件开发wordcount程序。 开发与测试环境 windows eclipse maven，常见的组件如下： Apache Hadoop Common 3.1 Apache Hadoop Client Aggregator 3.1 Hadoop Core 1.2 Apache Hadoop HDFS 3.1 Apache Hadoop MapReduce Core 3.1 ubuntu中hadoop单机模式，搭建过程参考: 如何hadoop单机版 添加依赖后maven报错 报错 Buiding Hadoop with Eclipse / Maven - Missing artifact jdk.tools:jdk.tools:jar:1.6 解决 # cmd C:\Users\BinLee&gt;java -version java version &quot;1.8.0_144&quot; Java(TM) SE Runtime Environment (build 1.8.0_144-b01) Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode) # 添加下面的依赖到maven的pom.xml &lt;dependency&gt; &lt;groupId&gt;jdk.tools&lt;/groupId&gt; &lt;artifactId&gt;jdk.tools&lt;/artifactId&gt; &lt;version&gt;1.8.0_144&lt;/version&gt; &lt;scope&gt;system&lt;/scope&gt; &lt;systemPath&gt;${JAVA_HOME}/lib/tools.jar&lt;/systemPath&gt; &lt;/dependency&gt; wordcount程序开发 pom.xml &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt; &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; &lt;groupId&gt;com.jordiburgos&lt;/groupId&gt; &lt;artifactId&gt;wordcount&lt;/artifactId&gt; &lt;packaging&gt;jar&lt;/packaging&gt; &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt; &lt;name&gt;wordcount&lt;/name&gt; &lt;url&gt;http://jordiburgos.com&lt;/url&gt; &lt;properties&gt; &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt; &lt;/properties&gt; &lt;repositories&gt; &lt;repository&gt; &lt;id&gt;cloudera&lt;/id&gt; &lt;url&gt;https://repository.cloudera.com/artifactory/cloudera-repos/&lt;/url&gt; &lt;/repository&gt; &lt;/repositories&gt; &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt; &lt;artifactId&gt;hadoop-common&lt;/artifactId&gt; &lt;version&gt;2.2.0&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt; &lt;artifactId&gt;hadoop-core&lt;/artifactId&gt; &lt;version&gt;1.2.1&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;jdk.tools&lt;/groupId&gt; &lt;artifactId&gt;jdk.tools&lt;/artifactId&gt; &lt;version&gt;1.7&lt;/version&gt; &lt;scope&gt;system&lt;/scope&gt; &lt;systemPath&gt;${java.home}/../lib/tools.jar&lt;/systemPath&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;junit&lt;/groupId&gt; &lt;artifactId&gt;junit&lt;/artifactId&gt; &lt;version&gt;3.8.1&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;/dependencies&gt; &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt; &lt;version&gt;2.4&lt;/version&gt; &lt;executions&gt; &lt;execution&gt; &lt;id&gt;distro-assembly&lt;/id&gt; &lt;phase&gt;package&lt;/phase&gt; &lt;goals&gt; &lt;goal&gt;single&lt;/goal&gt; &lt;/goals&gt; &lt;configuration&gt; &lt;descriptors&gt; &lt;descriptor&gt;assembly.xml&lt;/descriptor&gt; &lt;/descriptors&gt; &lt;/configuration&gt; &lt;/execution&gt; &lt;/executions&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;/project&gt; wordcount.java package com.jordiburgos; import java.io.IOException; import java.util.*; import org.apache.hadoop.fs.Path; import org.apache.hadoop.conf.*; import org.apache.hadoop.io.*; import org.apache.hadoop.mapreduce.*; import org.apache.hadoop.mapreduce.lib.input.FileInputFormat; import org.apache.hadoop.mapreduce.lib.input.TextInputFormat; import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat; import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat; public class WordCount { public static class Map extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; { private final static IntWritable one = new IntWritable(1); private Text word = new Text(); public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException { String line = value.toString(); StringTokenizer tokenizer = new StringTokenizer(line); while (tokenizer.hasMoreTokens()) { word.set(tokenizer.nextToken()); context.write(word, one); } } } public static class Reduce extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; { public void reduce(Text key, Iterable&lt;IntWritable&gt; values, Context context) throws IOException, InterruptedException { int sum = 0; for (IntWritable val : values) { sum += val.get(); } context.write(key, new IntWritable(sum)); } } public static void main(String[] args) throws Exception { Configuration conf = new Configuration(); Job job = new Job(conf, &quot;wordcount&quot;); job.setJarByClass(WordCount.class); job.setOutputKeyClass(Text.class); job.setOutputValueClass(IntWritable.class); job.setMapperClass(Map.class); job.setReducerClass(Reduce.class); job.setInputFormatClass(TextInputFormat.class); job.setOutputFormatClass(TextOutputFormat.class); FileInputFormat.addInputPath(job, new Path(args[0])); FileOutputFormat.setOutputPath(job, new Path(args[1])); job.waitForCompletion(true); } } 使用maven打包程序 打包命令 项目右键&gt;run as&gt;maven build 打包后jar的结构 C:. └─wordcount ├─com │ └─jordiburgos └─META-INF └─maven └─com.jordiburgos └─wordcount 在hadoop上运行程序 上传待分析的文本到hdfs # 本地创建input文件夹和a.txt文件 cd /root/app/hadoop-3.1.0 mkdir input vim a.txt # # 创建文件夹 hadoop fs -mkdir hdfs://localhost:9001/tmp # # 上传文件到hdfs hadoop fs -put /root/app/hadoop-3.1.0/input hdfs://127.0.0.1:9001/tmp 运行jar程序 cd /root/app/hadoop-3.1.0 bin/hadoop jar wordcount.jar com.jordiburgos.WordCount hdfs://localhost:9001/tmp/input/ file:///root/app/hadoop-3.1.0/output/ 在linux中查看输出文件 cd /root/app/hadoop-3.1.0/output root@ubuntu:~/app/hadoop-3.1.0/output# ls part-r-00000 _SUCCESS root@ubuntu:~/app/hadoop-3.1.0/output# cat part-r-00000 0000 1 aaaa 1 ddfh 1 ff 1 ggg 1 hj 1 iiiii 1 sss 1]]></content>
       <categories>
-          
-          <category> 开发 </category>
-          
+        <category>开发</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> maven </tag>
-            
-            <tag> hadoop </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>ubuntu中hadoop单机模式和伪分布式搭建</title>
-      <link href="/2018/04/18/ubuntu%E4%B8%ADhadoop%E5%8D%95%E6%9C%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%AD%E5%BB%BA/"/>
-      <url>/2018/04/18/ubuntu%E4%B8%ADhadoop%E5%8D%95%E6%9C%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%AD%E5%BB%BA/</url>
-      <content type="html"><![CDATA[<p>本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？<br><a id="more"></a></p><h2 id="ubuntu开启root用户登录的方法"><a href="#ubuntu开启root用户登录的方法" class="headerlink" title="ubuntu开启root用户登录的方法"></a>ubuntu开启root用户登录的方法</h2><ul><li>设置密码、添加信息<pre><code>sudo passwd -u rootsudo passwd rootsu rootcd /usr/share/lightdm/lightdm.conf.d/vim 50-unity-greeter.conf# 添加user-session=ubuntugreeter-show-manual-login=trueall-guest=false# 重启reboot# 使用user和passwd进入root报错vim /root/.profile# 找到mesg n || true# 改为tty -s &amp;&amp; mesg n || true</code></pre></li></ul><h2 id="ubuntu中的java环境变量配置"><a href="#ubuntu中的java环境变量配置" class="headerlink" title="ubuntu中的java环境变量配置"></a>ubuntu中的java环境变量配置</h2><ul><li>编辑 sudo vim /etc/profile<pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171export JRE_HOME=/root/app/jdk1.8.0_171/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/binsource /etc/profile</code></pre></li><li>验证<pre><code>java -version</code></pre></li></ul><h2 id="单机版hadoop配置"><a href="#单机版hadoop配置" class="headerlink" title="单机版hadoop配置"></a>单机版hadoop配置</h2><ul><li><p><a href="http://hadoop.apache.org/docs/r3.1.0/hadoop-project-dist/hadoop-common/SingleCluster.html#Standalone_Operation" target="_blank" rel="noopener">官方文档</a></p></li><li><p>生成ssh密钥</p><pre><code>cd ~ssh-keygen -t rsa -P &#39;&#39; -f ~/.ssh/id_rsacat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keyschmod 0600 ~/.ssh/authorized_keysssh localhost</code></pre></li><li><p>配置java环境</p><pre><code>root@ubuntu:~# vim /etc/profileexport JAVA_HOME=/root/app/jdk1.8.0_171export JRE_HOME=/root/app/jdk1.8.0_171/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</code></pre></li><li><p>配置hadoop环境 vim /etc/profile</p><pre><code>#HADOOP VARIABLES STARTexport JAVA_HOME=/root/app/jdk1.8.0_171export HADOOP_HOME=/root/app/hadoop-3.1.0export PATH=$PATH:$HADOOP_HOME/binexport PATH=$PATH:$HADOOP_HOME/sbinexport HADOOP_MAPRED_HOME=$HADOOP_HOMEexport HADOOP_COMMON_HOME=$HADOOP_HOMEexport HADOOP_HDFS_HOME=$HADOOP_HOMEexport YARN_HOME=$HADOOP_HOMEexport HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/nativeexport HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib&quot;#HADOOP VARIABLES ENDsource /etc/profile</code></pre></li><li><p>单机版测试</p><pre><code>root@ubuntu:~# /root/app/hadoop-3.1.0/bin/hadoop jar /root/app/hadoop-3.1.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jarAn example program must be given as the first argument.Valid program names are:aggregatewordcount: An Aggregate based map/reduce program that counts the words in the input files.aggregatewordhist: An Aggregate based map/reduce program that computes the histogram of the words in the input files.bbp: A map/reduce program that uses Bailey-Borwein-Plouffe to compute exact digits of Pi.dbcount: An example job that count the pageview counts from a database.distbbp: A map/reduce program that uses a BBP-type formula to compute exact bits of Pi.grep: A map/reduce program that counts the matches of a regex in the input.join: A job that effects a join over sorted, equally partitioned datasetsmultifilewc: A job that counts words from several files.pentomino: A map/reduce tile laying program to find solutions to pentomino problems.pi: A map/reduce program that estimates Pi using a quasi-Monte Carlo method.randomtextwriter: A map/reduce program that writes 10GB of random textual data per node.randomwriter: A map/reduce program that writes 10GB of random data per node.secondarysort: An example defining a secondary sort to the reduce.sort: A map/reduce program that sorts the data written by the random writer.sudoku: A sudoku solver.teragen: Generate data for the terasortterasort: Run the terasortteravalidate: Checking results of terasortwordcount: A map/reduce program that counts the words in the input files.wordmean: A map/reduce program that counts the average length of the words in the input files.wordmedian: A map/reduce program that counts the median length of the words in the input files.wordstandarddeviation: A map/reduce program that counts the standard deviation of the length of the words in the input files.</code></pre></li><li><p>实例测试</p><pre><code>/root/app/hadoop-3.1.0/bin/hadoop jar /root/app/hadoop-3.1.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jar grep ./input ./output &#39;dfs[a-z.]+&#39;cat ./output/*  # 查看结果rm -r ./output  # 删除结果# 结果root@ubuntu:~/app/hadoop-3.1.0# cat ./output/*  1    dfsadmin</code></pre></li></ul><h2 id="伪分布式hadoop配置"><a href="#伪分布式hadoop配置" class="headerlink" title="伪分布式hadoop配置"></a>伪分布式hadoop配置</h2><ul><li><p>格式化hdfs</p><pre><code>cd /root/app/hadoop-3.1.0./bin/hdfs namenode -format</code></pre></li><li><p>添加变量到 vim /etc/profile</p><pre><code>export JAVA_HOME=/root/app/jdk1.8.0_171export JRE_HOME=/root/app/jdk1.8.0_171/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin## HADOOP VARIABLES STARTexport JAVA_HOME=/root/app/jdk1.8.0_171export HADOOP_HOME=/root/app/hadoop-3.1.0#export PATH=$PATH:$HADOOP_HOME/binexport PATH=$PATH:$HADOOP_HOME/sbin#export HADOOP_MAPRED_HOME=$HADOOP_HOMEexport HADOOP_COMMON_HOME=$HADOOP_HOMEexport HADOOP_HDFS_HOME=$HADOOP_HOMEexport HADOOP_YARN_HOME=$HADOOP_HOME#export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/nativeexport HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib&quot;#export HDFS_DATANODE_USER=rootexport HDFS_NAMENODE_USER=rootexport HDFS_SECONDARYNAMENODE_USER=root#export YARN_RESOURCEMANAGER_USER=rootexport HADOOP_SECURE_DN_USER=yarnexport YARN_NODEMANAGER_USER=root# HADOOP VARIABLES END</code></pre></li><li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/core-site.xml</p><pre><code>&lt;configuration&gt;     &lt;property&gt;          &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;          &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp&lt;/value&gt;     &lt;/property&gt;     &lt;property&gt;          &lt;name&gt;fs.defaultFS&lt;/name&gt;          &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;     &lt;/property&gt;&lt;/configuration&gt;</code></pre></li><li><p>编辑/root/app/hadoop-3.1.0/etc/hadoop/hdfs-site.xml</p><pre><code>&lt;configuration&gt;      &lt;property&gt;           &lt;name&gt;dfs.replication&lt;/name&gt;           &lt;value&gt;2&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;           &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;           &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp/dfs/name&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;           &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;           &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp/dfs/data&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;          &lt;name&gt;dfs.http.address&lt;/name&gt;          &lt;value&gt;0.0.0.0:50070&lt;/value&gt;      &lt;/property&gt;&lt;/configuration&gt;</code></pre></li><li><p>编辑 hadoop-env.sh</p><pre><code>vim /root/app/hadoop-3.1.0/etc/hadoop/hadoop-env.shexport JAVA_HOME=/root/app/jdk1.8.0_171</code></pre></li><li><p>编辑 yarn-env.sh</p><pre><code>vim /root/app/hadoop-3.1.0/etc/hadoop/yarn-env.shexport JAVA_HOME=/root/app/jdk1.8.0_171</code></pre></li><li><p>编辑 mapred-env.sh</p><pre><code>vim /root/app/hadoop-3.1.0/etc/hadoop/mapred-env.shexport JAVA_HOME=/root/app/jdk1.8.0_171</code></pre></li></ul><h2 id="hadoop的使用"><a href="#hadoop的使用" class="headerlink" title="hadoop的使用"></a>hadoop的使用</h2><ul><li><p>启动与停止</p><pre><code>cd /root/app/hadoop-3.1.0./sbin/start-all.sh./sbin/stop-all.sh</code></pre></li><li><p>查看服务</p><pre><code>root@ubuntu:~/app/hadoop-3.1.0# jps23058 NameNode23491 SecondaryNameNode23753 ResourceManager23225 DataNode24427 Jps24030 NodeManager</code></pre></li><li>Resource Manager <a href="http://localhost:8088" target="_blank" rel="noopener">http://localhost:8088</a></li><li>Web UI of the NameNode daemon <a href="http://localhost:50070" target="_blank" rel="noopener">http://localhost:50070</a></li><li>HDFS NameNode web interface <a href="http://localhost:8042" target="_blank" rel="noopener">http://localhost:8042</a></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>maven</tag>
+        <tag>hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ubuntu中hadoop单机模式和伪分布式搭建]]></title>
+    <url>%2F2018%2F04%2F18%2Fubuntu%E4%B8%ADhadoop%E5%8D%95%E6%9C%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[本文介绍如何搭建hadoop单机版本/独立模式/standalone模式？ ubuntu开启root用户登录的方法 设置密码、添加信息sudo passwd -u root sudo passwd root su root cd /usr/share/lightdm/lightdm.conf.d/ vim 50-unity-greeter.conf # 添加 user-session=ubuntu greeter-show-manual-login=true all-guest=false # 重启 reboot # 使用user和passwd进入root报错 vim /root/.profile # 找到mesg n || true # 改为tty -s &amp;&amp; mesg n || true ubuntu中的java环境变量配置 编辑 sudo vim /etc/profileexport JAVA_HOME=/root/app/jdk1.8.0_171 export JRE_HOME=/root/app/jdk1.8.0_171/jre export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin source /etc/profile 验证java -version 单机版hadoop配置 官方文档 生成ssh密钥 cd ~ ssh-keygen -t rsa -P &#39;&#39; -f ~/.ssh/id_rsa cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys chmod 0600 ~/.ssh/authorized_keys ssh localhost 配置java环境 root@ubuntu:~# vim /etc/profile export JAVA_HOME=/root/app/jdk1.8.0_171 export JRE_HOME=/root/app/jdk1.8.0_171/jre export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin 配置hadoop环境 vim /etc/profile #HADOOP VARIABLES START export JAVA_HOME=/root/app/jdk1.8.0_171 export HADOOP_HOME=/root/app/hadoop-3.1.0 export PATH=$PATH:$HADOOP_HOME/bin export PATH=$PATH:$HADOOP_HOME/sbin export HADOOP_MAPRED_HOME=$HADOOP_HOME export HADOOP_COMMON_HOME=$HADOOP_HOME export HADOOP_HDFS_HOME=$HADOOP_HOME export YARN_HOME=$HADOOP_HOME export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native export HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib&quot; #HADOOP VARIABLES END source /etc/profile 单机版测试 root@ubuntu:~# /root/app/hadoop-3.1.0/bin/hadoop jar /root/app/hadoop-3.1.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jar An example program must be given as the first argument. Valid program names are: aggregatewordcount: An Aggregate based map/reduce program that counts the words in the input files. aggregatewordhist: An Aggregate based map/reduce program that computes the histogram of the words in the input files. bbp: A map/reduce program that uses Bailey-Borwein-Plouffe to compute exact digits of Pi. dbcount: An example job that count the pageview counts from a database. distbbp: A map/reduce program that uses a BBP-type formula to compute exact bits of Pi. grep: A map/reduce program that counts the matches of a regex in the input. join: A job that effects a join over sorted, equally partitioned datasets multifilewc: A job that counts words from several files. pentomino: A map/reduce tile laying program to find solutions to pentomino problems. pi: A map/reduce program that estimates Pi using a quasi-Monte Carlo method. randomtextwriter: A map/reduce program that writes 10GB of random textual data per node. randomwriter: A map/reduce program that writes 10GB of random data per node. secondarysort: An example defining a secondary sort to the reduce. sort: A map/reduce program that sorts the data written by the random writer. sudoku: A sudoku solver. teragen: Generate data for the terasort terasort: Run the terasort teravalidate: Checking results of terasort wordcount: A map/reduce program that counts the words in the input files. wordmean: A map/reduce program that counts the average length of the words in the input files. wordmedian: A map/reduce program that counts the median length of the words in the input files. wordstandarddeviation: A map/reduce program that counts the standard deviation of the length of the words in the input files. 实例测试 /root/app/hadoop-3.1.0/bin/hadoop jar /root/app/hadoop-3.1.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.0.jar grep ./input ./output &#39;dfs[a-z.]+&#39; cat ./output/* # 查看结果 rm -r ./output # 删除结果 # 结果 root@ubuntu:~/app/hadoop-3.1.0# cat ./output/* 1 dfsadmin 伪分布式hadoop配置 格式化hdfs cd /root/app/hadoop-3.1.0 ./bin/hdfs namenode -format 添加变量到 vim /etc/profile export JAVA_HOME=/root/app/jdk1.8.0_171 export JRE_HOME=/root/app/jdk1.8.0_171/jre export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin # # HADOOP VARIABLES START export JAVA_HOME=/root/app/jdk1.8.0_171 export HADOOP_HOME=/root/app/hadoop-3.1.0 # export PATH=$PATH:$HADOOP_HOME/bin export PATH=$PATH:$HADOOP_HOME/sbin # export HADOOP_MAPRED_HOME=$HADOOP_HOME export HADOOP_COMMON_HOME=$HADOOP_HOME export HADOOP_HDFS_HOME=$HADOOP_HOME export HADOOP_YARN_HOME=$HADOOP_HOME # export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native export HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib&quot; # export HDFS_DATANODE_USER=root export HDFS_NAMENODE_USER=root export HDFS_SECONDARYNAMENODE_USER=root # export YARN_RESOURCEMANAGER_USER=root export HADOOP_SECURE_DN_USER=yarn export YARN_NODEMANAGER_USER=root # HADOOP VARIABLES END 编辑/root/app/hadoop-3.1.0/etc/hadoop/core-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;hadoop.tmp.dir&lt;/name&gt; &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;fs.defaultFS&lt;/name&gt; &lt;value&gt;hdfs://localhost:9000&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; 编辑/root/app/hadoop-3.1.0/etc/hadoop/hdfs-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;dfs.replication&lt;/name&gt; &lt;value&gt;2&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt; &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp/dfs/name&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt; &lt;value&gt;file:/root/app/hadoop-3.1.0/tmp/dfs/data&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.http.address&lt;/name&gt; &lt;value&gt;0.0.0.0:50070&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; 编辑 hadoop-env.sh vim /root/app/hadoop-3.1.0/etc/hadoop/hadoop-env.sh export JAVA_HOME=/root/app/jdk1.8.0_171 编辑 yarn-env.sh vim /root/app/hadoop-3.1.0/etc/hadoop/yarn-env.sh export JAVA_HOME=/root/app/jdk1.8.0_171 编辑 mapred-env.sh vim /root/app/hadoop-3.1.0/etc/hadoop/mapred-env.sh export JAVA_HOME=/root/app/jdk1.8.0_171 hadoop的使用 启动与停止 cd /root/app/hadoop-3.1.0 ./sbin/start-all.sh ./sbin/stop-all.sh 查看服务 root@ubuntu:~/app/hadoop-3.1.0# jps 23058 NameNode 23491 SecondaryNameNode 23753 ResourceManager 23225 DataNode 24427 Jps 24030 NodeManager Resource Manager http://localhost:8088 Web UI of the NameNode daemon http://localhost:50070 HDFS NameNode web interface http://localhost:8042]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> hadoop </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>常见的环境变量配置</title>
-      <link href="/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
-      <url>/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/</url>
-      <content type="html"><![CDATA[<p>本文介绍常见的环境变量配置方法。</p><a id="more"></a><h2 id="windows常见的环境变量配置"><a href="#windows常见的环境变量配置" class="headerlink" title="windows常见的环境变量配置"></a>windows常见的环境变量配置</h2><ul><li><p>CLASSPATH</p><pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></pre></li><li><p>JAVA_HOME</p><pre><code>C:\app3\Java\jdk1.8.0_144</code></pre></li><li><p>JRE_HOME</p><pre><code>C:\app3\Java\jre1.8.0_144</code></pre></li><li><p>MVN_HOME<br>C:\app3\apache-maven-3.5.3</p></li><li><p>Path</p><pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;</code></pre></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[常见的环境变量配置]]></title>
+    <url>%2F2018%2F04%2F17%2F%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[本文介绍常见的环境变量配置方法。 windows常见的环境变量配置 CLASSPATH .;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar; JAVA_HOME C:\app3\Java\jdk1.8.0_144 JRE_HOME C:\app3\Java\jre1.8.0_144 MVN_HOMEC:\app3\apache-maven-3.5.3 Path C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> windows </tag>
-            
-            <tag> 环境变量 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>apache maven的配置与使用</title>
-      <link href="/2018/04/17/maven%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
-      <url>/2018/04/17/maven%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
-      <content type="html"><![CDATA[<p>本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】，maven详细讲解：<a href="https://www.yiibai.com/maven/" target="_blank" rel="noopener">他山之石</a></p><a id="more"></a><h2 id="需要先配置java和maven环境变量"><a href="#需要先配置java和maven环境变量" class="headerlink" title="需要先配置java和maven环境变量"></a><strong>需要先配置java和maven环境变量</strong></h2><ul><li><p>CLASSPATH</p><pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></pre></li><li><p>JAVA_HOME</p><pre><code>C:\app3\Java\jdk1.8.0_144</code></pre></li><li><p>JRE_HOME</p><pre><code>C:\app3\Java\jre1.8.0_144</code></pre></li><li><p>MVN_HOME</p><pre><code>C:\app3\apache-maven-3.5.3</code></pre></li><li><p>Path</p><pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;</code></pre></li></ul><h2 id="更换maven的仓库为自定义的仓库"><a href="#更换maven的仓库为自定义的仓库" class="headerlink" title="更换maven的仓库为自定义的仓库"></a><strong>更换maven的仓库为自定义的仓库</strong></h2><ul><li>创建目标位置如，d:\maven\repo</li><li>拷贝C:\app3\apache-maven-3.5.3\conf\settings.xml文件到d:\maven</li><li>修改两处的settings.xml文件</li><li>定位到localRepository<pre><code>&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;# 修改为：&lt;localRepository&gt;d:\maven\repo&lt;/localRepository&gt;</code></pre></li></ul><h2 id="maven手动创建项目"><a href="#maven手动创建项目" class="headerlink" title="maven手动创建项目"></a><strong>maven手动创建项目</strong></h2><ul><li><p><a href="https://www.cnblogs.com/yjmyzz/p/3495762.html" target="_blank" rel="noopener">他山之石</a></p></li><li><p>创建项目</p><pre><code># cmdcd /d d:\testmvn archetype:generate# logChoose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 1169:（和eclipse上的maven插件有关系，直接回车）Choose org.apache.maven.archetypes:maven-archetype-quickstart version:1: 1.0-alpha-12: 1.0-alpha-23: 1.0-alpha-34: 1.0-alpha-45: 1.06: 1.17: 1.3Choose a number: 7:(直接回车)Define value for property &#39;groupId&#39;: com.hikvision.ai_data.data（从大往小填写自己公司的名字）Define value for property &#39;artifactId&#39;: test_mvn（项目的名字）Define value for property &#39;version&#39; 1.0-SNAPSHOT: :（默认就行）Define value for property &#39;package&#39; com.hikvision.ai_data.data: : test_mvn_pkg（将class打包的jar文件的名称）Confirm properties configuration:groupId: com.hikvision.ai_data.dataartifactId: test_mvnversion: 1.0-SNAPSHOTpackage: test_mvn_pkgY: :(直接回车)[INFO] ----------------------------------------------------------------------------[INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.3[INFO] ----------------------------------------------------------------------------[INFO] Parameter: groupId, Value: com.hikvision.ai_data.data[INFO] Parameter: artifactId, Value: test_mvn[INFO] Parameter: version, Value: 1.0-SNAPSHOT[INFO] Parameter: package, Value: test_mvn_pkg[INFO] Parameter: packageInPathFormat, Value: test_mvn_pkg[INFO] Parameter: package, Value: test_mvn_pkg[INFO] Parameter: version, Value: 1.0-SNAPSHOT[INFO] Parameter: groupId, Value: com.hikvision.ai_data.data[INFO] Parameter: artifactId, Value: test_mvn[INFO] Project created from Archetype in dir: D:\003---WorkSpace\06---testmaven\test_mvn[INFO] ------------------------------------------------------------------------[INFO] BUILD SUCCESS[INFO] ------------------------------------------------------------------------[INFO] Total time: 13:57 min[INFO] Finished at: 2018-04-17T14:54:37+08:00[INFO] ------------------------------------------------------------------------</code></pre></li><li><p>创建项目后查看文件</p><pre><code>D:\003---WorkSpace\06---testmaven&gt;tree卷 工厂 的文件夹 PATH 列表卷序列号为 0000006C BAA7:827CD:.└─test_mvn  └─src      ├─main      │  └─java      │      └─test_mvn_pkg      └─test          └─java              └─test_mvn_pkg</code></pre></li><li><p>编译项目</p><pre><code># cmdcd test_mvnmvn clean compile# logD:\003---WorkSpace\06---testmaven\test_mvn&gt;mvn clean compile[INFO] Scanning for projects...[INFO][INFO] ----------------&lt; com.hikvision.ai_data.data:test_mvn &gt;-----------------[INFO] Building test_mvn 1.0-SNAPSHOT[INFO] --------------------------------[ jar ]---------------------------------[INFO][INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ test_mvn ---[INFO][INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ test_mvn ---[INFO] Using &#39;UTF-8&#39; encoding to copy filtered resources.[INFO] skip non existing resourceDirectory D:\003---WorkSpace\06---testmaven\test_mvn\src\main\resources[INFO][INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ test_mvn ---[INFO] Changes detected - recompiling the module![INFO] Compiling 1 source file to D:\003---WorkSpace\06---testmaven\test_mvn\target\classes[INFO] ------------------------------------------------------------------------[INFO] BUILD SUCCESS[INFO] ------------------------------------------------------------------------[INFO] Total time: 1.570 s[INFO] Finished at: 2018-04-17T14:58:59+08:00[INFO] ------------------------------------------------------------------------</code></pre></li><li><p>单元测试</p><pre><code># cmdmvn clean test# logD:\003---WorkSpace\06---testmaven\test_mvn&gt;mvn clean test[INFO] Scanning for projects...[INFO][INFO] ----------------&lt; com.hikvision.ai_data.data:test_mvn &gt;-----------------[INFO] Building test_mvn 1.0-SNAPSHOT[INFO] --------------------------------[ jar ]---------------------------------[INFO][INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ test_mvn ---[INFO] Deleting D:\003---WorkSpace\06---testmaven\test_mvn\target[INFO][INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ test_mvn ---[INFO] Using &#39;UTF-8&#39; encoding to copy filtered resources.[INFO] skip non existing resourceDirectory D:\003---WorkSpace\06---testmaven\test_mvn\src\main\resources[INFO][INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ test_mvn ---[INFO] Changes detected - recompiling the module![INFO] Compiling 1 source file to D:\003---WorkSpace\06---testmaven\test_mvn\target\classes[INFO][INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ test_mvn ---[INFO] Using &#39;UTF-8&#39; encoding to copy filtered resources.[INFO] skip non existing resourceDirectory D:\003---WorkSpace\06---testmaven\test_mvn\src\test\resources[INFO][INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ test_mvn ---[INFO] Changes detected - recompiling the module![INFO] Compiling 1 source file to D:\003---WorkSpace\06---testmaven\test_mvn\target\test-classes[INFO][INFO] --- maven-surefire-plugin:2.20.1:test (default-test) @ test_mvn ---[INFO][INFO] -------------------------------------------------------[INFO]  T E S T S[INFO] -------------------------------------------------------[INFO] Running test_mvn_pkg.AppTest[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in test_mvn_pkg.AppTest[INFO][INFO] Results:[INFO][INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0[INFO][INFO] ------------------------------------------------------------------------[INFO] BUILD SUCCESS[INFO] ------------------------------------------------------------------------[INFO] Total time: 3.227 s[INFO] Finished at: 2018-04-17T15:00:33+08:00[INFO] ------------------------------------------------------------------------</code></pre></li><li><p>打包项目</p><pre><code># cmdmvn clean package# logD:\003---WorkSpace\06---testmaven\test_mvn&gt;mvn clean package[INFO] Scanning for projects...[INFO][INFO] ----------------&lt; com.hikvision.ai_data.data:test_mvn &gt;-----------------[INFO] Building test_mvn 1.0-SNAPSHOT[INFO] --------------------------------[ jar ]---------------------------------[INFO][INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ test_mvn ---[INFO] Deleting D:\003---WorkSpace\06---testmaven\test_mvn\target[INFO][INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ test_mvn ---[INFO] Using &#39;UTF-8&#39; encoding to copy filtered resources.[INFO] skip non existing resourceDirectory D:\003---WorkSpace\06---testmaven\test_mvn\src\main\resources[INFO][INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ test_mvn ---[INFO] Changes detected - recompiling the module![INFO] Compiling 1 source file to D:\003---WorkSpace\06---testmaven\test_mvn\target\classes[INFO][INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ test_mvn ---[INFO] Using &#39;UTF-8&#39; encoding to copy filtered resources.[INFO] skip non existing resourceDirectory D:\003---WorkSpace\06---testmaven\test_mvn\src\test\resources[INFO][INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ test_mvn ---[INFO] Changes detected - recompiling the module![INFO] Compiling 1 source file to D:\003---WorkSpace\06---testmaven\test_mvn\target\test-classes[INFO][INFO] --- maven-surefire-plugin:2.20.1:test (default-test) @ test_mvn ---[INFO][INFO] -------------------------------------------------------[INFO]  T E S T S[INFO] -------------------------------------------------------[INFO] Running test_mvn_pkg.AppTest[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s - in test_mvn_pkg.AppTest[INFO][INFO] Results:[INFO][INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0[INFO][INFO][INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ test_mvn ---[INFO] Building jar: D:\003---WorkSpace\06---testmaven\test_mvn\target\test_mvn-1.0-SNAPSHOT.jar[INFO] ------------------------------------------------------------------------[INFO] BUILD SUCCESS[INFO] ------------------------------------------------------------------------[INFO] Total time: 3.599 s[INFO] Finished at: 2018-04-17T15:02:35+08:00[INFO] ------------------------------------------------------------------------</code></pre></li><li><p>运行项目</p><pre><code># cmd# 1.无参数，类在target下面test_mvn\target\classes\test_mvn_pkg\App.classmvn exec:java -Dexec.mainClass=&quot;com.vineetmanohar.module.Main&quot;# 即mvn exec:java -Dexec.mainClass=&quot;test_mvn_pkg.App&quot;## 2.有参数mvn exec:java -Dexec.mainClass=&quot;com.vineetmanohar.module.Main&quot; -Dexec.args=&quot;arg0 arg1 arg2&quot;## 3.指定对classpath的运行时依赖mvn exec:java -Dexec.mainClass=&quot;com.vineetmanohar.module.Main&quot; -Dexec.classpathScope=runtime## logD:\003---WorkSpace\06---testmaven\test_mvn&gt;mvn exec:java -Dexec.mainClass=&quot;test_mvn_pkg.App&quot;[INFO] Scanning for projects...[INFO][INFO] ----------------&lt; com.hikvision.ai_data.data:test_mvn &gt;-----------------[INFO] Building test_mvn 1.0-SNAPSHOT[INFO] --------------------------------[ jar ]---------------------------------[INFO][INFO] --- exec-maven-plugin:1.6.0:java (default-cli) @ test_mvn ---Hello World![INFO] ------------------------------------------------------------------------[INFO] BUILD SUCCESS[INFO] ------------------------------------------------------------------------[INFO] Total time: 1.010 s[INFO] Finished at: 2018-04-17T15:09:49+08:00[INFO] ------------------------------------------------------------------------</code></pre></li><li><p>项目部署</p><pre><code># 前提是jboss web server已经成功启动# cmdmvn clean jboss-as:deploy</code></pre></li></ul><h2 id="eclipse上的maven项目"><a href="#eclipse上的maven项目" class="headerlink" title="eclipse上的maven项目"></a><strong>eclipse上的maven项目</strong></h2><ul><li><p>打开eclipse进行java配置，然后关闭</p><pre><code>windows &gt; preferences &gt; java &gt; installed jres &gt; add jdk floder and jre floderselect jdk floder &gt; apply</code></pre></li><li><p>eclipse上的maven插件M2Eclipse</p><pre><code>help menu &gt; install new software &gt; input the url as followhttp://download.eclipse.org/technology/m2e/releases/# 备注插件官网http://www.eclipse.org/m2e/# 该插件可以解决mvn install报错问题</code></pre></li><li><p>eclipse中的maven配置</p><pre><code>windows &gt; preferences &gt; maven &gt; installations &gt; maven &gt; $(maven_home) &gt; applywindows &gt; preferences &gt; maven &gt; users seting &gt; user setting &gt; C:\app3\apache-maven-3.5.3\conf\settings.xmlwindows &gt; preferences &gt; maven &gt; users seting &gt; local repository &gt; C:\Users\BinLee\.m2\repository</code></pre></li><li><p>创建maven项目</p></li></ul><ol><li>创建 New-&gt;Other…-&gt;Maven-&gt;Maven Project</li><li>use default workspace location</li><li>archetypes maven-archetype-quickstart</li><li><p>new maven project</p><pre><code>com.hikvision.big_data.datatest_eclipse_maven0.0.1-SNAPSHOTcom.hikvision.big_data.data.test_eclipse_maven</code></pre></li><li><p>其中pom.xml</p><pre><code>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;&lt;groupId&gt;com.hikvision.big_data.data&lt;/groupId&gt;&lt;artifactId&gt;test_eclipse_maven&lt;/artifactId&gt;&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;&lt;packaging&gt;jar&lt;/packaging&gt;&lt;name&gt;test_eclipse_maven&lt;/name&gt;&lt;url&gt;http://maven.apache.org&lt;/url&gt;&lt;properties&gt; &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;&lt;/properties&gt;&lt;dependencies&gt; &lt;dependency&gt;   &lt;groupId&gt;junit&lt;/groupId&gt;   &lt;artifactId&gt;junit&lt;/artifactId&gt;   &lt;version&gt;3.8.1&lt;/version&gt;   &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt;&lt;/dependencies&gt;&lt;/project&gt;</code></pre></li><li><p>在网站上找到自己需要的依赖 <a href="http://mvnrepository.com/" target="_blank" rel="noopener">http://mvnrepository.com/</a></p><pre><code># 比如：我需要找到time相关的操作，直接mavenrepository中搜索time， 得到的Joda Time# 再用google搜索Joda Time，查看其用法# mavenrepository中的Joda Time依赖添加到pom.xml&lt;!-- https://mvnrepository.com/artifact/org.webjars.npm/d3-array --&gt;&lt;!-- https://mvnrepository.com/artifact/joda-time/joda-time --&gt;&lt;dependency&gt; &lt;groupId&gt;joda-time&lt;/groupId&gt; &lt;artifactId&gt;joda-time&lt;/artifactId&gt; &lt;version&gt;2.9.9&lt;/version&gt;&lt;/dependency&gt;# 保存自动下载# 使用everything搜索Joda Time发现已经在C:\Users\BinLee\.m2\repository\joda-time\joda-time\2.9.9\joda-time-2.9.9.jar下面</code></pre></li><li><p>使用依赖</p><pre><code># 在窗口上project explorer&gt;maven dependencies查看需要的依赖类# 在需要地方直接插入# codepackage com.hikvision.big_data.data.test_eclipse_maven;import org.joda.time.DateTime;import org.joda.time.Days;import org.joda.time.LocalDateTime;/*** Hello world!**/public class App { public static void main(String[] args) {     System.out.println(&quot;Hello World!&quot;);     DateTime now = DateTime.now();     System.out.println(now);     Days maxValue = Days.MAX_VALUE;     System.out.println(maxValue);     System.out.println(LocalDateTime.now()); }}# outputHello World!2018-04-17T16:15:02.211+08:00P2147483647D2018-04-17T16:15:02.289</code></pre></li></ol><h2 id="关于maven源码打包"><a href="#关于maven源码打包" class="headerlink" title="关于maven源码打包"></a><strong>关于maven源码打包</strong></h2><ul><li><p>命令行方式，<a href="https://blog.csdn.net/symgdwyh/article/details/4407945" target="_blank" rel="noopener">他山之石</a></p><pre><code>cd {项目目录下}mvn source:jarmvn source:test-jar</code></pre></li><li><p>eclipse中pom.xml结尾加入插件，然后执行maven install</p><pre><code>...  &lt;/dependencies&gt;  &lt;build&gt;      &lt;plugins&gt;          &lt;plugin&gt;              &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;              &lt;artifactId&gt;maven-source-plugin&lt;/artifactId&gt;              &lt;executions&gt;                  &lt;execution&gt;                      &lt;id&gt;attach-sources&lt;/id&gt;                      &lt;goals&gt;                          &lt;goal&gt;jar&lt;/goal&gt;                      &lt;/goals&gt;                  &lt;/execution&gt;              &lt;/executions&gt;          &lt;/plugin&gt;      &lt;/plugins&gt;  &lt;/build&gt;&lt;/project&gt;</code></pre></li></ul><h2 id="利用idea运行maven-install报错的问题解决"><a href="#利用idea运行maven-install报错的问题解决" class="headerlink" title="利用idea运行maven install报错的问题解决"></a><strong>利用idea运行maven install报错的问题解决</strong></h2><ul><li>参考 <a href="http://tieba.baidu.com/p/4810060893?traceid=" target="_blank" rel="noopener">他山之石</a></li><li>右边maven projects &gt; lifecycle &gt; install</li><li>不要点击plugins &gt; install会报错</li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>windows</tag>
+        <tag>环境变量</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[apache maven的配置与使用]]></title>
+    <url>%2F2018%2F04%2F17%2Fmaven%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[本文介绍了apache maven的配置与使用过程，【清理项目】→【编译项目】→【测试项目】→【生成测试报告】→【打包项目】→【部署项目】，maven详细讲解：他山之石 需要先配置java和maven环境变量 CLASSPATH .;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar; JAVA_HOME C:\app3\Java\jdk1.8.0_144 JRE_HOME C:\app3\Java\jre1.8.0_144 MVN_HOME C:\app3\apache-maven-3.5.3 Path C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin; 更换maven的仓库为自定义的仓库 创建目标位置如，d:\maven\repo 拷贝C:\app3\apache-maven-3.5.3\conf\settings.xml文件到d:\maven 修改两处的settings.xml文件 定位到localRepository&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt; # 修改为： &lt;localRepository&gt;d:\maven\repo&lt;/localRepository&gt; maven手动创建项目 他山之石 创建项目 # cmd cd /d d:\test mvn archetype:generate # log Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 1169:（和eclipse上的maven插件有关系，直接回车） Choose org.apache.maven.archetypes:maven-archetype-quickstart version: 1: 1.0-alpha-1 2: 1.0-alpha-2 3: 1.0-alpha-3 4: 1.0-alpha-4 5: 1.0 6: 1.1 7: 1.3 Choose a number: 7:(直接回车) Define value for property &#39;groupId&#39;: com.hikvision.ai_data.data（从大往小填写自己公司的名字） Define value for property &#39;artifactId&#39;: test_mvn（项目的名字） Define value for property &#39;version&#39; 1.0-SNAPSHOT: :（默认就行） Define value for property &#39;package&#39; com.hikvision.ai_data.data: : test_mvn_pkg（将class打包的jar文件的名称） Confirm properties configuration: groupId: com.hikvision.ai_data.data artifactId: test_mvn version: 1.0-SNAPSHOT package: test_mvn_pkg Y: :(直接回车) [INFO] ---------------------------------------------------------------------------- [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.3 [INFO] ---------------------------------------------------------------------------- [INFO] Parameter: groupId, Value: com.hikvision.ai_data.data [INFO] Parameter: artifactId, Value: test_mvn [INFO] Parameter: version, Value: 1.0-SNAPSHOT [INFO] Parameter: package, Value: test_mvn_pkg [INFO] Parameter: packageInPathFormat, Value: test_mvn_pkg [INFO] Parameter: package, Value: test_mvn_pkg [INFO] Parameter: version, Value: 1.0-SNAPSHOT [INFO] Parameter: groupId, Value: com.hikvision.ai_data.data [INFO] Parameter: artifactId, Value: test_mvn [INFO] Project created from Archetype in dir: D:\003---WorkSpace\06---testmaven\test_mvn [INFO] ------------------------------------------------------------------------ [INFO] BUILD SUCCESS [INFO] ------------------------------------------------------------------------ [INFO] Total time: 13:57 min [INFO] Finished at: 2018-04-17T14:54:37+08:00 [INFO] ------------------------------------------------------------------------ 创建项目后查看文件 D:\003---WorkSpace\06---testmaven&gt;tree 卷 工厂 的文件夹 PATH 列表 卷序列号为 0000006C BAA7:827C D:. └─test_mvn └─src ├─main │ └─java │ └─test_mvn_pkg └─test └─java └─test_mvn_pkg 编译项目 # cmd cd test_mvn mvn clean compile # log D:\003---WorkSpace\06---testmaven\test_mvn&gt;mvn clean compile [INFO] Scanning for projects... [INFO] [INFO] ----------------&lt; com.hikvision.ai_data.data:test_mvn &gt;----------------- [INFO] Building test_mvn 1.0-SNAPSHOT [INFO] --------------------------------[ jar ]--------------------------------- [INFO] [INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ test_mvn --- [INFO] [INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ test_mvn --- [INFO] Using &#39;UTF-8&#39; encoding to copy filtered resources. [INFO] skip non existing resourceDirectory D:\003---WorkSpace\06---testmaven\test_mvn\src\main\resources [INFO] [INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ test_mvn --- [INFO] Changes detected - recompiling the module! [INFO] Compiling 1 source file to D:\003---WorkSpace\06---testmaven\test_mvn\target\classes [INFO] ------------------------------------------------------------------------ [INFO] BUILD SUCCESS [INFO] ------------------------------------------------------------------------ [INFO] Total time: 1.570 s [INFO] Finished at: 2018-04-17T14:58:59+08:00 [INFO] ------------------------------------------------------------------------ 单元测试 # cmd mvn clean test # log D:\003---WorkSpace\06---testmaven\test_mvn&gt;mvn clean test [INFO] Scanning for projects... [INFO] [INFO] ----------------&lt; com.hikvision.ai_data.data:test_mvn &gt;----------------- [INFO] Building test_mvn 1.0-SNAPSHOT [INFO] --------------------------------[ jar ]--------------------------------- [INFO] [INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ test_mvn --- [INFO] Deleting D:\003---WorkSpace\06---testmaven\test_mvn\target [INFO] [INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ test_mvn --- [INFO] Using &#39;UTF-8&#39; encoding to copy filtered resources. [INFO] skip non existing resourceDirectory D:\003---WorkSpace\06---testmaven\test_mvn\src\main\resources [INFO] [INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ test_mvn --- [INFO] Changes detected - recompiling the module! [INFO] Compiling 1 source file to D:\003---WorkSpace\06---testmaven\test_mvn\target\classes [INFO] [INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ test_mvn --- [INFO] Using &#39;UTF-8&#39; encoding to copy filtered resources. [INFO] skip non existing resourceDirectory D:\003---WorkSpace\06---testmaven\test_mvn\src\test\resources [INFO] [INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ test_mvn --- [INFO] Changes detected - recompiling the module! [INFO] Compiling 1 source file to D:\003---WorkSpace\06---testmaven\test_mvn\target\test-classes [INFO] [INFO] --- maven-surefire-plugin:2.20.1:test (default-test) @ test_mvn --- [INFO] [INFO] ------------------------------------------------------- [INFO] T E S T S [INFO] ------------------------------------------------------- [INFO] Running test_mvn_pkg.AppTest [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in test_mvn_pkg.AppTest [INFO] [INFO] Results: [INFO] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0 [INFO] [INFO] ------------------------------------------------------------------------ [INFO] BUILD SUCCESS [INFO] ------------------------------------------------------------------------ [INFO] Total time: 3.227 s [INFO] Finished at: 2018-04-17T15:00:33+08:00 [INFO] ------------------------------------------------------------------------ 打包项目 # cmd mvn clean package # log D:\003---WorkSpace\06---testmaven\test_mvn&gt;mvn clean package [INFO] Scanning for projects... [INFO] [INFO] ----------------&lt; com.hikvision.ai_data.data:test_mvn &gt;----------------- [INFO] Building test_mvn 1.0-SNAPSHOT [INFO] --------------------------------[ jar ]--------------------------------- [INFO] [INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ test_mvn --- [INFO] Deleting D:\003---WorkSpace\06---testmaven\test_mvn\target [INFO] [INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ test_mvn --- [INFO] Using &#39;UTF-8&#39; encoding to copy filtered resources. [INFO] skip non existing resourceDirectory D:\003---WorkSpace\06---testmaven\test_mvn\src\main\resources [INFO] [INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ test_mvn --- [INFO] Changes detected - recompiling the module! [INFO] Compiling 1 source file to D:\003---WorkSpace\06---testmaven\test_mvn\target\classes [INFO] [INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ test_mvn --- [INFO] Using &#39;UTF-8&#39; encoding to copy filtered resources. [INFO] skip non existing resourceDirectory D:\003---WorkSpace\06---testmaven\test_mvn\src\test\resources [INFO] [INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ test_mvn --- [INFO] Changes detected - recompiling the module! [INFO] Compiling 1 source file to D:\003---WorkSpace\06---testmaven\test_mvn\target\test-classes [INFO] [INFO] --- maven-surefire-plugin:2.20.1:test (default-test) @ test_mvn --- [INFO] [INFO] ------------------------------------------------------- [INFO] T E S T S [INFO] ------------------------------------------------------- [INFO] Running test_mvn_pkg.AppTest [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s - in test_mvn_pkg.AppTest [INFO] [INFO] Results: [INFO] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0 [INFO] [INFO] [INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ test_mvn --- [INFO] Building jar: D:\003---WorkSpace\06---testmaven\test_mvn\target\test_mvn-1.0-SNAPSHOT.jar [INFO] ------------------------------------------------------------------------ [INFO] BUILD SUCCESS [INFO] ------------------------------------------------------------------------ [INFO] Total time: 3.599 s [INFO] Finished at: 2018-04-17T15:02:35+08:00 [INFO] ------------------------------------------------------------------------ 运行项目 # cmd # 1.无参数，类在target下面test_mvn\target\classes\test_mvn_pkg\App.class mvn exec:java -Dexec.mainClass=&quot;com.vineetmanohar.module.Main&quot; # 即 mvn exec:java -Dexec.mainClass=&quot;test_mvn_pkg.App&quot; # # 2.有参数 mvn exec:java -Dexec.mainClass=&quot;com.vineetmanohar.module.Main&quot; -Dexec.args=&quot;arg0 arg1 arg2&quot; # # 3.指定对classpath的运行时依赖 mvn exec:java -Dexec.mainClass=&quot;com.vineetmanohar.module.Main&quot; -Dexec.classpathScope=runtime # # log D:\003---WorkSpace\06---testmaven\test_mvn&gt;mvn exec:java -Dexec.mainClass=&quot;test_mvn_pkg.App&quot; [INFO] Scanning for projects... [INFO] [INFO] ----------------&lt; com.hikvision.ai_data.data:test_mvn &gt;----------------- [INFO] Building test_mvn 1.0-SNAPSHOT [INFO] --------------------------------[ jar ]--------------------------------- [INFO] [INFO] --- exec-maven-plugin:1.6.0:java (default-cli) @ test_mvn --- Hello World! [INFO] ------------------------------------------------------------------------ [INFO] BUILD SUCCESS [INFO] ------------------------------------------------------------------------ [INFO] Total time: 1.010 s [INFO] Finished at: 2018-04-17T15:09:49+08:00 [INFO] ------------------------------------------------------------------------ 项目部署 # 前提是jboss web server已经成功启动 # cmd mvn clean jboss-as:deploy eclipse上的maven项目 打开eclipse进行java配置，然后关闭 windows &gt; preferences &gt; java &gt; installed jres &gt; add jdk floder and jre floder select jdk floder &gt; apply eclipse上的maven插件M2Eclipse help menu &gt; install new software &gt; input the url as follow http://download.eclipse.org/technology/m2e/releases/ # 备注插件官网 http://www.eclipse.org/m2e/ # 该插件可以解决mvn install报错问题 eclipse中的maven配置 windows &gt; preferences &gt; maven &gt; installations &gt; maven &gt; $(maven_home) &gt; apply windows &gt; preferences &gt; maven &gt; users seting &gt; user setting &gt; C:\app3\apache-maven-3.5.3\conf\settings.xml windows &gt; preferences &gt; maven &gt; users seting &gt; local repository &gt; C:\Users\BinLee\.m2\repository 创建maven项目 创建 New-&gt;Other…-&gt;Maven-&gt;Maven Project use default workspace location archetypes maven-archetype-quickstart new maven project com.hikvision.big_data.data test_eclipse_maven 0.0.1-SNAPSHOT com.hikvision.big_data.data.test_eclipse_maven 其中pom.xml &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt; &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; &lt;groupId&gt;com.hikvision.big_data.data&lt;/groupId&gt; &lt;artifactId&gt;test_eclipse_maven&lt;/artifactId&gt; &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt; &lt;packaging&gt;jar&lt;/packaging&gt; &lt;name&gt;test_eclipse_maven&lt;/name&gt; &lt;url&gt;http://maven.apache.org&lt;/url&gt; &lt;properties&gt; &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt; &lt;/properties&gt; &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;junit&lt;/groupId&gt; &lt;artifactId&gt;junit&lt;/artifactId&gt; &lt;version&gt;3.8.1&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;/dependencies&gt; &lt;/project&gt; 在网站上找到自己需要的依赖 http://mvnrepository.com/ # 比如：我需要找到time相关的操作，直接mavenrepository中搜索time， 得到的Joda Time # 再用google搜索Joda Time，查看其用法 # mavenrepository中的Joda Time依赖添加到pom.xml &lt;!-- https://mvnrepository.com/artifact/org.webjars.npm/d3-array --&gt; &lt;!-- https://mvnrepository.com/artifact/joda-time/joda-time --&gt; &lt;dependency&gt; &lt;groupId&gt;joda-time&lt;/groupId&gt; &lt;artifactId&gt;joda-time&lt;/artifactId&gt; &lt;version&gt;2.9.9&lt;/version&gt; &lt;/dependency&gt; # 保存自动下载 # 使用everything搜索Joda Time发现已经在C:\Users\BinLee\.m2\repository\joda-time\joda-time\2.9.9\joda-time-2.9.9.jar下面 使用依赖 # 在窗口上project explorer&gt;maven dependencies查看需要的依赖类 # 在需要地方直接插入 # code package com.hikvision.big_data.data.test_eclipse_maven; import org.joda.time.DateTime; import org.joda.time.Days; import org.joda.time.LocalDateTime; /** * Hello world! * */ public class App { public static void main(String[] args) { System.out.println(&quot;Hello World!&quot;); DateTime now = DateTime.now(); System.out.println(now); Days maxValue = Days.MAX_VALUE; System.out.println(maxValue); System.out.println(LocalDateTime.now()); } } # output Hello World! 2018-04-17T16:15:02.211+08:00 P2147483647D 2018-04-17T16:15:02.289 关于maven源码打包 命令行方式，他山之石 cd {项目目录下} mvn source:jar mvn source:test-jar eclipse中pom.xml结尾加入插件，然后执行maven install ... &lt;/dependencies&gt; &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-source-plugin&lt;/artifactId&gt; &lt;executions&gt; &lt;execution&gt; &lt;id&gt;attach-sources&lt;/id&gt; &lt;goals&gt; &lt;goal&gt;jar&lt;/goal&gt; &lt;/goals&gt; &lt;/execution&gt; &lt;/executions&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;/project&gt; 利用idea运行maven install报错的问题解决 参考 他山之石 右边maven projects &gt; lifecycle &gt; install 不要点击plugins &gt; install会报错]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> maven </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> windows </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>eclipse中的git基本配置</title>
-      <link href="/2018/04/16/eclipse%E4%B8%AD%E7%9A%84git%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/"/>
-      <url>/2018/04/16/eclipse%E4%B8%AD%E7%9A%84git%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/</url>
-      <content type="html"><![CDATA[<p>本文介绍了如何使用git和eclipse进行代码的版本控制。<br><a id="more"></a></p><h2 id="命令行模式操作"><a href="#命令行模式操作" class="headerlink" title="命令行模式操作"></a>命令行模式操作</h2><ul><li>服务端注册github或者giteee账号</li><li>客户端下载git软件</li><li>使用命令生成本地的密钥</li><li>将秘钥添加到服务端的git中</li><li>服务端新建git仓库，客户端克隆到本地</li><li>客户端添加文件到仓库中，使用各种命令对该仓库进行版本控制</li><li>上述的属于git的基本操作详细步骤参考 <a href="https://leebin.top/2018/03/27/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8ubuntu%E5%AE%9E%E7%8E%B0%E7%A7%81%E6%9C%89git%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E9%99%84ssh%E6%93%8D%E4%BD%9C%EF%BC%9F/" target="_blank" rel="noopener">如何利用ubuntu实现私有git服务端-附ssh操作？</a></li></ul><h2 id="eclipse中git上传代码"><a href="#eclipse中git上传代码" class="headerlink" title="eclipse中git上传代码"></a>eclipse中git上传代码</h2><ul><li>服务端已经添加了客户端的ssh密钥</li><li>服务端已经新建了仓库</li><li>客户端eclipse新建项目</li><li>在路径eclipse&gt;windows&gt;preference&gt;team&gt;git&gt;configuration下查看user和passwd的配置</li><li>在路径package explorer&gt;项目右键&gt;share project&gt;repository&gt;create，新建本地的仓库名字要和服务端的名字一致，如：d:\test.git，完成了新建仓库</li><li>在路径package explorer&gt;项目右键&gt;team&gt;add to index，完成文件的add</li><li>在路径package explorer&gt;项目右键&gt;team&gt;commit或者Ctrl+#，提交</li><li>接上一步，先填写commit message</li><li>接上一步，填写服务器地址<pre><code>remote name: originurl: git@github.com:xjdlb/testgit.git # git 地址hostname: github.com # 域名repository path: xjdlb/testgit.git</code></pre></li><li>一路next就好了</li><li><a href="https://blog.csdn.net/u014079773/article/details/51595127" target="_blank" rel="noopener">他山之石</a></li></ul><h2 id="eclipse中git下载代码"><a href="#eclipse中git下载代码" class="headerlink" title="eclipse中git下载代码"></a>eclipse中git下载代码</h2><ul><li>在路径package explorer&gt;空白右键&gt;import&gt;Git&gt;Projects from Git，next</li><li>接上步，选择URI，包含了远程和本地</li><li>主要的分支</li><li>新建本地的仓库，如：d:\test.git</li><li>继续coding</li><li>返回上面上传代码操作</li></ul><h2 id="eclipse-push-出现了-rejected-non-fast-forward错误"><a href="#eclipse-push-出现了-rejected-non-fast-forward错误" class="headerlink" title="eclipse push 出现了 rejected-non-fast-forward错误"></a>eclipse push 出现了 rejected-non-fast-forward错误</h2><ul><li><a href="https://blog.csdn.net/chenshun123/article/details/46756087" target="_blank" rel="noopener">他山之石</a></li><li>打开windows&gt;show view&gt;other&gt;git repositories</li><li>git repositories&gt;remote&gt;origin&gt;绿色分支&gt;右键&gt;configure fetch&gt;save and fetch</li><li>此时可以看见remote tracking&gt;origin/mater&gt;右键&gt;merge</li><li>问题解决，可以上传了</li><li>add&gt;commit&gt;push</li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>maven</tag>
+        <tag>配置</tag>
+        <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[eclipse中的git基本配置]]></title>
+    <url>%2F2018%2F04%2F16%2Feclipse%E4%B8%AD%E7%9A%84git%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[本文介绍了如何使用git和eclipse进行代码的版本控制。 命令行模式操作 服务端注册github或者giteee账号 客户端下载git软件 使用命令生成本地的密钥 将秘钥添加到服务端的git中 服务端新建git仓库，客户端克隆到本地 客户端添加文件到仓库中，使用各种命令对该仓库进行版本控制 上述的属于git的基本操作详细步骤参考 如何利用ubuntu实现私有git服务端-附ssh操作？ eclipse中git上传代码 服务端已经添加了客户端的ssh密钥 服务端已经新建了仓库 客户端eclipse新建项目 在路径eclipse&gt;windows&gt;preference&gt;team&gt;git&gt;configuration下查看user和passwd的配置 在路径package explorer&gt;项目右键&gt;share project&gt;repository&gt;create，新建本地的仓库名字要和服务端的名字一致，如：d:\test.git，完成了新建仓库 在路径package explorer&gt;项目右键&gt;team&gt;add to index，完成文件的add 在路径package explorer&gt;项目右键&gt;team&gt;commit或者Ctrl+#，提交 接上一步，先填写commit message 接上一步，填写服务器地址remote name: origin url: git@github.com:xjdlb/testgit.git # git 地址 hostname: github.com # 域名 repository path: xjdlb/testgit.git 一路next就好了 他山之石 eclipse中git下载代码 在路径package explorer&gt;空白右键&gt;import&gt;Git&gt;Projects from Git，next 接上步，选择URI，包含了远程和本地 主要的分支 新建本地的仓库，如：d:\test.git 继续coding 返回上面上传代码操作 eclipse push 出现了 rejected-non-fast-forward错误 他山之石 打开windows&gt;show view&gt;other&gt;git repositories git repositories&gt;remote&gt;origin&gt;绿色分支&gt;右键&gt;configure fetch&gt;save and fetch 此时可以看见remote tracking&gt;origin/mater&gt;右键&gt;merge 问题解决，可以上传了 add&gt;commit&gt;push]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> git </tag>
-            
-            <tag> eclipse </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>使用kcptun加速ss服务</title>
-      <link href="/2018/04/15/%E4%BD%BF%E7%94%A8kcptun%E5%8A%A0%E9%80%9Fss%E6%9C%8D%E5%8A%A1/"/>
-      <url>/2018/04/15/%E4%BD%BF%E7%94%A8kcptun%E5%8A%A0%E9%80%9Fss%E6%9C%8D%E5%8A%A1/</url>
-      <content type="html"><![CDATA[<p>本文介绍如何使用kcptun加速ss服务。<br><a id="more"></a></p><h2 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备"></a>软件准备</h2><ul><li>安装组件<pre><code>apt-get updateapt-get upgradeapt-get install build-essential python-pip m2crypto supervisor</code></pre></li><li>安装ss<pre><code>pip install shadowsocks</code></pre></li><li>安装加密用软件 libsodium<pre><code>wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gztar zxvf libsodium-1.0.11.tar.gzcd libsodium-1.0.11./configuremake &amp;&amp; make checkmake installecho /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.confldconfig</code></pre></li><li><p>[可选] 配置supervisor, vi /etc/supervisor/conf.d/shadowsocks.conf</p><pre><code>[program:shadowsocks]command=ssserver -c /etc/shadowsocks.jsonautorestart=trueuser=root</code></pre></li><li><p>[可选] 使用supervisor</p><pre><code>supervisorctl reloadsupervisorctl status</code></pre></li></ul><h2 id="ss配置"><a href="#ss配置" class="headerlink" title="ss配置"></a>ss配置</h2><ul><li>ss服务器配置ss_config.json<pre><code>{&quot;server&quot;: &quot;127.0.0.1&quot;,&quot;port_password&quot;: {&quot;10001&quot;: &quot;helloworld&quot;,&quot;10002&quot;: &quot;helloworld&quot;,&quot;10003&quot;: &quot;helloworld&quot;},&quot;local_port&quot;: 1080,&quot;timeout&quot;: 600,&quot;method&quot;: &quot;chacha20&quot;,&quot;auth&quot;: true}</code></pre></li><li>启动和停止脚本<pre><code>ssserver -c /root/shadowsocks/ss_config.json -d startssserver -c /root/shadowsocks/ss_config.json -d stop</code></pre></li></ul><h2 id="kcptun配置"><a href="#kcptun配置" class="headerlink" title="kcptun配置"></a>kcptun配置</h2><ul><li>kcptun官网 <a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li>其中 kcptun-linux-amd64-20180316.tar.gz 为Linux版本</li><li>其中 kcptun-windows-amd64-20180316.tar.gz 为Windows版本</li><li>安装 kcptun<pre><code>mkdir /root/kcptuncd /root/kcptunln -sf /bin/bash /bin/shwget https://github.com/xtaci/kcptun/releases/download/v20161118/kcptun-linux-amd64-20161118.tar.gztar -zxf kcptun-linux-amd64-*.tar.gz</code></pre></li><li>配置三个脚本start.sh, stop.sh, server-config.json</li></ul><ol><li><p>启动脚本vi /root/kcptun/start.sh</p><pre><code>#!/bin/bashcd /root/kcptun/./server_linux_amd64 -c /root/kcptun/server-config.json &gt; kcptun.log 2&gt;&amp;1 &amp;echo &quot;Kcptun started.&quot;</code></pre></li><li><p>停止脚本 vi /root/kcptun/stop.sh</p><pre><code>#!/bin/bashecho &quot;Stopping Kcptun...&quot;PID=`ps -ef | grep server_linux_amd64 | grep -v grep | awk &#39;{print $2}&#39;`if [ &quot;&quot; !=  &quot;$PID&quot; ]; thenecho &quot;killing $PID&quot;kill -9 $PIDfiecho &quot;Kcptun stoped.&quot;</code></pre></li><li><p>kcptun配置文件 vi /root/kcptun/server-config.json</p><pre><code>{&quot;listen&quot;: &quot;:443&quot;,&quot;target&quot;: &quot;127.0.0.1:10001&quot;,&quot;key&quot;: &quot;helloworld&quot;,&quot;crypt&quot;: &quot;salsa20&quot;,&quot;mode&quot;: &quot;fast2&quot;,&quot;mtu&quot;: 1350,&quot;sndwnd&quot;: 1024,&quot;rcvwnd&quot;: 1024,&quot;datashard&quot;: 5,&quot;parityshard&quot;: 5,&quot;dscp&quot;: 46,&quot;nocomp&quot;: true,&quot;acknodelay&quot;: false,&quot;nodelay&quot;: 0,&quot;interval&quot;: 40,&quot;resend&quot;: 0,&quot;nc&quot;: 0,&quot;sockbuf&quot;: 4194304,&quot;keepalive&quot;: 10}</code></pre></li></ol><ul><li>启动或停止kcptun<pre><code>sh /root/kcptun/start.shsh /root/kcptun/stop.sh</code></pre></li></ul><hr><h2 id="客户端windows环境中的kcptun配置"><a href="#客户端windows环境中的kcptun配置" class="headerlink" title="客户端windows环境中的kcptun配置"></a>客户端windows环境中的kcptun配置</h2><ul><li>kcptun官网 <a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases</a></li><li>client_windows_amd64.exe 放在全部英文目录下</li><li>创建下面的三个文件：run.vbs, client-config.json, stop.sh</li></ul><ol><li>在当前文件夹下，创建 run.vbs<pre><code>Dim RunKcptunSet fso = CreateObject(&quot;Scripting.FileSystemObject&quot;)Set WshShell = WScript.CreateObject(&quot;WScript.Shell&quot;)currentPath = fso.GetFile(Wscript.ScriptFullName).ParentFolder.Path &amp; &quot;\&quot;configFile = currentPath &amp; &quot;client-config.json&quot;logFile = currentPath &amp; &quot;kcptun.log&quot;exeConfig = currentPath &amp; &quot;client_windows_amd64.exe -c &quot; &amp; configFilecmdLine = &quot;cmd /c &quot; &amp; exeConfig &amp; &quot; &gt; &quot; &amp; logFile &amp; &quot; 2&gt;&amp;1&quot;WshShell.Run cmdLine, 0, False&#39;WScript.Sleep 1000&#39;Wscript.echo cmdLineSet WshShell = NothingSet fso = NothingWScript.quit</code></pre></li><li>在当前文件夹下，创建client-config.json<pre><code>{&quot;localaddr&quot;: &quot;:12345&quot;,&quot;remoteaddr&quot;: &quot;165.227.213.57:443&quot;,&quot;key&quot;: &quot;helloworld&quot;,&quot;crypt&quot;: &quot;salsa20&quot;,&quot;mode&quot;: &quot;fast2&quot;,&quot;conn&quot;: 1,&quot;autoexpire&quot;: 60,&quot;mtu&quot;: 1350,&quot;sndwnd&quot;: 128,&quot;rcvwnd&quot;: 1024,&quot;datashard&quot;: 5,&quot;parityshard&quot;: 5,&quot;dscp&quot;: 46,&quot;nocomp&quot;: true,&quot;acknodelay&quot;: false,&quot;nodelay&quot;: 0,&quot;interval&quot;: 40,&quot;resend&quot;: 0,&quot;nc&quot;: 0,&quot;sockbuf&quot;: 4194304,&quot;keepalive&quot;: 10}</code></pre></li><li>在当前文件夹下，创建stop.sh<pre><code>taskkill /f /im client_windows_amd64.exe</code></pre></li></ol><h2 id="客户端windows环境中的ss配置"><a href="#客户端windows环境中的ss配置" class="headerlink" title="客户端windows环境中的ss配置"></a>客户端windows环境中的ss配置</h2><ul><li>使用本地的配置<pre><code>127.0.0.112345helloworld(服务端ss的密码，不是kcptun的密码)chacha20</code></pre></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>eclipse</tag>
+        <tag>配置</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用kcptun加速ss服务]]></title>
+    <url>%2F2018%2F04%2F15%2F%E4%BD%BF%E7%94%A8kcptun%E5%8A%A0%E9%80%9Fss%E6%9C%8D%E5%8A%A1%2F</url>
+    <content type="text"><![CDATA[本文介绍如何使用kcptun加速ss服务。 软件准备 安装组件apt-get update apt-get upgrade apt-get install build-essential python-pip m2crypto supervisor 安装sspip install shadowsocks 安装加密用软件 libsodiumwget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz tar zxvf libsodium-1.0.11.tar.gz cd libsodium-1.0.11 ./configure make &amp;&amp; make check make install echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf ldconfig [可选] 配置supervisor, vi /etc/supervisor/conf.d/shadowsocks.conf [program:shadowsocks] command=ssserver -c /etc/shadowsocks.json autorestart=true user=root [可选] 使用supervisor supervisorctl reload supervisorctl status ss配置 ss服务器配置ss_config.json{ &quot;server&quot;: &quot;127.0.0.1&quot;, &quot;port_password&quot;: { &quot;10001&quot;: &quot;helloworld&quot;, &quot;10002&quot;: &quot;helloworld&quot;, &quot;10003&quot;: &quot;helloworld&quot; }, &quot;local_port&quot;: 1080, &quot;timeout&quot;: 600, &quot;method&quot;: &quot;chacha20&quot;, &quot;auth&quot;: true } 启动和停止脚本ssserver -c /root/shadowsocks/ss_config.json -d start ssserver -c /root/shadowsocks/ss_config.json -d stop kcptun配置 kcptun官网 https://github.com/xtaci/kcptun/releases 其中 kcptun-linux-amd64-20180316.tar.gz 为Linux版本 其中 kcptun-windows-amd64-20180316.tar.gz 为Windows版本 安装 kcptunmkdir /root/kcptun cd /root/kcptun ln -sf /bin/bash /bin/sh wget https://github.com/xtaci/kcptun/releases/download/v20161118/kcptun-linux-amd64-20161118.tar.gz tar -zxf kcptun-linux-amd64-*.tar.gz 配置三个脚本start.sh, stop.sh, server-config.json 启动脚本vi /root/kcptun/start.sh #!/bin/bash cd /root/kcptun/ ./server_linux_amd64 -c /root/kcptun/server-config.json &gt; kcptun.log 2&gt;&amp;1 &amp; echo &quot;Kcptun started.&quot; 停止脚本 vi /root/kcptun/stop.sh #!/bin/bash echo &quot;Stopping Kcptun...&quot; PID=`ps -ef | grep server_linux_amd64 | grep -v grep | awk &#39;{print $2}&#39;` if [ &quot;&quot; != &quot;$PID&quot; ]; then echo &quot;killing $PID&quot; kill -9 $PID fi echo &quot;Kcptun stoped.&quot; kcptun配置文件 vi /root/kcptun/server-config.json { &quot;listen&quot;: &quot;:443&quot;, &quot;target&quot;: &quot;127.0.0.1:10001&quot;, &quot;key&quot;: &quot;helloworld&quot;, &quot;crypt&quot;: &quot;salsa20&quot;, &quot;mode&quot;: &quot;fast2&quot;, &quot;mtu&quot;: 1350, &quot;sndwnd&quot;: 1024, &quot;rcvwnd&quot;: 1024, &quot;datashard&quot;: 5, &quot;parityshard&quot;: 5, &quot;dscp&quot;: 46, &quot;nocomp&quot;: true, &quot;acknodelay&quot;: false, &quot;nodelay&quot;: 0, &quot;interval&quot;: 40, &quot;resend&quot;: 0, &quot;nc&quot;: 0, &quot;sockbuf&quot;: 4194304, &quot;keepalive&quot;: 10 } 启动或停止kcptunsh /root/kcptun/start.sh sh /root/kcptun/stop.sh 客户端windows环境中的kcptun配置 kcptun官网 https://github.com/xtaci/kcptun/releases client_windows_amd64.exe 放在全部英文目录下 创建下面的三个文件：run.vbs, client-config.json, stop.sh 在当前文件夹下，创建 run.vbsDim RunKcptun Set fso = CreateObject(&quot;Scripting.FileSystemObject&quot;) Set WshShell = WScript.CreateObject(&quot;WScript.Shell&quot;) currentPath = fso.GetFile(Wscript.ScriptFullName).ParentFolder.Path &amp; &quot;\&quot; configFile = currentPath &amp; &quot;client-config.json&quot; logFile = currentPath &amp; &quot;kcptun.log&quot; exeConfig = currentPath &amp; &quot;client_windows_amd64.exe -c &quot; &amp; configFile cmdLine = &quot;cmd /c &quot; &amp; exeConfig &amp; &quot; &gt; &quot; &amp; logFile &amp; &quot; 2&gt;&amp;1&quot; WshShell.Run cmdLine, 0, False &#39;WScript.Sleep 1000 &#39;Wscript.echo cmdLine Set WshShell = Nothing Set fso = Nothing WScript.quit 在当前文件夹下，创建client-config.json{ &quot;localaddr&quot;: &quot;:12345&quot;, &quot;remoteaddr&quot;: &quot;165.227.213.57:443&quot;, &quot;key&quot;: &quot;helloworld&quot;, &quot;crypt&quot;: &quot;salsa20&quot;, &quot;mode&quot;: &quot;fast2&quot;, &quot;conn&quot;: 1, &quot;autoexpire&quot;: 60, &quot;mtu&quot;: 1350, &quot;sndwnd&quot;: 128, &quot;rcvwnd&quot;: 1024, &quot;datashard&quot;: 5, &quot;parityshard&quot;: 5, &quot;dscp&quot;: 46, &quot;nocomp&quot;: true, &quot;acknodelay&quot;: false, &quot;nodelay&quot;: 0, &quot;interval&quot;: 40, &quot;resend&quot;: 0, &quot;nc&quot;: 0, &quot;sockbuf&quot;: 4194304, &quot;keepalive&quot;: 10 } 在当前文件夹下，创建stop.shtaskkill /f /im client_windows_amd64.exe 客户端windows环境中的ss配置 使用本地的配置127.0.0.1 12345 helloworld(服务端ss的密码，不是kcptun的密码) chacha20]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> kcptun </tag>
-            
-            <tag> ss </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>LC_001_TwoSum_HashMap</title>
-      <link href="/2018/04/03/LC_001_TwoSum_HashMap/"/>
-      <url>/2018/04/03/LC_001_TwoSum_HashMap/</url>
-      <content type="html"><![CDATA[<p>leetcode第001题，主要用到了hashmap数据结构。<br><a id="more"></a></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre><code class="java">package LC;import java.util.Arrays;import java.util.HashMap;/** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */public class LC_001_TwoSum_HashMap {    public static void main(String[] args) {        int[] a = {1, 2, 3, 4, 5, 7};        int t = 10;        System.out.println(Arrays.toString(twoSum(a, t)));    }    private static int[] twoSum(int[] nums, int target) {        HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();        for (int i = 0; i &lt; nums.length; i++) {            int diff = target - nums[i];            if (map.containsKey(diff)) return new int[]{map.get(diff), i};            map.put(nums[i], i);        }        throw new IllegalArgumentException(&quot;-1&quot;);    }}</code></pre>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>kcptun</tag>
+        <tag>ss</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo如何开启语法高亮？]]></title>
+    <url>%2F2018%2F04%2F03%2Fhexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍hexo有关语法高亮的配置方案。 配置过程 配置主站点下的配置文件highlight: enable: true line_number: true auto_detect: true tab_replace: 代码后面添加名称，如```java code ```]]></content>
       <categories>
-          
-          <category> leetcode </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> leetcode </tag>
-            
-            <tag> java </tag>
-            
-            <tag> basic algorithm </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>hexo如何开启语法高亮？</title>
-      <link href="/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/"/>
-      <url>/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/</url>
-      <content type="html"><![CDATA[<p>本文介绍hexo有关语法高亮的配置方案。<br><a id="more"></a></p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul><li>配置主站点下的配置文件<pre><code>highlight:enable: trueline_number: trueauto_detect: truetab_replace:</code></pre></li><li>代码后面添加名称，如```java code ```</li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LC_001_TwoSum_HashMap]]></title>
+    <url>%2F2018%2F04%2F03%2FLC_001_TwoSum_HashMap%2F</url>
+    <content type="text"><![CDATA[leetcode第001题，主要用到了hashmap数据结构。 题解package LC; import java.util.Arrays; import java.util.HashMap; /** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */ public class LC_001_TwoSum_HashMap { public static void main(String[] args) { int[] a = {1, 2, 3, 4, 5, 7}; int t = 10; System.out.println(Arrays.toString(twoSum(a, t))); } private static int[] twoSum(int[] nums, int target) { HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) { int diff = target - nums[i]; if (map.containsKey(diff)) return new int[]{map.get(diff), i}; map.put(nums[i], i); } throw new IllegalArgumentException(&quot;-1&quot;); } }]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>leetcode</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>如何去掉valine的Powered By信息？</title>
-      <link href="/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
-      <url>/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/</url>
-      <content type="html"><![CDATA[<p>本文介绍如何去掉valine页面上的Powered By信息。<br><a id="more"></a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul><li>找到配置文件<pre><code>blog/themes/next/layout/_third-party/comments/valine.swig</code></pre></li><li>配置如下<pre><code>{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>  <script type="text/javascript">    var GUEST = ['nick','mail','link'];    var guest = '{{ theme.valine.guest_info }}';    guest = guest.split(',').filter(item=>{      return GUEST.indexOf(item)>-1;    });    new Valine({        el: '#comments' ,        verify: {{ theme.valine.verify }},        notify: {{ theme.valine.notify }},        appId: '{{ theme.valine.appid }}',        appKey: '{{ theme.valine.appkey }}',        placeholder: '{{ theme.valine.placeholder }}',        avatar:'{{ theme.valine.avatar }}',        guest_info:guest,        pageSize:'{{ theme.valine.pageSize }}' || 10,    });//新增以下代码即可，可以移除.info下所有子节点。var infoEle = document.querySelector('#comments .info');if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){  infoEle.childNodes.forEach(function(item) {item.parentNode.removeChild(item);  });}  </script>{% endif %}</code></pre></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>leetcode</tag>
+        <tag>java</tag>
+        <tag>basic algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
+    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> valine </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>如何在next配置站内的搜索引擎？</title>
-      <link href="/2018/04/03/%E5%A6%82%E4%BD%95%E5%9C%A8next%E9%85%8D%E7%BD%AE%E7%AB%99%E5%86%85%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%EF%BC%9F/"/>
-      <url>/2018/04/03/%E5%A6%82%E4%BD%95%E5%9C%A8next%E9%85%8D%E7%BD%AE%E7%AB%99%E5%86%85%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%EF%BC%9F/</url>
-      <content type="html"><![CDATA[<p>本文介绍如何在next配置站内的搜索引擎。<br><a id="more"></a></p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul><li>安装hexo-generator-searchdb插件，以管理员身份打开cmd进入项目目录下，运行<pre><code>npm install hexo-generator-searchdb --save</code></pre></li><li>在站点的-config.yml文件中增加<pre><code>search:path: search.xmlfield: postformat: htmllimit: 10000</code></pre></li><li>配置theme/next/-config.yml文件<pre><code># Algolia Searchalgolia_search:enable: falsehits:  per_page: 10labels:  input_placeholder: Search for Posts  hits_empty: &quot;We didn&#39;t find any results for the search: ${query}&quot;  hits_stats: &quot;${hits} results found in ${time} ms&quot;## Local search# Dependencies: https://github.com/flashlab/hexo-generator-searchlocal_search:enable: true# if auto, trigger search by changing input# if manual, trigger search by pressing enter key or search buttontrigger: auto# show top n results per article, show all results by setting to -1top_n_per_article: 1</code></pre></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>valine</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何在next配置站内的搜索引擎？]]></title>
+    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%9C%A8next%E9%85%8D%E7%BD%AE%E7%AB%99%E5%86%85%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍如何在next配置站内的搜索引擎。 配置过程 安装hexo-generator-searchdb插件，以管理员身份打开cmd进入项目目录下，运行npm install hexo-generator-searchdb --save 在站点的-config.yml文件中增加search: path: search.xml field: post format: html limit: 10000 配置theme/next/-config.yml文件# Algolia Search algolia_search: enable: false hits: per_page: 10 labels: input_placeholder: Search for Posts hits_empty: &quot;We didn&#39;t find any results for the search: ${query}&quot; hits_stats: &quot;${hits} results found in ${time} ms&quot; # # Local search # Dependencies: https://github.com/flashlab/hexo-generator-search local_search: enable: true # if auto, trigger search by changing input # if manual, trigger search by pressing enter key or search button trigger: auto # show top n results per article, show all results by setting to -1 top_n_per_article: 1]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> next </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>linux shell入门练习</title>
-      <link href="/2018/04/03/linux%20shell%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0/"/>
-      <url>/2018/04/03/linux%20shell%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0/</url>
-      <content type="html"><![CDATA[<p>本文介绍linux shell的入门程序，后期会陆续更新。<br><a id="more"></a></p><h2 id="基本程序实例"><a href="#基本程序实例" class="headerlink" title="基本程序实例"></a>基本程序实例</h2><ul><li><p>计算文件夹下的文件数量</p><pre><code class="bash">#!/bin/bashecho &quot;this is a shell print file&#39;s number in the local dir.&quot;ls &gt; filename.logy=1for i in $( cat filename.log )  do      echo &quot;the file number is $y&quot;      y=$(( $y + 1 ))  donerm -rf filename.log</code></pre></li><li><p>简单求和程序</p><pre><code class="bash">#!/bin/bash# author: leebins=0for(( i=1; i&lt;=100; i=i+1 ))  do      s=$(( $s+$i ))  doneecho &quot;the sum of 1+2+3+...+100 is $s&quot;</code></pre></li><li><p>使用数组</p><pre><code class="bash">#!/bin/bashfor x in morning noon afternoon evening  do      echo &quot;This time is $x&quot;  done</code></pre></li><li><p>使用函数</p><pre><code class="bash">#!/bin/bashfunction func1(){  echo AAA}func1echo this is the end of the loopecho Now this is the end of the script</code></pre></li><li><p>判断</p><pre><code class="bash">#!/bin/bashif [ -d /etc/mysql ]  then      echo &quot;the path is right!!&quot;  else      echo &quot;the path is not right&quot;fi</code></pre></li><li><p>判断硬盘是否已经满了</p><pre><code class="bash">#!/bin/bash# Author: LeeBinrate=$( df | grep &quot;sda&quot; | awk &#39;{print $5}&#39;| cut -d &quot;%&quot; -f 1 )if [ $rate -ge 80 ]  then      echo &quot;Warning! /dev/sda1 is full!!&quot;  else      echo &quot;/dev/sda1 is not full!!&quot;fi</code></pre></li><li><p>until循环</p><pre><code class="bash">#!/bin/bash# Author:LeeBini=1s=0until [ $i -gt 100 ]  do      s=$(( $s+$i ))      i=$(( $i+1 ))  doneecho &quot;the sum is $s&quot;</code></pre></li><li><p>while循环</p><pre><code class="bash">#!/bin/bashfunction func1(){    echo this is an example of a function}count=1while [ $count -le 5 ]do  func1  count=$[ $count+1 ]doneecho end of loopfunc1echo end of script</code></pre></li><li><p>while循环求和</p><pre><code class="bash">#!/bin/bash# Author:LeeBini=1s=0#while [ $i -le 100 ]  do      s=$(( $s+$i ))      i=$(( $i+1 ))  doneecho &quot;the sum is $s&quot;</code></pre></li><li><p>备份脚本</p><pre><code class="bash">#!/bin/sh# auto mail for system info# time/bin/date +%F &gt;&gt; ~/app/shell/sysinfoecho &gt;&gt; ~/app/shell/sysinfo# disk infoecho &quot;disk info:&quot; &gt;&gt; ~/app/shell/sysinfo/bin/df -h &gt;&gt; ~/app/shell/sysinfoecho &gt;&gt; ~/app/shell/sysinfoecho &quot;online users&quot; &gt;&gt; ~/app/shell/sysinfo/usr/bin/who | /bin/grep -v root &gt;&gt; ~/app/shell/sysinfoecho &gt;&gt; ~/app/shell/sysinfoecho &quot;memory info:&quot; &gt;&gt; ~/app/shell/sysinfo/usr/bin/free -m &gt;&gt; ~/app/shell/sysinfoecho &gt;&gt; ~/app/shell/sysinfo</code></pre></li><li><p>case语句</p><pre><code class="bash">#!/bin/bash# author: leebinread -p &quot;Please choose yes/no: &quot; -t 30 cho#case $cho in  &quot;yes&quot;)      echo &quot;Your choose is yes!!&quot;      ;;  &quot;no&quot;)      echo &quot;Your choose is no!!&quot;      ;;  *)      echo &quot;Your choose is error!!&quot;      ;;esac#</code></pre></li><li><p>批量解压缩</p><pre><code class="bash">#!/bin/bash# author: leebincd /lampls *.tar.gz &gt; ls.log#for i in $( cat ls.log )  do      tar -zxvf $i &amp;&gt; /dev/null  done#rm -rf /lamp/ls.log</code></pre></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linux shell入门练习]]></title>
+    <url>%2F2018%2F04%2F03%2Flinux%20shell%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%2F</url>
+    <content type="text"><![CDATA[本文介绍linux shell的入门程序，后期会陆续更新。 基本程序实例 计算文件夹下的文件数量 #!/bin/bash echo &quot;this is a shell print file&#39;s number in the local dir.&quot; ls &gt; filename.log y=1 for i in $( cat filename.log ) do echo &quot;the file number is $y&quot; y=$(( $y + 1 )) done rm -rf filename.log 简单求和程序 #!/bin/bash # author: leebin s=0 for(( i=1; i&lt;=100; i=i+1 )) do s=$(( $s+$i )) done echo &quot;the sum of 1+2+3+...+100 is $s&quot; 使用数组 #!/bin/bash for x in morning noon afternoon evening do echo &quot;This time is $x&quot; done 使用函数 #!/bin/bash function func1(){ echo AAA } func1 echo this is the end of the loop echo Now this is the end of the script 判断 #!/bin/bash if [ -d /etc/mysql ] then echo &quot;the path is right!!&quot; else echo &quot;the path is not right&quot; fi 判断硬盘是否已经满了 #!/bin/bash # Author: LeeBin rate=$( df | grep &quot;sda&quot; | awk &#39;{print $5}&#39;| cut -d &quot;%&quot; -f 1 ) if [ $rate -ge 80 ] then echo &quot;Warning! /dev/sda1 is full!!&quot; else echo &quot;/dev/sda1 is not full!!&quot; fi until循环 #!/bin/bash # Author:LeeBin i=1 s=0 until [ $i -gt 100 ] do s=$(( $s+$i )) i=$(( $i+1 )) done echo &quot;the sum is $s&quot; while循环 #!/bin/bash function func1(){ echo this is an example of a function } count=1 while [ $count -le 5 ] do func1 count=$[ $count+1 ] done echo end of loop func1 echo end of script while循环求和 #!/bin/bash # Author:LeeBin i=1 s=0 # while [ $i -le 100 ] do s=$(( $s+$i )) i=$(( $i+1 )) done echo &quot;the sum is $s&quot; 备份脚本 #!/bin/sh # auto mail for system info # time /bin/date +%F &gt;&gt; ~/app/shell/sysinfo echo &gt;&gt; ~/app/shell/sysinfo # disk info echo &quot;disk info:&quot; &gt;&gt; ~/app/shell/sysinfo /bin/df -h &gt;&gt; ~/app/shell/sysinfo echo &gt;&gt; ~/app/shell/sysinfo echo &quot;online users&quot; &gt;&gt; ~/app/shell/sysinfo /usr/bin/who | /bin/grep -v root &gt;&gt; ~/app/shell/sysinfo echo &gt;&gt; ~/app/shell/sysinfo echo &quot;memory info:&quot; &gt;&gt; ~/app/shell/sysinfo /usr/bin/free -m &gt;&gt; ~/app/shell/sysinfo echo &gt;&gt; ~/app/shell/sysinfo case语句 #!/bin/bash # author: leebin read -p &quot;Please choose yes/no: &quot; -t 30 cho # case $cho in &quot;yes&quot;) echo &quot;Your choose is yes!!&quot; ;; &quot;no&quot;) echo &quot;Your choose is no!!&quot; ;; *) echo &quot;Your choose is error!!&quot; ;; esac # 批量解压缩 #!/bin/bash # author: leebin cd /lamp ls *.tar.gz &gt; ls.log # for i in $( cat ls.log ) do tar -zxvf $i &amp;&gt; /dev/null done # rm -rf /lamp/ls.log]]></content>
       <categories>
-          
-          <category> shell </category>
-          
+        <category>shell</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> shell </tag>
-            
-            <tag> linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>如何将hexo的git pages项目部署vps？</title>
-      <link href="/2018/03/29/%E5%A6%82%E4%BD%95%E5%B0%86hexo%E7%9A%84git%20pages%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2vps%EF%BC%9F/"/>
-      <url>/2018/03/29/%E5%A6%82%E4%BD%95%E5%B0%86hexo%E7%9A%84git%20pages%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2vps%EF%BC%9F/</url>
-      <content type="html"><![CDATA[<p>本文介绍如何在vps上搭建自己的blog。<br><a id="more"></a></p><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul><li>digitalocean上ubuntu的vps一台</li><li>window10+nodejs+hexo软件环境，参考<a href="https://leebin.top/2018/03/27/%E4%BD%BF%E7%94%A8github%20pages%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">hexo搭建博客</a></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul><li>方案一 vps上使用本地模式搭建hexo博客，使用Nginx将域名指向 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></li><li>方案二 在客户端写blog，git推送到服务端，服务端用Nginx解析网页文件</li></ul><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ul><li>下文分为众多的详细步骤</li></ul><h3 id="安装git和nginx"><a href="#安装git和nginx" class="headerlink" title="安装git和nginx"></a>安装git和nginx</h3><ul><li>安装软件git和nginx<pre><code>apt-get updateapt-get install gitapt-get install nginx</code></pre></li></ul><h3 id="配置git用户和仓库"><a href="#配置git用户和仓库" class="headerlink" title="配置git用户和仓库"></a>配置git用户和仓库</h3><ul><li>git用户权限设定（可以不需要）<pre><code class="bash">chmod 740 /etc/sudoersvim /etc/sudoers#在root ALL=(ALL:ALL) ALL下面新增一行git ALL=(ALL:ALL) ALLchmod 440 /etc/sudoers</code></pre></li><li>配置git用户和仓库, 参考<a href="https://leebin.top/2018/03/27/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8ubuntu%E5%AE%9E%E7%8E%B0%E7%A7%81%E6%9C%89git%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E9%99%84ssh%E6%93%8D%E4%BD%9C%EF%BC%9F/" target="_blank" rel="noopener">在vps上构建私有git服务器</a></li></ul><h3 id="配置git-hooks"><a href="#配置git-hooks" class="headerlink" title="配置git hooks"></a>配置git hooks</h3><ul><li>在hexo.git/hooks/目录下修改post-update.sample为post-update，并覆盖加入<pre><code class="bash">#!/bin/bashGIT_REPO=/home/git/hexo.gitTMP_GIT_CLONE=/tmp/hexoPUBLIC_WWW=/var/www/hexorm -rf ${TMP_GIT_CLONE}git clone $GIT_REPO $TMP_GIT_CLONErm -rf ${PUBLIC_WWW}/*cp -rf ${TMP_GIT_CLONE}/* ${PUBLIC_WWW}</code></pre></li><li>保证post-update有执行权限<pre><code class="bash">chmod +x post-receive</code></pre></li></ul><h3 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h3><ul><li>新建站点文件夹<pre><code class="bash">mkdir -p /var/www/blogchmod -R 775 /var/www/blogchown -R git /var/www/blogchgrp -R git /var/www/blog</code></pre></li><li>配nginx的站点文件2处<pre><code class="bash">#配置1vim /etc/nginx/conf.d/hexo.confserver {  listen  80 ;  listen [::]:80;  root /var/www/blog;  server_name clearsky.me www.clearsky.me; #server_ip  access_log  /var/log/nginx/hexo_access.log;  error_log   /var/log/nginx/hexo_error.log;  error_page 404 =  /404.html;  location ~* ^.+\.(ico|gif|jpg|jpeg|png)$ {      root /var/www/blog;      access_log   off;      expires      1d;  }  location ~* ^.+\.(css|js|txt|xml|swf|wav)$ {      root /var/www/blog;      access_log   off;      expires      10m;  }  location / {      root /var/www/blog;      if (-f $request_filename) {          rewrite ^/(.*)$  /$1 break;      }  }  location /nginx_status {      stub_status on;      access_log off;  }}#配置2vim /etc/nginx/sites-available/defaultroot /var/www/html;</code></pre></li><li>重启nginx服务器<pre><code>service nginx restart#或者/etc/init.d/nginx stop/etc/init.d/nginx start</code></pre><h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2></li><li>修改本地的blog源文件，配置推送git服务器，推送到vps服务器上</li><li>参考<a href="https://leebin.top/2018/03/29/git%20pages%E7%9A%84%E8%BF%81%E7%A7%BB%E5%92%8C%E5%A4%9A%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" target="_blank" rel="noopener">git pages多服务器部署</a></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>shell</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何将hexo的git pages项目部署vps？]]></title>
+    <url>%2F2018%2F03%2F29%2F%E5%A6%82%E4%BD%95%E5%B0%86hexo%E7%9A%84git%20pages%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2vps%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍如何在vps上搭建自己的blog。 环境 digitalocean上ubuntu的vps一台 window10+nodejs+hexo软件环境，参考hexo搭建博客 思路 方案一 vps上使用本地模式搭建hexo博客，使用Nginx将域名指向 http://localhost:4000 方案二 在客户端写blog，git推送到服务端，服务端用Nginx解析网页文件 过程 下文分为众多的详细步骤 安装git和nginx 安装软件git和nginxapt-get update apt-get install git apt-get install nginx 配置git用户和仓库 git用户权限设定（可以不需要）chmod 740 /etc/sudoers vim /etc/sudoers #在root ALL=(ALL:ALL) ALL下面新增一行 git ALL=(ALL:ALL) ALL chmod 440 /etc/sudoers 配置git用户和仓库, 参考在vps上构建私有git服务器 配置git hooks 在hexo.git/hooks/目录下修改post-update.sample为post-update，并覆盖加入#!/bin/bash GIT_REPO=/home/git/hexo.git TMP_GIT_CLONE=/tmp/hexo PUBLIC_WWW=/var/www/hexo rm -rf ${TMP_GIT_CLONE} git clone $GIT_REPO $TMP_GIT_CLONE rm -rf ${PUBLIC_WWW}/* cp -rf ${TMP_GIT_CLONE}/* ${PUBLIC_WWW} 保证post-update有执行权限chmod +x post-receive nginx配置 新建站点文件夹mkdir -p /var/www/blog chmod -R 775 /var/www/blog chown -R git /var/www/blog chgrp -R git /var/www/blog 配nginx的站点文件2处#配置1 vim /etc/nginx/conf.d/hexo.conf server { listen 80 ; listen [::]:80; root /var/www/blog; server_name clearsky.me www.clearsky.me; #server_ip access_log /var/log/nginx/hexo_access.log; error_log /var/log/nginx/hexo_error.log; error_page 404 = /404.html; location ~* ^.+\.(ico|gif|jpg|jpeg|png)$ { root /var/www/blog; access_log off; expires 1d; } location ~* ^.+\.(css|js|txt|xml|swf|wav)$ { root /var/www/blog; access_log off; expires 10m; } location / { root /var/www/blog; if (-f $request_filename) { rewrite ^/(.*)$ /$1 break; } } location /nginx_status { stub_status on; access_log off; } } #配置2 vim /etc/nginx/sites-available/default root /var/www/html; 重启nginx服务器service nginx restart #或者 /etc/init.d/nginx stop /etc/init.d/nginx start 后续 修改本地的blog源文件，配置推送git服务器，推送到vps服务器上 参考git pages多服务器部署]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> git </tag>
-            
-            <tag> vps </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>git pages的迁移和多服务器部署</title>
-      <link href="/2018/03/29/git%20pages%E7%9A%84%E8%BF%81%E7%A7%BB%E5%92%8C%E5%A4%9A%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
-      <url>/2018/03/29/git%20pages%E7%9A%84%E8%BF%81%E7%A7%BB%E5%92%8C%E5%A4%9A%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/</url>
-      <content type="html"><![CDATA[<p>本文介绍如何将github上的项目迁移到gitee上，如何实现源文件多服务器的部署。<br><a id="more"></a></p><h2 id="github-pages迁移到gitee服务器上"><a href="#github-pages迁移到gitee服务器上" class="headerlink" title="github pages迁移到gitee服务器上"></a>github pages迁移到gitee服务器上</h2><ul><li>在gitee上新建一个和gitee用户名一样的git仓库，并且在pages标签开启pages服务</li><li>克隆github pages仓库到本地，安装必要的插件，保证github pages能够与github服务器正常上传部署</li><li>更改github仓库/.git/config文件<pre><code>[core]  repositoryformatversion = 0  filemode = false  bare = false  logallrefupdates = true  symlinks = false  ignorecase = true[remote &quot;origin&quot;]  url = git@github.com:xjdlb/xjdlb.github.io.git  fetch = +refs/heads/*:refs/remotes/origin/*[branch &quot;master&quot;]  remote = origin  merge = refs/heads/master</code></pre></li><li>更改url为gitee仓库的url</li><li>更改github仓库/-config.yml文件<pre><code>deploy:type: gitrepo:      gitee: git@gitee.com:bin_lee/bin_lee.gitbranch: master</code></pre></li><li>更改repo为gitee仓库的url</li><li>然后使用下面的脚本提交、推送、发布到gitee仓库，迁移就成功了<pre><code class="bash">echo &quot;hello&quot;yy=$(date +%y)mm=$(date +%m)dd=$(date +%d)HH=$(date +%H)MM=$(date +%M)SS=$(date +%S)xW=$(date +%U)we=$(date +%a)xD=$(date +%j)git statusgit add .git commit -m &quot;$yy/$mm/$dd-$HH:$MM:$SS 把github服务器上的pages迁移到gitee上&quot;echo &quot;==================================&quot;git push git@gitee.com:bin_lee/bin_lee.git hexogit  log --oneline | headecho &quot;==================================&quot;hexo clean &amp;&amp; hexo g -d</code></pre></li></ul><h2 id="迁移完成，实现多服务器部署"><a href="#迁移完成，实现多服务器部署" class="headerlink" title="迁移完成，实现多服务器部署"></a>迁移完成，实现多服务器部署</h2><ul><li>更改github仓库/.git/config文件，改为主要的服务器地址<pre><code>[core]  repositoryformatversion = 0  filemode = false  bare = false  logallrefupdates = true  symlinks = false  ignorecase = true[remote &quot;origin&quot;]  url = git@github.com:xjdlb/xjdlb.github.io.git  fetch = +refs/heads/*:refs/remotes/origin/*[branch &quot;master&quot;]  remote = origin  merge = refs/heads/master</code></pre></li><li>更改url为gitee仓库的url</li><li>更改github仓库/-config.yml文件<pre><code>deploy:type: gitrepo:      github: git@github.com:xjdlb/xjdlb.github.io.git      gitee: git@gitee.com:bin_lee/bin_lee.gitbranch: master</code></pre></li><li>更改repo为gitee仓库的url</li><li>然后使用下面的脚本提交、推送、发布到gitee仓库和github仓库，多服务器部署就成功了<pre><code class="bash">echo &quot;hello&quot;yy=$(date +%y)mm=$(date +%m)dd=$(date +%d)HH=$(date +%H)MM=$(date +%M)SS=$(date +%S)xW=$(date +%U)we=$(date +%a)xD=$(date +%j)git statusgit add .git commit -m &quot;$yy/$mm/$dd-$HH:$MM:$SS 同时部署到两个服务器上测试&quot;git push git@github.com:xjdlb/xjdlb.github.io.git hexogit  log --oneline | headecho &quot;==================================&quot;git push git@gitee.com:bin_lee/bin_lee.git hexogit  log --oneline | headecho &quot;==================================&quot;hexo clean &amp;&amp; hexo g -d</code></pre></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>git</tag>
+        <tag>vps</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[git pages的迁移和多服务器部署]]></title>
+    <url>%2F2018%2F03%2F29%2Fgit%20pages%E7%9A%84%E8%BF%81%E7%A7%BB%E5%92%8C%E5%A4%9A%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%2F</url>
+    <content type="text"><![CDATA[本文介绍如何将github上的项目迁移到gitee上，如何实现源文件多服务器的部署。 github pages迁移到gitee服务器上 在gitee上新建一个和gitee用户名一样的git仓库，并且在pages标签开启pages服务 克隆github pages仓库到本地，安装必要的插件，保证github pages能够与github服务器正常上传部署 更改github仓库/.git/config文件[core] repositoryformatversion = 0 filemode = false bare = false logallrefupdates = true symlinks = false ignorecase = true [remote &quot;origin&quot;] url = git@github.com:xjdlb/xjdlb.github.io.git fetch = +refs/heads/*:refs/remotes/origin/* [branch &quot;master&quot;] remote = origin merge = refs/heads/master 更改url为gitee仓库的url 更改github仓库/-config.yml文件deploy: type: git repo: gitee: git@gitee.com:bin_lee/bin_lee.git branch: master 更改repo为gitee仓库的url 然后使用下面的脚本提交、推送、发布到gitee仓库，迁移就成功了echo &quot;hello&quot; yy=$(date +%y) mm=$(date +%m) dd=$(date +%d) HH=$(date +%H) MM=$(date +%M) SS=$(date +%S) xW=$(date +%U) we=$(date +%a) xD=$(date +%j) git status git add . git commit -m &quot; $yy/$mm/$dd-$HH:$MM:$SS 把github服务器上的pages迁移到gitee上 &quot; echo &quot;==================================&quot; git push git@gitee.com:bin_lee/bin_lee.git hexo git log --oneline | head echo &quot;==================================&quot; hexo clean &amp;&amp; hexo g -d 迁移完成，实现多服务器部署 更改github仓库/.git/config文件，改为主要的服务器地址[core] repositoryformatversion = 0 filemode = false bare = false logallrefupdates = true symlinks = false ignorecase = true [remote &quot;origin&quot;] url = git@github.com:xjdlb/xjdlb.github.io.git fetch = +refs/heads/*:refs/remotes/origin/* [branch &quot;master&quot;] remote = origin merge = refs/heads/master 更改url为gitee仓库的url 更改github仓库/-config.yml文件deploy: type: git repo: github: git@github.com:xjdlb/xjdlb.github.io.git gitee: git@gitee.com:bin_lee/bin_lee.git branch: master 更改repo为gitee仓库的url 然后使用下面的脚本提交、推送、发布到gitee仓库和github仓库，多服务器部署就成功了echo &quot;hello&quot; yy=$(date +%y) mm=$(date +%m) dd=$(date +%d) HH=$(date +%H) MM=$(date +%M) SS=$(date +%S) xW=$(date +%U) we=$(date +%a) xD=$(date +%j) git status git add . git commit -m &quot; $yy/$mm/$dd-$HH:$MM:$SS 同时部署到两个服务器上测试 &quot; git push git@github.com:xjdlb/xjdlb.github.io.git hexo git log --oneline | head echo &quot;==================================&quot; git push git@gitee.com:bin_lee/bin_lee.git hexo git log --oneline | head echo &quot;==================================&quot; hexo clean &amp;&amp; hexo g -d]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>如何将hexo源文件整合到部署的git中？</title>
-      <link href="/2018/03/28/%E5%A6%82%E4%BD%95%E5%B0%86hexo%E6%BA%90%E6%96%87%E4%BB%B6%E6%95%B4%E5%90%88%E5%88%B0%E9%83%A8%E7%BD%B2%E7%9A%84git%E4%B8%AD%EF%BC%9F/"/>
-      <url>/2018/03/28/%E5%A6%82%E4%BD%95%E5%B0%86hexo%E6%BA%90%E6%96%87%E4%BB%B6%E6%95%B4%E5%90%88%E5%88%B0%E9%83%A8%E7%BD%B2%E7%9A%84git%E4%B8%AD%EF%BC%9F/</url>
-      <content type="html"><![CDATA[<p>本文介绍如何将hexo源文件整合到部署的git中，实现不携带源文件也能写博客，其中，发布和部署实现了自动化脚本操作。</p><a id="more"></a><h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><ul><li>已经使用了hexo部署了自己的blog</li><li>源文件没有丢失</li></ul><h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><ul><li>在github上克隆部署后的文件到本地客户端</li><li>使用git bash here进入git仓库</li><li>新建hexo分支并转换到hexo分支<pre><code class="bash">git checkout -b hexo</code></pre></li></ul><h2 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h2><ul><li>git仓库转换到hexo分支</li><li>将源文件blog文件夹下的所有文件拷贝到上述git仓库中</li></ul><h2 id="创建自动化脚本"><a href="#创建自动化脚本" class="headerlink" title="创建自动化脚本"></a>创建自动化脚本</h2><ul><li>在git仓库的根目录下创建脚本</li><li>脚本1 create_new_page.sh<pre><code class="bash">echo &quot;hello&quot;yy=$(date +%Y)mm=$(date +%m)dd=$(date +%d)HH=$(date +%H)MM=$(date +%M)SS=$(date +%S)filename=&quot;11111&quot;filepostfix=&quot;.md&quot;cd source/_poststouch $filename$filepostfixecho &gt; $filename$filepostfixecho &quot;---&quot; &gt;&gt; $filename$filepostfixecho &quot;title: $filename&quot; &gt;&gt; $filename$filepostfixecho &quot;date: $yy-$mm-$dd $HH:$MM:$SS&quot; &gt;&gt; $filename$filepostfixecho &quot;tags: [列表,2222,3333,4444]&quot; &gt;&gt; $filename$filepostfixecho &quot;categories: 5555&quot; &gt;&gt; $filename$filepostfixecho &quot;toc: true&quot; &gt;&gt; $filename$filepostfixecho &quot;mathjax: true&quot; &gt;&gt; $filename$filepostfixecho &quot;---&quot; &gt;&gt; $filename$filepostfixecho &quot;&quot; &gt;&gt; $filename$filepostfixecho &quot;&lt;!-- more --&gt;&quot; &gt;&gt; $filename$filepostfixcd ../..</code></pre></li><li>文本1 commit.txt<pre><code class="bash">echo &quot;hello&quot;yy=$(date +%y)mm=$(date +%m)dd=$(date +%d)HH=$(date +%H)MM=$(date +%M)SS=$(date +%S)xW=$(date +%U)we=$(date +%a)xD=$(date +%j)git statusgit add .git commit -m &quot;$yy/$mm/$dd-$HH:$MM:$SS 新增了列表标签&quot;git push origin hexogit  log --oneline | headecho &quot;==================================&quot;hexo clean &amp;&amp; hexo g -d</code></pre></li><li>脚本2 upload_and_deploy.sh<pre><code class="bash">ehco &quot;push and deploy...&quot;sh commit.txt</code></pre></li><li>本次修改完成直接在commit.txt中修改commit，然后运行upload_and_deploy.sh，即可上传代码到hexo分支，发布blog到master分支</li></ul><h2 id="换个地点继续写作"><a href="#换个地点继续写作" class="headerlink" title="换个地点继续写作"></a>换个地点继续写作</h2><ul><li>先决条件：电脑+网络+nodejs+hexo</li><li>克隆仓库到本地</li><li>在仓库中建立hexo配置脚本 init_hexo_after_clone.sh<pre><code>git checkout hexonpm install hexonpm installnpm install hexo-deployer-git</code></pre></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何将hexo源文件整合到部署的git中？]]></title>
+    <url>%2F2018%2F03%2F28%2F%E5%A6%82%E4%BD%95%E5%B0%86hexo%E6%BA%90%E6%96%87%E4%BB%B6%E6%95%B4%E5%90%88%E5%88%B0%E9%83%A8%E7%BD%B2%E7%9A%84git%E4%B8%AD%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍如何将hexo源文件整合到部署的git中，实现不携带源文件也能写博客，其中，发布和部署实现了自动化脚本操作。 先决条件 已经使用了hexo部署了自己的blog 源文件没有丢失 克隆 在github上克隆部署后的文件到本地客户端 使用git bash here进入git仓库 新建hexo分支并转换到hexo分支git checkout -b hexo 拷贝 git仓库转换到hexo分支 将源文件blog文件夹下的所有文件拷贝到上述git仓库中 创建自动化脚本 在git仓库的根目录下创建脚本 脚本1 create_new_page.shecho &quot;hello&quot; yy=$(date +%Y) mm=$(date +%m) dd=$(date +%d) HH=$(date +%H) MM=$(date +%M) SS=$(date +%S) filename=&quot;11111&quot; filepostfix=&quot;.md&quot; cd source/_posts touch $filename$filepostfix echo &gt; $filename$filepostfix echo &quot;---&quot; &gt;&gt; $filename$filepostfix echo &quot;title: $filename&quot; &gt;&gt; $filename$filepostfix echo &quot;date: $yy-$mm-$dd $HH:$MM:$SS&quot; &gt;&gt; $filename$filepostfix echo &quot;tags: [列表,2222,3333,4444]&quot; &gt;&gt; $filename$filepostfix echo &quot;categories: 5555&quot; &gt;&gt; $filename$filepostfix echo &quot;toc: true&quot; &gt;&gt; $filename$filepostfix echo &quot;mathjax: true&quot; &gt;&gt; $filename$filepostfix echo &quot;---&quot; &gt;&gt; $filename$filepostfix echo &quot;&quot; &gt;&gt; $filename$filepostfix echo &quot;&lt;!-- more --&gt;&quot; &gt;&gt; $filename$filepostfix cd ../.. 文本1 commit.txtecho &quot;hello&quot; yy=$(date +%y) mm=$(date +%m) dd=$(date +%d) HH=$(date +%H) MM=$(date +%M) SS=$(date +%S) xW=$(date +%U) we=$(date +%a) xD=$(date +%j) git status git add . git commit -m &quot; $yy/$mm/$dd-$HH:$MM:$SS 新增了列表标签 &quot; git push origin hexo git log --oneline | head echo &quot;==================================&quot; hexo clean &amp;&amp; hexo g -d 脚本2 upload_and_deploy.shehco &quot;push and deploy...&quot; sh commit.txt 本次修改完成直接在commit.txt中修改commit，然后运行upload_and_deploy.sh，即可上传代码到hexo分支，发布blog到master分支 换个地点继续写作 先决条件：电脑+网络+nodejs+hexo 克隆仓库到本地 在仓库中建立hexo配置脚本 init_hexo_after_clone.shgit checkout hexo npm install hexo npm install npm install hexo-deployer-git]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> git </tag>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>hexo部署在github和gitee上的坑</title>
-      <link href="/2018/03/28/hexo%E9%83%A8%E7%BD%B2%E5%9C%A8github%E5%92%8Cgitee%E4%B8%8A%E7%9A%84%E5%9D%91/"/>
-      <url>/2018/03/28/hexo%E9%83%A8%E7%BD%B2%E5%9C%A8github%E5%92%8Cgitee%E4%B8%8A%E7%9A%84%E5%9D%91/</url>
-      <content type="html"><![CDATA[<p>本文介绍了hexo博客github和gitee上部署时候遇到的坑。<br><a id="more"></a></p><h2 id="遇到的坑列举如下"><a href="#遇到的坑列举如下" class="headerlink" title="遇到的坑列举如下"></a>遇到的坑列举如下</h2><ul><li>gitee不支持个性化的域名绑定，所以不要试图申请阿里云的域名，将域名指向gitee pages。</li><li>github pages支持个性化域名的绑定，需要在blog/source目录下新建CNAME文件，并写入自己域名。</li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>git</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo部署在github和gitee上的坑]]></title>
+    <url>%2F2018%2F03%2F28%2Fhexo%E9%83%A8%E7%BD%B2%E5%9C%A8github%E5%92%8Cgitee%E4%B8%8A%E7%9A%84%E5%9D%91%2F</url>
+    <content type="text"><![CDATA[本文介绍了hexo博客github和gitee上部署时候遇到的坑。 遇到的坑列举如下 gitee不支持个性化的域名绑定，所以不要试图申请阿里云的域名，将域名指向gitee pages。 github pages支持个性化域名的绑定，需要在blog/source目录下新建CNAME文件，并写入自己域名。]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> hexo </tag>
-            
-            <tag> github </tag>
-            
-            <tag> gitee </tag>
-            
-            <tag> 部署 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>hexo的主题相关的配置</title>
-      <link href="/2018/03/27/hexo%E7%9A%84%E4%B8%BB%E9%A2%98%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/"/>
-      <url>/2018/03/27/hexo%E7%9A%84%E4%B8%BB%E9%A2%98%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
-      <content type="html"><![CDATA[<p>本文将逐渐介绍blog和themes相关的配置方法.<br><a id="more"></a></p><h2 id="导航上的首页、标签、分类、关于等配置"><a href="#导航上的首页、标签、分类、关于等配置" class="headerlink" title="导航上的首页、标签、分类、关于等配置"></a>导航上的首页、标签、分类、关于等配置</h2><ul><li>保留blog下的配置文件中的首页、标签、分类、关于的目录正确</li><li>在theme下配置文件打开menu相关的导航</li><li>博文前面文件为：<pre><code>title: 使用github pages和hexo搭建自己的博客date: 2018-03-27 13:56:08tags: [githubpages,hexo,配置]categories: 配置toc: truemathjax: true</code></pre></li><li>或者<pre><code>title: 如何利用ubuntu云服务器实现私有git服务端-附ssh常见操作？date: 2018-03-27 18:37:32tags:  - git  - 配置categories: 配置toc: truemathjax: true</code></pre></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>hexo</tag>
+        <tag>github</tag>
+        <tag>gitee</tag>
+        <tag>部署</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo的主题相关的配置]]></title>
+    <url>%2F2018%2F03%2F27%2Fhexo%E7%9A%84%E4%B8%BB%E9%A2%98%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[本文将逐渐介绍blog和themes相关的配置方法. 导航上的首页、标签、分类、关于等配置 保留blog下的配置文件中的首页、标签、分类、关于的目录正确 在theme下配置文件打开menu相关的导航 博文前面文件为：title: 使用github pages和hexo搭建自己的博客 date: 2018-03-27 13:56:08 tags: [githubpages,hexo,配置] categories: 配置 toc: true mathjax: true 或者title: 如何利用ubuntu云服务器实现私有git服务端-附ssh常见操作？ date: 2018-03-27 18:37:32 tags: - git - 配置 categories: 配置 toc: true mathjax: true]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> hexo </tag>
-            
-            <tag> githubpages </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>使用github pages和hexo搭建自己的博客</title>
-      <link href="/2018/03/27/%E4%BD%BF%E7%94%A8github%20pages%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
-      <url>/2018/03/27/%E4%BD%BF%E7%94%A8github%20pages%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-      <content type="html"><![CDATA[<p>本文描述了如何使用github pages和hexo搭建自己的博客。<br><a id="more"></a></p><h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><ul><li><a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js下载地址</a></li><li>下载node.js，并安装</li></ul><h2 id="安装git并配置ssh密钥"><a href="#安装git并配置ssh密钥" class="headerlink" title="安装git并配置ssh密钥"></a>安装git并配置ssh密钥</h2><ul><li>在客户端下载<a href="https://git-scm.com/downloads/" target="_blank" rel="noopener">git下载地址</a></li><li>安装git</li><li>在客户端右键打开git bash here</li><li>设置user.name和user.email<pre><code>git config --global user.name &quot;你的GitHub用户名&quot;git config --global user.email &quot;你的GitHub注册邮箱&quot;</code></pre></li><li>生成ssh密钥<pre><code>ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;</code></pre></li><li>显示密钥<pre><code>cat ~/.ssh/id_rsa.pub</code></pre></li><li>添加密钥到github服务器中密钥管理<a href="https://github.com/settings/keys" target="_blank" rel="noopener">添加地址</a></li></ul><h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><ul><li>安装hexo、安装扩展插件<pre><code># 安装hexonpm install hexo-cli g# 初始化博客文件夹hexo init blog# 切换到该路径cd blog# 安装hexo的扩展插件npm install# 安装其它插件npm install hexo-server --savenpm install hexo-admin --savenpm install hexo-generator-archive --savenpm install hexo-generator-feed --savenpm install hexo-generator-search --savenpm install hexo-generator-tag --savenpm install hexo-deployer-git --savenpm install hexo-generator-sitemap --save</code></pre></li></ul><h2 id="本地开发blog与本地测试"><a href="#本地开发blog与本地测试" class="headerlink" title="本地开发blog与本地测试"></a>本地开发blog与本地测试</h2><ul><li>添加自己的markdown到 blog/source/posts目录下</li><li>生成静态页面并开启服务器<pre><code># 生成静态页面hexo generate# 开启本地服务器hexo s# 或者hexo s -p 指定的port</code></pre></li><li>打开浏览器，地址栏中输入：<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></li></ul><h2 id="服务端新建自己的博客仓库"><a href="#服务端新建自己的博客仓库" class="headerlink" title="服务端新建自己的博客仓库"></a>服务端新建自己的博客仓库</h2><ul><li>在 <a href="https://github.com/new" target="_blank" rel="noopener">https://github.com/new</a> 中新建自己的仓库</li><li>其中Repository name要和Owner是一致的</li></ul><h2 id="客户端将hexo博客部署到github上"><a href="#客户端将hexo博客部署到github上" class="headerlink" title="客户端将hexo博客部署到github上"></a>客户端将hexo博客部署到github上</h2><ul><li>修改配置文件blog/config.yml，修改deploy项的内容<pre><code># Deployment 注释## Docs: https://hexo.io/docs/deployment.htmldeploy:# 类型type: git# 仓库repo: git@github.com:xjdlb/xjdlb.github.io.git# 分支branch: master</code></pre></li><li>注意：type: git中的冒号后面由空格</li><li>注意：将xjdlb换成自己的用户名</li></ul><h2 id="客户端将自己的blog部署hexo"><a href="#客户端将自己的blog部署hexo" class="headerlink" title="客户端将自己的blog部署hexo"></a>客户端将自己的blog部署hexo</h2><ul><li>将自己的项目部署到github pages中<pre><code># 清空静态页面hexo clean# 生成静态页面hexo generate# 部署hexo deploy</code></pre></li><li>打开网页，输入 <a href="http://github_username.github.io" target="_blank" rel="noopener">http://github_username.github.io</a> 打开github上托管的博客</li><li>如我的博客地址是：<a href="http://xjdlb.github.io" target="_blank" rel="noopener">http://xjdlb.github.io</a></li></ul><h2 id="hexo命令缩写与组合"><a href="#hexo命令缩写与组合" class="headerlink" title="hexo命令缩写与组合"></a>hexo命令缩写与组合</h2><ul><li>含义<pre><code>hexo g：hexo generatehexo c：hexo cleanhexo s：hexo serverhexo d：hexo deploy</code></pre></li><li>组合<pre><code># 清除、生成、启动hexo clean &amp;&amp; hexo g -s# 清除、生成、部署hexo clean &amp;&amp; hexo g -d</code></pre></li></ul><h2 id="主题相关配置"><a href="#主题相关配置" class="headerlink" title="主题相关配置"></a>主题相关配置</h2><ul><li>在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo themes</a>中下载相关的主题</li><li>下载方法在blog目录中克隆<pre><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></pre></li><li>在blog/config.yml中配置主题<pre><code>theme: next</code></pre></li></ul><h2 id="新建blog文件"><a href="#新建blog文件" class="headerlink" title="新建blog文件"></a>新建blog文件</h2><ul><li>hexo new “Hexo教程”</li><li>添加标题及其分类信息<pre><code>title: Hello Worlddate: 2016-01-15 20:19:32tags: [SayHi]categories: SayHitoc: truemathjax: true</code></pre></li><li>或者 在blog目录下可以写成脚本<pre><code>yy=$(date +%Y)mm=$(date +%m)dd=$(date +%d)HH=$(date +%H)MM=$(date +%M)SS=$(date +%S)filename=&quot;11111&quot;filepostfix=&quot;.md&quot;cd source/_poststouch $filename$filepostfixecho &gt; $filename$filepostfixecho &quot;---&quot; &gt;&gt; $filename$filepostfixecho &quot;title: $filename&quot; &gt;&gt; $filename$filepostfixecho &quot;date: $yy-$mm-$dd $HH:$MM:$SS&quot; &gt;&gt; $filename$filepostfixecho &quot;tags: [2222,3333,4444]&quot; &gt;&gt; $filename$filepostfixecho &quot;categories: 5555&quot; &gt;&gt; $filename$filepostfixecho &quot;toc: true&quot; &gt;&gt; $filename$filepostfixecho &quot;mathjax: true&quot; &gt;&gt; $filename$filepostfixecho &quot;---&quot; &gt;&gt; $filename$filepostfixcd ../..</code></pre></li></ul><h2 id="将github-pages绑定自己的域名"><a href="#将github-pages绑定自己的域名" class="headerlink" title="将github pages绑定自己的域名"></a>将github pages绑定自己的域名</h2><ul><li>在阿里云控制台找到域名管理</li><li>在阿里云上购买自己的域名<a href="https://help.aliyun.com/product/35473.html" target="_blank" rel="noopener">注册地址</a></li><li>在xjdlb/xjdlb.github.io/settings中Custom domain处添加自己的域名，不要http://和www</li><li>ping <a href="https://xjdlb.github.io/" target="_blank" rel="noopener">https://xjdlb.github.io/</a> 查看github pages的ip</li><li>添加解析</li></ul><table><thead><tr><th>记录类型</th><th>主机记录</th><th>解析线路</th><th>记录值</th><th>TTL值</th></tr></thead><tbody><tr><td>A</td><td>@</td><td>默认</td><td>151.101.41.147</td><td>600</td></tr><tr><td>A</td><td>www</td><td>默认</td><td>151.101.41.147</td><td>600</td></tr></tbody></table><ul><li>使用自己的域名测试</li></ul><h2 id="CNAME问题"><a href="#CNAME问题" class="headerlink" title="CNAME问题"></a>CNAME问题</h2><p>问题：每次hexo deploy之后，<a href="https://www.leebin.top" target="_blank" rel="noopener">https://www.leebin.top</a> 都会出现404错误<br>一般解决：Github pages–&gt;Settings–&gt;Custom domain<br>最优解决：在将CNAME文件放在source目录下，CNAME文件内容为：leebin.top</p>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>hexo</tag>
+        <tag>githubpages</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用github pages和hexo搭建自己的博客]]></title>
+    <url>%2F2018%2F03%2F27%2F%E4%BD%BF%E7%94%A8github%20pages%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[本文描述了如何使用github pages和hexo搭建自己的博客。 安装node.js node.js下载地址 下载node.js，并安装 安装git并配置ssh密钥 在客户端下载git下载地址 安装git 在客户端右键打开git bash here 设置user.name和user.emailgit config --global user.name &quot;你的GitHub用户名&quot; git config --global user.email &quot;你的GitHub注册邮箱&quot; 生成ssh密钥ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot; 显示密钥cat ~/.ssh/id_rsa.pub 添加密钥到github服务器中密钥管理添加地址 安装hexo 安装hexo、安装扩展插件# 安装hexo npm install hexo-cli g # 初始化博客文件夹 hexo init blog # 切换到该路径 cd blog # 安装hexo的扩展插件 npm install # 安装其它插件 npm install hexo-server --save npm install hexo-admin --save npm install hexo-generator-archive --save npm install hexo-generator-feed --save npm install hexo-generator-search --save npm install hexo-generator-tag --save npm install hexo-deployer-git --save npm install hexo-generator-sitemap --save 本地开发blog与本地测试 添加自己的markdown到 blog/source/posts目录下 生成静态页面并开启服务器# 生成静态页面 hexo generate # 开启本地服务器 hexo s # 或者 hexo s -p 指定的port 打开浏览器，地址栏中输入：http://localhost:4000/ 服务端新建自己的博客仓库 在 https://github.com/new 中新建自己的仓库 其中Repository name要和Owner是一致的 客户端将hexo博客部署到github上 修改配置文件blog/config.yml，修改deploy项的内容# Deployment 注释 ## Docs: https://hexo.io/docs/deployment.html deploy: # 类型 type: git # 仓库 repo: git@github.com:xjdlb/xjdlb.github.io.git # 分支 branch: master 注意：type: git中的冒号后面由空格 注意：将xjdlb换成自己的用户名 客户端将自己的blog部署hexo 将自己的项目部署到github pages中# 清空静态页面 hexo clean # 生成静态页面 hexo generate # 部署 hexo deploy 打开网页，输入 http://github_username.github.io 打开github上托管的博客 如我的博客地址是：http://xjdlb.github.io hexo命令缩写与组合 含义hexo g：hexo generate hexo c：hexo clean hexo s：hexo server hexo d：hexo deploy 组合# 清除、生成、启动 hexo clean &amp;&amp; hexo g -s # 清除、生成、部署 hexo clean &amp;&amp; hexo g -d 主题相关配置 在hexo themes中下载相关的主题 下载方法在blog目录中克隆git clone https://github.com/iissnan/hexo-theme-next themes/next 在blog/config.yml中配置主题theme: next 新建blog文件 hexo new “Hexo教程” 添加标题及其分类信息title: Hello World date: 2016-01-15 20:19:32 tags: [SayHi] categories: SayHi toc: true mathjax: true 或者 在blog目录下可以写成脚本yy=$(date +%Y) mm=$(date +%m) dd=$(date +%d) HH=$(date +%H) MM=$(date +%M) SS=$(date +%S) filename=&quot;11111&quot; filepostfix=&quot;.md&quot; cd source/_posts touch $filename$filepostfix echo &gt; $filename$filepostfix echo &quot;---&quot; &gt;&gt; $filename$filepostfix echo &quot;title: $filename&quot; &gt;&gt; $filename$filepostfix echo &quot;date: $yy-$mm-$dd $HH:$MM:$SS&quot; &gt;&gt; $filename$filepostfix echo &quot;tags: [2222,3333,4444]&quot; &gt;&gt; $filename$filepostfix echo &quot;categories: 5555&quot; &gt;&gt; $filename$filepostfix echo &quot;toc: true&quot; &gt;&gt; $filename$filepostfix echo &quot;mathjax: true&quot; &gt;&gt; $filename$filepostfix echo &quot;---&quot; &gt;&gt; $filename$filepostfix cd ../.. 将github pages绑定自己的域名 在阿里云控制台找到域名管理 在阿里云上购买自己的域名注册地址 在xjdlb/xjdlb.github.io/settings中Custom domain处添加自己的域名，不要http://和www ping https://xjdlb.github.io/ 查看github pages的ip 添加解析 记录类型 主机记录 解析线路 记录值 TTL值 A @ 默认 151.101.41.147 600 A www 默认 151.101.41.147 600 使用自己的域名测试 CNAME问题问题：每次hexo deploy之后，https://www.leebin.top 都会出现404错误一般解决：Github pages–&gt;Settings–&gt;Custom domain最优解决：在将CNAME文件放在source目录下，CNAME文件内容为：leebin.top]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> hexo </tag>
-            
-            <tag> github </tag>
-            
-            <tag> pages </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>如何利用ubuntu实现私有git服务端-附ssh操作？</title>
-      <link href="/2018/03/27/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8ubuntu%E5%AE%9E%E7%8E%B0%E7%A7%81%E6%9C%89git%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E9%99%84ssh%E6%93%8D%E4%BD%9C%EF%BC%9F/"/>
-      <url>/2018/03/27/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8ubuntu%E5%AE%9E%E7%8E%B0%E7%A7%81%E6%9C%89git%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E9%99%84ssh%E6%93%8D%E4%BD%9C%EF%BC%9F/</url>
-      <content type="html"><![CDATA[<p>本文介绍如何利用云服务器实现私有git服务端，包含了git新建仓库、本地与服务器的ssh互连、保留gitlog迁移git的方法、以及创建仓库的自动化脚本。<br><a id="more"></a></p><h2 id="在服务端下载git"><a href="#在服务端下载git" class="headerlink" title="在服务端下载git"></a>在服务端下载git</h2><ul><li>下载安装git<pre><code>apt-get updateapt-get install git -y</code></pre></li></ul><h2 id="配置git用户"><a href="#配置git用户" class="headerlink" title="配置git用户"></a>配置git用户</h2><ul><li>添加git用户<pre><code>useradd gitpasswd git</code></pre></li></ul><h2 id="通过ssh客户端和服务器互连"><a href="#通过ssh客户端和服务器互连" class="headerlink" title="通过ssh客户端和服务器互连"></a>通过ssh客户端和服务器互连</h2><ul><li>客户端生成ssh密钥<pre><code class="bash">git config --global user.name &quot;你的GitHub用户名&quot;git config --global user.email &quot;你的GitHub注册邮箱&quot;ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;cat ~/.ssh/id_rsa.pub</code></pre></li><li>或者 上述操作可以集成为无交互的脚本在本地直接执行即可<pre><code class="bash">y=$(date +%y)m=$(date +%m)d=$(date +%d)H=$(date +%H)M=$(date +%M)S=$(date +%S)path=$(pwd)cd ~git config --global user.name &quot;bin_lee&quot;git config --global user.email &quot;xjd.binlee@qq.com&quot;#cd ~/.sshtar -zcvf ssh_binlee_backup_$y-$m-$d-$H-$M-$S.tar.gz .sshrm -rfd ~/.ssh# ssh-keygen -t rsa -C &quot;xjd.binlee@qq.com&quot;ssh-keygen -t rsa -P &quot;&quot; -C &quot;xjd.binlee@qq.com&quot; -f ~/.ssh/id_rsacat ~/.ssh/id_rsa.pubcd $path</code></pre></li><li><p>服务端安装ssh并实现xshell连接</p><pre><code class="bash">#安装sudo apt-get install openssh-server -ysudo ps -e |grep sshsudo service ssh startsudo passwd rootsudo vi /etc/ssh/sshd_configPermitRootLogin prohibit-passwordPermitRootLogin yessudo service ssh restart#在服务器的指定用户目录下mkdir -p /root/.sshtouch authorized_keys</code></pre></li><li><p>将上述生成的密钥文件添加到服务端</p><pre><code class="bash">echo &quot;密钥&quot; &gt;&gt; /root/.ssh/authorized_keys</code></pre></li><li>客户端测试连通性<pre><code class="bash">ssh -T git@gitee.com或者ssh -T git@server_ip</code></pre></li></ul><h2 id="新建git仓库并使用"><a href="#新建git仓库并使用" class="headerlink" title="新建git仓库并使用"></a>新建git仓库并使用</h2><ul><li>新建git仓库<pre><code>mkdir -p /srv/git/repos/xxx.gitcd /srv/git/repos</code></pre></li><li>初始化git仓库<pre><code>git init --bare /srv/git/repos/xxx.git</code></pre></li><li>设置git仓库的访问权限<pre><code class="bash">cd /srv/git/reposchmod -R 775 xxx.gitchown -R git xxx.gitchgrp -R git xxx.git</code></pre></li><li>克隆git仓库并测试<pre><code class="bash">git clone git@server_ip:/srv/git/repos/xxx.git</code></pre><h2 id="大招-将上述操作合并为git脚本"><a href="#大招-将上述操作合并为git脚本" class="headerlink" title="大招 将上述操作合并为git脚本"></a>大招 将上述操作合并为git脚本</h2></li><li>合并如下：<pre><code class="bash">apt-get updateecho &quot;----------------------------------------&quot;echo &quot;&gt;&gt;&gt; update finished...&quot;echo &quot;----------------------------------------&quot;apt-get install git -yecho &quot;----------------------------------------&quot;echo &quot;&gt;&gt;&gt; install finished...&quot;echo &quot;----------------------------------------&quot;#useradd git#passwd git#or#openssl passwd -stdinuseradd -p &quot;8iENHwQTXrdZM&quot; git#change passwdtouch chpass.txtecho &quot;git:hest&quot; &gt;&gt; chpass.txtchpasswd &lt; chpass.txtrm -rf chpass.txtecho &quot;----------------------------------------&quot;echo &quot;&gt;&gt;&gt; useradd and reset passwd finished...&quot;echo &quot;----------------------------------------&quot;key=&quot;ssh-rsa AAA.......&quot;mkdir -p /home/git/.sshtouch /home/git/.ssh/authorized_keys#vim /home/git/.ssh/authorized_keysecho &quot;${key}&quot; &gt;&gt; /home/git/.ssh/authorized_keyscat /home/git/.ssh/authorized_keysecho &quot;----------------------------------------&quot;echo &quot;&gt;&gt;&gt; add authorized_keys finished...&quot;echo &quot;----------------------------------------&quot;respos_path=&quot;/srv/git/respos/&quot;project_name=&quot;test.git&quot;project_path=${respos_path}${project_name}mkdir -p ${project_path}git init --bare ${project_path}chmod -R 775 ${project_path}chown -R git ${project_path}chgrp -R git ${project_path}echo &quot;----------------------------------------&quot;echo &quot;init git respos finished...&quot;my_ip=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk &#39;{print $2}&#39;|tr -d &quot;addr:&quot;)echo &quot;git clone git@${my_ip}:${project_path}&quot;echo &quot;----------------------------------------&quot;</code></pre><h2 id="如果出错销毁服务端git"><a href="#如果出错销毁服务端git" class="headerlink" title="如果出错销毁服务端git"></a>如果出错销毁服务端git</h2></li><li>删除用户和仓库<pre><code>userdel -r gitrm -rdf /srv/git/</code></pre><h2 id="如果服务器出现问题，保留gitlog迁移git的方法"><a href="#如果服务器出现问题，保留gitlog迁移git的方法" class="headerlink" title="如果服务器出现问题，保留gitlog迁移git的方法"></a>如果服务器出现问题，保留gitlog迁移git的方法</h2></li><li>使用镜像克隆保留gitlog<pre><code class="bash">#在源服务器上裸克隆git clone --bare git://github.com/username/project.gitcd project.git#镜像上传到新的服务器上git push --mirror git@gitcafe.com/username/newproject.gitcd ..rm -rf project.git#克隆新服务器下的工程到客户端git clone git@gitcafe.com/username/newproject.git#设置新的上传url为新服务器的地址git remote set-url origin remote_git_address  </code></pre></li></ul>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>hexo</tag>
+        <tag>github</tag>
+        <tag>pages</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何利用ubuntu实现私有git服务端-附ssh操作？]]></title>
+    <url>%2F2018%2F03%2F27%2F%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8ubuntu%E5%AE%9E%E7%8E%B0%E7%A7%81%E6%9C%89git%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E9%99%84ssh%E6%93%8D%E4%BD%9C%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍如何利用云服务器实现私有git服务端，包含了git新建仓库、本地与服务器的ssh互连、保留gitlog迁移git的方法、以及创建仓库的自动化脚本。 在服务端下载git 下载安装gitapt-get update apt-get install git -y 配置git用户 添加git用户useradd git passwd git 通过ssh客户端和服务器互连 客户端生成ssh密钥git config --global user.name &quot;你的GitHub用户名&quot; git config --global user.email &quot;你的GitHub注册邮箱&quot; ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot; cat ~/.ssh/id_rsa.pub 或者 上述操作可以集成为无交互的脚本在本地直接执行即可y=$(date +%y) m=$(date +%m) d=$(date +%d) H=$(date +%H) M=$(date +%M) S=$(date +%S) path=$(pwd) cd ~ git config --global user.name &quot;bin_lee&quot; git config --global user.email &quot;xjd.binlee@qq.com&quot; #cd ~/.ssh tar -zcvf ssh_binlee_backup_$y-$m-$d-$H-$M-$S.tar.gz .ssh rm -rfd ~/.ssh # ssh-keygen -t rsa -C &quot;xjd.binlee@qq.com&quot; ssh-keygen -t rsa -P &quot;&quot; -C &quot;xjd.binlee@qq.com&quot; -f ~/.ssh/id_rsa cat ~/.ssh/id_rsa.pub cd $path 服务端安装ssh并实现xshell连接 #安装 sudo apt-get install openssh-server -y sudo ps -e |grep ssh sudo service ssh start sudo passwd root sudo vi /etc/ssh/sshd_config PermitRootLogin prohibit-password PermitRootLogin yes sudo service ssh restart #在服务器的指定用户目录下 mkdir -p /root/.ssh touch authorized_keys 将上述生成的密钥文件添加到服务端 echo &quot;密钥&quot; &gt;&gt; /root/.ssh/authorized_keys 客户端测试连通性ssh -T git@gitee.com 或者 ssh -T git@server_ip 新建git仓库并使用 新建git仓库mkdir -p /srv/git/repos/xxx.git cd /srv/git/repos 初始化git仓库git init --bare /srv/git/repos/xxx.git 设置git仓库的访问权限cd /srv/git/repos chmod -R 775 xxx.git chown -R git xxx.git chgrp -R git xxx.git 克隆git仓库并测试git clone git@server_ip:/srv/git/repos/xxx.git 大招 将上述操作合并为git脚本 合并如下：apt-get update echo &quot;----------------------------------------&quot; echo &quot;&gt;&gt;&gt; update finished...&quot; echo &quot;----------------------------------------&quot; apt-get install git -y echo &quot;----------------------------------------&quot; echo &quot;&gt;&gt;&gt; install finished...&quot; echo &quot;----------------------------------------&quot; #useradd git #passwd git #or #openssl passwd -stdin useradd -p &quot;8iENHwQTXrdZM&quot; git #change passwd touch chpass.txt echo &quot;git:hest&quot; &gt;&gt; chpass.txt chpasswd &lt; chpass.txt rm -rf chpass.txt echo &quot;----------------------------------------&quot; echo &quot;&gt;&gt;&gt; useradd and reset passwd finished...&quot; echo &quot;----------------------------------------&quot; key=&quot;ssh-rsa AAA.......&quot; mkdir -p /home/git/.ssh touch /home/git/.ssh/authorized_keys #vim /home/git/.ssh/authorized_keys echo &quot;${key}&quot; &gt;&gt; /home/git/.ssh/authorized_keys cat /home/git/.ssh/authorized_keys echo &quot;----------------------------------------&quot; echo &quot;&gt;&gt;&gt; add authorized_keys finished...&quot; echo &quot;----------------------------------------&quot; respos_path=&quot;/srv/git/respos/&quot; project_name=&quot;test.git&quot; project_path=${respos_path}${project_name} mkdir -p ${project_path} git init --bare ${project_path} chmod -R 775 ${project_path} chown -R git ${project_path} chgrp -R git ${project_path} echo &quot;----------------------------------------&quot; echo &quot;init git respos finished...&quot; my_ip=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk &#39;{print $2}&#39;|tr -d &quot;addr:&quot;) echo &quot;git clone git@${my_ip}:${project_path}&quot; echo &quot;----------------------------------------&quot; 如果出错销毁服务端git 删除用户和仓库userdel -r git rm -rdf /srv/git/ 如果服务器出现问题，保留gitlog迁移git的方法 使用镜像克隆保留gitlog#在源服务器上裸克隆 git clone --bare git://github.com/username/project.git cd project.git #镜像上传到新的服务器上 git push --mirror git@gitcafe.com/username/newproject.git cd .. rm -rf project.git #克隆新服务器下的工程到客户端 git clone git@gitcafe.com/username/newproject.git #设置新的上传url为新服务器的地址 git remote set-url origin remote_git_address]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>如何利用VPS搭建自己的ss服务器？</title>
-      <link href="/2018/03/27/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8VPS%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84ss%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%9F/"/>
-      <url>/2018/03/27/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8VPS%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84ss%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%9F/</url>
-      <content type="html"><![CDATA[<p>本文描述了如何在ubuntu服务器上快速搭建自己的shadowcoks代理服务器。<br><a id="more"></a></p><h2 id="以详细步骤安装配置启动过程"><a href="#以详细步骤安装配置启动过程" class="headerlink" title="以详细步骤安装配置启动过程"></a>以详细步骤安装配置启动过程</h2><h3 id="1-安装ss"><a href="#1-安装ss" class="headerlink" title="1.安装ss"></a>1.安装ss</h3><pre><code class="bash">apt-get updatesudo apt-get install python-pip -ysudo pip install shadowsocks</code></pre><h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h3><pre><code class="bash">mkdir /etc/shadowsockstouch /etc/shadowsocks/ss_config.jsonvim /etc/shadowsocks/ss_config.json{  &quot;server&quot;: &quot;165.227.213.57&quot;,  &quot;port_password&quot;: {      &quot;10001&quot;: &quot;112345678a!&quot;,      &quot;10002&quot;: &quot;112345678a!&quot;,      &quot;10003&quot;: &quot;112345678a!&quot;  },  &quot;local_port&quot;: 1080,  &quot;timeout&quot;: 600,  &quot;method&quot;: &quot;aes-256-cfb&quot;}</code></pre><h3 id="3-启动"><a href="#3-启动" class="headerlink" title="3.启动"></a>3.启动</h3><pre><code class="bash">cd ~touch start.shchmod 775 start.shvim start.shssserver -c /etc/shadowsocks/ss_config.json -d startssserver -c /etc/shadowsocks/ss_config_multiple.json -d startnetstat -ntlp | grep pythontouch stop.shchmod 775 stop.shvim stop.shssserver -c /etc/shadowsocks/ss_config.json -d stopssserver -c /etc/shadowsocks/ss_config_multiple.json -d stopnetstat -ntlp | grep python</code></pre><h2 id="用脚本实现一键安装"><a href="#用脚本实现一键安装" class="headerlink" title="用脚本实现一键安装"></a>用脚本实现一键安装</h2><h3 id="1-创建配置启动脚本"><a href="#1-创建配置启动脚本" class="headerlink" title="1.创建配置启动脚本"></a>1.创建配置启动脚本</h3><pre><code class="bash">创建x脚本touch x &amp;&amp; chmod 775 x &amp;&amp; vim x直接复制到x脚本里面cd ~ &amp;&amp; touch ss_cfg.jsonip=&quot;162.243.161.150&quot;echo &quot;{&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;server\&quot;: \&quot;${ip}\&quot;,&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;port_password\&quot;: {&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;10001\&quot;: \&quot;helloworld\&quot;,&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;10002\&quot;: \&quot;helloworld\&quot;,&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;10003\&quot;: \&quot;helloworld\&quot;&quot; &gt;&gt; ss_cfg.jsonecho &quot;},&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;local_port\&quot;: 1080,&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;timeout\&quot;: 600,&quot; &gt;&gt; ss_cfg.jsonecho &quot;\&quot;method\&quot;: \&quot;aes-256-cfb\&quot;&quot; &gt;&gt; ss_cfg.jsonecho &quot;}&quot; &gt;&gt; ss_cfg.jsoncd ~touch sta.sh &amp;&amp; chmod 775 sta.shecho &quot;ssserver -c ~/ss_cfg.json -d start&quot; &gt;&gt; ~/sta.shecho &quot;netstat -ntlp | grep python&quot; &gt;&gt; ~/sta.shtouch sto.sh &amp;&amp; chmod 775 sto.shecho &quot;ssserver -c ~/ss_cfg.json -d stop&quot; &gt;&gt; ~/sto.shecho &quot;netstat -ntlp | grep python&quot; &gt;&gt; ~/sto.shecho &quot;-------------report-------------------&quot;echo &quot;the fie list as follows:&quot;lsecho &quot;-------------start ss-----------------&quot;./sta.shecho &quot;-------------your ss config-----------&quot;echo &quot;ip=${ip}&quot;echo &quot;port=10001, password=helloworld&quot;echo &quot;port=10002, password=helloworld&quot;echo &quot;port=10003, password=helloworld&quot;echo &quot;local_port=1080&quot;echo &quot;timeout=600&quot;echo &quot;method=aes-256-cfb&quot;echo &quot;-------------end---------------------&quot;</code></pre><h3 id="2-启动服务"><a href="#2-启动服务" class="headerlink" title="2.启动服务"></a>2.启动服务</h3><pre><code class="bash">运行x脚本./x启动服务./sta.sh关闭服务./sto.sh删除文件rm -rf x ss_cfg.json sta.sh sto.sh &amp;&amp; touch x &amp;&amp; chmod 775 x &amp;&amp; vim x</code></pre>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何利用VPS搭建自己的ss服务器？]]></title>
+    <url>%2F2018%2F03%2F27%2F%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8VPS%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84ss%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文描述了如何在ubuntu服务器上快速搭建自己的shadowcoks代理服务器。 以详细步骤安装配置启动过程1.安装ssapt-get update sudo apt-get install python-pip -y sudo pip install shadowsocks 2.配置mkdir /etc/shadowsocks touch /etc/shadowsocks/ss_config.json vim /etc/shadowsocks/ss_config.json { &quot;server&quot;: &quot;165.227.213.57&quot;, &quot;port_password&quot;: { &quot;10001&quot;: &quot;112345678a!&quot;, &quot;10002&quot;: &quot;112345678a!&quot;, &quot;10003&quot;: &quot;112345678a!&quot; }, &quot;local_port&quot;: 1080, &quot;timeout&quot;: 600, &quot;method&quot;: &quot;aes-256-cfb&quot; } 3.启动cd ~ touch start.sh chmod 775 start.sh vim start.sh ssserver -c /etc/shadowsocks/ss_config.json -d start ssserver -c /etc/shadowsocks/ss_config_multiple.json -d start netstat -ntlp | grep python touch stop.sh chmod 775 stop.sh vim stop.sh ssserver -c /etc/shadowsocks/ss_config.json -d stop ssserver -c /etc/shadowsocks/ss_config_multiple.json -d stop netstat -ntlp | grep python 用脚本实现一键安装1.创建配置启动脚本创建x脚本 touch x &amp;&amp; chmod 775 x &amp;&amp; vim x 直接复制到x脚本里面 cd ~ &amp;&amp; touch ss_cfg.json ip=&quot;162.243.161.150&quot; echo &quot;{&quot; &gt;&gt; ss_cfg.json echo &quot;\&quot;server\&quot;: \&quot;${ip}\&quot;,&quot; &gt;&gt; ss_cfg.json echo &quot;\&quot;port_password\&quot;: {&quot; &gt;&gt; ss_cfg.json echo &quot;\&quot;10001\&quot;: \&quot;helloworld\&quot;,&quot; &gt;&gt; ss_cfg.json echo &quot;\&quot;10002\&quot;: \&quot;helloworld\&quot;,&quot; &gt;&gt; ss_cfg.json echo &quot;\&quot;10003\&quot;: \&quot;helloworld\&quot;&quot; &gt;&gt; ss_cfg.json echo &quot;},&quot; &gt;&gt; ss_cfg.json echo &quot;\&quot;local_port\&quot;: 1080,&quot; &gt;&gt; ss_cfg.json echo &quot;\&quot;timeout\&quot;: 600,&quot; &gt;&gt; ss_cfg.json echo &quot;\&quot;method\&quot;: \&quot;aes-256-cfb\&quot;&quot; &gt;&gt; ss_cfg.json echo &quot;}&quot; &gt;&gt; ss_cfg.json cd ~ touch sta.sh &amp;&amp; chmod 775 sta.sh echo &quot;ssserver -c ~/ss_cfg.json -d start&quot; &gt;&gt; ~/sta.sh echo &quot;netstat -ntlp | grep python&quot; &gt;&gt; ~/sta.sh touch sto.sh &amp;&amp; chmod 775 sto.sh echo &quot;ssserver -c ~/ss_cfg.json -d stop&quot; &gt;&gt; ~/sto.sh echo &quot;netstat -ntlp | grep python&quot; &gt;&gt; ~/sto.sh echo &quot;-------------report-------------------&quot; echo &quot;the fie list as follows:&quot; ls echo &quot;-------------start ss-----------------&quot; ./sta.sh echo &quot;-------------your ss config-----------&quot; echo &quot;ip=${ip}&quot; echo &quot;port=10001, password=helloworld&quot; echo &quot;port=10002, password=helloworld&quot; echo &quot;port=10003, password=helloworld&quot; echo &quot;local_port=1080&quot; echo &quot;timeout=600&quot; echo &quot;method=aes-256-cfb&quot; echo &quot;-------------end---------------------&quot; 2.启动服务运行x脚本 ./x 启动服务 ./sta.sh 关闭服务 ./sto.sh 删除文件 rm -rf x ss_cfg.json sta.sh sto.sh &amp;&amp; touch x &amp;&amp; chmod 775 x &amp;&amp; vim x]]></content>
       <categories>
-          
-          <category> 配置 </category>
-          
+        <category>配置</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> 配置 </tag>
-            
-            <tag> ss </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2018/03/27/hello-world/"/>
-      <url>/2018/03/27/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><a id="more"></a><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>ss</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F03%2F27%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post$ hexo new &quot;My New Post&quot; More info: Writing Run server$ hexo server More info: Server Generate static files$ hexo generate More info: Generating Deploy to remote sites$ hexo deploy More info: Deployment]]></content>
       <categories>
-          
-          <category> SayHi </category>
-          
+        <category>SayHi</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 列表 </tag>
-            
-            <tag> SayHi </tag>
-            
-        </tags>
-      
-    </entry>
-    
-  
-  
+      <tags>
+        <tag>列表</tag>
+        <tag>SayHi</tag>
+      </tags>
+  </entry>
 </search>
