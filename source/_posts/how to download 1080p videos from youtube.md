@@ -1,6 +1,6 @@
 
 ---
-title: how to download 1080p videos form youtube
+title: how to download 1080p videos from youtube
 date: 2018-04-23 20:36:16
 tags: [列表,vps,youtube]
 categories: configuration
