@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-22T08:34:41.549Z</updated>
+  <updated>2018-04-23T07:10:37.912Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>write wordcount program on eclipse and run on hadoop in win10</title>
+    <link href="http://yoursite.com/2018/04/23/write%20wordcount%20program%20on%20eclipse%20and%20run%20on%20hadoop%20in%20win10/"/>
+    <id>http://yoursite.com/2018/04/23/write wordcount program on eclipse and run on hadoop in win10/</id>
+    <published>2018-04-23T06:36:16.000Z</published>
+    <updated>2018-04-23T07:10:37.912Z</updated>
+    
+    <content type="html"><![CDATA[<p>This article describes how to write the wordcount program on eclipse and run it on local Hadoop.</p><a id="more"></a><h2 id="prerequisites"><a href="#prerequisites" class="headerlink" title="prerequisites"></a><strong>prerequisites</strong></h2><ul><li><strong>server</strong></li></ul><ol><li>win10</li><li>hadoop 2.7.6</li></ol><ul><li><strong>client</strong></li></ul><ol><li>win10</li><li>eclipse neon</li><li>hadoop-eclipse-plugin-2.7.2.jar</li></ol><h2 id="create-project-and-coding"><a href="#create-project-and-coding" class="headerlink" title="create project and coding"></a><strong>create project and coding</strong></h2><ul><li><p><strong>create project</strong></p><pre><code>new &gt; other &gt; map reduce program &gt; fix the boses with name, ${HADOOP_HOME} &gt; finish</code></pre></li><li><p><strong>coding</strong></p><pre><code>package com.hikvision.bigdata.hadoop.hadoop_wordcount;import java.io.IOException;import java.util.StringTokenizer;import org.apache.hadoop.conf.Configuration;import org.apache.hadoop.fs.Path;import org.apache.hadoop.io.IntWritable;import org.apache.hadoop.io.LongWritable;import org.apache.hadoop.io.Text;import org.apache.hadoop.mapreduce.Job;import org.apache.hadoop.mapreduce.Mapper;import org.apache.hadoop.mapreduce.Reducer;import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;import org.apache.log4j.BasicConfigurator;/*** wordcount*/public class WordCount {  public static void main(String[] args) throws Exception {      BasicConfigurator.configure();      System.out.println(&quot;Hello World!&quot;);      Configuration conf = new Configuration();      @SuppressWarnings(&quot;deprecation&quot;)      Job job = new Job(conf, &quot;wordcount&quot;);      job.setJarByClass(WordCount.class);      job.setOutputKeyClass(Text.class);      job.setOutputValueClass(IntWritable.class);      job.setMapperClass(Map.class);      job.setReducerClass(Reduce.class);      job.setInputFormatClass(TextInputFormat.class);      job.setOutputFormatClass(TextOutputFormat.class);      FileInputFormat.addInputPath(job, new Path(args[0]));      FileOutputFormat.setOutputPath(job, new Path(args[1]));      job.waitForCompletion(true);  }  public static class Map extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; {      private final static IntWritable one = new IntWritable(1);      private Text word = new Text();      public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {          String line = value.toString();          StringTokenizer tokenizer = new StringTokenizer(line);          while (tokenizer.hasMoreTokens()) {              word.set(tokenizer.nextToken());              context.write(word, one);          }      }  }  public static class Reduce extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; {      public void reduce(Text key, Iterable&lt;IntWritable&gt; values, Context context)              throws IOException, InterruptedException {          int sum = 0;          for (IntWritable val : values) {              sum += val.get();          }          context.write(key, new IntWritable(sum));      }  }}</code></pre></li></ul><h2 id="configure-program"><a href="#configure-program" class="headerlink" title="configure program"></a><strong>configure program</strong></h2><ul><li><p><strong>configure hadoop</strong></p><pre><code>step 1:core-site.xml&lt;configuration&gt; &lt;property&gt;    &lt;name&gt;fs.default.name&lt;/name&gt;    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;&lt;/property&gt;&lt;property&gt;    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;    &lt;value&gt;/root/app/hadoop/tmp&lt;/value&gt;&lt;/property&gt;&lt;/configuration&gt;###########################################step 2:hdfs-site.xml&lt;configuration&gt;&lt;property&gt;    &lt;name&gt;dfs.name.dir&lt;/name&gt;    &lt;value&gt;/root/app/hadoop/hdfs/name&lt;/value&gt;&lt;/property&gt;&lt;property&gt;    &lt;name&gt;dfs.data.dir&lt;/name&gt;    &lt;value&gt;/root/app/hadoop/hdfs/data&lt;/value&gt;&lt;/property&gt;&lt;property&gt;    &lt;name&gt;dfs.permissions&lt;/name&gt;    &lt;value&gt;false&lt;/value&gt;&lt;/property&gt;&lt;property&gt;    &lt;name&gt;dfs.replication&lt;/name&gt;    &lt;value&gt;1&lt;/value&gt;    &lt;description&gt;defult 3, less than numbers of datanode&lt;/description&gt;&lt;/property&gt;&lt;/configuration&gt;###########################################step 3:mapred-site.xml&lt;configuration&gt;&lt;property&gt;    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;    &lt;value&gt;yarn&lt;/value&gt;&lt;/property&gt;&lt;property&gt;    &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;    &lt;value&gt;localhost:10020&lt;/value&gt;    &lt;description&gt;MapReduce JobHistory Server IPC host:port&lt;/description&gt;&lt;/property&gt;&lt;/configuration&gt;###########################################step 4:yarn-site.xml&lt;configuration&gt;&lt;property&gt;        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;&lt;/property&gt;&lt;property&gt;        &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;        &lt;value&gt;localhost:8099&lt;/value&gt;&lt;/property&gt;&lt;/configuration&gt;</code></pre></li><li><p><strong>format namenode</strong></p><pre><code>cd binhdfs namenode -format# format only once</code></pre></li><li><p><strong>start hadoop and upload data to hdfs</strong></p><pre><code>cd ${HADOOP_HOME}input cmd to open cmd linecd sbinstart-all.cmd##hadoop fs -mkdir /datahadoop fs -put D:\a.txt /data/a.txt</code></pre></li><li><strong>configure input and output path for program in eclipse</strong><pre><code>1 project name &gt; right clieck &gt; run as &gt; run configuration &gt; java application &gt; new2 fix the boxes with the program name, main class, run name, and arguments3 the arguments as follows:hdfs://localhost:9000/data/a.txt hdfs://localhost:9000/data/output</code></pre></li></ul><h2 id="run-program"><a href="#run-program" class="headerlink" title="run program"></a><strong>run program</strong></h2><ul><li><strong>precondition</strong></li></ul><ol><li>delete the output floder on hdfs</li><li>data is ready</li><li>input/output path is configured in eclipse</li><li>hadoop is running</li></ol><ul><li><strong>run program</strong><pre><code>project name &gt; right clieck &gt; run as &gt; run on hadoop &gt; select the main class &gt; enjoy the ouput</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This article describes how to write the wordcount program on eclipse and run it on local Hadoop.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="configuration" scheme="http://yoursite.com/categories/configuration/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
+    
+      <category term="configuration" scheme="http://yoursite.com/tags/configuration/"/>
+    
+      <category term="coding" scheme="http://yoursite.com/tags/coding/"/>
+    
+  </entry>
   
   <entry>
     <title>configure hadoop on ubuntu and connect to eclipse on ubuntu or win10</title>
@@ -194,11 +222,11 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
+      <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
+    
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
-    
-      <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
     
   </entry>
   
@@ -527,32 +555,6 @@
       <category term="github" scheme="http://yoursite.com/tags/github/"/>
     
       <category term="pages" scheme="http://yoursite.com/tags/pages/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何利用ubuntu实现私有git服务端-附ssh操作？</title>
-    <link href="http://yoursite.com/2018/03/27/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8ubuntu%E5%AE%9E%E7%8E%B0%E7%A7%81%E6%9C%89git%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E9%99%84ssh%E6%93%8D%E4%BD%9C%EF%BC%9F/"/>
-    <id>http://yoursite.com/2018/03/27/如何利用ubuntu实现私有git服务端-附ssh操作？/</id>
-    <published>2018-03-27T03:00:00.000Z</published>
-    <updated>2018-04-21T05:52:38.665Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍如何利用云服务器实现私有git服务端，包含了git新建仓库、本地与服务器的ssh互连、保留gitlog迁移git的方法、以及创建仓库的自动化脚本。<br><a id="more"></a></p><h2 id="在服务端下载git"><a href="#在服务端下载git" class="headerlink" title="在服务端下载git"></a>在服务端下载git</h2><ul><li>下载安装git<pre><code>apt-get updateapt-get install git -y</code></pre></li></ul><h2 id="配置git用户"><a href="#配置git用户" class="headerlink" title="配置git用户"></a>配置git用户</h2><ul><li>添加git用户<pre><code>useradd gitpasswd git</code></pre></li></ul><h2 id="通过ssh客户端和服务器互连"><a href="#通过ssh客户端和服务器互连" class="headerlink" title="通过ssh客户端和服务器互连"></a>通过ssh客户端和服务器互连</h2><ul><li>客户端生成ssh密钥<pre><code class="bash">git config --global user.name &quot;你的GitHub用户名&quot;git config --global user.email &quot;你的GitHub注册邮箱&quot;ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;cat ~/.ssh/id_rsa.pub</code></pre></li><li>或者 上述操作可以集成为无交互的脚本在本地直接执行即可<pre><code class="bash">y=$(date +%y)m=$(date +%m)d=$(date +%d)H=$(date +%H)M=$(date +%M)S=$(date +%S)path=$(pwd)cd ~git config --global user.name &quot;bin_lee&quot;git config --global user.email &quot;xjd.binlee@qq.com&quot;#cd ~/.sshtar -zcvf ssh_binlee_backup_$y-$m-$d-$H-$M-$S.tar.gz .sshrm -rfd ~/.ssh# ssh-keygen -t rsa -C &quot;xjd.binlee@qq.com&quot;ssh-keygen -t rsa -P &quot;&quot; -C &quot;xjd.binlee@qq.com&quot; -f ~/.ssh/id_rsacat ~/.ssh/id_rsa.pubcd $path</code></pre></li><li><p>服务端安装ssh并实现xshell连接</p><pre><code class="bash">#安装sudo apt-get install openssh-server -ysudo ps -e |grep sshsudo service ssh startsudo passwd rootsudo vi /etc/ssh/sshd_configPermitRootLogin prohibit-passwordPermitRootLogin yessudo service ssh restart#在服务器的指定用户目录下mkdir -p /root/.sshtouch authorized_keys</code></pre></li><li><p>将上述生成的密钥文件添加到服务端</p><pre><code class="bash">echo &quot;密钥&quot; &gt;&gt; /root/.ssh/authorized_keys</code></pre></li><li>客户端测试连通性<pre><code class="bash">ssh -T git@gitee.com或者ssh -T git@server_ip</code></pre></li></ul><h2 id="新建git仓库并使用"><a href="#新建git仓库并使用" class="headerlink" title="新建git仓库并使用"></a>新建git仓库并使用</h2><ul><li>新建git仓库<pre><code>mkdir -p /srv/git/repos/xxx.gitcd /srv/git/repos</code></pre></li><li>初始化git仓库<pre><code>git init --bare /srv/git/repos/xxx.git</code></pre></li><li>设置git仓库的访问权限<pre><code class="bash">cd /srv/git/reposchmod -R 775 xxx.gitchown -R git xxx.gitchgrp -R git xxx.git</code></pre></li><li>克隆git仓库并测试<pre><code class="bash">git clone git@server_ip:/srv/git/repos/xxx.git</code></pre><h2 id="大招-将上述操作合并为git脚本"><a href="#大招-将上述操作合并为git脚本" class="headerlink" title="大招 将上述操作合并为git脚本"></a>大招 将上述操作合并为git脚本</h2></li><li>合并如下：<pre><code class="bash">apt-get updateecho &quot;----------------------------------------&quot;echo &quot;&gt;&gt;&gt; update finished...&quot;echo &quot;----------------------------------------&quot;apt-get install git -yecho &quot;----------------------------------------&quot;echo &quot;&gt;&gt;&gt; install finished...&quot;echo &quot;----------------------------------------&quot;#useradd git#passwd git#or#openssl passwd -stdinuseradd -p &quot;8iENHwQTXrdZM&quot; git#change passwdtouch chpass.txtecho &quot;git:hest&quot; &gt;&gt; chpass.txtchpasswd &lt; chpass.txtrm -rf chpass.txtecho &quot;----------------------------------------&quot;echo &quot;&gt;&gt;&gt; useradd and reset passwd finished...&quot;echo &quot;----------------------------------------&quot;key=&quot;ssh-rsa AAA.......&quot;mkdir -p /home/git/.sshtouch /home/git/.ssh/authorized_keys#vim /home/git/.ssh/authorized_keysecho &quot;${key}&quot; &gt;&gt; /home/git/.ssh/authorized_keyscat /home/git/.ssh/authorized_keysecho &quot;----------------------------------------&quot;echo &quot;&gt;&gt;&gt; add authorized_keys finished...&quot;echo &quot;----------------------------------------&quot;respos_path=&quot;/srv/git/respos/&quot;project_name=&quot;test.git&quot;project_path=${respos_path}${project_name}mkdir -p ${project_path}git init --bare ${project_path}chmod -R 775 ${project_path}chown -R git ${project_path}chgrp -R git ${project_path}echo &quot;----------------------------------------&quot;echo &quot;init git respos finished...&quot;my_ip=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk &#39;{print $2}&#39;|tr -d &quot;addr:&quot;)echo &quot;git clone git@${my_ip}:${project_path}&quot;echo &quot;----------------------------------------&quot;</code></pre><h2 id="如果出错销毁服务端git"><a href="#如果出错销毁服务端git" class="headerlink" title="如果出错销毁服务端git"></a>如果出错销毁服务端git</h2></li><li>删除用户和仓库<pre><code>userdel -r gitrm -rdf /srv/git/</code></pre><h2 id="如果服务器出现问题，保留gitlog迁移git的方法"><a href="#如果服务器出现问题，保留gitlog迁移git的方法" class="headerlink" title="如果服务器出现问题，保留gitlog迁移git的方法"></a>如果服务器出现问题，保留gitlog迁移git的方法</h2></li><li>使用镜像克隆保留gitlog<pre><code class="bash">#在源服务器上裸克隆git clone --bare git://github.com/username/project.gitcd project.git#镜像上传到新的服务器上git push --mirror git@gitcafe.com/username/newproject.gitcd ..rm -rf project.git#克隆新服务器下的工程到客户端git clone git@gitcafe.com/username/newproject.git#设置新的上传url为新服务器的地址git remote set-url origin remote_git_address  </code></pre></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍如何利用云服务器实现私有git服务端，包含了git新建仓库、本地与服务器的ssh互连、保留gitlog迁移git的方法、以及创建仓库的自动化脚本。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
   </entry>
   
