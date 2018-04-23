@@ -1,7 +1,5 @@
 xjdlb.github.io
-
 =================================
-
 this is the src files for my blog: [original](https://leebin.top), you can visit: https://leebin.top .
 
 how to build ?
