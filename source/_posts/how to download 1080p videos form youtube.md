@@ -1,7 +1,7 @@
 
 ---
 title: how to download 1080p videos form youtube
-date: 2018-04-23 14:36:16
+date: 2018-04-23 20:36:16
 tags: [列表,vps,youtube]
 categories: configuration
 toc: true
@@ -18,7 +18,7 @@ the article describes how to download 1080p videos form youtube with your foreig
 - paste the link to the input box of https://en.savefrom.net/
 - download videos though chrome
 
-## advanced method
+## advance method
 - login in your foreign vps
 - such as: ubuntu from digitalocean
 - use the following cmd to download the video
