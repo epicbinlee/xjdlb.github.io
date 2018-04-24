@@ -2,8 +2,8 @@
 ---
 title: hbase的基本构成与实践
 date: 2018-04-24 21:14:15
-tags: [列表,2222,3333,4444]
-categories: 5555
+tags: [列表,configuration,原理,hbase]
+categories: 配置
 toc: true
 mathjax: true
 ---
@@ -97,7 +97,8 @@ hbase中的每个列都属于一个column family
 
 - RowKey
 ```
-可以理解为主键，最大长度为64k，RowKey保存为字节数组，是非关系型数据库中key-value类型的数据的key
-字典排序
+可以理解为主键，最大长度为64k，RowKey保存为字节数组
+是非关系型数据库中key-value类型的数据的key
+自动字典排序
 散列原则，分布到不同的Region中，RegionServer的负载均衡问题
 ```
