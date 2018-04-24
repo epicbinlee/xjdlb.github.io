@@ -14,7 +14,7 @@ This article describes the basic components of hbase, including HMaster, HRegion
 
 ## principle of hbase
 
-- **features of HMaster (Technical Director)**
+- **features of HMaster (technical director)**
 1. add, delete, and modify tables
 2. Region load balancing
 3. HMaster manages the distribution of data
