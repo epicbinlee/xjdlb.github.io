@@ -1,4 +1,6 @@
-﻿echo "hello"
+﻿#! /bin/bash
+echo "------------------------"
+echo "creating your blog article module..."
 yy=$(date +%Y)
 mm=$(date +%m)
 dd=$(date +%d)
@@ -23,5 +25,14 @@ echo "toc: true" >> $filename$filepostfix
 echo "mathjax: true" >> $filename$filepostfix
 echo "---" >> $filename$filepostfix
 echo "" >> $filename$filepostfix
+echo "" >> $filename$filepostfix
+echo "" >> $filename$filepostfix
 echo "<!-- more -->" >> $filename$filepostfix
+echo "" >> $filename$filepostfix
+echo "" >> $filename$filepostfix
+echo "" >> $filename$filepostfix
+
 cd ../..
+
+echo "finished..."
+echo "------------------------"
