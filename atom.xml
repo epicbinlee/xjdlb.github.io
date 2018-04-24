@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-24T09:07:21.985Z</updated>
+  <updated>2018-04-24T13:55:13.066Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hbase的基本构成与实践</title>
+    <link href="http://yoursite.com/2018/04/24/hbase%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
+    <id>http://yoursite.com/2018/04/24/hbase的基本构成与实践/</id>
+    <published>2018-04-24T13:14:15.000Z</published>
+    <updated>2018-04-24T13:55:13.066Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍hbase的基本构成与实践。</p><a id="more"></a><h2 id="hbase的基本构成"><a href="#hbase的基本构成" class="headerlink" title="hbase的基本构成"></a>hbase的基本构成</h2><ul><li><p>表空间 namespace</p><pre><code>两个默认的表空间hbase： 系统默认表空间default： 不指定自动加入的表空间root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/dataFound 2 itemsdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/defaultdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase</code></pre></li><li><p>表 table</p><pre><code>表的存在形式：表以文件夹的形式存在于hdfs中表的基本组成是：RowKey, Column Family, Column, Value(Cell):Byte array表的物理属性：以RowKey进行字典排序，行的方向存在多个Region，Region是存储和负载均衡的最小单元，不同的Region分布到不同的RegionServer上#=============================root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/data/hbaseFound 2 itemsdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase/metadrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase/namespace#-----------------------------root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/data/hbase/metaFound 3 itemsdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase/meta/.tabledescdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase/meta/.tmpdrwxr-xr-x   - root supergroup          0 2018-04-24 01:45 /hbase/data/hbase/meta/1588230740#-----------------------------root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/data/hbase/meta/1588230740Found 4 items-rw-r--r--   1 root supergroup         32 2018-04-23 20:18 /hbase/data/hbase/meta/1588230740/.regioninfodrwxr-xr-x   - root supergroup          0 2018-04-24 01:45 /hbase/data/hbase/meta/1588230740/.tmpdrwxr-xr-x   - root supergroup          0 2018-04-24 01:45 /hbase/data/hbase/meta/1588230740/infodrwxr-xr-x   - root supergroup          0 2018-04-24 01:37 /hbase/data/hbase/meta/1588230740/recovered.edits#-----------------------------root@ubuntu:~/app/hbase/bin# ./hbase shell2018-04-24 06:29:19,776 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicableHBase Shell; enter &#39;help&lt;RETURN&gt;&#39; for list of supported commands.Type &quot;exit&lt;RETURN&gt;&quot; to leave the HBase ShellVersion 1.2.6, rUnknown, Mon May 29 02:25:32 CDT 2017hbase(main):001:0&gt;#-----------------------------hbase(main):001:0&gt; create &#39;maizi_hbase&#39;,&#39;f&#39;0 row(s) in 2.5670 seconds=&gt; Hbase::Table - maizi_hbasehbase(main):002:0&gt;#=============================访问 http://192.168.231.150:50070/explorer.html#/hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458得到hbse的路径#-----------------------------root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458Found 3 items-rw-r--r--   1 root supergroup         46 2018-04-24 06:30 /hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458/.regioninfodrwxr-xr-x   - root supergroup          0 2018-04-24 06:30 /hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458/fdrwxr-xr-x   - root supergroup          0 2018-04-24 06:30 /hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458/recovered.edits#-----------------------------上述操作中，6a028f21704f8fc6bf298598f6b8a458为Region的编号#=============================访问 http://192.168.231.150:16010/table.jsp?name=maizi_hbase 得到hbase的管理界面，可以看出路径结构</code></pre></li><li><p>列族 column family</p><pre><code>很多列的集合hbase中的每个列都属于一个column family每个column family存在于hdfs的单独文件中列名以column family为前缀， info:name, info:age#-----------------------------/hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458/f数据库/数据/表空间/表/region/列族#-----------------------------创建表的时候必须定义列族，因为在hdfs上必须要创建文件夹#-----------------------------何如设计RowKey是经典问题？</code></pre></li><li><p>列</p><pre><code>存放数据的地方</code></pre></li><li><p>RowKey</p><pre><code>可以理解为主键，最大长度为64k，RowKey保存为字节数组，是非关系型数据库中key-value类型的数据的key字典排序散列原则，分布到不同的Region中，RegionServer的负载均衡问题</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍hbase的基本构成与实践。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="5555" scheme="http://yoursite.com/categories/5555/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="2222" scheme="http://yoursite.com/tags/2222/"/>
+    
+      <category term="3333" scheme="http://yoursite.com/tags/3333/"/>
+    
+      <category term="4444" scheme="http://yoursite.com/tags/4444/"/>
+    
+  </entry>
   
   <entry>
     <title>how to understand habse components ?</title>
@@ -521,34 +549,6 @@
       <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
     
       <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何将hexo的git pages项目部署vps？</title>
-    <link href="http://yoursite.com/2018/03/29/%E5%A6%82%E4%BD%95%E5%B0%86hexo%E7%9A%84git%20pages%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2vps%EF%BC%9F/"/>
-    <id>http://yoursite.com/2018/03/29/如何将hexo的git pages项目部署vps？/</id>
-    <published>2018-03-29T05:56:11.000Z</published>
-    <updated>2018-04-21T05:52:38.666Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍如何在vps上搭建自己的blog。<br><a id="more"></a></p><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul><li>digitalocean上ubuntu的vps一台</li><li>window10+nodejs+hexo软件环境，参考<a href="https://leebin.top/2018/03/27/%E4%BD%BF%E7%94%A8github%20pages%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">hexo搭建博客</a></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul><li>方案一 vps上使用本地模式搭建hexo博客，使用Nginx将域名指向 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></li><li>方案二 在客户端写blog，git推送到服务端，服务端用Nginx解析网页文件</li></ul><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ul><li>下文分为众多的详细步骤</li></ul><h3 id="安装git和nginx"><a href="#安装git和nginx" class="headerlink" title="安装git和nginx"></a>安装git和nginx</h3><ul><li>安装软件git和nginx<pre><code>apt-get updateapt-get install gitapt-get install nginx</code></pre></li></ul><h3 id="配置git用户和仓库"><a href="#配置git用户和仓库" class="headerlink" title="配置git用户和仓库"></a>配置git用户和仓库</h3><ul><li>git用户权限设定（可以不需要）<pre><code class="bash">chmod 740 /etc/sudoersvim /etc/sudoers#在root ALL=(ALL:ALL) ALL下面新增一行git ALL=(ALL:ALL) ALLchmod 440 /etc/sudoers</code></pre></li><li>配置git用户和仓库, 参考<a href="https://leebin.top/2018/03/27/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8ubuntu%E5%AE%9E%E7%8E%B0%E7%A7%81%E6%9C%89git%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E9%99%84ssh%E6%93%8D%E4%BD%9C%EF%BC%9F/" target="_blank" rel="noopener">在vps上构建私有git服务器</a></li></ul><h3 id="配置git-hooks"><a href="#配置git-hooks" class="headerlink" title="配置git hooks"></a>配置git hooks</h3><ul><li>在hexo.git/hooks/目录下修改post-update.sample为post-update，并覆盖加入<pre><code class="bash">#!/bin/bashGIT_REPO=/home/git/hexo.gitTMP_GIT_CLONE=/tmp/hexoPUBLIC_WWW=/var/www/hexorm -rf ${TMP_GIT_CLONE}git clone $GIT_REPO $TMP_GIT_CLONErm -rf ${PUBLIC_WWW}/*cp -rf ${TMP_GIT_CLONE}/* ${PUBLIC_WWW}</code></pre></li><li>保证post-update有执行权限<pre><code class="bash">chmod +x post-receive</code></pre></li></ul><h3 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h3><ul><li>新建站点文件夹<pre><code class="bash">mkdir -p /var/www/blogchmod -R 775 /var/www/blogchown -R git /var/www/blogchgrp -R git /var/www/blog</code></pre></li><li>配nginx的站点文件2处<pre><code class="bash">#配置1vim /etc/nginx/conf.d/hexo.confserver {  listen  80 ;  listen [::]:80;  root /var/www/blog;  server_name clearsky.me www.clearsky.me; #server_ip  access_log  /var/log/nginx/hexo_access.log;  error_log   /var/log/nginx/hexo_error.log;  error_page 404 =  /404.html;  location ~* ^.+\.(ico|gif|jpg|jpeg|png)$ {      root /var/www/blog;      access_log   off;      expires      1d;  }  location ~* ^.+\.(css|js|txt|xml|swf|wav)$ {      root /var/www/blog;      access_log   off;      expires      10m;  }  location / {      root /var/www/blog;      if (-f $request_filename) {          rewrite ^/(.*)$  /$1 break;      }  }  location /nginx_status {      stub_status on;      access_log off;  }}#配置2vim /etc/nginx/sites-available/defaultroot /var/www/html;</code></pre></li><li>重启nginx服务器<pre><code>service nginx restart#或者/etc/init.d/nginx stop/etc/init.d/nginx start</code></pre><h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2></li><li>修改本地的blog源文件，配置推送git服务器，推送到vps服务器上</li><li>参考<a href="https://leebin.top/2018/03/29/git%20pages%E7%9A%84%E8%BF%81%E7%A7%BB%E5%92%8C%E5%A4%9A%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" target="_blank" rel="noopener">git pages多服务器部署</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍如何在vps上搭建自己的blog。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="git" scheme="http://yoursite.com/tags/git/"/>
-    
-      <category term="vps" scheme="http://yoursite.com/tags/vps/"/>
     
   </entry>
   
