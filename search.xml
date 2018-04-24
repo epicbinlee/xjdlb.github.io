@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[zookeeper working mechanism and installation]]></title>
+    <url>%2F2018%2F04%2F24%2FzooKeeper%20working%20mechanism%20and%20installation%2F</url>
+    <content type="text"><![CDATA[This article describes the basic working principle and installation process of zookeeper. zookeeper working mechanism zookeeper is a high-performance application coordination server that is mainly used to maintain a file system-like namespace. zookeeper itself contains 2n+1 servers, and their roles are divided into leader and follower. zookeeper maintains multiple server services and maintains data consistency to ensure that clients connecting to any server can get consistent data services. zookeeper’s nodes have 4 life cycles.PERSISTENT (persistent node) PERSISTENT_SEQUENTIAL (Sequential automatic numbering of persistent nodes, this node automatically adds 1 based on the number of existing nodes) EPHEMERAL (temporary node, client session timeout such nodes will be automatically deleted) EPHEMERAL_SEQUENTIAL (temporary automatic numbering node) install and configure zookeeper download &gt; extract &gt; configure &gt; start/stop &gt; test configureroot@ubuntu:~/app/zookeeper# ll total 1596 drwxr-xr-x 10 1001 1001 4096 Mar 23 2017 ./ drwxr-xr-x 13 root root 4096 Apr 23 23:50 ../ drwxr-xr-x 2 1001 1001 4096 Mar 23 2017 bin/ -rw-rw-r-- 1 1001 1001 84725 Mar 23 2017 build.xml drwxr-xr-x 2 1001 1001 4096 Mar 23 2017 conf/ drwxr-xr-x 10 1001 1001 4096 Mar 23 2017 contrib/ drwxr-xr-x 2 1001 1001 4096 Mar 23 2017 dist-maven/ drwxr-xr-x 6 1001 1001 4096 Mar 23 2017 docs/ -rw-rw-r-- 1 1001 1001 1709 Mar 23 2017 ivysettings.xml -rw-rw-r-- 1 1001 1001 5691 Mar 23 2017 ivy.xml drwxr-xr-x 4 1001 1001 4096 Mar 23 2017 lib/ -rw-rw-r-- 1 1001 1001 11938 Mar 23 2017 LICENSE.txt -rw-rw-r-- 1 1001 1001 3132 Mar 23 2017 NOTICE.txt -rw-rw-r-- 1 1001 1001 1770 Mar 23 2017 README_packaging.txt -rw-rw-r-- 1 1001 1001 1585 Mar 23 2017 README.txt drwxr-xr-x 5 1001 1001 4096 Mar 23 2017 recipes/ drwxr-xr-x 8 1001 1001 4096 Mar 23 2017 src/ -rw-rw-r-- 1 1001 1001 1456729 Mar 23 2017 zookeeper-3.4.10.jar -rw-rw-r-- 1 1001 1001 819 Mar 23 2017 zookeeper-3.4.10.jar.asc -rw-rw-r-- 1 1001 1001 33 Mar 23 2017 zookeeper-3.4.10.jar.md5 -rw-rw-r-- 1 1001 1001 41 Mar 23 2017 zookeeper-3.4.10.jar.sha1 #============================== -rw-rw-r-- 1 1001 1001 535 Mar 23 2017 configuration.xsl -rw-rw-r-- 1 1001 1001 2161 Mar 23 2017 log4j.properties -rw-rw-r-- 1 1001 1001 922 Mar 23 2017 zoo_sample.cfg root@ubuntu:~/app/zookeeper/conf# cp zoo_sample.cfg zoo.cfg root@ubuntu:~/app/zookeeper/conf# ll total 24 drwxr-xr-x 2 1001 1001 4096 Apr 24 00:17 ./ drwxr-xr-x 10 1001 1001 4096 Mar 23 2017 ../ -rw-rw-r-- 1 1001 1001 535 Mar 23 2017 configuration.xsl -rw-rw-r-- 1 1001 1001 2161 Mar 23 2017 log4j.properties -rw-r--r-- 1 root root 922 Apr 24 00:17 zoo.cfg -rw-rw-r-- 1 1001 1001 922 Mar 23 2017 zoo_sample.cfg #------------------------------ vim zoo.cfg mkdir -p /root/app/zookeeper/zookdata # dataDir=/tmp/zookeeper dataDir=/root/app/zookeeper/zookdata # append the following: server.1=192.168.231.150:2888:3888 #------------------------------ root@ubuntu:~/app/zookeeper/zookdata# pwd /root/app/zookeeper/zookdata root@ubuntu:~/app/zookeeper/zookdata# touch myid &amp;&amp; echo 1 &gt; myid root@ubuntu:~/app/zookeeper/zookdata# cat myid 1 #============================== scp the zookeeper to other server reset myid file in zookeeper on other server #============================== start/stop zookeeper start zookeeper root@ubuntu:~/app/zookeeper/bin# ll total 52 drwxr-xr-x 2 1001 1001 4096 Apr 24 00:35 ./ drwxr-xr-x 11 1001 1001 4096 Apr 24 00:19 ../ -rwxr-xr-x 1 1001 1001 232 Mar 23 2017 README.txt* -rwxr-xr-x 1 1001 1001 1937 Mar 23 2017 zkCleanup.sh* -rwxr-xr-x 1 1001 1001 1056 Mar 23 2017 zkCli.cmd* -rwxr-xr-x 1 1001 1001 1534 Mar 23 2017 zkCli.sh* -rwxr-xr-x 1 1001 1001 1628 Mar 23 2017 zkEnv.cmd* -rwxr-xr-x 1 1001 1001 2696 Mar 23 2017 zkEnv.sh* -rwxr-xr-x 1 1001 1001 1089 Mar 23 2017 zkServer.cmd* -rwxr-xr-x 1 1001 1001 6773 Mar 23 2017 zkServer.sh* -rw-r--r-- 1 root root 5056 Apr 24 00:35 zookeeper.out #------------------------------ Using config: /root/app/zookeeper/bin/../conf/zoo.cfg Usage: ./zkServer.sh {start|start-foreground|stop|restart|status|upgrade|print-cmd} #------------------------------ root@ubuntu:~/app/zookeeper/bin# ./zkServer.sh start zookeeper JMX enabled by default Using config: /root/app/zookeeper/bin/../conf/zoo.cfg Starting zookeeper ... STARTED #------------------------------ root@ubuntu:~/app/zookeeper/bin# jps 38113 Jps 34545 HQuorumPeer 34757 HRegionServer 12550 NodeManager 12408 ResourceManager 12024 DataNode 34618 HMaster 12235 SecondaryNameNode 11852 NameNode #------------------------------ root@ubuntu:~/app/zookeeper/bin# ./zkServer.sh status zookeeper JMX enabled by default Using config: /root/app/zookeeper/bin/../conf/zoo.cfg Mode: standalone use zookeeper root@ubuntu:~/app/zookeeper/bin# ./zkCli.sh Connecting to localhost:2181 ... 2018-04-24 00:40:32,972 [myid:] - INFO [main:Environment@100] - Client ... 2018-04-24 00:40:32,984 [myid:] - INFO [main:Environment@100] - Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib 2018-04-24 00:40:32,984 [myid:] - INFO [main:Environment@100] - Client environment:java.io.tmpdir=/tmp ... WatchedEvent state:SyncConnected type:None path:null #------------------------------ [zk: localhost:2181(CONNECTED) 0] help zookeeper -server host:port cmd args stat path [watch] set path data [version] ls path [watch] delquota [-n|-b] path ls2 path [watch] setAcl path acl setquota -n|-b val path history redo cmdno printwatches on|off delete path [version] sync path listquota path rmr path get path [watch] create [-s] [-e] path data acl addauth scheme auth quit getAcl path close connect host:port #------------------------------ [zk: localhost:2181(CONNECTED) 1] create /data_test &#39;data_test&#39; Created /data_test [zk: localhost:2181(CONNECTED) 2] ls / [data_test, zookeeper, hbase] [zk: localhost:2181(CONNECTED) 3] get /data_test data_test cZxid = 0x75 ctime = Tue Apr 24 00:42:11 PDT 2018 mZxid = 0x75 mtime = Tue Apr 24 00:42:11 PDT 2018 pZxid = 0x75 cversion = 0 dataVersion = 0 aclVersion = 0 ephemeralOwner = 0x0 dataLength = 9 numChildren = 0 #------------------------------ [zk: localhost:2181(CONNECTED) 4] create /data_test/dir_2 &#39;123_value&#39; Created /data_test/dir_2 [zk: localhost:2181(CONNECTED) 5] get /data_test data_test cZxid = 0x75 ctime = Tue Apr 24 00:42:11 PDT 2018 mZxid = 0x75 mtime = Tue Apr 24 00:42:11 PDT 2018 pZxid = 0x76 cversion = 1 dataVersion = 0 aclVersion = 0 ephemeralOwner = 0x0 dataLength = 9 numChildren = 1 #------------------------------ [zk: localhost:2181(CONNECTED) 6] quit Quitting... 2018-04-24 00:47:19,034 [myid:] - INFO [main:zookeeper@684] - Session: 0x162f5c0c60f0007 closed 2018-04-24 00:47:19,037 [myid:] - INFO [main-EventThread:ClientCnxn$EventThread@519] - EventThread shut down for session: 0x162f5c0c60f0007 view the log where is the log?root@ubuntu:~/app/zookeeper/bin# ll total 52 drwxr-xr-x 2 1001 1001 4096 Apr 24 00:35 ./ drwxr-xr-x 11 1001 1001 4096 Apr 24 00:19 ../ -rwxr-xr-x 1 1001 1001 232 Mar 23 2017 README.txt* -rwxr-xr-x 1 1001 1001 1937 Mar 23 2017 zkCleanup.sh* ... -rw-r--r-- 1 root root 5056 Apr 24 00:35 zookeeper.out]]></content>
+      <categories>
+        <category>configuration</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>configuration</tag>
+        <tag>hbase</tag>
+        <tag>zookdata</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[pseudo-distributed hbase configuration]]></title>
     <url>%2F2018%2F04%2F24%2Fpseudo-distributed%20hbase%20configuration%2F</url>
     <content type="text"><![CDATA[This article describes how to build a pseudo-distributed hbase on a virtual machine. preconditions jdk environmentroot@ubuntu:~# echo $JAVA_HOME /root/app/jdk1.8.0_171 a pseudo-distributed hadoop root@ubuntu:~/app/hadoop/sbin# jps 12550 NodeManager 34152 Jps 12408 ResourceManager 12024 DataNode 12235 SecondaryNameNode 11852 NameNode test http://localhost:50070 http://192.168.231.150:8099 http://192.168.231.150:8042 configure hbase download hbase from apache mirrors extract files from hbase-2.0.0-beta-2-bin.tar.gz configure xml fileshbase-env.sh hbase-site.xml regionservers #================================ root@ubuntu:~/app/hbase/conf# pwd /root/app/hbase/conf #================================ root@ubuntu:~/app/hbase/conf# ll total 48 drwxr-xr-x 2 root root 4096 Apr 23 20:15 ./ drwxr-xr-x 8 root root 4096 Apr 23 20:17 ../ -rw-r--r-- 1 root root 1811 Dec 26 2015 hadoop-metrics2-hbase.properties -rw-r--r-- 1 root root 4537 Jan 28 2016 hbase-env.cmd -rw-r--r-- 1 root root 7537 Apr 23 20:12 hbase-env.sh -rw-r--r-- 1 root root 2257 Dec 26 2015 hbase-policy.xml -rw-r--r-- 1 root root 1355 Apr 23 20:09 hbase-site.xml -rw-r--r-- 1 root root 4603 May 28 2017 log4j.properties -rw-r--r-- 1 root root 16 Apr 23 20:15 regionservers #================================ vim hbase-env.sh # The java implementation to use. Java 1.7+ required. # export JAVA_HOME=/usr/java/jdk1.6.0/ export JAVA_HOME=/root/app/jdk1.8.0_171 #-------------------------------- # Tell HBase whether it should manage it&#39;s own instance of Zookeeper or not. # export HBASE_MANAGES_ZK=true export HBASE_MANAGES_ZK=true #================================ vim regionservers root@ubuntu:~/app/hbase/conf# cat regionservers 192.168.231.150 #================================ vim hbase-site.xml &lt;configuration&gt; &lt;property&gt; &lt;name&gt;hbase.rootdir&lt;/name&gt; &lt;value&gt;hdfs://192.168.231.150:9000/hbase&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt; &lt;value&gt;192.168.231.150&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;dfs.replication&lt;/name&gt; &lt;value&gt;1&lt;/value&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;hbase.cluster.distributed&lt;/name&gt; &lt;value&gt;true&lt;/value&gt; &lt;/property&gt; &lt;/configuration&gt; run/stop hbase run hbaseroot@ubuntu:~/app/hbase/bin# ./start-hbase.sh localhost: starting zookeeper, logging to /root/app/hbase/bin/../logs/hbase-root-zookeeper-ubuntu.out starting master, logging to /root/app/hbase/bin/../logs/hbase-root-master-ubuntu.out Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=128m; support was removed in 8.0 Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=128m; support was removed in 8.0 192.168.231.150: starting regionserver, logging to /root/app/hbase/bin/../logs/hbase-root-regionserver-ubuntu.out 192.168.231.150: Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=128m; support was removed in 8.0 192.168.231.150: Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=128m; support was removed in 8.0 root@ubuntu:~/app/hbase/bin# jps 34545 HQuorumPeer 34757 HRegionServer 12550 NodeManager 12408 ResourceManager 12024 DataNode 34618 HMaster 12235 SecondaryNameNode 11852 NameNode 35053 Jps test hbasehttp://192.168.231.150:16010]]></content>
@@ -63,8 +77,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>eclipse</tag>
         <tag>hadoop</tag>
+        <tag>eclipse</tag>
         <tag>configuration</tag>
       </tags>
   </entry>
@@ -89,8 +103,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>hadoop</tag>
         <tag>maven</tag>
+        <tag>hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -157,8 +171,21 @@
       <tags>
         <tag>列表</tag>
         <tag>配置</tag>
-        <tag>kcptun</tag>
         <tag>ss</tag>
+        <tag>kcptun</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo如何开启语法高亮？]]></title>
+    <url>%2F2018%2F04%2F03%2Fhexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍hexo有关语法高亮的配置方案。 配置过程 配置主站点下的配置文件highlight: enable: true line_number: true auto_detect: true tab_replace: 代码后面添加名称，如```java code ```]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -173,19 +200,6 @@
         <tag>leetcode</tag>
         <tag>java</tag>
         <tag>basic algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[hexo如何开启语法高亮？]]></title>
-    <url>%2F2018%2F04%2F03%2Fhexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F%2F</url>
-    <content type="text"><![CDATA[本文介绍hexo有关语法高亮的配置方案。 配置过程 配置主站点下的配置文件highlight: enable: true line_number: true auto_detect: true tab_replace: 代码后面添加名称，如```java code ```]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>列表</tag>
-        <tag>配置</tag>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -293,8 +307,8 @@
       <tags>
         <tag>列表</tag>
         <tag>配置</tag>
-        <tag>hexo</tag>
         <tag>githubpages</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
