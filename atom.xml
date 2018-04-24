@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-23T12:33:06.838Z</updated>
+  <updated>2018-04-24T04:24:55.590Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pseudo-distributed hbase configuration</title>
+    <link href="http://yoursite.com/2018/04/24/pseudo-distributed%20hbase%20configuration/"/>
+    <id>http://yoursite.com/2018/04/24/pseudo-distributed hbase configuration/</id>
+    <published>2018-04-24T03:56:31.000Z</published>
+    <updated>2018-04-24T04:24:55.590Z</updated>
+    
+    <content type="html"><![CDATA[<p>This article describes how to build a pseudo-distributed hbase on a virtual machine.</p><a id="more"></a><h2 id="preconditions"><a href="#preconditions" class="headerlink" title="preconditions"></a>preconditions</h2><ul><li>jdk environment<pre><code>root@ubuntu:~# echo $JAVA_HOME/root/app/jdk1.8.0_171</code></pre></li><li><p>a pseudo-distributed hadoop</p><pre><code>root@ubuntu:~/app/hadoop/sbin# jps12550 NodeManager34152 Jps12408 ResourceManager12024 DataNode12235 SecondaryNameNode11852 NameNode</code></pre></li><li><p>test</p><pre><code>http://localhost:50070http://192.168.231.150:8099http://192.168.231.150:8042</code></pre></li></ul><h2 id="configure-hbase"><a href="#configure-hbase" class="headerlink" title="configure hbase"></a>configure hbase</h2><ul><li>download hbase from <a href="http://mirror.bit.edu.cn/apache/" target="_blank" rel="noopener">apache mirrors</a></li><li>extract files from hbase-2.0.0-beta-2-bin.tar.gz</li><li>configure xml files<pre><code>hbase-env.shhbase-site.xmlregionservers#================================root@ubuntu:~/app/hbase/conf# pwd/root/app/hbase/conf#================================root@ubuntu:~/app/hbase/conf# lltotal 48drwxr-xr-x 2 root root 4096 Apr 23 20:15 ./drwxr-xr-x 8 root root 4096 Apr 23 20:17 ../-rw-r--r-- 1 root root 1811 Dec 26  2015 hadoop-metrics2-hbase.properties-rw-r--r-- 1 root root 4537 Jan 28  2016 hbase-env.cmd-rw-r--r-- 1 root root 7537 Apr 23 20:12 hbase-env.sh-rw-r--r-- 1 root root 2257 Dec 26  2015 hbase-policy.xml-rw-r--r-- 1 root root 1355 Apr 23 20:09 hbase-site.xml-rw-r--r-- 1 root root 4603 May 28  2017 log4j.properties-rw-r--r-- 1 root root   16 Apr 23 20:15 regionservers#================================vim hbase-env.sh# The java implementation to use.  Java 1.7+ required.# export JAVA_HOME=/usr/java/jdk1.6.0/export JAVA_HOME=/root/app/jdk1.8.0_171#--------------------------------# Tell HBase whether it should manage it&#39;s own instance of Zookeeper or not.# export HBASE_MANAGES_ZK=trueexport HBASE_MANAGES_ZK=true#================================vim regionserversroot@ubuntu:~/app/hbase/conf# cat regionservers192.168.231.150#================================vim hbase-site.xml&lt;configuration&gt;  &lt;property&gt;      &lt;name&gt;hbase.rootdir&lt;/name&gt;      &lt;value&gt;hdfs://192.168.231.150:9000/hbase&lt;/value&gt;  &lt;/property&gt;  &lt;property&gt;      &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;  &lt;value&gt;192.168.231.150&lt;/value&gt;  &lt;/property&gt;  &lt;property&gt;      &lt;name&gt;dfs.replication&lt;/name&gt;      &lt;value&gt;1&lt;/value&gt;  &lt;/property&gt;  &lt;property&gt;      &lt;name&gt;hbase.cluster.distributed&lt;/name&gt;      &lt;value&gt;true&lt;/value&gt;  &lt;/property&gt;&lt;/configuration&gt;</code></pre></li></ul><h2 id="run-stop-hbase"><a href="#run-stop-hbase" class="headerlink" title="run/stop hbase"></a>run/stop hbase</h2><ul><li>run hbase<pre><code>root@ubuntu:~/app/hbase/bin# ./start-hbase.shlocalhost: starting zookeeper, logging to /root/app/hbase/bin/../logs/hbase-root-zookeeper-ubuntu.outstarting master, logging to /root/app/hbase/bin/../logs/hbase-root-master-ubuntu.outJava HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=128m; support was removed in 8.0Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=128m; support was removed in 8.0192.168.231.150: starting regionserver, logging to /root/app/hbase/bin/../logs/hbase-root-regionserver-ubuntu.out192.168.231.150: Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=128m; support was removed in 8.0192.168.231.150: Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=128m; support was removed in 8.0root@ubuntu:~/app/hbase/bin# jps34545 HQuorumPeer34757 HRegionServer12550 NodeManager12408 ResourceManager12024 DataNode34618 HMaster12235 SecondaryNameNode11852 NameNode35053 Jps</code></pre></li><li>test hbase<pre><code>http://192.168.231.150:16010</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This article describes how to build a pseudo-distributed hbase on a virtual machine.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="configuration" scheme="http://yoursite.com/categories/configuration/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
+    
+      <category term="configuration" scheme="http://yoursite.com/tags/configuration/"/>
+    
+      <category term="hbase" scheme="http://yoursite.com/tags/hbase/"/>
+    
+  </entry>
   
   <entry>
     <title>how to download 1080p videos from youtube</title>
@@ -116,9 +144,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
-    
       <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
+    
+      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
     
       <category term="configuration" scheme="http://yoursite.com/tags/configuration/"/>
     
@@ -168,9 +196,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
-    
       <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
+    
+      <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
     
   </entry>
   
@@ -199,34 +227,6 @@
   </entry>
   
   <entry>
-    <title>常见的环境变量配置</title>
-    <link href="http://yoursite.com/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2018/04/17/常见的环境变量配置/</id>
-    <published>2018-04-17T03:49:36.000Z</published>
-    <updated>2018-04-21T05:52:38.667Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍常见的环境变量配置方法。</p><a id="more"></a><h2 id="windows常见的环境变量配置"><a href="#windows常见的环境变量配置" class="headerlink" title="windows常见的环境变量配置"></a>windows常见的环境变量配置</h2><ul><li><p>CLASSPATH</p><pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></pre></li><li><p>JAVA_HOME</p><pre><code>C:\app3\Java\jdk1.8.0_144</code></pre></li><li><p>JRE_HOME</p><pre><code>C:\app3\Java\jre1.8.0_144</code></pre></li><li><p>MVN_HOME<br>C:\app3\apache-maven-3.5.3</p></li><li><p>Path</p><pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;</code></pre></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍常见的环境变量配置方法。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
-    
-      <category term="环境变量" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>apache maven的配置与使用</title>
     <link href="http://yoursite.com/2018/04/17/maven%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2018/04/17/maven的配置与使用/</id>
@@ -251,6 +251,34 @@
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常见的环境变量配置</title>
+    <link href="http://yoursite.com/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2018/04/17/常见的环境变量配置/</id>
+    <published>2018-04-17T03:49:36.000Z</published>
+    <updated>2018-04-21T05:52:38.667Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍常见的环境变量配置方法。</p><a id="more"></a><h2 id="windows常见的环境变量配置"><a href="#windows常见的环境变量配置" class="headerlink" title="windows常见的环境变量配置"></a>windows常见的环境变量配置</h2><ul><li><p>CLASSPATH</p><pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></pre></li><li><p>JAVA_HOME</p><pre><code>C:\app3\Java\jdk1.8.0_144</code></pre></li><li><p>JRE_HOME</p><pre><code>C:\app3\Java\jre1.8.0_144</code></pre></li><li><p>MVN_HOME<br>C:\app3\apache-maven-3.5.3</p></li><li><p>Path</p><pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍常见的环境变量配置方法。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+      <category term="环境变量" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
     
   </entry>
   
@@ -311,32 +339,6 @@
   </entry>
   
   <entry>
-    <title>hexo如何开启语法高亮？</title>
-    <link href="http://yoursite.com/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/"/>
-    <id>http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/</id>
-    <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-21T05:52:38.660Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍hexo有关语法高亮的配置方案。<br><a id="more"></a></p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul><li>配置主站点下的配置文件<pre><code>highlight:enable: trueline_number: trueauto_detect: truetab_replace:</code></pre></li><li>代码后面添加名称，如```java code ```</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍hexo有关语法高亮的配置方案。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
     <title>LC_001_TwoSum_HashMap</title>
     <link href="http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/"/>
     <id>http://yoursite.com/2018/04/03/LC_001_TwoSum_HashMap/</id>
@@ -361,6 +363,32 @@
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
     
       <category term="basic algorithm" scheme="http://yoursite.com/tags/basic-algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo如何开启语法高亮？</title>
+    <link href="http://yoursite.com/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/"/>
+    <id>http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/</id>
+    <published>2018-04-03T14:42:05.000Z</published>
+    <updated>2018-04-21T05:52:38.660Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍hexo有关语法高亮的配置方案。<br><a id="more"></a></p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul><li>配置主站点下的配置文件<pre><code>highlight:enable: trueline_number: trueauto_detect: truetab_replace:</code></pre></li><li>代码后面添加名称，如```java code ```</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍hexo有关语法高亮的配置方案。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   
@@ -521,36 +549,6 @@
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo部署在github和gitee上的坑</title>
-    <link href="http://yoursite.com/2018/03/28/hexo%E9%83%A8%E7%BD%B2%E5%9C%A8github%E5%92%8Cgitee%E4%B8%8A%E7%9A%84%E5%9D%91/"/>
-    <id>http://yoursite.com/2018/03/28/hexo部署在github和gitee上的坑/</id>
-    <published>2018-03-28T02:00:53.000Z</published>
-    <updated>2018-04-21T05:52:38.662Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍了hexo博客github和gitee上部署时候遇到的坑。<br><a id="more"></a></p><h2 id="遇到的坑列举如下"><a href="#遇到的坑列举如下" class="headerlink" title="遇到的坑列举如下"></a>遇到的坑列举如下</h2><ul><li>gitee不支持个性化的域名绑定，所以不要试图申请阿里云的域名，将域名指向gitee pages。</li><li>github pages支持个性化域名的绑定，需要在blog/source目录下新建CNAME文件，并写入自己域名。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍了hexo博客github和gitee上部署时候遇到的坑。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-      <category term="github" scheme="http://yoursite.com/tags/github/"/>
-    
-      <category term="gitee" scheme="http://yoursite.com/tags/gitee/"/>
-    
-      <category term="部署" scheme="http://yoursite.com/tags/%E9%83%A8%E7%BD%B2/"/>
     
   </entry>
   

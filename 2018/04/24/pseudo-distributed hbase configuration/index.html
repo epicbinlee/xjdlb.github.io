@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="列表,hadoop,configuration,hbase," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="路漫漫其修远兮，吾将上下而求索">
-<meta property="og:type" content="website">
-<meta property="og:title" content="初心">
-<meta property="og:url" content="http://yoursite.com/tags/部署/index.html">
+<meta name="description" content="This article describes how to build a pseudo-distributed hbase on a virtual machine.">
+<meta name="keywords" content="列表,hadoop,configuration,hbase">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pseudo-distributed hbase configuration">
+<meta property="og:url" content="http://yoursite.com/2018/04/24/pseudo-distributed hbase configuration/index.html">
 <meta property="og:site_name" content="初心">
-<meta property="og:description" content="路漫漫其修远兮，吾将上下而求索">
+<meta property="og:description" content="This article describes how to build a pseudo-distributed hbase on a virtual machine.">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-24T04:24:55.590Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初心">
-<meta name="twitter:description" content="路漫漫其修远兮，吾将上下而求索">
+<meta name="twitter:title" content="pseudo-distributed hbase configuration">
+<meta name="twitter:description" content="This article describes how to build a pseudo-distributed hbase on a virtual machine.">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/部署/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/24/pseudo-distributed hbase configuration/"/>
 
 
 
 
 
-  <title>标签: 部署 | 初心</title>
+  <title>pseudo-distributed hbase configuration | 初心</title>
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,54 +285,329 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>部署<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/24/pseudo-distributed hbase configuration/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LeeBin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="初心">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/03/28/hexo部署在github和gitee上的坑/" itemprop="url">
-              
-                <span itemprop="name">hexo部署在github和gitee上的坑</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">pseudo-distributed hbase configuration</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-28T10:00:53+08:00"
-              content="2018-03-28" >
-          03-28
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-24T11:56:31+08:00">
+                2018-04-24
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/configuration/" itemprop="url" rel="index">
+                    <span itemprop="name">configuration</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/24/pseudo-distributed hbase configuration/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/24/pseudo-distributed hbase configuration/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/04/24/pseudo-distributed hbase configuration/" class="leancloud_visitors" data-flag-title="pseudo-distributed hbase configuration">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span> 
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  506
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This article describes how to build a pseudo-distributed hbase on a virtual machine.</p>
+<a id="more"></a>
+<h2 id="preconditions"><a href="#preconditions" class="headerlink" title="preconditions"></a>preconditions</h2><ul>
+<li>jdk environment<pre><code>root@ubuntu:~# echo $JAVA_HOME
+/root/app/jdk1.8.0_171
+</code></pre></li>
+<li><p>a pseudo-distributed hadoop</p>
+<pre><code>root@ubuntu:~/app/hadoop/sbin# jps
+12550 NodeManager
+34152 Jps
+12408 ResourceManager
+12024 DataNode
+12235 SecondaryNameNode
+11852 NameNode
+</code></pre></li>
+<li><p>test</p>
+<pre><code>http://localhost:50070
+http://192.168.231.150:8099
+http://192.168.231.150:8042
+</code></pre></li>
+</ul>
+<h2 id="configure-hbase"><a href="#configure-hbase" class="headerlink" title="configure hbase"></a>configure hbase</h2><ul>
+<li>download hbase from <a href="http://mirror.bit.edu.cn/apache/" target="_blank" rel="noopener">apache mirrors</a></li>
+<li>extract files from hbase-2.0.0-beta-2-bin.tar.gz</li>
+<li>configure xml files<pre><code>hbase-env.sh
+hbase-site.xml
+regionservers
+#================================
+root@ubuntu:~/app/hbase/conf# pwd
+/root/app/hbase/conf
+#================================
+root@ubuntu:~/app/hbase/conf# ll
+total 48
+drwxr-xr-x 2 root root 4096 Apr 23 20:15 ./
+drwxr-xr-x 8 root root 4096 Apr 23 20:17 ../
+-rw-r--r-- 1 root root 1811 Dec 26  2015 hadoop-metrics2-hbase.properties
+-rw-r--r-- 1 root root 4537 Jan 28  2016 hbase-env.cmd
+-rw-r--r-- 1 root root 7537 Apr 23 20:12 hbase-env.sh
+-rw-r--r-- 1 root root 2257 Dec 26  2015 hbase-policy.xml
+-rw-r--r-- 1 root root 1355 Apr 23 20:09 hbase-site.xml
+-rw-r--r-- 1 root root 4603 May 28  2017 log4j.properties
+-rw-r--r-- 1 root root   16 Apr 23 20:15 regionservers
+#================================
+vim hbase-env.sh
+# The java implementation to use.  Java 1.7+ required.
+# export JAVA_HOME=/usr/java/jdk1.6.0/
+export JAVA_HOME=/root/app/jdk1.8.0_171
+#--------------------------------
+# Tell HBase whether it should manage it&#39;s own instance of Zookeeper or not.
+# export HBASE_MANAGES_ZK=true
+export HBASE_MANAGES_ZK=true
+#================================
+vim regionservers
+root@ubuntu:~/app/hbase/conf# cat regionservers
+192.168.231.150
+#================================
+vim hbase-site.xml
+&lt;configuration&gt;
+  &lt;property&gt;
+      &lt;name&gt;hbase.rootdir&lt;/name&gt;
+      &lt;value&gt;hdfs://192.168.231.150:9000/hbase&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;
+  &lt;value&gt;192.168.231.150&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.replication&lt;/name&gt;
+      &lt;value&gt;1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;hbase.cluster.distributed&lt;/name&gt;
+      &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre></li>
+</ul>
+<h2 id="run-stop-hbase"><a href="#run-stop-hbase" class="headerlink" title="run/stop hbase"></a>run/stop hbase</h2><ul>
+<li>run hbase<pre><code>root@ubuntu:~/app/hbase/bin# ./start-hbase.sh
+localhost: starting zookeeper, logging to /root/app/hbase/bin/../logs/hbase-root-zookeeper-ubuntu.out
+starting master, logging to /root/app/hbase/bin/../logs/hbase-root-master-ubuntu.out
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=128m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=128m; support was removed in 8.0
+192.168.231.150: starting regionserver, logging to /root/app/hbase/bin/../logs/hbase-root-regionserver-ubuntu.out
+192.168.231.150: Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=128m; support was removed in 8.0
+192.168.231.150: Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=128m; support was removed in 8.0
+root@ubuntu:~/app/hbase/bin# jps
+34545 HQuorumPeer
+34757 HRegionServer
+12550 NodeManager
+12408 ResourceManager
+12024 DataNode
+34618 HMaster
+12235 SecondaryNameNode
+11852 NameNode
+35053 Jps
+</code></pre></li>
+<li>test hbase<pre><code>http://192.168.231.150:16010
+</code></pre></li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/列表/" rel="tag"><i class="fa fa-tag"></i> 列表</a>
+          
+            <a href="/tags/hadoop/" rel="tag"><i class="fa fa-tag"></i> hadoop</a>
+          
+            <a href="/tags/configuration/" rel="tag"><i class="fa fa-tag"></i> configuration</a>
+          
+            <a href="/tags/hbase/" rel="tag"><i class="fa fa-tag"></i> hbase</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/23/how to download 1080p videos from youtube/" rel="next" title="how to download 1080p videos from youtube">
+                <i class="fa fa-chevron-left"></i> how to download 1080p videos from youtube
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -338,6 +615,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -358,8 +642,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -426,6 +719,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#preconditions"><span class="nav-number">1.</span> <span class="nav-text">preconditions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configure-hbase"><span class="nav-number">2.</span> <span class="nav-text">configure hbase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run-stop-hbase"><span class="nav-number">3.</span> <span class="nav-text">run/stop hbase</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -591,6 +900,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
