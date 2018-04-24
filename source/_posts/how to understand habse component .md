@@ -1,6 +1,6 @@
 
 ---
-title: how to understand habse component ?
+title: how to understand habse components ?
 date: 2018-04-24 16:45:26
 tags: [列表,hbase,configuration]
 categories: configuration
@@ -15,9 +15,9 @@ This article describes the basic components of hbase, including HMaster, HRegion
 ## principle of hbase
 
 - **features of HMaster (Technical Director)**
-1. Add, delete, and modify tables
-2. Load balancing the region
-3. HMaster manages the distribution of all data
+1. add, delete, and modify tables
+2. Region load balancing
+3. HMaster manages the distribution of data
 
 - **features of RegionServer (department manager)**
 1. RegionServer is the service component of Hbase
