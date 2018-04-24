@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-24T13:55:13.066Z</updated>
+  <updated>2018-04-24T14:00:22.559Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/04/24/hbase%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
     <id>http://yoursite.com/2018/04/24/hbase的基本构成与实践/</id>
     <published>2018-04-24T13:14:15.000Z</published>
-    <updated>2018-04-24T13:55:13.066Z</updated>
+    <updated>2018-04-24T14:00:22.559Z</updated>
     
-    <content type="html"><![CDATA[<p>本文介绍hbase的基本构成与实践。</p><a id="more"></a><h2 id="hbase的基本构成"><a href="#hbase的基本构成" class="headerlink" title="hbase的基本构成"></a>hbase的基本构成</h2><ul><li><p>表空间 namespace</p><pre><code>两个默认的表空间hbase： 系统默认表空间default： 不指定自动加入的表空间root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/dataFound 2 itemsdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/defaultdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase</code></pre></li><li><p>表 table</p><pre><code>表的存在形式：表以文件夹的形式存在于hdfs中表的基本组成是：RowKey, Column Family, Column, Value(Cell):Byte array表的物理属性：以RowKey进行字典排序，行的方向存在多个Region，Region是存储和负载均衡的最小单元，不同的Region分布到不同的RegionServer上#=============================root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/data/hbaseFound 2 itemsdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase/metadrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase/namespace#-----------------------------root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/data/hbase/metaFound 3 itemsdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase/meta/.tabledescdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase/meta/.tmpdrwxr-xr-x   - root supergroup          0 2018-04-24 01:45 /hbase/data/hbase/meta/1588230740#-----------------------------root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/data/hbase/meta/1588230740Found 4 items-rw-r--r--   1 root supergroup         32 2018-04-23 20:18 /hbase/data/hbase/meta/1588230740/.regioninfodrwxr-xr-x   - root supergroup          0 2018-04-24 01:45 /hbase/data/hbase/meta/1588230740/.tmpdrwxr-xr-x   - root supergroup          0 2018-04-24 01:45 /hbase/data/hbase/meta/1588230740/infodrwxr-xr-x   - root supergroup          0 2018-04-24 01:37 /hbase/data/hbase/meta/1588230740/recovered.edits#-----------------------------root@ubuntu:~/app/hbase/bin# ./hbase shell2018-04-24 06:29:19,776 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicableHBase Shell; enter &#39;help&lt;RETURN&gt;&#39; for list of supported commands.Type &quot;exit&lt;RETURN&gt;&quot; to leave the HBase ShellVersion 1.2.6, rUnknown, Mon May 29 02:25:32 CDT 2017hbase(main):001:0&gt;#-----------------------------hbase(main):001:0&gt; create &#39;maizi_hbase&#39;,&#39;f&#39;0 row(s) in 2.5670 seconds=&gt; Hbase::Table - maizi_hbasehbase(main):002:0&gt;#=============================访问 http://192.168.231.150:50070/explorer.html#/hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458得到hbse的路径#-----------------------------root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458Found 3 items-rw-r--r--   1 root supergroup         46 2018-04-24 06:30 /hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458/.regioninfodrwxr-xr-x   - root supergroup          0 2018-04-24 06:30 /hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458/fdrwxr-xr-x   - root supergroup          0 2018-04-24 06:30 /hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458/recovered.edits#-----------------------------上述操作中，6a028f21704f8fc6bf298598f6b8a458为Region的编号#=============================访问 http://192.168.231.150:16010/table.jsp?name=maizi_hbase 得到hbase的管理界面，可以看出路径结构</code></pre></li><li><p>列族 column family</p><pre><code>很多列的集合hbase中的每个列都属于一个column family每个column family存在于hdfs的单独文件中列名以column family为前缀， info:name, info:age#-----------------------------/hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458/f数据库/数据/表空间/表/region/列族#-----------------------------创建表的时候必须定义列族，因为在hdfs上必须要创建文件夹#-----------------------------何如设计RowKey是经典问题？</code></pre></li><li><p>列</p><pre><code>存放数据的地方</code></pre></li><li><p>RowKey</p><pre><code>可以理解为主键，最大长度为64k，RowKey保存为字节数组，是非关系型数据库中key-value类型的数据的key字典排序散列原则，分布到不同的Region中，RegionServer的负载均衡问题</code></pre></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>本文介绍hbase的基本构成与实践。</p><a id="more"></a><h2 id="hbase的基本构成"><a href="#hbase的基本构成" class="headerlink" title="hbase的基本构成"></a>hbase的基本构成</h2><ul><li><p>表空间 namespace</p><pre><code>两个默认的表空间hbase： 系统默认表空间default： 不指定自动加入的表空间root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/dataFound 2 itemsdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/defaultdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase</code></pre></li><li><p>表 table</p><pre><code>表的存在形式：表以文件夹的形式存在于hdfs中表的基本组成是：RowKey, Column Family, Column, Value(Cell):Byte array表的物理属性：以RowKey进行字典排序，行的方向存在多个Region，Region是存储和负载均衡的最小单元，不同的Region分布到不同的RegionServer上#=============================root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/data/hbaseFound 2 itemsdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase/metadrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase/namespace#-----------------------------root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/data/hbase/metaFound 3 itemsdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase/meta/.tabledescdrwxr-xr-x   - root supergroup          0 2018-04-23 20:18 /hbase/data/hbase/meta/.tmpdrwxr-xr-x   - root supergroup          0 2018-04-24 01:45 /hbase/data/hbase/meta/1588230740#-----------------------------root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/data/hbase/meta/1588230740Found 4 items-rw-r--r--   1 root supergroup         32 2018-04-23 20:18 /hbase/data/hbase/meta/1588230740/.regioninfodrwxr-xr-x   - root supergroup          0 2018-04-24 01:45 /hbase/data/hbase/meta/1588230740/.tmpdrwxr-xr-x   - root supergroup          0 2018-04-24 01:45 /hbase/data/hbase/meta/1588230740/infodrwxr-xr-x   - root supergroup          0 2018-04-24 01:37 /hbase/data/hbase/meta/1588230740/recovered.edits#-----------------------------root@ubuntu:~/app/hbase/bin# ./hbase shell2018-04-24 06:29:19,776 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicableHBase Shell; enter &#39;help&lt;RETURN&gt;&#39; for list of supported commands.Type &quot;exit&lt;RETURN&gt;&quot; to leave the HBase ShellVersion 1.2.6, rUnknown, Mon May 29 02:25:32 CDT 2017hbase(main):001:0&gt;#-----------------------------hbase(main):001:0&gt; create &#39;maizi_hbase&#39;,&#39;f&#39;0 row(s) in 2.5670 seconds=&gt; Hbase::Table - maizi_hbasehbase(main):002:0&gt;#=============================访问 http://192.168.231.150:50070/explorer.html#/hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458得到hbse的路径#-----------------------------root@ubuntu:~/app/hadoop/bin# ./hadoop fs -ls /hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458Found 3 items-rw-r--r--   1 root supergroup         46 2018-04-24 06:30 /hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458/.regioninfodrwxr-xr-x   - root supergroup          0 2018-04-24 06:30 /hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458/fdrwxr-xr-x   - root supergroup          0 2018-04-24 06:30 /hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458/recovered.edits#-----------------------------上述操作中，6a028f21704f8fc6bf298598f6b8a458为Region的编号#=============================访问 http://192.168.231.150:16010/table.jsp?name=maizi_hbase 得到hbase的管理界面，可以看出路径结构</code></pre></li><li><p>列族 column family</p><pre><code>很多列的集合hbase中的每个列都属于一个column family每个column family存在于hdfs的单独文件中列名以column family为前缀， info:name, info:age#-----------------------------/hbase/data/default/maizi_hbase/6a028f21704f8fc6bf298598f6b8a458/f数据库/数据/表空间/表/region/列族#-----------------------------创建表的时候必须定义列族，因为在hdfs上必须要创建文件夹#-----------------------------何如设计RowKey是经典问题？</code></pre></li><li><p>列</p><pre><code>存放数据的地方</code></pre></li><li><p>RowKey</p><pre><code>可以理解为主键，最大长度为64k，RowKey保存为字节数组是非关系型数据库中key-value类型的数据的key自动字典排序散列原则，分布到不同的Region中，RegionServer的负载均衡问题</code></pre></li></ul>]]></content>
     
     <summary type="html">
     
@@ -31,16 +31,16 @@
     
     </summary>
     
-      <category term="5555" scheme="http://yoursite.com/categories/5555/"/>
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
     
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="2222" scheme="http://yoursite.com/tags/2222/"/>
+      <category term="configuration" scheme="http://yoursite.com/tags/configuration/"/>
     
-      <category term="3333" scheme="http://yoursite.com/tags/3333/"/>
+      <category term="原理" scheme="http://yoursite.com/tags/%E5%8E%9F%E7%90%86/"/>
     
-      <category term="4444" scheme="http://yoursite.com/tags/4444/"/>
+      <category term="hbase" scheme="http://yoursite.com/tags/hbase/"/>
     
   </entry>
   
@@ -226,9 +226,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
-    
       <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
+    
+      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
     
       <category term="configuration" scheme="http://yoursite.com/tags/configuration/"/>
     
@@ -278,9 +278,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
-    
       <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
+    
+      <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
     
   </entry>
   
@@ -309,34 +309,6 @@
   </entry>
   
   <entry>
-    <title>常见的环境变量配置</title>
-    <link href="http://yoursite.com/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2018/04/17/常见的环境变量配置/</id>
-    <published>2018-04-17T03:49:36.000Z</published>
-    <updated>2018-04-21T05:52:38.667Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍常见的环境变量配置方法。</p><a id="more"></a><h2 id="windows常见的环境变量配置"><a href="#windows常见的环境变量配置" class="headerlink" title="windows常见的环境变量配置"></a>windows常见的环境变量配置</h2><ul><li><p>CLASSPATH</p><pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></pre></li><li><p>JAVA_HOME</p><pre><code>C:\app3\Java\jdk1.8.0_144</code></pre></li><li><p>JRE_HOME</p><pre><code>C:\app3\Java\jre1.8.0_144</code></pre></li><li><p>MVN_HOME<br>C:\app3\apache-maven-3.5.3</p></li><li><p>Path</p><pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;</code></pre></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍常见的环境变量配置方法。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
-    
-      <category term="环境变量" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>apache maven的配置与使用</title>
     <link href="http://yoursite.com/2018/04/17/maven%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2018/04/17/maven的配置与使用/</id>
@@ -361,6 +333,34 @@
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常见的环境变量配置</title>
+    <link href="http://yoursite.com/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2018/04/17/常见的环境变量配置/</id>
+    <published>2018-04-17T03:49:36.000Z</published>
+    <updated>2018-04-21T05:52:38.667Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍常见的环境变量配置方法。</p><a id="more"></a><h2 id="windows常见的环境变量配置"><a href="#windows常见的环境变量配置" class="headerlink" title="windows常见的环境变量配置"></a>windows常见的环境变量配置</h2><ul><li><p>CLASSPATH</p><pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></pre></li><li><p>JAVA_HOME</p><pre><code>C:\app3\Java\jdk1.8.0_144</code></pre></li><li><p>JRE_HOME</p><pre><code>C:\app3\Java\jre1.8.0_144</code></pre></li><li><p>MVN_HOME<br>C:\app3\apache-maven-3.5.3</p></li><li><p>Path</p><pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍常见的环境变量配置方法。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+      <category term="环境变量" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
     
   </entry>
   
@@ -421,32 +421,6 @@
   </entry>
   
   <entry>
-    <title>hexo如何开启语法高亮？</title>
-    <link href="http://yoursite.com/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/"/>
-    <id>http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/</id>
-    <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-21T05:52:38.660Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍hexo有关语法高亮的配置方案。<br><a id="more"></a></p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul><li>配置主站点下的配置文件<pre><code>highlight:enable: trueline_number: trueauto_detect: truetab_replace:</code></pre></li><li>代码后面添加名称，如```java code ```</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍hexo有关语法高亮的配置方案。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
     <title>如何去掉valine的Powered By信息？</title>
     <link href="http://yoursite.com/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
     <id>http://yoursite.com/2018/04/03/如何去掉valine的Powered By信息？/</id>
@@ -469,6 +443,32 @@
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo如何开启语法高亮？</title>
+    <link href="http://yoursite.com/2018/04/03/hexo%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%EF%BC%9F/"/>
+    <id>http://yoursite.com/2018/04/03/hexo如何开启语法高亮？/</id>
+    <published>2018-04-03T14:42:05.000Z</published>
+    <updated>2018-04-21T05:52:38.660Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍hexo有关语法高亮的配置方案。<br><a id="more"></a></p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><ul><li>配置主站点下的配置文件<pre><code>highlight:enable: trueline_number: trueauto_detect: truetab_replace:</code></pre></li><li>代码后面添加名称，如```java code ```</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍hexo有关语法高亮的配置方案。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   
