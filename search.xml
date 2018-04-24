@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[how to understand habse components ?]]></title>
     <url>%2F2018%2F04%2F24%2Fhow%20to%20understand%20habse%20component%20%2F</url>
-    <content type="text"><![CDATA[This article describes the basic components of hbase, including HMaster, HRegionServer, Region. principle of hbase features of HMaster (Technical Director) add, delete, and modify tables Region load balancing HMaster manages the distribution of data features of RegionServer (department manager) RegionServer is the service component of Hbase RegionServer maintains Regions assigned by HMaster RegionServer can divide big Regions features of Region (developers) Region is a partition handling the tasks assigned by RegionServer]]></content>
+    <content type="text"><![CDATA[This article describes the basic components of hbase, including HMaster, HRegionServer, Region. principle of hbase features of HMaster (technical director) add, delete, and modify tables Region load balancing HMaster manages the distribution of data features of RegionServer (department manager) RegionServer is the service component of Hbase RegionServer maintains Regions assigned by HMaster RegionServer can divide big Regions features of Region (developers) Region is a partition handling the tasks assigned by RegionServer]]></content>
       <categories>
         <category>configuration</category>
       </categories>

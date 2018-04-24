@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-24T09:04:57.906Z</updated>
+  <updated>2018-04-24T09:07:21.985Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/04/24/how%20to%20understand%20habse%20component%20/"/>
     <id>http://yoursite.com/2018/04/24/how to understand habse component /</id>
     <published>2018-04-24T08:45:26.000Z</published>
-    <updated>2018-04-24T09:04:57.906Z</updated>
+    <updated>2018-04-24T09:07:21.985Z</updated>
     
-    <content type="html"><![CDATA[<p>This article describes the basic components of hbase, including HMaster, HRegionServer, Region.</p><a id="more"></a><h2 id="principle-of-hbase"><a href="#principle-of-hbase" class="headerlink" title="principle of hbase"></a>principle of hbase</h2><ul><li><strong>features of HMaster (Technical Director)</strong></li></ul><ol><li>add, delete, and modify tables</li><li>Region load balancing</li><li>HMaster manages the distribution of data</li></ol><ul><li><strong>features of RegionServer (department manager)</strong></li></ul><ol><li>RegionServer is the service component of Hbase</li><li>RegionServer maintains Regions assigned by HMaster</li><li>RegionServer can divide big Regions</li></ol><ul><li><strong>features of Region (developers)</strong></li></ul><ol><li>Region is a partition</li><li>handling the tasks assigned by RegionServer</li></ol>]]></content>
+    <content type="html"><![CDATA[<p>This article describes the basic components of hbase, including HMaster, HRegionServer, Region.</p><a id="more"></a><h2 id="principle-of-hbase"><a href="#principle-of-hbase" class="headerlink" title="principle of hbase"></a>principle of hbase</h2><ul><li><strong>features of HMaster (technical director)</strong></li></ul><ol><li>add, delete, and modify tables</li><li>Region load balancing</li><li>HMaster manages the distribution of data</li></ol><ul><li><strong>features of RegionServer (department manager)</strong></li></ul><ol><li>RegionServer is the service component of Hbase</li><li>RegionServer maintains Regions assigned by HMaster</li><li>RegionServer can divide big Regions</li></ol><ul><li><strong>features of Region (developers)</strong></li></ul><ol><li>Region is a partition</li><li>handling the tasks assigned by RegionServer</li></ol>]]></content>
     
     <summary type="html">
     
