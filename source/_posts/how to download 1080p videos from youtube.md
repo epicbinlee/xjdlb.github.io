@@ -47,3 +47,11 @@ apt-get install ffmpeg -y
 ```
 ffmpeg -i /tmp/a.wav -i /tmp/a.avi /tmp/out.avi
 ```
+
+## how to download playlist from youtube
+- cmd
+```
+youtube-dl -citk –format mp4 –yes-playlist VIDEO_PLAYLIST_LINK
+youtube-dl -citk –format mp4 –yes-playlist https://www.youtube.com/playlist?list=PLi8jnEH_cKdzioH63X5NLJjHGJcYZcfua
+youtube-dl -cit "https://www.youtube.com/playlist?list=PLi8jnEH_cKdzioH63X5NLJjHGJcYZcfua"
+```
