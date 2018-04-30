@@ -181,3 +181,26 @@ A|www|默认|151.101.41.147|600
 问题：每次hexo deploy之后，https://www.leebin.top 都会出现404错误
 一般解决：Github pages–>Settings–>Custom domain
 最优解决：在将CNAME文件放在source目录下，CNAME文件内容为：leebin.top
+
+## 环境变更
+- 换地方写作，安装环境
+```
+git config --global user.name "你的GitHub用户名"
+git config --global user.email "你的GitHub注册邮箱"
+node -v
+npm -v
+git --version
+npm intsall hexo -g 或 npm install hexo-cli g
+hexo -v
+npm install
+npm install hexo-deployer-git --save
+# 下面是全部组件，源git仓库不需要全部用上
+npm install hexo-server --save
+npm install hexo-admin --save
+npm install hexo-generator-archive --save
+npm install hexo-generator-feed --save
+npm install hexo-generator-search --save
+npm install hexo-generator-tag --save
+npm install hexo-deployer-git --save
+npm install hexo-generator-sitemap --save
+```
