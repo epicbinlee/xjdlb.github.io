@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文描述了如何使用github pages和hexo搭建自己的博客。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-21T05:52:38.664Z">
+<meta property="og:updated_time" content="2018-04-30T05:56:36.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用github pages和hexo搭建自己的博客">
 <meta name="twitter:description" content="本文描述了如何使用github pages和hexo搭建自己的博客。">
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  892
+                  1,018
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -609,6 +609,27 @@ cd ../..
 <li>使用自己的域名测试</li>
 </ul>
 <h2 id="CNAME问题"><a href="#CNAME问题" class="headerlink" title="CNAME问题"></a>CNAME问题</h2><p>问题：每次hexo deploy之后，<a href="https://www.leebin.top" target="_blank" rel="noopener">https://www.leebin.top</a> 都会出现404错误<br>一般解决：Github pages–&gt;Settings–&gt;Custom domain<br>最优解决：在将CNAME文件放在source目录下，CNAME文件内容为：leebin.top</p>
+<h2 id="环境变更"><a href="#环境变更" class="headerlink" title="环境变更"></a>环境变更</h2><ul>
+<li>换地方写作，安装环境<pre><code>git config --global user.name &quot;你的GitHub用户名&quot;
+git config --global user.email &quot;你的GitHub注册邮箱&quot;
+node -v
+npm -v
+git --version
+npm intsall hexo -g 或 npm install hexo-cli g
+hexo -v
+npm install
+npm install hexo-deployer-git --save
+# 下面是全部组件，源git仓库不需要全部用上
+npm install hexo-server --save
+npm install hexo-admin --save
+npm install hexo-generator-archive --save
+npm install hexo-generator-feed --save
+npm install hexo-generator-search --save
+npm install hexo-generator-tag --save
+npm install hexo-deployer-git --save
+npm install hexo-generator-sitemap --save
+</code></pre></li>
+</ul>
 
       
     </div>
@@ -799,7 +820,7 @@ cd ../..
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装node-js"><span class="nav-number">1.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装git并配置ssh密钥"><span class="nav-number">2.</span> <span class="nav-text">安装git并配置ssh密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hexo"><span class="nav-number">3.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地开发blog与本地测试"><span class="nav-number">4.</span> <span class="nav-text">本地开发blog与本地测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端新建自己的博客仓库"><span class="nav-number">5.</span> <span class="nav-text">服务端新建自己的博客仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端将hexo博客部署到github上"><span class="nav-number">6.</span> <span class="nav-text">客户端将hexo博客部署到github上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端将自己的blog部署hexo"><span class="nav-number">7.</span> <span class="nav-text">客户端将自己的blog部署hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo命令缩写与组合"><span class="nav-number">8.</span> <span class="nav-text">hexo命令缩写与组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题相关配置"><span class="nav-number">9.</span> <span class="nav-text">主题相关配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建blog文件"><span class="nav-number">10.</span> <span class="nav-text">新建blog文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将github-pages绑定自己的域名"><span class="nav-number">11.</span> <span class="nav-text">将github pages绑定自己的域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CNAME问题"><span class="nav-number">12.</span> <span class="nav-text">CNAME问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装node-js"><span class="nav-number">1.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装git并配置ssh密钥"><span class="nav-number">2.</span> <span class="nav-text">安装git并配置ssh密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hexo"><span class="nav-number">3.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地开发blog与本地测试"><span class="nav-number">4.</span> <span class="nav-text">本地开发blog与本地测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端新建自己的博客仓库"><span class="nav-number">5.</span> <span class="nav-text">服务端新建自己的博客仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端将hexo博客部署到github上"><span class="nav-number">6.</span> <span class="nav-text">客户端将hexo博客部署到github上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端将自己的blog部署hexo"><span class="nav-number">7.</span> <span class="nav-text">客户端将自己的blog部署hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo命令缩写与组合"><span class="nav-number">8.</span> <span class="nav-text">hexo命令缩写与组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题相关配置"><span class="nav-number">9.</span> <span class="nav-text">主题相关配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建blog文件"><span class="nav-number">10.</span> <span class="nav-text">新建blog文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将github-pages绑定自己的域名"><span class="nav-number">11.</span> <span class="nav-text">将github pages绑定自己的域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CNAME问题"><span class="nav-number">12.</span> <span class="nav-text">CNAME问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变更"><span class="nav-number">13.</span> <span class="nav-text">环境变更</span></a></li></ol></div>
             
 
           </div>
@@ -864,7 +885,7 @@ cd ../..
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共14.1k字</span>
+  <span class="post-count">博客全站共14.2k字</span>
 </div>
 
         
