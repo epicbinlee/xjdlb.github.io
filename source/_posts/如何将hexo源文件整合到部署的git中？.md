@@ -85,7 +85,7 @@ sh commit.txt
 ```
 - 本次修改完成直接在commit.txt中修改commit，然后运行upload_and_deploy.sh，即可上传代码到hexo分支，发布blog到master分支
 
-## 换个地点继续写作
+## 换电脑，安装环境，继续写作
 - 先决条件：电脑+网络+nodejs+hexo
 - 克隆仓库到本地
 - 在仓库中建立hexo配置脚本 init_hexo_after_clone.sh

@@ -183,7 +183,7 @@ A|www|默认|151.101.41.147|600
 最优解决：在将CNAME文件放在source目录下，CNAME文件内容为：leebin.top
 
 ## 环境变更
-- 换地方写作，安装环境
+- 换电脑，安装环境
 ```
 git config --global user.name "你的GitHub用户名"
 git config --global user.email "你的GitHub注册邮箱"
