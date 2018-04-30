@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-30T06:20:15.567Z</updated>
+  <updated>2018-04-30T06:23:51.170Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/04/30/PE%20hadoop%202.x%20hdfs%20availablity%20implement/"/>
     <id>http://yoursite.com/2018/04/30/PE hadoop 2.x hdfs availablity implement/</id>
     <published>2018-04-30T06:08:31.000Z</published>
-    <updated>2018-04-30T06:20:15.567Z</updated>
+    <updated>2018-04-30T06:23:51.170Z</updated>
     
-    <content type="html"><![CDATA[<p>本文介绍如何在hdfs上实现namenode集群的高可用。</p><a id="more"></a><h2 id="集群配置需求"><a href="#集群配置需求" class="headerlink" title="集群配置需求"></a>集群配置需求</h2><ul><li>集群配置地点<pre><code>  NN  DN  JN  ZK  ZKFCn1  1           1   1n2  1   1   1   1   1n3      1   1   1   n4      1   1</code></pre></li></ul><h2 id="配置HDFS"><a href="#配置HDFS" class="headerlink" title="配置HDFS"></a>配置HDFS</h2><ul><li><p>hdfs-site.xml</p><pre><code>vim /root/app/hadoop/etc/hadoop/hdfs-site.xml&lt;configuration&gt;      &lt;!-- 配置NN空间 --&gt;      &lt;property&gt;              &lt;name&gt;dfs.nameservices&lt;/name&gt;              &lt;value&gt;sxt&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.ha.namenodes.sxt&lt;/name&gt;              &lt;value&gt;nn1,nn2&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.namenode.rpc-address.sxt.nn1&lt;/name&gt;              &lt;value&gt;n1:8020&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.namenode.rpc-address.sxt.nn2&lt;/name&gt;              &lt;value&gt;n2:8020&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.namenode.http-address.sxt.nn1&lt;/name&gt;              &lt;value&gt;n1:50070&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.namenode.http-address.sxt.nn2&lt;/name&gt;              &lt;value&gt;n2:50070&lt;/value&gt;      &lt;/property&gt;      &lt;!-- 配置JN能处理的Node，可以理解为DN --&gt;      &lt;property&gt;              &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;              &lt;value&gt;qjournal://n2:8485;n3:8485;n4:8485/sxt&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.client.failover.proxy.provider.sxt&lt;/name&gt;              &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;      &lt;/property&gt;      &lt;!-- 配置密钥 --&gt;      &lt;property&gt;              &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;              &lt;value&gt;sshfence&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;              &lt;value&gt;/root/.ssh/id_rsa&lt;/value&gt;      &lt;/property&gt;      &lt;!-- 配置JN的临时文件夹 --&gt;      &lt;property&gt;              &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;              &lt;value&gt;/opt/journal/node/data&lt;/value&gt;      &lt;/property&gt;      &lt;!-- 单节点故障自动迁移 --&gt;      &lt;property&gt;              &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;              &lt;value&gt;true&lt;/value&gt;      &lt;/property&gt;&lt;/configuration&gt;</code></pre></li><li><p>core-site.xml</p><pre><code>vim /root/app/hadoop/etc/hadoop/core-site.xml&lt;configuration&gt;      &lt;property&gt;              &lt;name&gt;fs.defaultFS&lt;/name&gt;              &lt;value&gt;hdfs://sxt&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;              &lt;value&gt;/opt/hadoop&lt;/value&gt;      &lt;/property&gt;      &lt;!-- 配置Quorum Journal Manager的zk集群，JN管理集群 --&gt;      &lt;property&gt;              &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;              &lt;value&gt;n1:2181,n2:2181,n3:2181&lt;/value&gt;      &lt;/property&gt;&lt;/configuration&gt;</code></pre></li></ul><h2 id="配置zookeeper"><a href="#配置zookeeper" class="headerlink" title="配置zookeeper"></a>配置zookeeper</h2><ul><li><p>环境变量</p><pre><code>cat /etc/profileexport ANT_HOME=/root/app/antexport HADOOP_HOME=/root/app/hadoopexport JAVA_HOME=/root/app/jdkexport JRE_HOME=/root/app/jdk/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$ANT_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbinexport ZOOKEEPER_HOME=/root/app/zookeeperexport PATH=$PATH:$ZOOKEEPER_HOME/bin注意只有前面三台的zk路径加入环境变量</code></pre></li><li><p>配置文件</p><pre><code>cat /root/app/zookeeper/conf/zoo.cfg# The number of milliseconds of each tick# dataDir=/tmp/zookeeperdataDir=/opt/zookeeperserver.1=n1:2888:3888server.2=n2:2888:3888server.3=n3:2888:3888</code></pre></li><li><p>分别配置/opt/zookeeper目录，创建myid文件，加入1, 2, 3</p></li><li><p>同时启动zk</p><pre><code>zkServer.sh start</code></pre></li><li><p>查看状态</p><pre><code>zkServer.sh status</code></pre></li><li><p>启动输出</p><pre><code>root@n1:~# zkServer.sh startZooKeeper JMX enabled by defaultUsing config: /root/app/zookeeper/bin/../conf/zoo.cfgStarting zookeeper ... STARTEDroot@n1:~# zkServer.sh statusZooKeeper JMX enabled by defaultUsing config: /root/app/zookeeper/bin/../conf/zoo.cfgMode: follower</code></pre></li><li><p>n1拷贝zookeeper到n2, n3, n4</p><pre><code>scp -r ./dir n1:`pwd`</code></pre></li></ul><h2 id="启动ZK"><a href="#启动ZK" class="headerlink" title="启动ZK"></a>启动ZK</h2><ul><li>启动并查看状态（1, 2, 3同时启动）<br><code>`</code><br>zkServer.sh start<br>zkServer.sh status</li></ul><pre><code>## 启动JN- 在n2. n3, n4启动JN</code></pre><p>hadoop-daemon.sh start journalnode</p><pre><code>- 输出</code></pre><p>root@n2:~# hadoop-daemon.sh start journalnode<br>starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n2.out<br>root@n2:~# jps<br>1751 QuorumPeerMain<br>1895 JournalNode<br>1945 Jps</p><pre><code>## 启动NN，高可用HA操作- 在一台NN格式化（NN:n1）</code></pre><p>hdfs namenode -format</p><pre><code>- 在没有格式化的另外一台hadoop执行standby操作（NN:n2）</code></pre><p>hdfs namenode -bootstrapStandby</p><pre><code>- 报错提示n1没有启动namenode，先启动namenode</code></pre><p>hadoop-daemon.sh start namenode</p><pre><code>- 在此执行standby成功（格式化+启动n1，standby另外n2）</code></pre><p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/<br>18/04/29 11:14:41 INFO namenode.NameNode: registered UNIX signal handlers for [TERM, HUP, INT]</p><h1 id="18-04-29-11-14-41-INFO-namenode-NameNode-createNameNode-bootstrapStandby"><a href="#18-04-29-11-14-41-INFO-namenode-NameNode-createNameNode-bootstrapStandby" class="headerlink" title="18/04/29 11:14:41 INFO namenode.NameNode: createNameNode [-bootstrapStandby]"></a>18/04/29 11:14:41 INFO namenode.NameNode: createNameNode [-bootstrapStandby]</h1><p>About to bootstrap Standby ID nn2 from:<br>           Nameservice ID: sxt<br>        Other Namenode ID: nn1<br>  Other NN’s HTTP address: <a href="http://n1:50070" target="_blank" rel="noopener">http://n1:50070</a><br>  Other NN’s IPC  address: n1/192.168.44.100:8020<br>             Namespace ID: 1765158274<br>            Block pool ID: BP-1441163464-192.168.44.100-1525025632122<br>               Cluster ID: CID-2e601647-294c-4e70-8e72-7a82bea94fa9<br>           Layout version: -63</p><pre><code>   isUpgradeFinalized: true</code></pre><p>=====================================================<br>18/04/29 11:14:42 INFO common.Storage: Storage directory /opt/hadoop/dfs/name has been successfully formatted.<br>18/04/29 11:14:43 INFO namenode.TransferFsImage: Opening connection to <a href="http://n1:50070/imagetransfer?getimage=1&amp;txid=0&amp;storageInfo=-63:1765158274:0:CID-2e601647-294c-4e70-8e72-7a82bea94fa9" target="_blank" rel="noopener">http://n1:50070/imagetransfer?getimage=1&amp;txid=0&amp;storageInfo=-63:1765158274:0:CID-2e601647-294c-4e70-8e72-7a82bea94fa9</a><br>18/04/29 11:14:43 INFO namenode.TransferFsImage: Image Transfer timeout configured to 60000 milliseconds<br>18/04/29 11:14:43 INFO namenode.TransferFsImage: Transfer took 0.00s at 0.00 KB/s<br>18/04/29 11:14:43 INFO namenode.TransferFsImage: Downloaded file fsimage.ckpt_0000000000000000000 size 321 bytes.<br>18/04/29 11:14:43 INFO util.ExitUtil: Exiting with status 0<br>18/04/29 11:14:43 INFO namenode.NameNode: SHUTDOWN_MSG:<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>SHUTDOWN_MSG: Shutting down NameNode at n2/192.168.44.101<br><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p><pre><code>## 查看HA效果- 在一个NN上格式化zookeeper（n1）</code></pre><p>hdfs zkfc -formatZK</p><pre><code>- 在单节点NN启动n1</code></pre><p>start-dfs.sh</p><pre><code>- 输出</code></pre><p>Starting namenodes on [n1 n2]<br>n1: namenode running as process 2411. Stop it first.<br>n2: namenode running as process 2239. Stop it first.<br>n2: datanode running as process 2413. Stop it first.<br>n4: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n4.out<br>n3: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n3.out<br>Starting journal nodes [n2 n3 n4]<br>n3: journalnode running as process 2207. Stop it first.<br>n2: journalnode running as process 1895. Stop it first.<br>n4: journalnode running as process 1732. Stop it first.<br>Starting ZK Failover Controllers on NN hosts [n1 n2]<br>n2: zkfc running as process 2804. Stop it first.<br>n1: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n1.out<br>root@n1:~# </p><pre><code>- 进程查看</code></pre><p>root@n1:~# jps<br>3091 DFSZKFailoverController<br>3285 Jps<br>2411 NameNode<br>2188 QuorumPeerMain<br>#<br>root@n2:~# jps<br>3184 Jps<br>2804 DFSZKFailoverController<br>1751 QuorumPeerMain<br>1895 JournalNode<br>2413 DataNode<br>2239 NameNode<br>#<br>root@n3:~# jps<br>2512 Jps<br>2121 QuorumPeerMain<br>2362 DataNode<br>2207 JournalNode<br>#<br>root@n4:~# jps<br>1732 JournalNode<br>2039 Jps<br>1887 DataNode<br>#<br>    NN  DN  JN  ZK  ZKFC<br>n1  1           1   1<br>n2  1   1   1   1   1<br>n3      1   1   1<br>n4      1   1</p><pre><code>- 查看webUI</code></pre><p><a href="http://n2:50070/dfshealth.html#tab-overview" target="_blank" rel="noopener">http://n2:50070/dfshealth.html#tab-overview</a><br>Overview ‘n2:8020’ (active)<br>#<br><a href="http://n1:50070/dfshealth.html#tab-overview" target="_blank" rel="noopener">http://n1:50070/dfshealth.html#tab-overview</a><br>Overview ‘n1:8020’ (standby)<br>#<br>Datanode Information<br>三个<br>#<br><a href="http://n1:50070/explorer.html#/" target="_blank" rel="noopener">http://n1:50070/explorer.html#/</a><br>Operation category READ is not supported in state standby<br>#<br><a href="http://n2:50070/explorer.html#/" target="_blank" rel="noopener">http://n2:50070/explorer.html#/</a><br>Browse Directory 可见</p><pre><code>- 故障测试</code></pre><p>hadoop-daemon.sh stop namenode（n2）<br>查看网页，文件系统，DN<br>hadoop-daemon.sh start namenode（n2）<br>再次查看交换了状态<br>Overview ‘n1:8020’ (active)<br>Overview ‘n2:8020’ (standby)</p><pre><code>## 重新启动与停止- 启停操作</code></pre><p>stop-dfs.sh<br>root@n1:~# stop-dfs.sh<br>Stopping namenodes on [n1 n2]<br>n1: stopping namenode<br>n2: stopping namenode<br>n3: stopping datanode<br>n4: stopping datanode<br>n2: stopping datanode<br>Stopping journal nodes [n2 n3 n4]<br>n2: stopping journalnode<br>n3: stopping journalnode<br>n4: stopping journalnode<br>Stopping ZK Failover Controllers on NN hosts [n1 n2]<br>n1: stopping zkfc<br>n2: stopping zkfc<br>#<br>下次启动jps查看ZK是不是启动<br>先启动ZK，在启动DFS<br>#<br>root@n1:~# zkServer.sh start（根据列表中的三台都同时启动zk）<br>root@n1:~# zkServer.sh status<br>ZooKeeper JMX enabled by default<br>Using config: /root/app/zookeeper/bin/../conf/zoo.cfg<br>Mode: follower<br>#<br>root@n1:~# start-dfs.sh<br>Starting namenodes on [n1 n2]<br>n1: starting namenode, logging to /root/app/hadoop/logs/hadoop-root-namenode-n1.out<br>n2: starting namenode, logging to /root/app/hadoop/logs/hadoop-root-namenode-n2.out<br>n4: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n4.out<br>n3: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n3.out<br>n2: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n2.out<br>Starting journal nodes [n2 n3 n4]<br>n2: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n2.out<br>n3: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n3.out<br>n4: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n4.out<br>Starting ZK Failover Controllers on NN hosts [n1 n2]<br>n1: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n1.out<br>n2: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n2.out<br><code>`</code></p>]]></content>
+    <content type="html"><![CDATA[<p>本文介绍如何在hdfs上实现namenode集群的高可用。</p><a id="more"></a><h2 id="集群配置需求"><a href="#集群配置需求" class="headerlink" title="集群配置需求"></a>集群配置需求</h2><ul><li>集群配置地点<pre><code>  NN  DN  JN  ZK  ZKFCn1  1           1   1n2  1   1   1   1   1n3      1   1   1   n4      1   1</code></pre></li></ul><h2 id="配置HDFS"><a href="#配置HDFS" class="headerlink" title="配置HDFS"></a>配置HDFS</h2><ul><li><p>hdfs-site.xml</p><pre><code>vim /root/app/hadoop/etc/hadoop/hdfs-site.xml&lt;configuration&gt;      &lt;!-- 配置NN空间 --&gt;      &lt;property&gt;              &lt;name&gt;dfs.nameservices&lt;/name&gt;              &lt;value&gt;sxt&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.ha.namenodes.sxt&lt;/name&gt;              &lt;value&gt;nn1,nn2&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.namenode.rpc-address.sxt.nn1&lt;/name&gt;              &lt;value&gt;n1:8020&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.namenode.rpc-address.sxt.nn2&lt;/name&gt;              &lt;value&gt;n2:8020&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.namenode.http-address.sxt.nn1&lt;/name&gt;              &lt;value&gt;n1:50070&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.namenode.http-address.sxt.nn2&lt;/name&gt;              &lt;value&gt;n2:50070&lt;/value&gt;      &lt;/property&gt;      &lt;!-- 配置JN能处理的Node，可以理解为DN --&gt;      &lt;property&gt;              &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;              &lt;value&gt;qjournal://n2:8485;n3:8485;n4:8485/sxt&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.client.failover.proxy.provider.sxt&lt;/name&gt;              &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;      &lt;/property&gt;      &lt;!-- 配置密钥 --&gt;      &lt;property&gt;              &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;              &lt;value&gt;sshfence&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;              &lt;value&gt;/root/.ssh/id_rsa&lt;/value&gt;      &lt;/property&gt;      &lt;!-- 配置JN的临时文件夹 --&gt;      &lt;property&gt;              &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;              &lt;value&gt;/opt/journal/node/data&lt;/value&gt;      &lt;/property&gt;      &lt;!-- 单节点故障自动迁移 --&gt;      &lt;property&gt;              &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;              &lt;value&gt;true&lt;/value&gt;      &lt;/property&gt;&lt;/configuration&gt;</code></pre></li><li><p>core-site.xml</p><pre><code>vim /root/app/hadoop/etc/hadoop/core-site.xml&lt;configuration&gt;      &lt;property&gt;              &lt;name&gt;fs.defaultFS&lt;/name&gt;              &lt;value&gt;hdfs://sxt&lt;/value&gt;      &lt;/property&gt;      &lt;property&gt;              &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;              &lt;value&gt;/opt/hadoop&lt;/value&gt;      &lt;/property&gt;      &lt;!-- 配置Quorum Journal Manager的zk集群，JN管理集群 --&gt;      &lt;property&gt;              &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;              &lt;value&gt;n1:2181,n2:2181,n3:2181&lt;/value&gt;      &lt;/property&gt;&lt;/configuration&gt;</code></pre></li></ul><h2 id="配置zookeeper"><a href="#配置zookeeper" class="headerlink" title="配置zookeeper"></a>配置zookeeper</h2><ul><li><p>环境变量</p><pre><code>cat /etc/profileexport ANT_HOME=/root/app/antexport HADOOP_HOME=/root/app/hadoopexport JAVA_HOME=/root/app/jdkexport JRE_HOME=/root/app/jdk/jreexport CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/libexport PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$ANT_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbinexport ZOOKEEPER_HOME=/root/app/zookeeperexport PATH=$PATH:$ZOOKEEPER_HOME/bin注意只有前面三台的zk路径加入环境变量</code></pre></li><li><p>配置文件</p><pre><code>cat /root/app/zookeeper/conf/zoo.cfg# The number of milliseconds of each tick# dataDir=/tmp/zookeeperdataDir=/opt/zookeeperserver.1=n1:2888:3888server.2=n2:2888:3888server.3=n3:2888:3888</code></pre></li><li><p>分别配置/opt/zookeeper目录，创建myid文件，加入1, 2, 3</p></li><li><p>同时启动zk</p><pre><code>zkServer.sh start</code></pre></li><li><p>查看状态</p><pre><code>zkServer.sh status</code></pre></li><li><p>启动输出</p><pre><code>root@n1:~# zkServer.sh startZooKeeper JMX enabled by defaultUsing config: /root/app/zookeeper/bin/../conf/zoo.cfgStarting zookeeper ... STARTEDroot@n1:~# zkServer.sh statusZooKeeper JMX enabled by defaultUsing config: /root/app/zookeeper/bin/../conf/zoo.cfgMode: follower</code></pre></li><li><p>n1拷贝zookeeper到n2, n3, n4</p><pre><code>scp -r ./dir n1:`pwd`</code></pre></li></ul><h2 id="启动ZK"><a href="#启动ZK" class="headerlink" title="启动ZK"></a>启动ZK</h2><ul><li>启动并查看状态（1, 2, 3同时启动）<pre><code>zkServer.sh startzkServer.sh status</code></pre></li></ul><h2 id="启动JN"><a href="#启动JN" class="headerlink" title="启动JN"></a>启动JN</h2><ul><li><p>在n2. n3, n4启动JN</p><pre><code>hadoop-daemon.sh start journalnode</code></pre></li><li><p>输出</p><pre><code>root@n2:~# hadoop-daemon.sh start journalnodestarting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n2.outroot@n2:~# jps1751 QuorumPeerMain1895 JournalNode1945 Jps</code></pre></li></ul><h2 id="启动NN，高可用HA操作"><a href="#启动NN，高可用HA操作" class="headerlink" title="启动NN，高可用HA操作"></a>启动NN，高可用HA操作</h2><ul><li><p>在一台NN格式化（NN:n1）</p><pre><code>hdfs namenode -format</code></pre></li><li><p>在没有格式化的另外一台hadoop执行standby操作（NN:n2）</p><pre><code>hdfs namenode -bootstrapStandby</code></pre></li><li><p>报错提示n1没有启动namenode，先启动namenode</p><pre><code>hadoop-daemon.sh start namenode</code></pre></li><li><p>在此执行standby成功（格式化+启动n1，standby另外n2）</p><pre><code>18/04/29 11:14:41 INFO namenode.NameNode: registered UNIX signal handlers for [TERM, HUP, INT]18/04/29 11:14:41 INFO namenode.NameNode: createNameNode [-bootstrapStandby]#=====================================================About to bootstrap Standby ID nn2 from:         Nameservice ID: sxt      Other Namenode ID: nn1Other NN&#39;s HTTP address: http://n1:50070Other NN&#39;s IPC  address: n1/192.168.44.100:8020           Namespace ID: 1765158274          Block pool ID: BP-1441163464-192.168.44.100-1525025632122             Cluster ID: CID-2e601647-294c-4e70-8e72-7a82bea94fa9         Layout version: -63     isUpgradeFinalized: true#=====================================================18/04/29 11:14:42 INFO common.Storage: Storage directory /opt/hadoop/dfs/name has been successfully formatted.18/04/29 11:14:43 INFO namenode.TransferFsImage: Opening connection to http://n1:50070/imagetransfer?getimage=1&amp;txid=0&amp;storageInfo=-63:1765158274:0:CID-2e601647-294c-4e70-8e72-7a82bea94fa918/04/29 11:14:43 INFO namenode.TransferFsImage: Image Transfer timeout configured to 60000 milliseconds18/04/29 11:14:43 INFO namenode.TransferFsImage: Transfer took 0.00s at 0.00 KB/s18/04/29 11:14:43 INFO namenode.TransferFsImage: Downloaded file fsimage.ckpt_0000000000000000000 size 321 bytes.18/04/29 11:14:43 INFO util.ExitUtil: Exiting with status 018/04/29 11:14:43 INFO namenode.NameNode: SHUTDOWN_MSG: SHUTDOWN_MSG: Shutting down NameNode at n2/192.168.44.101</code></pre></li></ul><h2 id="查看HA效果"><a href="#查看HA效果" class="headerlink" title="查看HA效果"></a>查看HA效果</h2><ul><li><p>在一个NN上格式化zookeeper（n1）</p><pre><code>hdfs zkfc -formatZK</code></pre></li><li><p>在单节点NN启动n1</p><pre><code>start-dfs.sh</code></pre></li><li><p>输出</p><pre><code>Starting namenodes on [n1 n2]n1: namenode running as process 2411. Stop it first.n2: namenode running as process 2239. Stop it first.n2: datanode running as process 2413. Stop it first.n4: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n4.outn3: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n3.outStarting journal nodes [n2 n3 n4]n3: journalnode running as process 2207. Stop it first.n2: journalnode running as process 1895. Stop it first.n4: journalnode running as process 1732. Stop it first.Starting ZK Failover Controllers on NN hosts [n1 n2]n2: zkfc running as process 2804. Stop it first.n1: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n1.outroot@n1:~# </code></pre></li><li><p>进程查看</p><pre><code>root@n1:~# jps3091 DFSZKFailoverController3285 Jps2411 NameNode2188 QuorumPeerMain#root@n2:~# jps3184 Jps2804 DFSZKFailoverController1751 QuorumPeerMain1895 JournalNode2413 DataNode2239 NameNode#root@n3:~# jps2512 Jps2121 QuorumPeerMain2362 DataNode2207 JournalNode#root@n4:~# jps1732 JournalNode2039 Jps1887 DataNode#  NN  DN  JN  ZK  ZKFCn1  1           1   1n2  1   1   1   1   1n3      1   1   1   n4      1   1</code></pre></li><li><p>查看webUI</p><pre><code>http://n2:50070/dfshealth.html#tab-overviewOverview &#39;n2:8020&#39; (active)#http://n1:50070/dfshealth.html#tab-overviewOverview &#39;n1:8020&#39; (standby)#Datanode Information三个#http://n1:50070/explorer.html#/Operation category READ is not supported in state standby#http://n2:50070/explorer.html#/Browse Directory 可见</code></pre></li><li><p>故障测试</p><pre><code>hadoop-daemon.sh stop namenode（n2）查看网页，文件系统，DNhadoop-daemon.sh start namenode（n2）再次查看交换了状态Overview &#39;n1:8020&#39; (active)Overview &#39;n2:8020&#39; (standby)</code></pre></li></ul><h2 id="重新启动与停止"><a href="#重新启动与停止" class="headerlink" title="重新启动与停止"></a>重新启动与停止</h2><ul><li>启停操作<pre><code>stop-dfs.shroot@n1:~# stop-dfs.sh Stopping namenodes on [n1 n2]n1: stopping namenoden2: stopping namenoden3: stopping datanoden4: stopping datanoden2: stopping datanodeStopping journal nodes [n2 n3 n4]n2: stopping journalnoden3: stopping journalnoden4: stopping journalnodeStopping ZK Failover Controllers on NN hosts [n1 n2]n1: stopping zkfcn2: stopping zkfc#下次启动jps查看ZK是不是启动先启动ZK，在启动DFS#root@n1:~# zkServer.sh start（根据列表中的三台都同时启动zk）root@n1:~# zkServer.sh statusZooKeeper JMX enabled by defaultUsing config: /root/app/zookeeper/bin/../conf/zoo.cfgMode: follower#root@n1:~# start-dfs.sh Starting namenodes on [n1 n2]n1: starting namenode, logging to /root/app/hadoop/logs/hadoop-root-namenode-n1.outn2: starting namenode, logging to /root/app/hadoop/logs/hadoop-root-namenode-n2.outn4: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n4.outn3: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n3.outn2: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n2.outStarting journal nodes [n2 n3 n4]n2: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n2.outn3: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n3.outn4: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n4.outStarting ZK Failover Controllers on NN hosts [n1 n2]n1: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n1.outn2: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n2.out</code></pre></li></ul>]]></content>
     
     <summary type="html">
     
@@ -36,9 +36,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
-    
       <category term="ha" scheme="http://yoursite.com/tags/ha/"/>
+    
+      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
     
       <category term="hdfs" scheme="http://yoursite.com/tags/hdfs/"/>
     
@@ -306,9 +306,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
-    
       <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
+    
+      <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
     
   </entry>
   
@@ -333,34 +333,6 @@
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
       <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常见的环境变量配置</title>
-    <link href="http://yoursite.com/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2018/04/17/常见的环境变量配置/</id>
-    <published>2018-04-17T03:49:36.000Z</published>
-    <updated>2018-04-21T05:52:38.667Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍常见的环境变量配置方法。</p><a id="more"></a><h2 id="windows常见的环境变量配置"><a href="#windows常见的环境变量配置" class="headerlink" title="windows常见的环境变量配置"></a>windows常见的环境变量配置</h2><ul><li><p>CLASSPATH</p><pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></pre></li><li><p>JAVA_HOME</p><pre><code>C:\app3\Java\jdk1.8.0_144</code></pre></li><li><p>JRE_HOME</p><pre><code>C:\app3\Java\jre1.8.0_144</code></pre></li><li><p>MVN_HOME<br>C:\app3\apache-maven-3.5.3</p></li><li><p>Path</p><pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;</code></pre></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍常见的环境变量配置方法。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
-    
-      <category term="环境变量" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
     
   </entry>
   
@@ -393,6 +365,34 @@
   </entry>
   
   <entry>
+    <title>常见的环境变量配置</title>
+    <link href="http://yoursite.com/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2018/04/17/常见的环境变量配置/</id>
+    <published>2018-04-17T03:49:36.000Z</published>
+    <updated>2018-04-21T05:52:38.667Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍常见的环境变量配置方法。</p><a id="more"></a><h2 id="windows常见的环境变量配置"><a href="#windows常见的环境变量配置" class="headerlink" title="windows常见的环境变量配置"></a>windows常见的环境变量配置</h2><ul><li><p>CLASSPATH</p><pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></pre></li><li><p>JAVA_HOME</p><pre><code>C:\app3\Java\jdk1.8.0_144</code></pre></li><li><p>JRE_HOME</p><pre><code>C:\app3\Java\jre1.8.0_144</code></pre></li><li><p>MVN_HOME<br>C:\app3\apache-maven-3.5.3</p></li><li><p>Path</p><pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍常见的环境变量配置方法。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+      <category term="环境变量" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>eclipse中的git基本配置</title>
     <link href="http://yoursite.com/2018/04/16/eclipse%E4%B8%AD%E7%9A%84git%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/"/>
     <id>http://yoursite.com/2018/04/16/eclipse中的git基本配置/</id>
@@ -412,11 +412,11 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+      <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
     
   </entry>
   
@@ -445,6 +445,32 @@
       <category term="kcptun" scheme="http://yoursite.com/tags/kcptun/"/>
     
       <category term="ss" scheme="http://yoursite.com/tags/ss/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何去掉valine的Powered By信息？</title>
+    <link href="http://yoursite.com/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
+    <id>http://yoursite.com/2018/04/03/如何去掉valine的Powered By信息？/</id>
+    <published>2018-04-03T14:42:05.000Z</published>
+    <updated>2018-04-21T05:52:38.665Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍如何去掉valine页面上的Powered By信息。<br><a id="more"></a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul><li>找到配置文件<pre><code>blog/themes/next/layout/_third-party/comments/valine.swig</code></pre></li><li>配置如下<pre><code>{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>  <script type="text/javascript">    var GUEST = ['nick','mail','link'];    var guest = '{{ theme.valine.guest_info }}';    guest = guest.split(',').filter(item=>{      return GUEST.indexOf(item)>-1;    });    new Valine({        el: '#comments' ,        verify: {{ theme.valine.verify }},        notify: {{ theme.valine.notify }},        appId: '{{ theme.valine.appid }}',        appKey: '{{ theme.valine.appkey }}',        placeholder: '{{ theme.valine.placeholder }}',        avatar:'{{ theme.valine.avatar }}',        guest_info:guest,        pageSize:'{{ theme.valine.pageSize }}' || 10,    });//新增以下代码即可，可以移除.info下所有子节点。var infoEle = document.querySelector('#comments .info');if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){  infoEle.childNodes.forEach(function(item) {item.parentNode.removeChild(item);  });}  </script>{% endif %}</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍如何去掉valine页面上的Powered By信息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
     
   </entry>
   
@@ -499,32 +525,6 @@
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
     
       <category term="basic algorithm" scheme="http://yoursite.com/tags/basic-algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何去掉valine的Powered By信息？</title>
-    <link href="http://yoursite.com/2018/04/03/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F/"/>
-    <id>http://yoursite.com/2018/04/03/如何去掉valine的Powered By信息？/</id>
-    <published>2018-04-03T14:42:05.000Z</published>
-    <updated>2018-04-21T05:52:38.665Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍如何去掉valine页面上的Powered By信息。<br><a id="more"></a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul><li>找到配置文件<pre><code>blog/themes/next/layout/_third-party/comments/valine.swig</code></pre></li><li>配置如下<pre><code>{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>  <script type="text/javascript">    var GUEST = ['nick','mail','link'];    var guest = '{{ theme.valine.guest_info }}';    guest = guest.split(',').filter(item=>{      return GUEST.indexOf(item)>-1;    });    new Valine({        el: '#comments' ,        verify: {{ theme.valine.verify }},        notify: {{ theme.valine.notify }},        appId: '{{ theme.valine.appid }}',        appKey: '{{ theme.valine.appkey }}',        placeholder: '{{ theme.valine.placeholder }}',        avatar:'{{ theme.valine.avatar }}',        guest_info:guest,        pageSize:'{{ theme.valine.pageSize }}' || 10,    });//新增以下代码即可，可以移除.info下所有子节点。var infoEle = document.querySelector('#comments .info');if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){  infoEle.childNodes.forEach(function(item) {item.parentNode.removeChild(item);  });}  </script>{% endif %}</code></pre></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍如何去掉valine页面上的Powered By信息。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="valine" scheme="http://yoursite.com/tags/valine/"/>
     
   </entry>
   

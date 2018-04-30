@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="列表,hadoop,ha,hdfs," />
+  <meta name="keywords" content="列表,ha,hadoop,hdfs," />
 
 
 
@@ -82,14 +82,14 @@
 
 
 <meta name="description" content="本文介绍如何在hdfs上实现namenode集群的高可用。">
-<meta name="keywords" content="列表,hadoop,ha,hdfs">
+<meta name="keywords" content="列表,ha,hadoop,hdfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PE hadoop 2.x hdfs availablity implement">
 <meta property="og:url" content="http://yoursite.com/2018/04/30/PE hadoop 2.x hdfs availablity implement/index.html">
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文介绍如何在hdfs上实现namenode集群的高可用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-30T06:20:15.567Z">
+<meta property="og:updated_time" content="2018-04-30T06:23:51.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PE hadoop 2.x hdfs availablity implement">
 <meta name="twitter:description" content="本文介绍如何在hdfs上实现namenode集群的高可用。">
@@ -576,57 +576,180 @@ Mode: follower
 </code></pre></li>
 </ul>
 <h2 id="启动ZK"><a href="#启动ZK" class="headerlink" title="启动ZK"></a>启动ZK</h2><ul>
-<li>启动并查看状态（1, 2, 3同时启动）<br><code>`</code><br>zkServer.sh start<br>zkServer.sh status</li>
+<li>启动并查看状态（1, 2, 3同时启动）<pre><code>zkServer.sh start
+zkServer.sh status
+</code></pre></li>
 </ul>
-<pre><code>
-## 启动JN
-
-- 在n2. n3, n4启动JN
-</code></pre><p>hadoop-daemon.sh start journalnode</p>
-<pre><code>
-- 输出
-</code></pre><p>root@n2:~# hadoop-daemon.sh start journalnode<br>starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n2.out<br>root@n2:~# jps<br>1751 QuorumPeerMain<br>1895 JournalNode<br>1945 Jps</p>
-<pre><code>
-## 启动NN，高可用HA操作
-
-- 在一台NN格式化（NN:n1）
-</code></pre><p>hdfs namenode -format</p>
-<pre><code>
-- 在没有格式化的另外一台hadoop执行standby操作（NN:n2）
-</code></pre><p>hdfs namenode -bootstrapStandby</p>
-<pre><code>
-- 报错提示n1没有启动namenode，先启动namenode
-</code></pre><p>hadoop-daemon.sh start namenode</p>
-<pre><code>
-- 在此执行standby成功（格式化+启动n1，standby另外n2）
-</code></pre><p><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/<br>18/04/29 11:14:41 INFO namenode.NameNode: registered UNIX signal handlers for [TERM, HUP, INT]</p>
-<h1 id="18-04-29-11-14-41-INFO-namenode-NameNode-createNameNode-bootstrapStandby"><a href="#18-04-29-11-14-41-INFO-namenode-NameNode-createNameNode-bootstrapStandby" class="headerlink" title="18/04/29 11:14:41 INFO namenode.NameNode: createNameNode [-bootstrapStandby]"></a>18/04/29 11:14:41 INFO namenode.NameNode: createNameNode [-bootstrapStandby]</h1><p>About to bootstrap Standby ID nn2 from:<br>           Nameservice ID: sxt<br>        Other Namenode ID: nn1<br>  Other NN’s HTTP address: <a href="http://n1:50070" target="_blank" rel="noopener">http://n1:50070</a><br>  Other NN’s IPC  address: n1/192.168.44.100:8020<br>             Namespace ID: 1765158274<br>            Block pool ID: BP-1441163464-192.168.44.100-1525025632122<br>               Cluster ID: CID-2e601647-294c-4e70-8e72-7a82bea94fa9<br>           Layout version: -63</p>
-<pre><code>   isUpgradeFinalized: true
-</code></pre><p>=====================================================<br>18/04/29 11:14:42 INFO common.Storage: Storage directory /opt/hadoop/dfs/name has been successfully formatted.<br>18/04/29 11:14:43 INFO namenode.TransferFsImage: Opening connection to <a href="http://n1:50070/imagetransfer?getimage=1&amp;txid=0&amp;storageInfo=-63:1765158274:0:CID-2e601647-294c-4e70-8e72-7a82bea94fa9" target="_blank" rel="noopener">http://n1:50070/imagetransfer?getimage=1&amp;txid=0&amp;storageInfo=-63:1765158274:0:CID-2e601647-294c-4e70-8e72-7a82bea94fa9</a><br>18/04/29 11:14:43 INFO namenode.TransferFsImage: Image Transfer timeout configured to 60000 milliseconds<br>18/04/29 11:14:43 INFO namenode.TransferFsImage: Transfer took 0.00s at 0.00 KB/s<br>18/04/29 11:14:43 INFO namenode.TransferFsImage: Downloaded file fsimage.ckpt_0000000000000000000 size 321 bytes.<br>18/04/29 11:14:43 INFO util.ExitUtil: Exiting with status 0<br>18/04/29 11:14:43 INFO namenode.NameNode: SHUTDOWN_MSG:<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>SHUTDOWN_MSG: Shutting down NameNode at n2/192.168.44.101<br><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
-<pre><code>
-## 查看HA效果
-
-- 在一个NN上格式化zookeeper（n1）
-</code></pre><p>hdfs zkfc -formatZK</p>
-<pre><code>
-- 在单节点NN启动n1
-</code></pre><p>start-dfs.sh</p>
-<pre><code>
-- 输出
-</code></pre><p>Starting namenodes on [n1 n2]<br>n1: namenode running as process 2411. Stop it first.<br>n2: namenode running as process 2239. Stop it first.<br>n2: datanode running as process 2413. Stop it first.<br>n4: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n4.out<br>n3: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n3.out<br>Starting journal nodes [n2 n3 n4]<br>n3: journalnode running as process 2207. Stop it first.<br>n2: journalnode running as process 1895. Stop it first.<br>n4: journalnode running as process 1732. Stop it first.<br>Starting ZK Failover Controllers on NN hosts [n1 n2]<br>n2: zkfc running as process 2804. Stop it first.<br>n1: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n1.out<br>root@n1:~# </p>
-<pre><code>
-- 进程查看
-</code></pre><p>root@n1:~# jps<br>3091 DFSZKFailoverController<br>3285 Jps<br>2411 NameNode<br>2188 QuorumPeerMain<br>#<br>root@n2:~# jps<br>3184 Jps<br>2804 DFSZKFailoverController<br>1751 QuorumPeerMain<br>1895 JournalNode<br>2413 DataNode<br>2239 NameNode<br>#<br>root@n3:~# jps<br>2512 Jps<br>2121 QuorumPeerMain<br>2362 DataNode<br>2207 JournalNode<br>#<br>root@n4:~# jps<br>1732 JournalNode<br>2039 Jps<br>1887 DataNode<br>#<br>    NN  DN  JN  ZK  ZKFC<br>n1  1           1   1<br>n2  1   1   1   1   1<br>n3      1   1   1<br>n4      1   1</p>
-<pre><code>
-- 查看webUI
-</code></pre><p><a href="http://n2:50070/dfshealth.html#tab-overview" target="_blank" rel="noopener">http://n2:50070/dfshealth.html#tab-overview</a><br>Overview ‘n2:8020’ (active)<br>#<br><a href="http://n1:50070/dfshealth.html#tab-overview" target="_blank" rel="noopener">http://n1:50070/dfshealth.html#tab-overview</a><br>Overview ‘n1:8020’ (standby)<br>#<br>Datanode Information<br>三个<br>#<br><a href="http://n1:50070/explorer.html#/" target="_blank" rel="noopener">http://n1:50070/explorer.html#/</a><br>Operation category READ is not supported in state standby<br>#<br><a href="http://n2:50070/explorer.html#/" target="_blank" rel="noopener">http://n2:50070/explorer.html#/</a><br>Browse Directory 可见</p>
-<pre><code>
-- 故障测试
-</code></pre><p>hadoop-daemon.sh stop namenode（n2）<br>查看网页，文件系统，DN<br>hadoop-daemon.sh start namenode（n2）<br>再次查看交换了状态<br>Overview ‘n1:8020’ (active)<br>Overview ‘n2:8020’ (standby)</p>
-<pre><code>
-## 重新启动与停止
-- 启停操作
-</code></pre><p>stop-dfs.sh<br>root@n1:~# stop-dfs.sh<br>Stopping namenodes on [n1 n2]<br>n1: stopping namenode<br>n2: stopping namenode<br>n3: stopping datanode<br>n4: stopping datanode<br>n2: stopping datanode<br>Stopping journal nodes [n2 n3 n4]<br>n2: stopping journalnode<br>n3: stopping journalnode<br>n4: stopping journalnode<br>Stopping ZK Failover Controllers on NN hosts [n1 n2]<br>n1: stopping zkfc<br>n2: stopping zkfc<br>#<br>下次启动jps查看ZK是不是启动<br>先启动ZK，在启动DFS<br>#<br>root@n1:~# zkServer.sh start（根据列表中的三台都同时启动zk）<br>root@n1:~# zkServer.sh status<br>ZooKeeper JMX enabled by default<br>Using config: /root/app/zookeeper/bin/../conf/zoo.cfg<br>Mode: follower<br>#<br>root@n1:~# start-dfs.sh<br>Starting namenodes on [n1 n2]<br>n1: starting namenode, logging to /root/app/hadoop/logs/hadoop-root-namenode-n1.out<br>n2: starting namenode, logging to /root/app/hadoop/logs/hadoop-root-namenode-n2.out<br>n4: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n4.out<br>n3: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n3.out<br>n2: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n2.out<br>Starting journal nodes [n2 n3 n4]<br>n2: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n2.out<br>n3: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n3.out<br>n4: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n4.out<br>Starting ZK Failover Controllers on NN hosts [n1 n2]<br>n1: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n1.out<br>n2: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n2.out<br><code>`</code></p>
+<h2 id="启动JN"><a href="#启动JN" class="headerlink" title="启动JN"></a>启动JN</h2><ul>
+<li><p>在n2. n3, n4启动JN</p>
+<pre><code>hadoop-daemon.sh start journalnode
+</code></pre></li>
+<li><p>输出</p>
+<pre><code>root@n2:~# hadoop-daemon.sh start journalnode
+starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n2.out
+root@n2:~# jps
+1751 QuorumPeerMain
+1895 JournalNode
+1945 Jps
+</code></pre></li>
+</ul>
+<h2 id="启动NN，高可用HA操作"><a href="#启动NN，高可用HA操作" class="headerlink" title="启动NN，高可用HA操作"></a>启动NN，高可用HA操作</h2><ul>
+<li><p>在一台NN格式化（NN:n1）</p>
+<pre><code>hdfs namenode -format
+</code></pre></li>
+<li><p>在没有格式化的另外一台hadoop执行standby操作（NN:n2）</p>
+<pre><code>hdfs namenode -bootstrapStandby
+</code></pre></li>
+<li><p>报错提示n1没有启动namenode，先启动namenode</p>
+<pre><code>hadoop-daemon.sh start namenode
+</code></pre></li>
+<li><p>在此执行standby成功（格式化+启动n1，standby另外n2）</p>
+<pre><code>18/04/29 11:14:41 INFO namenode.NameNode: registered UNIX signal handlers for [TERM, HUP, INT]
+18/04/29 11:14:41 INFO namenode.NameNode: createNameNode [-bootstrapStandby]
+#=====================================================
+About to bootstrap Standby ID nn2 from:
+         Nameservice ID: sxt
+      Other Namenode ID: nn1
+Other NN&#39;s HTTP address: http://n1:50070
+Other NN&#39;s IPC  address: n1/192.168.44.100:8020
+           Namespace ID: 1765158274
+          Block pool ID: BP-1441163464-192.168.44.100-1525025632122
+             Cluster ID: CID-2e601647-294c-4e70-8e72-7a82bea94fa9
+         Layout version: -63
+     isUpgradeFinalized: true
+#=====================================================
+18/04/29 11:14:42 INFO common.Storage: Storage directory /opt/hadoop/dfs/name has been successfully formatted.
+18/04/29 11:14:43 INFO namenode.TransferFsImage: Opening connection to http://n1:50070/imagetransfer?getimage=1&amp;txid=0&amp;storageInfo=-63:1765158274:0:CID-2e601647-294c-4e70-8e72-7a82bea94fa9
+18/04/29 11:14:43 INFO namenode.TransferFsImage: Image Transfer timeout configured to 60000 milliseconds
+18/04/29 11:14:43 INFO namenode.TransferFsImage: Transfer took 0.00s at 0.00 KB/s
+18/04/29 11:14:43 INFO namenode.TransferFsImage: Downloaded file fsimage.ckpt_0000000000000000000 size 321 bytes.
+18/04/29 11:14:43 INFO util.ExitUtil: Exiting with status 0
+18/04/29 11:14:43 INFO namenode.NameNode: SHUTDOWN_MSG: 
+SHUTDOWN_MSG: Shutting down NameNode at n2/192.168.44.101
+</code></pre></li>
+</ul>
+<h2 id="查看HA效果"><a href="#查看HA效果" class="headerlink" title="查看HA效果"></a>查看HA效果</h2><ul>
+<li><p>在一个NN上格式化zookeeper（n1）</p>
+<pre><code>hdfs zkfc -formatZK
+</code></pre></li>
+<li><p>在单节点NN启动n1</p>
+<pre><code>start-dfs.sh
+</code></pre></li>
+<li><p>输出</p>
+<pre><code>Starting namenodes on [n1 n2]
+n1: namenode running as process 2411. Stop it first.
+n2: namenode running as process 2239. Stop it first.
+n2: datanode running as process 2413. Stop it first.
+n4: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n4.out
+n3: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n3.out
+Starting journal nodes [n2 n3 n4]
+n3: journalnode running as process 2207. Stop it first.
+n2: journalnode running as process 1895. Stop it first.
+n4: journalnode running as process 1732. Stop it first.
+Starting ZK Failover Controllers on NN hosts [n1 n2]
+n2: zkfc running as process 2804. Stop it first.
+n1: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n1.out
+root@n1:~# 
+</code></pre></li>
+<li><p>进程查看</p>
+<pre><code>root@n1:~# jps
+3091 DFSZKFailoverController
+3285 Jps
+2411 NameNode
+2188 QuorumPeerMain
+#
+root@n2:~# jps
+3184 Jps
+2804 DFSZKFailoverController
+1751 QuorumPeerMain
+1895 JournalNode
+2413 DataNode
+2239 NameNode
+#
+root@n3:~# jps
+2512 Jps
+2121 QuorumPeerMain
+2362 DataNode
+2207 JournalNode
+#
+root@n4:~# jps
+1732 JournalNode
+2039 Jps
+1887 DataNode
+#
+  NN  DN  JN  ZK  ZKFC
+n1  1           1   1
+n2  1   1   1   1   1
+n3      1   1   1   
+n4      1   1
+</code></pre></li>
+<li><p>查看webUI</p>
+<pre><code>http://n2:50070/dfshealth.html#tab-overview
+Overview &#39;n2:8020&#39; (active)
+#
+http://n1:50070/dfshealth.html#tab-overview
+Overview &#39;n1:8020&#39; (standby)
+#
+Datanode Information
+三个
+#
+http://n1:50070/explorer.html#/
+Operation category READ is not supported in state standby
+#
+http://n2:50070/explorer.html#/
+Browse Directory 可见
+</code></pre></li>
+<li><p>故障测试</p>
+<pre><code>hadoop-daemon.sh stop namenode（n2）
+查看网页，文件系统，DN
+hadoop-daemon.sh start namenode（n2）
+再次查看交换了状态
+Overview &#39;n1:8020&#39; (active)
+Overview &#39;n2:8020&#39; (standby)
+</code></pre></li>
+</ul>
+<h2 id="重新启动与停止"><a href="#重新启动与停止" class="headerlink" title="重新启动与停止"></a>重新启动与停止</h2><ul>
+<li>启停操作<pre><code>stop-dfs.sh
+root@n1:~# stop-dfs.sh 
+Stopping namenodes on [n1 n2]
+n1: stopping namenode
+n2: stopping namenode
+n3: stopping datanode
+n4: stopping datanode
+n2: stopping datanode
+Stopping journal nodes [n2 n3 n4]
+n2: stopping journalnode
+n3: stopping journalnode
+n4: stopping journalnode
+Stopping ZK Failover Controllers on NN hosts [n1 n2]
+n1: stopping zkfc
+n2: stopping zkfc
+#
+下次启动jps查看ZK是不是启动
+先启动ZK，在启动DFS
+#
+root@n1:~# zkServer.sh start（根据列表中的三台都同时启动zk）
+root@n1:~# zkServer.sh status
+ZooKeeper JMX enabled by default
+Using config: /root/app/zookeeper/bin/../conf/zoo.cfg
+Mode: follower
+#
+root@n1:~# start-dfs.sh 
+Starting namenodes on [n1 n2]
+n1: starting namenode, logging to /root/app/hadoop/logs/hadoop-root-namenode-n1.out
+n2: starting namenode, logging to /root/app/hadoop/logs/hadoop-root-namenode-n2.out
+n4: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n4.out
+n3: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n3.out
+n2: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n2.out
+Starting journal nodes [n2 n3 n4]
+n2: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n2.out
+n3: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n3.out
+n4: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n4.out
+Starting ZK Failover Controllers on NN hosts [n1 n2]
+n1: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n1.out
+n2: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n2.out
+</code></pre></li>
+</ul>
 
       
     </div>
@@ -646,9 +769,9 @@ Mode: follower
           
             <a href="/tags/列表/" rel="tag"><i class="fa fa-tag"></i> 列表</a>
           
-            <a href="/tags/hadoop/" rel="tag"><i class="fa fa-tag"></i> hadoop</a>
-          
             <a href="/tags/ha/" rel="tag"><i class="fa fa-tag"></i> ha</a>
+          
+            <a href="/tags/hadoop/" rel="tag"><i class="fa fa-tag"></i> hadoop</a>
           
             <a href="/tags/hdfs/" rel="tag"><i class="fa fa-tag"></i> hdfs</a>
           
@@ -813,7 +936,7 @@ Mode: follower
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#集群配置需求"><span class="nav-number">1.</span> <span class="nav-text">集群配置需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置HDFS"><span class="nav-number">2.</span> <span class="nav-text">配置HDFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置zookeeper"><span class="nav-number">3.</span> <span class="nav-text">配置zookeeper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动ZK"><span class="nav-number">4.</span> <span class="nav-text">启动ZK</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#18-04-29-11-14-41-INFO-namenode-NameNode-createNameNode-bootstrapStandby"><span class="nav-number"></span> <span class="nav-text">18/04/29 11:14:41 INFO namenode.NameNode: createNameNode [-bootstrapStandby]</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#集群配置需求"><span class="nav-number">1.</span> <span class="nav-text">集群配置需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置HDFS"><span class="nav-number">2.</span> <span class="nav-text">配置HDFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置zookeeper"><span class="nav-number">3.</span> <span class="nav-text">配置zookeeper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动ZK"><span class="nav-number">4.</span> <span class="nav-text">启动ZK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动JN"><span class="nav-number">5.</span> <span class="nav-text">启动JN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动NN，高可用HA操作"><span class="nav-number">6.</span> <span class="nav-text">启动NN，高可用HA操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看HA效果"><span class="nav-number">7.</span> <span class="nav-text">查看HA效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重新启动与停止"><span class="nav-number">8.</span> <span class="nav-text">重新启动与停止</span></a></li></ol></div>
             
 
           </div>
