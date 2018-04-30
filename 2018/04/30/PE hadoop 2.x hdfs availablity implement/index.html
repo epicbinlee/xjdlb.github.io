@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文介绍如何在hdfs上实现namenode集群的高可用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-30T06:11:45.617Z">
+<meta property="og:updated_time" content="2018-04-30T06:20:15.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PE hadoop 2.x hdfs availablity implement">
 <meta name="twitter:description" content="本文介绍如何在hdfs上实现namenode集群的高可用。">
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,529
+                  1,528
                 </span>
               
 
@@ -454,86 +454,85 @@ n4      1   1
 </code></pre></li>
 </ul>
 <h2 id="配置HDFS"><a href="#配置HDFS" class="headerlink" title="配置HDFS"></a>配置HDFS</h2><ul>
-<li>hdfs-site.xml</li>
-</ul>
+<li><p>hdfs-site.xml</p>
 <pre><code>vim /root/app/hadoop/etc/hadoop/hdfs-site.xml
 &lt;configuration&gt;
-        &lt;!-- 配置NN空间 --&gt;
-        &lt;property&gt;
-                &lt;name&gt;dfs.nameservices&lt;/name&gt;
-                &lt;value&gt;sxt&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;property&gt;
-                &lt;name&gt;dfs.ha.namenodes.sxt&lt;/name&gt;
-                &lt;value&gt;nn1,nn2&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;property&gt;
-                &lt;name&gt;dfs.namenode.rpc-address.sxt.nn1&lt;/name&gt;
-                &lt;value&gt;n1:8020&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;property&gt;
-                &lt;name&gt;dfs.namenode.rpc-address.sxt.nn2&lt;/name&gt;
-                &lt;value&gt;n2:8020&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;property&gt;
-                &lt;name&gt;dfs.namenode.http-address.sxt.nn1&lt;/name&gt;
-                &lt;value&gt;n1:50070&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;property&gt;
-                &lt;name&gt;dfs.namenode.http-address.sxt.nn2&lt;/name&gt;
-                &lt;value&gt;n2:50070&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;!-- 配置JN能处理的Node，可以理解为DN --&gt;
-        &lt;property&gt;
-                &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;
-                &lt;value&gt;qjournal://n2:8485;n3:8485;n4:8485/sxt&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;property&gt;
-                &lt;name&gt;dfs.client.failover.proxy.provider.sxt&lt;/name&gt;
-                &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;!-- 配置密钥 --&gt;
-        &lt;property&gt;
-                &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;
-                &lt;value&gt;sshfence&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;property&gt;
-                &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;
-                &lt;value&gt;/root/.ssh/id_rsa&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;!-- 配置JN的临时文件夹 --&gt;
-        &lt;property&gt;
-                &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;
-                &lt;value&gt;/opt/journal/node/data&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;!-- 单节点故障自动迁移 --&gt;
-        &lt;property&gt;
-                &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;
-                &lt;value&gt;true&lt;/value&gt;
-        &lt;/property&gt;
+      &lt;!-- 配置NN空间 --&gt;
+      &lt;property&gt;
+              &lt;name&gt;dfs.nameservices&lt;/name&gt;
+              &lt;value&gt;sxt&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+              &lt;name&gt;dfs.ha.namenodes.sxt&lt;/name&gt;
+              &lt;value&gt;nn1,nn2&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+              &lt;name&gt;dfs.namenode.rpc-address.sxt.nn1&lt;/name&gt;
+              &lt;value&gt;n1:8020&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+              &lt;name&gt;dfs.namenode.rpc-address.sxt.nn2&lt;/name&gt;
+              &lt;value&gt;n2:8020&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+              &lt;name&gt;dfs.namenode.http-address.sxt.nn1&lt;/name&gt;
+              &lt;value&gt;n1:50070&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+              &lt;name&gt;dfs.namenode.http-address.sxt.nn2&lt;/name&gt;
+              &lt;value&gt;n2:50070&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;!-- 配置JN能处理的Node，可以理解为DN --&gt;
+      &lt;property&gt;
+              &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;
+              &lt;value&gt;qjournal://n2:8485;n3:8485;n4:8485/sxt&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+              &lt;name&gt;dfs.client.failover.proxy.provider.sxt&lt;/name&gt;
+              &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;!-- 配置密钥 --&gt;
+      &lt;property&gt;
+              &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;
+              &lt;value&gt;sshfence&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+              &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;
+              &lt;value&gt;/root/.ssh/id_rsa&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;!-- 配置JN的临时文件夹 --&gt;
+      &lt;property&gt;
+              &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;
+              &lt;value&gt;/opt/journal/node/data&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;!-- 单节点故障自动迁移 --&gt;
+      &lt;property&gt;
+              &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;
+              &lt;value&gt;true&lt;/value&gt;
+      &lt;/property&gt;
 &lt;/configuration&gt;
-</code></pre><ul>
-<li>core-site.xml</li>
-</ul>
+</code></pre></li>
+<li><p>core-site.xml</p>
 <pre><code>vim /root/app/hadoop/etc/hadoop/core-site.xml
 &lt;configuration&gt;
-        &lt;property&gt;
-                &lt;name&gt;fs.defaultFS&lt;/name&gt;
-                &lt;value&gt;hdfs://sxt&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;property&gt;
-                &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
-                &lt;value&gt;/opt/hadoop&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;!-- 配置Quorum Journal Manager的zk集群，JN管理集群 --&gt;
-        &lt;property&gt;
-                &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;
-                &lt;value&gt;n1:2181,n2:2181,n3:2181&lt;/value&gt;
-        &lt;/property&gt;
+      &lt;property&gt;
+              &lt;name&gt;fs.defaultFS&lt;/name&gt;
+              &lt;value&gt;hdfs://sxt&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+              &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+              &lt;value&gt;/opt/hadoop&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;!-- 配置Quorum Journal Manager的zk集群，JN管理集群 --&gt;
+      &lt;property&gt;
+              &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;
+              &lt;value&gt;n1:2181,n2:2181,n3:2181&lt;/value&gt;
+      &lt;/property&gt;
 &lt;/configuration&gt;
-</code></pre><h2 id="配置zookeeper"><a href="#配置zookeeper" class="headerlink" title="配置zookeeper"></a>配置zookeeper</h2><ul>
-<li>环境变量</li>
+</code></pre></li>
 </ul>
+<h2 id="配置zookeeper"><a href="#配置zookeeper" class="headerlink" title="配置zookeeper"></a>配置zookeeper</h2><ul>
+<li><p>环境变量</p>
 <pre><code>cat /etc/profile
 export ANT_HOME=/root/app/ant
 export HADOOP_HOME=/root/app/hadoop
@@ -544,9 +543,8 @@ export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$ANT_HOME/bin:$HADOOP_HOME/bin:$H
 export ZOOKEEPER_HOME=/root/app/zookeeper
 export PATH=$PATH:$ZOOKEEPER_HOME/bin
 注意只有前面三台的zk路径加入环境变量
-</code></pre><ul>
-<li>配置文件</li>
-</ul>
+</code></pre></li>
+<li><p>配置文件</p>
 <pre><code>cat /root/app/zookeeper/conf/zoo.cfg
 # The number of milliseconds of each tick
 # dataDir=/tmp/zookeeper
@@ -554,20 +552,16 @@ dataDir=/opt/zookeeper
 server.1=n1:2888:3888
 server.2=n2:2888:3888
 server.3=n3:2888:3888
-</code></pre><ul>
+</code></pre></li>
 <li><p>分别配置/opt/zookeeper目录，创建myid文件，加入1, 2, 3</p>
 </li>
 <li><p>同时启动zk</p>
-</li>
-</ul>
 <pre><code>zkServer.sh start
-</code></pre><ul>
-<li>查看状态</li>
-</ul>
+</code></pre></li>
+<li><p>查看状态</p>
 <pre><code>zkServer.sh status
-</code></pre><ul>
-<li>启动输出</li>
-</ul>
+</code></pre></li>
+<li><p>启动输出</p>
 <pre><code>root@n1:~# zkServer.sh start
 ZooKeeper JMX enabled by default
 Using config: /root/app/zookeeper/bin/../conf/zoo.cfg
@@ -576,8 +570,9 @@ root@n1:~# zkServer.sh status
 ZooKeeper JMX enabled by default
 Using config: /root/app/zookeeper/bin/../conf/zoo.cfg
 Mode: follower
-</code></pre><ul>
-<li>n1拷贝zookeeper到n2, n3, n4<pre><code>scp -r ./dir n1:`pwd`
+</code></pre></li>
+<li><p>n1拷贝zookeeper到n2, n3, n4</p>
+<pre><code>scp -r ./dir n1:`pwd`
 </code></pre></li>
 </ul>
 <h2 id="启动ZK"><a href="#启动ZK" class="headerlink" title="启动ZK"></a>启动ZK</h2><ul>
@@ -595,7 +590,6 @@ Mode: follower
 ## 启动NN，高可用HA操作
 
 - 在一台NN格式化（NN:n1）
-
 </code></pre><p>hdfs namenode -format</p>
 <pre><code>
 - 在没有格式化的另外一台hadoop执行standby操作（NN:n2）
@@ -632,7 +626,7 @@ Mode: follower
 <pre><code>
 ## 重新启动与停止
 - 启停操作
-</code></pre><p>stop-dfs.sh<br>root@n1:~# stop-dfs.sh<br>Stopping namenodes on [n1 n2]<br>n1: stopping namenode<br>n2: stopping namenode<br>n3: stopping datanode<br>n4: stopping datanode<br>n2: stopping datanode<br>Stopping journal nodes [n2 n3 n4]<br>n2: stopping journalnode<br>n3: stopping journalnode<br>n4: stopping journalnode<br>Stopping ZK Failover Controllers on NN hosts [n1 n2]<br>n1: stopping zkfc<br>n2: stopping zkfc<br>#<br>下次启动jps查看ZK是不是启动<br>先启动ZK，在启动DFS<br>#<br>root@n1:~# zkServer.sh start（根据列表中的三台都同时启动zk）<br>root@n1:~# zkServer.sh status<br>ZooKeeper JMX enabled by default<br>Using config: /root/app/zookeeper/bin/../conf/zoo.cfg<br>Mode: follower<br>#<br>root@n1:~# start-dfs.sh<br>Starting namenodes on [n1 n2]<br>n1: starting namenode, logging to /root/app/hadoop/logs/hadoop-root-namenode-n1.out<br>n2: starting namenode, logging to /root/app/hadoop/logs/hadoop-root-namenode-n2.out<br>n4: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n4.out<br>n3: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n3.out<br>n2: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n2.out<br>Starting journal nodes [n2 n3 n4]<br>n2: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n2.out<br>n3: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n3.out<br>n4: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n4.out<br>Starting ZK Failover Controllers on NN hosts [n1 n2]<br>n1: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n1.out<br>n2: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n2.out<br>root@n1:~#<br><code>`</code></p>
+</code></pre><p>stop-dfs.sh<br>root@n1:~# stop-dfs.sh<br>Stopping namenodes on [n1 n2]<br>n1: stopping namenode<br>n2: stopping namenode<br>n3: stopping datanode<br>n4: stopping datanode<br>n2: stopping datanode<br>Stopping journal nodes [n2 n3 n4]<br>n2: stopping journalnode<br>n3: stopping journalnode<br>n4: stopping journalnode<br>Stopping ZK Failover Controllers on NN hosts [n1 n2]<br>n1: stopping zkfc<br>n2: stopping zkfc<br>#<br>下次启动jps查看ZK是不是启动<br>先启动ZK，在启动DFS<br>#<br>root@n1:~# zkServer.sh start（根据列表中的三台都同时启动zk）<br>root@n1:~# zkServer.sh status<br>ZooKeeper JMX enabled by default<br>Using config: /root/app/zookeeper/bin/../conf/zoo.cfg<br>Mode: follower<br>#<br>root@n1:~# start-dfs.sh<br>Starting namenodes on [n1 n2]<br>n1: starting namenode, logging to /root/app/hadoop/logs/hadoop-root-namenode-n1.out<br>n2: starting namenode, logging to /root/app/hadoop/logs/hadoop-root-namenode-n2.out<br>n4: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n4.out<br>n3: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n3.out<br>n2: starting datanode, logging to /root/app/hadoop/logs/hadoop-root-datanode-n2.out<br>Starting journal nodes [n2 n3 n4]<br>n2: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n2.out<br>n3: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n3.out<br>n4: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalnode-n4.out<br>Starting ZK Failover Controllers on NN hosts [n1 n2]<br>n1: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n1.out<br>n2: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n2.out<br><code>`</code></p>
 
       
     </div>
