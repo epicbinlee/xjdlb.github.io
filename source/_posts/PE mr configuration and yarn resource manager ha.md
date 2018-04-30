@@ -2,8 +2,8 @@
 ---
 title: PE mr configuration and yarn resource manager ha
 date: 2018-04-30 14:26:24
-tags: [列表,2222,3333,4444]
-categories: 5555
+tags: [列表,mapreduce,yarn,ha]
+categories: Configuration
 toc: true
 mathjax: true
 ---

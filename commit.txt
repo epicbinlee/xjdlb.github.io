@@ -13,7 +13,7 @@ xD=$(date +%j)
 git status
 git add .
 git commit -m "
-$yy/$mm/$dd-$HH:$MM:$SS new post 25
+$yy/$mm/$dd-$HH:$MM:$SS new post 31-hadoop-ÎåÒ»¼ÙÆÚ
 "
 git push git@github.com:xjdlb/xjdlb.github.io.git hexo
 git  log --oneline | head
