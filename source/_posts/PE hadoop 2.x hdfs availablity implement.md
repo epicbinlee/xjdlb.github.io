@@ -167,7 +167,6 @@ scp -r ./dir n1:`pwd`
 ```
 zkServer.sh start
 zkServer.sh status
-
 ```
 
 ## 启动JN
@@ -206,10 +205,9 @@ hadoop-daemon.sh start namenode
 
 - 在此执行standby成功（格式化+启动n1，standby另外n2）
 ```
-************************************************************/
 18/04/29 11:14:41 INFO namenode.NameNode: registered UNIX signal handlers for [TERM, HUP, INT]
 18/04/29 11:14:41 INFO namenode.NameNode: createNameNode [-bootstrapStandby]
-=====================================================
+#=====================================================
 About to bootstrap Standby ID nn2 from:
            Nameservice ID: sxt
         Other Namenode ID: nn1
@@ -220,7 +218,7 @@ About to bootstrap Standby ID nn2 from:
                Cluster ID: CID-2e601647-294c-4e70-8e72-7a82bea94fa9
            Layout version: -63
        isUpgradeFinalized: true
-=====================================================
+#=====================================================
 18/04/29 11:14:42 INFO common.Storage: Storage directory /opt/hadoop/dfs/name has been successfully formatted.
 18/04/29 11:14:43 INFO namenode.TransferFsImage: Opening connection to http://n1:50070/imagetransfer?getimage=1&txid=0&storageInfo=-63:1765158274:0:CID-2e601647-294c-4e70-8e72-7a82bea94fa9
 18/04/29 11:14:43 INFO namenode.TransferFsImage: Image Transfer timeout configured to 60000 milliseconds
@@ -228,9 +226,7 @@ About to bootstrap Standby ID nn2 from:
 18/04/29 11:14:43 INFO namenode.TransferFsImage: Downloaded file fsimage.ckpt_0000000000000000000 size 321 bytes.
 18/04/29 11:14:43 INFO util.ExitUtil: Exiting with status 0
 18/04/29 11:14:43 INFO namenode.NameNode: SHUTDOWN_MSG: 
-/************************************************************
 SHUTDOWN_MSG: Shutting down NameNode at n2/192.168.44.101
-************************************************************/
 ```
 
 ## 查看HA效果
