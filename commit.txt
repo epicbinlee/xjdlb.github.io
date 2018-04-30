@@ -1,4 +1,4 @@
-echo "=============================="
+ï»¿echo "=============================="
 echo "start to upload files to git..."
 echo "=============================="
 yy=$(date +%y)
@@ -13,7 +13,7 @@ xD=$(date +%j)
 git status
 git add .
 git commit -m "
-$yy/$mm/$dd-$HH:$MM:$SS new post 31-hadoop-ÎåÒ»¼ÙÆÚ
+$yy/$mm/$dd-$HH:$MM:$SS new post 31-hadoop-äº”ä¸€å‡æœŸ
 "
 git push git@github.com:xjdlb/xjdlb.github.io.git hexo
 git  log --oneline | head
