@@ -26,7 +26,6 @@ n4      1   1
 ## 配置HDFS
 
 - hdfs-site.xml
-
 ```
 vim /root/app/hadoop/etc/hadoop/hdfs-site.xml
 <configuration>
@@ -87,7 +86,6 @@ vim /root/app/hadoop/etc/hadoop/hdfs-site.xml
 ```
 
 - core-site.xml
-
 ```
 vim /root/app/hadoop/etc/hadoop/core-site.xml
 <configuration>
@@ -110,7 +108,6 @@ vim /root/app/hadoop/etc/hadoop/core-site.xml
 ## 配置zookeeper
 
 - 环境变量
-
 ```
 cat /etc/profile
 export ANT_HOME=/root/app/ant
@@ -125,7 +122,6 @@ export PATH=$PATH:$ZOOKEEPER_HOME/bin
 ```
 
 - 配置文件
-
 ```
 cat /root/app/zookeeper/conf/zoo.cfg
 # The number of milliseconds of each tick
@@ -139,19 +135,16 @@ server.3=n3:2888:3888
 - 分别配置/opt/zookeeper目录，创建myid文件，加入1, 2, 3
 
 - 同时启动zk
-
 ```
 zkServer.sh start
 ```
 
 - 查看状态
-
 ```
 zkServer.sh status
 ```
 
 - 启动输出
-
 ```
 root@n1:~# zkServer.sh start
 ZooKeeper JMX enabled by default
@@ -169,6 +162,7 @@ scp -r ./dir n1:`pwd`
 ```
 
 ## 启动ZK
+
 - 启动并查看状态（1, 2, 3同时启动）
 ```
 zkServer.sh start
@@ -196,7 +190,6 @@ root@n2:~# jps
 ## 启动NN，高可用HA操作
 
 - 在一台NN格式化（NN:n1）
-
 ```
 hdfs namenode -format
 ```
@@ -374,5 +367,4 @@ n4: starting journalnode, logging to /root/app/hadoop/logs/hadoop-root-journalno
 Starting ZK Failover Controllers on NN hosts [n1 n2]
 n1: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n1.out
 n2: starting zkfc, logging to /root/app/hadoop/logs/hadoop-root-zkfc-n2.out
-root@n1:~# 
 ```
