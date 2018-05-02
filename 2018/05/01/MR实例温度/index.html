@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="列表,hadoop,configuration,coding," />
+  <meta name="keywords" content="列表,hadoop,mapreduce," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="This article describes how to write the wordcount program on eclipse and run it on local hadoop.">
-<meta name="keywords" content="列表,hadoop,configuration,coding">
+<meta name="description" content="本文介绍如何分析具体的MR实例。">
+<meta name="keywords" content="列表,hadoop,mapreduce">
 <meta property="og:type" content="article">
-<meta property="og:title" content="write wordcount program on eclipse and run on hadoop in win10">
-<meta property="og:url" content="http://yoursite.com/2018/04/23/write wordcount program on eclipse and run on hadoop in win10/index.html">
+<meta property="og:title" content="MR实例温度">
+<meta property="og:url" content="http://yoursite.com/2018/05/01/MR实例温度/index.html">
 <meta property="og:site_name" content="初心">
-<meta property="og:description" content="This article describes how to write the wordcount program on eclipse and run it on local hadoop.">
+<meta property="og:description" content="本文介绍如何分析具体的MR实例。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-01T13:16:37.990Z">
+<meta property="og:updated_time" content="2018-05-02T07:41:29.961Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="write wordcount program on eclipse and run on hadoop in win10">
-<meta name="twitter:description" content="This article describes how to write the wordcount program on eclipse and run it on local hadoop.">
+<meta name="twitter:title" content="MR实例温度">
+<meta name="twitter:description" content="本文介绍如何分析具体的MR实例。">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/23/write wordcount program on eclipse and run on hadoop in win10/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/01/MR实例温度/"/>
 
 
 
 
 
-  <title>write wordcount program on eclipse and run on hadoop in win10 | 初心</title>
+  <title>MR实例温度 | 初心</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/write wordcount program on eclipse and run on hadoop in win10/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/01/MR实例温度/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LeeBin">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">write wordcount program on eclipse and run on hadoop in win10</h1>
+          <h1 class="post-title" itemprop="name headline">MR实例温度</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-23T14:36:16+08:00">
-                2018-04-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T22:52:09+08:00">
+                2018-05-01
               </time>
             
 
@@ -351,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/configuration/" itemprop="url" rel="index">
-                    <span itemprop="name">configuration</span>
+                  <a href="/categories/开发/" itemprop="url" rel="index">
+                    <span itemprop="name">开发</span>
                   </a>
                 </span>
 
@@ -369,8 +369,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/23/write wordcount program on eclipse and run on hadoop in win10/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/23/write wordcount program on eclipse and run on hadoop in win10/" itemprop="commentCount"></span>
+                <a href="/2018/05/01/MR实例温度/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/01/MR实例温度/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -378,7 +378,7 @@
 
           
           
-             <span id="/2018/04/23/write wordcount program on eclipse and run on hadoop in win10/" class="leancloud_visitors" data-flag-title="write wordcount program on eclipse and run on hadoop in win10">
+             <span id="/2018/05/01/MR实例温度/" class="leancloud_visitors" data-flag-title="MR实例温度">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  628
+                  1,737
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  10
                 </span>
               
             </div>
@@ -443,187 +443,308 @@
       
 
       
-        <p>This article describes how to write the wordcount program on eclipse and run it on local hadoop.</p>
+        <p>本文介绍如何分析具体的MR实例。</p>
 <a id="more"></a>
-<h2 id="prerequisites"><a href="#prerequisites" class="headerlink" title="prerequisites"></a><strong>prerequisites</strong></h2><ul>
-<li><strong>server</strong></li>
-</ul>
-<ol>
-<li>win10</li>
-<li>hadoop 2.7.6</li>
-</ol>
-<ul>
-<li><strong>client</strong></li>
-</ul>
-<ol>
-<li>win10</li>
-<li>eclipse neon</li>
-<li>hadoop-eclipse-plugin-2.7.2.jar</li>
-</ol>
-<h2 id="create-project-and-coding"><a href="#create-project-and-coding" class="headerlink" title="create project and coding"></a><strong>create project and coding</strong></h2><ul>
-<li><p><strong>create project</strong></p>
-<pre><code>new &gt; other &gt; map reduce program &gt; fix the boxes with name, ${HADOOP_HOME} &gt; finish
+<h2 id="数据与需求"><a href="#数据与需求" class="headerlink" title="数据与需求"></a>数据与需求</h2><ul>
+<li><p>数据</p>
+<pre><code>  1949-10-01 14:21:02 34c
+  1949-10-02 14:01:02 36c
+  1950-01-01 11:21:02 32c
+  1950-10-01 12:21:02 37c
+  1951-12-01 12:21:02 23c
+  1950-10-02 12:21:02 41c
+  1950-10-03 12:21:02 27c
+  1951-07-01 12:21:02 45c
+  1951-07-02 12:21:02 46c
+  1951-07-03 12:21:03 47c
 </code></pre></li>
-<li><p><strong>coding</strong></p>
-<pre><code>package com.hikvision.bigdata.hadoop.hadoop_wordcount;
-import java.io.IOException;
-import java.util.StringTokenizer;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.Reducer;
-import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
-import org.apache.log4j.BasicConfigurator;
-/**
-* wordcount
-*/
-public class WordCount {
-  public static void main(String[] args) throws Exception {
-      BasicConfigurator.configure();
-      System.out.println(&quot;Hello World!&quot;);
-      Configuration conf = new Configuration();
-      @SuppressWarnings(&quot;deprecation&quot;)
-      Job job = new Job(conf, &quot;wordcount&quot;);
-      job.setJarByClass(WordCount.class);
-      job.setOutputKeyClass(Text.class);
-      job.setOutputValueClass(IntWritable.class);
-      job.setMapperClass(Map.class);
-      job.setReducerClass(Reduce.class);
-      job.setInputFormatClass(TextInputFormat.class);
-      job.setOutputFormatClass(TextOutputFormat.class);
-      FileInputFormat.addInputPath(job, new Path(args[0]));
-      FileOutputFormat.setOutputPath(job, new Path(args[1]));
-      job.waitForCompletion(true);
-  }
-  public static class Map extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt; {
-      private final static IntWritable one = new IntWritable(1);
-      private Text word = new Text();
-      public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-          String line = value.toString();
-          StringTokenizer tokenizer = new StringTokenizer(line);
-          while (tokenizer.hasMoreTokens()) {
-              word.set(tokenizer.nextToken());
-              context.write(word, one);
+<li><p>需求</p>
+<pre><code>  输出：得出每个年月下，温度最高的前两天
+  年月：升序
+  温度：降序
+</code></pre></li>
+<li><p>技术点分析</p>
+<pre><code>  sort需要进行二次排序，需要从写sort方法
+  reduce个数设定为3个，可能有%3操作，进行负载均衡
+  全部的MR模型中包含了map,reduce,part,sort,group,combine
+</code></pre></li>
+</ul>
+<h2 id="写代码"><a href="#写代码" class="headerlink" title="写代码"></a>写代码</h2><ul>
+<li>代码涉及到了MapReduce的整个生命周期</li>
+<li><p>每个周期的代码如下</p>
+<blockquote>
+<p>TQJob  </p>
+</blockquote>
+<pre><code>  package com.hikvision.tq;
+  import org.apache.hadoop.conf.Configuration;
+  import org.apache.hadoop.fs.FileSystem;
+  import org.apache.hadoop.fs.Path;
+  import org.apache.hadoop.io.IntWritable;
+  import org.apache.hadoop.mapreduce.Job;
+  import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+  import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+  public class TQJob {
+      public static void main(String[] args) throws Exception {
+          // 默认加载根目录src目录下的配置文件
+          Configuration conf = new Configuration();
+          // 运行方式1：手动指定提交服务器的地址
+          // conf.set(&quot;fs.defaultFS&quot;, &quot;hdfs://n1:8020&quot;);
+          // conf.set(&quot;yarn.resourcemanager.hotsname&quot;, &quot;n3&quot;);
+          // 运行方式2：使用配置文件指定，屏蔽上面的手动指定,报错的需要指定跨平台，指定本地jar的位置
+          conf.set(&quot;mapreduce.app-submission.cross-platform&quot;, &quot;true&quot;);
+          conf.set(&quot;mapred.jar&quot;, &quot;D:\\mr\\tq.jar&quot;);
+          // 运行方式3：手动上传到服务器上，屏蔽上的面的conf指定
+          // System.setProperty(&quot;HADOOP_USER_NAME&quot;, &quot;root&quot;);
+          // 开始job相关的设定
+          Job job = Job.getInstance(conf);
+          // 设定MR主类
+          job.setJarByClass(TQJob.class);
+          // 设定mapper
+          job.setMapperClass(TQMapper.class);
+          job.setOutputKeyClass(Weather.class);
+          job.setMapOutputValueClass(IntWritable.class);
+          // 设定reducer
+          job.setReducerClass(TQReducer.class);
+          job.setPartitionerClass(TQPartition.class);
+          job.setSortComparatorClass(TQSort.class);
+          job.setGroupingComparatorClass(TQGroup.class);
+          job.setNumReduceTasks(3);
+          // 要分析的文件
+          FileInputFormat.addInputPath(job, new Path(&quot;/weather/input/tq.txt&quot;));
+          // 输出路径
+          Path outPath = new Path(&quot;/weather/output&quot;);
+          FileSystem fs = FileSystem.get(conf);
+          if (fs.exists(outPath)) {
+              fs.delete(outPath, true);
+          }
+          FileOutputFormat.setOutputPath(job, outPath);
+          // 提交job作业
+          boolean flag = job.waitForCompletion(true);
+          if (flag) {
+              System.out.println(&quot;job commit successfully...&quot;);
           }
       }
   }
-  public static class Reduce extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; {
-      public void reduce(Text key, Iterable&lt;IntWritable&gt; values, Context context)
-              throws IOException, InterruptedException {
-          int sum = 0;
-          for (IntWritable val : values) {
-              sum += val.get();
+</code></pre><blockquote>
+<p>TQMapper  </p>
+</blockquote>
+<pre><code>  package com.hikvision.tq;
+  import java.io.IOException;
+  import java.text.ParseException;
+  import java.text.SimpleDateFormat;
+  import java.util.Calendar;
+  import org.apache.hadoop.io.IntWritable;
+  import org.apache.hadoop.io.LongWritable;
+  import org.apache.hadoop.io.Text;
+  import org.apache.hadoop.mapreduce.Mapper;
+  import org.apache.hadoop.util.StringUtils;
+  public class TQMapper extends Mapper&lt;LongWritable, Text, Weather, IntWritable&gt; {
+      @Override
+      protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+          String[] strs = StringUtils.split(value.toString(), &#39;\t&#39;);
+          SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);
+          Calendar cal = Calendar.getInstance();
+          try {
+              cal.setTime(sdf.parse(strs[0]));
+              Weather weather = new Weather();
+              weather.setYear(cal.get(Calendar.YEAR));
+              weather.setMonth(cal.get(Calendar.MONTH) + 1);
+              weather.setDay(cal.get(Calendar.DAY_OF_MONTH));
+              int temperature = Integer.parseInt(strs[1].substring(0, strs[1].lastIndexOf(&#39;c&#39;)));
+              weather.setTemperature(temperature);
+              context.write(weather, new IntWritable(temperature));
+          } catch (ParseException e) {
+              e.printStackTrace();
           }
-          context.write(key, new IntWritable(sum));
       }
   }
-}
+</code></pre><blockquote>
+<p>TQPartition  </p>
+</blockquote>
+<pre><code>  package com.hikvision.tq;
+  import org.apache.hadoop.io.IntWritable;
+  import org.apache.hadoop.mapreduce.lib.partition.HashPartitioner;
+  public class TQPartition extends HashPartitioner&lt;Weather, IntWritable&gt; {
+      @Override
+      public int getPartition(Weather key, IntWritable value, int numReduceTasks) {
+          // 重写partition的过程，需要满足业务的规则
+          // 越简单越好，会影响计算速度
+          return (key.getYear() - 1949) % numReduceTasks;
+          // return super.getPartition(key, value, numReduceTasks);
+      }
+  }
+</code></pre><blockquote>
+<p>TQSort  </p>
+</blockquote>
+<pre><code>  package com.hikvision.tq;
+  import org.apache.hadoop.io.WritableComparable;
+  import org.apache.hadoop.io.WritableComparator;
+  public class TQSort extends WritableComparator {
+      // 重写构造方法
+      public TQSort() {
+          super(Weather.class, true);
+      }
+      @SuppressWarnings(&quot;rawtypes&quot;)
+      @Override
+      public int compare(WritableComparable a, WritableComparable b) {
+          Weather w1 = (Weather) a;
+          Weather w2 = (Weather) b;
+          int c1 = Integer.compare(w1.getYear(), w2.getYear());
+          if (c1 == 0) {
+              int c2 = Integer.compare(w1.getMonth(), w2.getMonth());
+              if (c2 == 0) {
+                  return -Integer.compare(w1.getTemperature(), w2.getTemperature());
+              }
+              return c2;
+          }
+          return c1;
+      }
+  }
+</code></pre><blockquote>
+<p>TQGroup  </p>
+</blockquote>
+<pre><code>  package com.hikvision.tq;
+  import org.apache.hadoop.io.WritableComparable;
+  import org.apache.hadoop.io.WritableComparator;
+  public class TQGroup extends WritableComparator {
+      public TQGroup() {
+          super(Weather.class, true);
+      }
+      @SuppressWarnings(&quot;rawtypes&quot;)
+      @Override
+      public int compare(WritableComparable a, WritableComparable b) {
+          Weather w1 = (Weather) a;
+          Weather w2 = (Weather) b;
+          int c1 = Integer.compare(w1.getYear(), w2.getYear());
+          if (c1 == 0) {
+              return Integer.compare(w1.getMonth(), w2.getMonth());
+          }
+          return c1;
+      }
+  }
+</code></pre><blockquote>
+<p>TQReducer  </p>
+</blockquote>
+<pre><code>  package com.hikvision.tq;
+  import java.io.IOException;
+  import org.apache.hadoop.io.IntWritable;
+  import org.apache.hadoop.io.NullWritable;
+  import org.apache.hadoop.io.Text;
+  import org.apache.hadoop.mapreduce.Reducer;
+  public class TQReducer extends Reducer&lt;Weather, IntWritable, Text, NullWritable&gt; {
+      @Override
+      protected void reduce(Weather weather, Iterable&lt;IntWritable&gt; iterable, Context context) throws IOException, InterruptedException {
+          int flag = 0;
+          for (IntWritable i : iterable) {
+              flag++;
+              if (flag &gt; 2) {
+                  break;
+              }
+              String msg = weather.getYear() + &quot;-&quot; + weather.getMonth() + &quot;-&quot; + weather.getDay() + &quot;-&quot; + i.get();
+              context.write(new Text(msg), NullWritable.get());
+          }
+      }
+  }
 </code></pre></li>
 </ul>
-<h2 id="configure-program"><a href="#configure-program" class="headerlink" title="configure program"></a><strong>configure program</strong></h2><ul>
-<li><p><strong>configure hadoop</strong></p>
-<pre><code>step 1:
-core-site.xml
-&lt;configuration&gt;
- &lt;property&gt;
-    &lt;name&gt;fs.default.name&lt;/name&gt;
-    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
-    &lt;value&gt;/root/app/hadoop/tmp&lt;/value&gt;
-&lt;/property&gt;
-&lt;/configuration&gt;
-###########################################
-step 2:
-hdfs-site.xml
-&lt;configuration&gt;
-&lt;property&gt;
-    &lt;name&gt;dfs.name.dir&lt;/name&gt;
-    &lt;value&gt;/root/app/hadoop/hdfs/name&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-    &lt;name&gt;dfs.data.dir&lt;/name&gt;
-    &lt;value&gt;/root/app/hadoop/hdfs/data&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-    &lt;name&gt;dfs.permissions&lt;/name&gt;
-    &lt;value&gt;false&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-    &lt;name&gt;dfs.replication&lt;/name&gt;
-    &lt;value&gt;1&lt;/value&gt;
-    &lt;description&gt;defult 3, less than numbers of datanode&lt;/description&gt;
-&lt;/property&gt;
-&lt;/configuration&gt;
-###########################################
-step 3:
-mapred-site.xml
-&lt;configuration&gt;
-&lt;property&gt;
-    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
-    &lt;value&gt;yarn&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-    &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;
-    &lt;value&gt;localhost:10020&lt;/value&gt;
-    &lt;description&gt;MapReduce JobHistory Server IPC host:port&lt;/description&gt;
-&lt;/property&gt;
-&lt;/configuration&gt;
-###########################################
-step 4:
-yarn-site.xml
-&lt;configuration&gt;
-&lt;property&gt;
-        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
-        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-        &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;
-        &lt;value&gt;localhost:8099&lt;/value&gt;
-&lt;/property&gt;
-&lt;/configuration&gt;
-</code></pre></li>
-<li><p><strong>format namenode</strong></p>
-<pre><code>cd bin
-hdfs namenode -format
-# format only once
-</code></pre></li>
-<li><p><strong>start hadoop and upload data to hdfs</strong></p>
-<pre><code>cd ${HADOOP_HOME}
-input cmd to open cmd line
-cd sbin
-start-all.cmd
-#
-#
-hadoop fs -mkdir /data
-hadoop fs -put D:\a.txt /data/a.txt
-</code></pre></li>
-<li><strong>configure input and output path for program in eclipse</strong><pre><code>1 project name &gt; right clieck &gt; run as &gt; run configuration &gt; java application &gt; new
-2 fix the boxes with the program name, main class, run name, and arguments
-3 the arguments as follows:
-hdfs://localhost:9000/data/a.txt hdfs://localhost:9000/data/output
+<h2 id="提交job操作"><a href="#提交job操作" class="headerlink" title="提交job操作"></a>提交job操作</h2><ul>
+<li>新建文件夹，上传文件到hdfs</li>
+<li>已经有了配置文件所以，使用方式2进行提交，需要手动打包，直接运行<pre><code>  // 运行方式2：使用配置文件指定，屏蔽上面的手动指定,报错的需要指定跨平台，指定本地jar的位置
+  conf.set(&quot;mapreduce.app-submission.cross-platform&quot;, &quot;true&quot;);
+  conf.set(&quot;mapred.jar&quot;, &quot;D:\\mr\\tq.jar&quot;);
 </code></pre></li>
 </ul>
-<h2 id="run-program"><a href="#run-program" class="headerlink" title="run program"></a><strong>run program</strong></h2><ul>
-<li><strong>precondition</strong></li>
-</ul>
-<ol>
-<li>delete the output floder on hdfs</li>
-<li>data is ready</li>
-<li>input/output path is configured in eclipse</li>
-<li>hadoop is running</li>
-</ol>
-<ul>
-<li><strong>run program</strong><pre><code>project name &gt; right clieck &gt; run as &gt; run on hadoop &gt; select the main class &gt; enjoy the ouput
+<h2 id="查看运行结果"><a href="#查看运行结果" class="headerlink" title="查看运行结果"></a>查看运行结果</h2><ul>
+<li><p>控制台日志</p>
+<pre><code>  2018-05-02 15:22:31,473 WARN  mapreduce.JobResourceUploader (JobResourceUploader.java:uploadFiles(64)) - Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+  2018-05-02 15:22:34,937 INFO  input.FileInputFormat (FileInputFormat.java:listStatus(283)) - Total input paths to process : 1
+  2018-05-02 15:22:35,103 INFO  mapreduce.JobSubmitter (JobSubmitter.java:submitJobInternal(198)) - number of splits:1
+  2018-05-02 15:22:35,119 INFO  Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - mapred.jar is deprecated. Instead, use mapreduce.job.jar
+  2018-05-02 15:22:35,237 INFO  mapreduce.JobSubmitter (JobSubmitter.java:printTokens(287)) - Submitting tokens for job: job_1525168992297_0007
+  2018-05-02 15:22:35,674 INFO  impl.YarnClientImpl (YarnClientImpl.java:submitApplication(273)) - Submitted application application_1525168992297_0007
+  2018-05-02 15:22:35,825 INFO  mapreduce.Job (Job.java:submit(1294)) - The url to track the job: http://n3:8088/proxy/application_1525168992297_0007/
+  2018-05-02 15:22:35,826 INFO  mapreduce.Job (Job.java:monitorAndPrintJob(1339)) - Running job: job_1525168992297_0007
+  2018-05-02 15:22:48,438 INFO  mapreduce.Job (Job.java:monitorAndPrintJob(1360)) - Job job_1525168992297_0007 running in uber mode : false
+  2018-05-02 15:22:48,439 INFO  mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 0% reduce 0%
+  2018-05-02 15:22:58,537 INFO  mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 100% reduce 0%
+  2018-05-02 15:23:14,820 INFO  mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 100% reduce 33%
+  2018-05-02 15:23:15,837 INFO  mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 100% reduce 100%
+  2018-05-02 15:23:16,853 INFO  mapreduce.Job (Job.java:monitorAndPrintJob(1378)) - Job job_1525168992297_0007 completed successfully
+  2018-05-02 15:23:17,092 INFO  mapreduce.Job (Job.java:monitorAndPrintJob(1385)) - Counters: 50
+      File System Counters
+          FILE: Number of bytes read=238
+          FILE: Number of bytes written=501967
+          FILE: Number of read operations=0
+          FILE: Number of large read operations=0
+          FILE: Number of write operations=0
+          HDFS: Number of bytes read=347
+          HDFS: Number of bytes written=101
+          HDFS: Number of read operations=12
+          HDFS: Number of large read operations=0
+          HDFS: Number of write operations=6
+      Job Counters 
+          Killed reduce tasks=1
+          Launched map tasks=1
+          Launched reduce tasks=3
+          Data-local map tasks=1
+          Total time spent by all maps in occupied slots (ms)=7783
+          Total time spent by all reduces in occupied slots (ms)=43298
+          Total time spent by all map tasks (ms)=7783
+          Total time spent by all reduce tasks (ms)=43298
+          Total vcore-milliseconds taken by all map tasks=7783
+          Total vcore-milliseconds taken by all reduce tasks=43298
+          Total megabyte-milliseconds taken by all map tasks=7969792
+          Total megabyte-milliseconds taken by all reduce tasks=44337152
+      Map-Reduce Framework
+          Map input records=10
+          Map output records=10
+          Map output bytes=200
+          Map output materialized bytes=238
+          Input split bytes=96
+          Combine input records=0
+          Combine output records=0
+          Reduce input groups=5
+          Reduce shuffle bytes=238
+          Reduce input records=10
+          Reduce output records=8
+          Spilled Records=20
+          Shuffled Maps =3
+          Failed Shuffles=0
+          Merged Map outputs=3
+          GC time elapsed (ms)=498
+          CPU time spent (ms)=8400
+          Physical memory (bytes) snapshot=570830848
+          Virtual memory (bytes) snapshot=7779991552
+          Total committed heap usage (bytes)=175120384
+      Shuffle Errors
+          BAD_ID=0
+          CONNECTION=0
+          IO_ERROR=0
+          WRONG_LENGTH=0
+          WRONG_MAP=0
+          WRONG_REDUCE=0
+      File Input Format Counters 
+          Bytes Read=251
+      File Output Format Counters 
+          Bytes Written=101
+  job commit successfully...
 </code></pre></li>
+<li><p>webUI和输出的目录</p>
+<blockquote>
+<p>输出目录下分为三个文件,和设定的三个reducer有关  </p>
+<pre><code>  1949-10-2-36
+  1949-10-1-34
+  #
+  1950-1-1-32
+  1950-10-2-41
+  1950-10-1-37
+  #
+  1951-7-3-47
+  1951-7-2-46
+  1951-12-1-23
+</code></pre><p>查看webUI <a href="http://n3:8088/cluster" target="_blank" rel="noopener">http://n3:8088/cluster</a> 显示已经执行成功</p>
+</blockquote>
+</li>
 </ul>
 
       
@@ -646,9 +767,7 @@ hdfs://localhost:9000/data/a.txt hdfs://localhost:9000/data/output
           
             <a href="/tags/hadoop/" rel="tag"><i class="fa fa-tag"></i> hadoop</a>
           
-            <a href="/tags/configuration/" rel="tag"><i class="fa fa-tag"></i> configuration</a>
-          
-            <a href="/tags/coding/" rel="tag"><i class="fa fa-tag"></i> coding</a>
+            <a href="/tags/mapreduce/" rel="tag"><i class="fa fa-tag"></i> mapreduce</a>
           
         </div>
       
@@ -661,8 +780,8 @@ hdfs://localhost:9000/data/a.txt hdfs://localhost:9000/data/output
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/22/configure hadoop on ubuntu and connect to eclipse on ubuntu or win10/" rel="next" title="configure hadoop on ubuntu and connect to eclipse on ubuntu or win10">
-                <i class="fa fa-chevron-left"></i> configure hadoop on ubuntu and connect to eclipse on ubuntu or win10
+              <a href="/2018/05/01/工欲善其事必先利其器/" rel="next" title="工欲善其事必先利其器(持续更新中)">
+                <i class="fa fa-chevron-left"></i> 工欲善其事必先利其器(持续更新中)
               </a>
             
           </div>
@@ -670,10 +789,6 @@ hdfs://localhost:9000/data/a.txt hdfs://localhost:9000/data/output
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/23/usage of scp/" rel="prev" title="usage of scp">
-                usage of scp <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -815,7 +930,7 @@ hdfs://localhost:9000/data/a.txt hdfs://localhost:9000/data/output
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#prerequisites"><span class="nav-number">1.</span> <span class="nav-text">prerequisites</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#create-project-and-coding"><span class="nav-number">2.</span> <span class="nav-text">create project and coding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configure-program"><span class="nav-number">3.</span> <span class="nav-text">configure program</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run-program"><span class="nav-number">4.</span> <span class="nav-text">run program</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据与需求"><span class="nav-number">1.</span> <span class="nav-text">数据与需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写代码"><span class="nav-number">2.</span> <span class="nav-text">写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交job操作"><span class="nav-number">3.</span> <span class="nav-text">提交job操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看运行结果"><span class="nav-number">4.</span> <span class="nav-text">查看运行结果</span></a></li></ol></div>
             
 
           </div>
