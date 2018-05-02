@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[工欲善其事必先利其器(持续更新中)]]></title>
     <url>%2F2018%2F05%2F01%2F%E5%B7%A5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B%E5%BF%85%E5%85%88%E5%88%A9%E5%85%B6%E5%99%A8%2F</url>
-    <content type="text"><![CDATA[本文介绍所有的优化配置过程，设计到操作系统，开发工具，常用的小工具等。 win10 系统优化 安装win10: 搜索关键词：msdn我告诉你，下载原生的win10系统下载魔方，用魔方组件将ISO文件写入到U盘重启，开机即可安装win10用户名可以设置为root，很多开发场景中需要windows的用户名为root 安装驱动： 360官网 &gt; 驱动大师安装驱动大师 &gt; 安装驱动 安装office 2016 搜索关键词：msdn我告诉你，下载office2016安装 激活win10 office2016 小马激活OEM10.exe激活win10KMSpico_setup.exe激活office 2016 关闭/打开windows BISO启动入口 关闭掉windows update 关闭掉windows defender 备份系统 eclipse优化 eclipse快捷键 ctrl+o 打开类alt+shift+s v 重写方法 依赖包的导入方式 设置代码显示最大宽度 插件 maven插件 下载maven插件安装maven插件 maven插件 hadoop插件 连接远程hadoop集群，需要本地的windows用户为root用户xxx ubuntu设置 启动用户名和密码的登录界面 更换国内的源(fq除外) vm下的ubuntu更改为固定的IP]]></content>
+    <content type="text"><![CDATA[本文介绍所有的优化配置过程，设计到操作系统，开发工具，常用的小工具等。 win10 系统优化 安装win10: 搜索关键词：msdn我告诉你，下载原生的win10系统下载魔方，用魔方组件将ISO文件写入到U盘重启，开机即可安装win10用户名可以设置为root，很多开发场景中需要windows的用户名为root 安装驱动： 360官网 &gt; 驱动大师安装驱动大师 &gt; 安装驱动 安装office 2016 搜索关键词：msdn我告诉你，下载office2016安装 激活win10 office2016 小马激活OEM10.exe激活win10KMSpico_setup.exe激活office 2016 关闭/打开windows BISO启动入口 控制面板\硬件和声音\电源选项\系统设置更改不可用设置 &gt; 启用快速启动 关闭掉windows update 在中文输入法下 &gt; 按win键 &gt; 输入服务windows update &gt; 停止 &gt; 禁止启动 关闭掉windows defender 设置 &gt; 更新和安全 &gt; Windows Defender &gt; 关闭实时保护 关闭windows 防火墙 计算机右键属性 &gt; windows防火墙 &gt; 启用和关闭windows防火墙 备份系统 http://www.uqidong.com/ 下载U启动工具，制作U盘启动查找电脑主板 &gt; 查找进入bios的方法 &gt; 重启按键 &gt; 从U盘启动选择备份系统 &gt; 备份C盘 windows 常用的工具优化 everything+wox 实现mac的sportlight搜索框功能 autohotkey实现workflow功能 ahk常用的快捷键 ahk win ^ Ctrl键 + Shift键 ! Alt键 井 Win键 Up 上箭头键 Down 下箭头键 Left 左箭头键 Right 右箭头键 PgUp PageUp键 PgDn PageDn键 F1-F12 功能键 a-z a-z键 LButton 鼠标左键 RButton 鼠标右键 MButton 鼠标中键 WheelUp 鼠标滑轮向上 WheelDown 表示鼠标滑轮向下Del|Del删除Enter|Enter回车Tab|Table制表符Space|Space空格 eclipse优化 eclipse快捷键 参考 key meaning ctrl+o 打开类 alt+shift+s v 重写方法 依赖包的导入方式 手动创建lib，然后导入添加用户依赖 设置代码显示最大宽度 Window &gt; Preferences &gt; Java &gt; Code Style &gt; Formatter &gt; new ProfileLine Wrapping &gt; Maximum line width eclipse插件 maven插件M2Eclipse 找到maven链接 http://www.eclipse.org/m2e/软件 &gt; 安装其他软件 hadoop插件 连接远程hadoop集群，需要本地的windows用户为root用户 ubuntu设置 启动用户名和密码的登录界面 sudo passwd -u root sudo passwd root su root cd /usr/share/lightdm/lightdm.conf.d/ vim 50-unity-greeter.conf # 添加 user-session=ubuntu greeter-show-manual-login=true all-guest=false # 重启 reboot # 使用user和passwd进入root报错 vim /root/.profile # 找到mesg n || true # 改为tty -s &amp;&amp; mesg n || true 更换国内的源(fq除外) sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup vi /etc/apt/sources.list #Ubuntu 官方源 deb http://archive.ubuntu.com/ubuntu/ gutsy main restricted universe multiverse deb http://archive.ubuntu.com/ubuntu/ gutsy-security main restricted universe multiverse deb http://archive.ubuntu.com/ubuntu/ gutsy-updates main restricted universe multiverse deb http://archive.ubuntu.com/ubuntu/ gutsy-proposed main restricted universe multiverse deb http://archive.ubuntu.com/ubuntu/ gutsy-backports main restricted universe multiverse deb-src http://archive.ubuntu.com/ubuntu/ gutsy main restricted universe multiverse deb-src http://archive.ubuntu.com/ubuntu/ gutsy-security main restricted universe multiverse deb-src http://archive.ubuntu.com/ubuntu/ gutsy-updates main restricted universe multiverse deb-src http://archive.ubuntu.com/ubuntu/ gutsy-proposed main restricted universe multiverse deb-src http://archive.ubuntu.com/ubuntu/ gutsy-backports main restricted universe multiverse #网易163 deb http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse deb http://mirrors.163.com/ubuntu/ trusty-security main restricted universe multiverse deb http://mirrors.163.com/ubuntu/ trusty-updates main restricted universe multiverse deb http://mirrors.163.com/ubuntu/ trusty-proposed main restricted universe multiverse deb http://mirrors.163.com/ubuntu/ trusty-backports main restricted universe multiverse deb-src http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse deb-src http://mirrors.163.com/ubuntu/ trusty-security main restricted universe multiverse deb-src http://mirrors.163.com/ubuntu/ trusty-updates main restricted universe multiverse deb-src http://mirrors.163.com/ubuntu/ trusty-proposed main restricted universe multiverse deb-src http://mirrors.163.com/ubuntu/ trusty-backports main restricted universe multiverse sudo apt-get update sudo apt-get dist-upgrade vm下的ubuntu更改为固定的IP 查看vm的IP地址 &gt; 网段和DNS编辑ubutnu的网卡配置 &gt; 设置在合理的IP范围重启网卡]]></content>
       <categories>
         <category>configuration</category>
       </categories>
@@ -211,8 +211,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>hadoop</tag>
         <tag>maven</tag>
+        <tag>hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -250,8 +250,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>配置</tag>
         <tag>maven</tag>
+        <tag>配置</tag>
         <tag>windows</tag>
       </tags>
   </entry>
@@ -265,8 +265,8 @@
       <tags>
         <tag>列表</tag>
         <tag>配置</tag>
-        <tag>git</tag>
         <tag>eclipse</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -297,6 +297,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
+    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>列表</tag>
+        <tag>配置</tag>
+        <tag>valine</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LC_001_TwoSum_HashMap]]></title>
     <url>%2F2018%2F04%2F03%2FLC_001_TwoSum_HashMap%2F</url>
     <content type="text"><![CDATA[leetcode第001题，主要用到了hashmap数据结构。 题解package LC; import java.util.Arrays; import java.util.HashMap; /** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */ public class LC_001_TwoSum_HashMap { public static void main(String[] args) { int[] a = {1, 2, 3, 4, 5, 7}; int t = 10; System.out.println(Arrays.toString(twoSum(a, t))); } private static int[] twoSum(int[] nums, int target) { HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) { int diff = target - nums[i]; if (map.containsKey(diff)) return new int[]{map.get(diff), i}; map.put(nums[i], i); } throw new IllegalArgumentException(&quot;-1&quot;); } }]]></content>
@@ -308,19 +321,6 @@
         <tag>leetcode</tag>
         <tag>java</tag>
         <tag>basic algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
-    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
-    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>列表</tag>
-        <tag>配置</tag>
-        <tag>valine</tag>
       </tags>
   </entry>
   <entry>
