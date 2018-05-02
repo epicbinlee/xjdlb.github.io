@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-02T02:47:34.759Z</updated>
+  <updated>2018-05-02T02:53:44.337Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/05/01/%E5%B7%A5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B%E5%BF%85%E5%85%88%E5%88%A9%E5%85%B6%E5%99%A8/"/>
     <id>http://yoursite.com/2018/05/01/工欲善其事必先利其器/</id>
     <published>2018-05-01T03:33:22.000Z</published>
-    <updated>2018-05-02T02:47:34.759Z</updated>
+    <updated>2018-05-02T02:53:44.337Z</updated>
     
-    <content type="html"><![CDATA[<p>本文介绍所有的优化配置过程，设计到操作系统，开发工具，常用的小工具等。</p><a id="more"></a><h2 id="win10-系统优化"><a href="#win10-系统优化" class="headerlink" title="win10 系统优化"></a>win10 系统优化</h2><ul><li><p>安装win10:</p><blockquote><p>搜索关键词：msdn我告诉你，下载原生的win10系统<br>下载魔方，用魔方组件将ISO文件写入到U盘<br>重启，开机即可安装win10<br>用户名可以设置为root，很多开发场景中需要windows的用户名为root  </p></blockquote></li><li><p>安装驱动：</p><blockquote><p>360官网 &gt; 驱动大师<br>安装驱动大师 &gt; 安装驱动</p></blockquote></li><li><p>安装office 2016</p><blockquote><p>搜索关键词：msdn我告诉你，下载office2016<br>安装  </p></blockquote></li><li><p>激活win10 office2016</p><blockquote><p>小马激活OEM10.exe激活win10<br>KMSpico_setup.exe激活office 2016  </p></blockquote></li><li><p>关闭/打开windows BISO启动入口</p><blockquote><p>控制面板\硬件和声音\电源选项\系统设置<br>更改不可用设置 &gt; 启用快速启动  </p></blockquote></li><li><p>关闭掉windows update</p><blockquote><p>在中文输入法下 &gt; 按win键 &gt; 输入服务<br>windows update &gt; 停止 &gt; 禁止启动  </p></blockquote></li><li><p>关闭掉windows defender</p><blockquote><p>设置 &gt; 更新和安全 &gt; Windows Defender &gt; 关闭实时保护  </p></blockquote></li><li><p>关闭windows 防火墙</p><blockquote><p>计算机右键属性 &gt; windows防火墙 &gt; 启用和关闭windows防火墙  </p></blockquote></li><li><p>备份系统</p><blockquote><p><a href="http://www.uqidong.com/" target="_blank" rel="noopener">http://www.uqidong.com/</a> 下载U启动工具，制作U盘启动<br>查找电脑主板 &gt; 查找进入bios的方法 &gt; 重启按键 &gt; 从U盘启动<br>选择备份系统 &gt; 备份C盘  </p></blockquote></li></ul><h2 id="windows-常用的工具优化"><a href="#windows-常用的工具优化" class="headerlink" title="windows 常用的工具优化"></a>windows 常用的工具优化</h2><ul><li><p>everything+wox 实现mac的sportlight搜索框功能</p></li><li><p>autohotkey实现workflow功能</p><blockquote><p>ahk常用的快捷键  </p></blockquote></li></ul><table><thead><tr><th>ahk</th><th>win</th></tr></thead><tbody><tr><td>^</td><td>Ctrl键</td></tr><tr><td>+</td><td>Shift键</td></tr><tr><td>!</td><td>Alt键</td></tr><tr><td>井</td><td>Win键</td></tr><tr><td>Up</td><td>上箭头键</td></tr><tr><td>Down</td><td>下箭头键</td></tr><tr><td>Left</td><td>左箭头键</td></tr><tr><td>Right</td><td>右箭头键</td></tr><tr><td>PgUp</td><td>PageUp键</td></tr><tr><td>PgDn</td><td>PageDn键</td></tr><tr><td>F1-F12</td><td>功能键</td></tr><tr><td>a-z</td><td>a-z键</td></tr><tr><td>LButton</td><td>鼠标左键</td></tr><tr><td>RButton</td><td>鼠标右键</td></tr><tr><td>MButton</td><td>鼠标中键</td></tr><tr><td>WheelUp</td><td>鼠标滑轮向上</td></tr></tbody></table><p>WheelDown 表示鼠标滑轮向下<br>Del|Del删除<br>Enter|Enter回车<br>Tab|Table制表符<br>Space|Space空格</p><h2 id="eclipse优化"><a href="#eclipse优化" class="headerlink" title="eclipse优化"></a>eclipse优化</h2><ul><li>eclipse快捷键 <a href="https://www.cnblogs.com/zhangqie/p/6432477.html" target="_blank" rel="noopener">参考</a></li></ul><table><thead><tr><th>key</th><th>meaning</th></tr></thead><tbody><tr><td>ctrl+o</td><td>打开类</td></tr><tr><td>alt+shift+s v</td><td>重写方法</td></tr></tbody></table><ul><li><p>依赖包的导入方式</p><blockquote><p>手动创建lib，然后导入<br>添加用户依赖  </p></blockquote></li><li><p>设置代码显示最大宽度</p><blockquote><p>Window &gt; Preferences &gt; Java &gt; Code Style &gt; Formatter &gt; new Profile<br>Line Wrapping &gt; Maximum line width  </p></blockquote></li><li><p>eclipse插件</p><ol><li><p>maven插件M2Eclipse</p><blockquote><p>找到maven链接 <a href="http://www.eclipse.org/m2e/" target="_blank" rel="noopener">http://www.eclipse.org/m2e/</a><br>软件 &gt; 安装其他软件  </p></blockquote></li><li><p>hadoop插件</p><blockquote><p>连接远程hadoop集群，需要本地的windows用户为root用户  </p></blockquote></li></ol></li></ul><h2 id="ubuntu设置"><a href="#ubuntu设置" class="headerlink" title="ubuntu设置"></a>ubuntu设置</h2><ul><li>启动用户名和密码的登录界面<pre><code>  sudo passwd -u root  sudo passwd root  su root  cd /usr/share/lightdm/lightdm.conf.d/  vim 50-unity-greeter.conf  # 添加  user-session=ubuntu  greeter-show-manual-login=true  all-guest=false  # 重启  reboot  # 使用user和passwd进入root报错  vim /root/.profile  # 找到mesg n || true  # 改为tty -s &amp;&amp; mesg n || true</code></pre></li><li><p>更换国内的源(fq除外)</p><pre><code>  sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup  vi /etc/apt/sources.list  #Ubuntu 官方源   deb http://archive.ubuntu.com/ubuntu/ gutsy main restricted universe multiverse  deb http://archive.ubuntu.com/ubuntu/ gutsy-security main restricted universe multiverse  deb http://archive.ubuntu.com/ubuntu/ gutsy-updates main restricted universe multiverse  deb http://archive.ubuntu.com/ubuntu/ gutsy-proposed main restricted universe multiverse  deb http://archive.ubuntu.com/ubuntu/ gutsy-backports main restricted universe multiverse  deb-src http://archive.ubuntu.com/ubuntu/ gutsy main restricted universe multiverse  deb-src http://archive.ubuntu.com/ubuntu/ gutsy-security main restricted universe multiverse  deb-src http://archive.ubuntu.com/ubuntu/ gutsy-updates main restricted universe multiverse  deb-src http://archive.ubuntu.com/ubuntu/ gutsy-proposed main restricted universe multiverse  deb-src http://archive.ubuntu.com/ubuntu/ gutsy-backports main restricted universe multiverse  #网易163  deb http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse  deb http://mirrors.163.com/ubuntu/ trusty-security main restricted universe multiverse  deb http://mirrors.163.com/ubuntu/ trusty-updates main restricted universe multiverse  deb http://mirrors.163.com/ubuntu/ trusty-proposed main restricted universe multiverse  deb http://mirrors.163.com/ubuntu/ trusty-backports main restricted universe multiverse  deb-src http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse  deb-src http://mirrors.163.com/ubuntu/ trusty-security main restricted universe multiverse  deb-src http://mirrors.163.com/ubuntu/ trusty-updates main restricted universe multiverse  deb-src http://mirrors.163.com/ubuntu/ trusty-proposed main restricted universe multiverse  deb-src http://mirrors.163.com/ubuntu/ trusty-backports main restricted universe multiverse  sudo apt-get update  sudo apt-get dist-upgrade</code></pre></li><li><p>vm下的ubuntu更改为固定的IP</p><blockquote><p>查看vm的IP地址 &gt; 网段和DNS<br>编辑ubutnu的网卡配置 &gt; 设置在合理的IP范围<br>重启网卡  </p></blockquote></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>本文介绍所有的优化配置过程，设计到操作系统，开发工具，常用的小工具等。</p><a id="more"></a><h2 id="win10-系统优化"><a href="#win10-系统优化" class="headerlink" title="win10 系统优化"></a>win10 系统优化</h2><ul><li><p>安装win10:</p><blockquote><p>搜索关键词：msdn我告诉你，下载原生的win10系统<br>下载魔方，用魔方组件将ISO文件写入到U盘<br>重启，开机即可安装win10<br>用户名可以设置为root，很多开发场景中需要windows的用户名为root  </p></blockquote></li><li><p>安装驱动：</p><blockquote><p>360官网 &gt; 驱动大师<br>安装驱动大师 &gt; 安装驱动</p></blockquote></li><li><p>安装office 2016</p><blockquote><p>搜索关键词：msdn我告诉你，下载office2016<br>安装  </p></blockquote></li><li><p>激活win10 office2016</p><blockquote><p>小马激活OEM10.exe激活win10<br>KMSpico_setup.exe激活office 2016  </p></blockquote></li><li><p>关闭/打开windows BISO启动入口</p><blockquote><p>控制面板\硬件和声音\电源选项\系统设置<br>更改不可用设置 &gt; 启用快速启动  </p></blockquote></li><li><p>关闭掉windows update</p><blockquote><p>在中文输入法下 &gt; 按win键 &gt; 输入服务<br>windows update &gt; 停止 &gt; 禁止启动  </p></blockquote></li><li><p>关闭掉windows defender</p><blockquote><p>设置 &gt; 更新和安全 &gt; Windows Defender &gt; 关闭实时保护  </p></blockquote></li><li><p>关闭windows 防火墙</p><blockquote><p>计算机右键属性 &gt; windows防火墙 &gt; 启用和关闭windows防火墙  </p></blockquote></li><li><p>备份系统</p><blockquote><p><a href="http://www.uqidong.com/" target="_blank" rel="noopener">http://www.uqidong.com/</a> 下载U启动工具，制作U盘启动<br>查找电脑主板 &gt; 查找进入bios的方法 &gt; 重启按键 &gt; 从U盘启动<br>选择备份系统 &gt; 备份C盘  </p></blockquote></li></ul><h2 id="windows-常用的工具优化"><a href="#windows-常用的工具优化" class="headerlink" title="windows 常用的工具优化"></a>windows 常用的工具优化</h2><ul><li><p>everything+wox 实现mac的sportlight搜索框功能</p></li><li><p>autohotkey实现workflow功能</p><blockquote><p>ahk常用的快捷键  </p></blockquote></li></ul><table><thead><tr><th>ahk</th><th>win</th></tr></thead><tbody><tr><td>^</td><td>Ctrl键</td></tr><tr><td>+</td><td>Shift键</td></tr><tr><td>!</td><td>Alt键</td></tr><tr><td>井</td><td>Win键</td></tr><tr><td>Up</td><td>上箭头键</td></tr><tr><td>Down</td><td>下箭头键</td></tr><tr><td>Left</td><td>左箭头键</td></tr><tr><td>Right</td><td>右箭头键</td></tr><tr><td>PgUp</td><td>PageUp键</td></tr><tr><td>PgDn</td><td>PageDn键</td></tr><tr><td>F1-F12</td><td>功能键</td></tr><tr><td>a-z</td><td>a-z键</td></tr><tr><td>LButton</td><td>鼠标左键</td></tr><tr><td>RButton</td><td>鼠标右键</td></tr><tr><td>MButton</td><td>鼠标中键</td></tr><tr><td>WheelUp</td><td>鼠标滑轮向上</td></tr><tr><td>WheelDown</td><td>鼠标滑轮向下</td></tr><tr><td>Del</td><td>Del删除</td></tr><tr><td>Enter</td><td>Enter回车</td></tr><tr><td>Tab</td><td>Table制表符</td></tr><tr><td>Space</td><td>Space空格</td></tr></tbody></table><h2 id="eclipse优化"><a href="#eclipse优化" class="headerlink" title="eclipse优化"></a>eclipse优化</h2><ul><li>eclipse快捷键 <a href="https://www.cnblogs.com/zhangqie/p/6432477.html" target="_blank" rel="noopener">参考</a></li></ul><table><thead><tr><th>key</th><th>meaning</th></tr></thead><tbody><tr><td>ctrl+o</td><td>打开类</td></tr><tr><td>alt+shift+s v</td><td>重写方法</td></tr></tbody></table><ul><li><p>依赖包的导入方式</p><blockquote><p>手动创建lib，然后导入<br>添加用户依赖  </p></blockquote></li><li><p>设置代码显示最大宽度</p><blockquote><p>Window &gt; Preferences &gt; Java &gt; Code Style &gt; Formatter &gt; new Profile<br>Line Wrapping &gt; Maximum line width  </p></blockquote></li><li><p>eclipse插件</p><ol><li><p>maven插件M2Eclipse</p><blockquote><p>找到maven链接 <a href="http://www.eclipse.org/m2e/" target="_blank" rel="noopener">http://www.eclipse.org/m2e/</a><br>软件 &gt; 安装其他软件  </p></blockquote></li><li><p>hadoop插件</p><blockquote><p>连接远程hadoop集群，需要本地的windows用户为root用户  </p></blockquote></li></ol></li></ul><h2 id="ubuntu设置"><a href="#ubuntu设置" class="headerlink" title="ubuntu设置"></a>ubuntu设置</h2><ul><li>启动用户名和密码的登录界面<pre><code>  sudo passwd -u root  sudo passwd root  su root  cd /usr/share/lightdm/lightdm.conf.d/  vim 50-unity-greeter.conf  # 添加  user-session=ubuntu  greeter-show-manual-login=true  all-guest=false  # 重启  reboot  # 使用user和passwd进入root报错  vim /root/.profile  # 找到mesg n || true  # 改为tty -s &amp;&amp; mesg n || true</code></pre></li><li><p>更换国内的源(fq除外)</p><pre><code>  sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup  vi /etc/apt/sources.list  #Ubuntu 官方源   deb http://archive.ubuntu.com/ubuntu/ gutsy main restricted universe multiverse  deb http://archive.ubuntu.com/ubuntu/ gutsy-security main restricted universe multiverse  deb http://archive.ubuntu.com/ubuntu/ gutsy-updates main restricted universe multiverse  deb http://archive.ubuntu.com/ubuntu/ gutsy-proposed main restricted universe multiverse  deb http://archive.ubuntu.com/ubuntu/ gutsy-backports main restricted universe multiverse  deb-src http://archive.ubuntu.com/ubuntu/ gutsy main restricted universe multiverse  deb-src http://archive.ubuntu.com/ubuntu/ gutsy-security main restricted universe multiverse  deb-src http://archive.ubuntu.com/ubuntu/ gutsy-updates main restricted universe multiverse  deb-src http://archive.ubuntu.com/ubuntu/ gutsy-proposed main restricted universe multiverse  deb-src http://archive.ubuntu.com/ubuntu/ gutsy-backports main restricted universe multiverse  #网易163  deb http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse  deb http://mirrors.163.com/ubuntu/ trusty-security main restricted universe multiverse  deb http://mirrors.163.com/ubuntu/ trusty-updates main restricted universe multiverse  deb http://mirrors.163.com/ubuntu/ trusty-proposed main restricted universe multiverse  deb http://mirrors.163.com/ubuntu/ trusty-backports main restricted universe multiverse  deb-src http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse  deb-src http://mirrors.163.com/ubuntu/ trusty-security main restricted universe multiverse  deb-src http://mirrors.163.com/ubuntu/ trusty-updates main restricted universe multiverse  deb-src http://mirrors.163.com/ubuntu/ trusty-proposed main restricted universe multiverse  deb-src http://mirrors.163.com/ubuntu/ trusty-backports main restricted universe multiverse  sudo apt-get update  sudo apt-get dist-upgrade</code></pre></li><li><p>vm下的ubuntu更改为固定的IP</p><blockquote><p>查看vm的IP地址 &gt; 网段和DNS<br>编辑ubutnu的网卡配置 &gt; 设置在合理的IP范围<br>重启网卡  </p></blockquote></li></ul>]]></content>
     
     <summary type="html">
     
@@ -471,34 +471,6 @@
   </entry>
   
   <entry>
-    <title>常见的环境变量配置</title>
-    <link href="http://yoursite.com/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2018/04/17/常见的环境变量配置/</id>
-    <published>2018-04-17T03:49:36.000Z</published>
-    <updated>2018-05-01T13:16:37.995Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍常见的环境变量配置方法。</p><a id="more"></a><h2 id="windows常见的环境变量配置"><a href="#windows常见的环境变量配置" class="headerlink" title="windows常见的环境变量配置"></a>windows常见的环境变量配置</h2><ul><li><p>CLASSPATH</p><pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></pre></li><li><p>JAVA_HOME</p><pre><code>C:\app3\Java\jdk1.8.0_144</code></pre></li><li><p>JRE_HOME</p><pre><code>C:\app3\Java\jre1.8.0_144</code></pre></li><li><p>MVN_HOME<br>C:\app3\apache-maven-3.5.3</p></li><li><p>Path</p><pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;</code></pre></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍常见的环境变量配置方法。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
-    
-      <category term="环境变量" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>apache maven的配置与使用</title>
     <link href="http://yoursite.com/2018/04/17/maven%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2018/04/17/maven的配置与使用/</id>
@@ -523,6 +495,34 @@
       <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
     
       <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常见的环境变量配置</title>
+    <link href="http://yoursite.com/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2018/04/17/常见的环境变量配置/</id>
+    <published>2018-04-17T03:49:36.000Z</published>
+    <updated>2018-05-01T13:16:37.995Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍常见的环境变量配置方法。</p><a id="more"></a><h2 id="windows常见的环境变量配置"><a href="#windows常见的环境变量配置" class="headerlink" title="windows常见的环境变量配置"></a>windows常见的环境变量配置</h2><ul><li><p>CLASSPATH</p><pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></pre></li><li><p>JAVA_HOME</p><pre><code>C:\app3\Java\jdk1.8.0_144</code></pre></li><li><p>JRE_HOME</p><pre><code>C:\app3\Java\jre1.8.0_144</code></pre></li><li><p>MVN_HOME<br>C:\app3\apache-maven-3.5.3</p></li><li><p>Path</p><pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍常见的环境变量配置方法。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+      <category term="环境变量" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
     
   </entry>
   
