@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文介绍所有的优化配置过程，设计到操作系统，开发工具，常用的小工具等。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-02T02:53:44.337Z">
+<meta property="og:updated_time" content="2018-05-03T14:55:04.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工欲善其事必先利其器(持续更新中)">
 <meta name="twitter:description" content="本文介绍所有的优化配置过程，设计到操作系统，开发工具，常用的小工具等。">
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  945
+                  1,203
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  6
                 </span>
               
             </div>
@@ -614,6 +614,18 @@
 <td>alt+shift+s v</td>
 <td>重写方法</td>
 </tr>
+<tr>
+<td>alt+shift+s</td>
+<td>source菜单</td>
+</tr>
+<tr>
+<td>alt+shift+l</td>
+<td>补全变量名</td>
+</tr>
+<tr>
+<td>ctrl+2+l</td>
+<td>补全变量名</td>
+</tr>
 </tbody>
 </table>
 <ul>
@@ -687,11 +699,45 @@
   sudo apt-get update
   sudo apt-get dist-upgrade
 </code></pre></li>
-<li><p>vm下的ubuntu更改为固定的IP</p>
+<li><p>desktop桌面版本vm下的ubuntu更改为固定的IP</p>
 <blockquote>
 <p>查看vm的IP地址 &gt; 网段和DNS<br>编辑ubutnu的网卡配置 &gt; 设置在合理的IP范围<br>重启网卡  </p>
 </blockquote>
 </li>
+<li><p>server服务器版本vm下的ubuntu更改为固定的IP</p>
+<pre><code>  vmware &gt; 编辑 &gt; 虚拟网络编辑器 &gt; 点击vmnet8 &gt; NET设置 &gt; 查看由vmnet8设定的子网先关参数 &gt; 也可以自己更改子网的IP和网段
+  配置固定IP三个步骤
+  首先ifconfig查看自己ubuntu工作网卡名称，替换下面的eth0
+  #----------------------------------------
+  /etc/network/interfaces
+  原来为：
+  auto lo
+  iface lo inet loopback
+  auto eth0
+  iface eth0 inet dhcp
+  #----------------------------------------
+  改为：
+  auto lo
+  iface lo inet loopback
+  auto eth0
+  iface eth0 inet static      #定义为静态IP
+  address 192.168.2.29        #所要设置的IP地址
+  netmask 255.255.255.0       #子网掩码
+  gateway 192.168.2.1         #网关（路由地址）
+  #----------------------------------------
+  手动设动网关和DNS  
+  /etc/resolv.conf
+  nameserver 192.168.2.1      #网关（同上）
+  #nameserver 202.106.0.20    #DNS服务器地址（参考其他电脑，VM上的ubuntu可以不用设定）
+  #----------------------------------------
+  永久性更改网关和DNS  
+  /etc/resolvconf/resolv.conf.d/base
+  nameserver 192.168.2.1      #网关
+  #nameserver 202.106.0.20    #DNS
+  #----------------------------------------
+  /etc/init.d/networking restart
+  reboot
+</code></pre></li>
 </ul>
 
       
@@ -946,7 +992,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.5k字</span>
+  <span class="post-count">博客全站共24.7k字</span>
 </div>
 
         
