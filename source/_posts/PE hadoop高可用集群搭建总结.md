@@ -20,15 +20,28 @@ mathjax: true
 - edits记录日志文件，保障一致性，交给第三方JNs来管理，奇数个，不用NFS不可靠
 - zookeeper，奇数个，它的ZKFC心跳监控NN；管理和切换zkfc
 
-## hdfs ha搭建总结
+## yarn ha搭建过程总结
 
-- edits交给JN,手动启动三个JN
-- 格式化一台NN，并启动这一台
-- 另外一台NN执行同步standby
-- zookeeper进行操作
+- 删除所有的临时文件夹(重要)
 - 启动zk集群，三台，最好在xshell下面一起启动，并且查看状态status
+- edits交给JN,手动启动三个JN
+- 格式化一台NN，并启动这一台(只能格式化一次，不然重新来)
+- 另外一台NN执行同步standby
 - 格式化zk
-- 启动dfs
+- 启动dfs(可以直接全部启动)
+- 最后启动RS
+```
+rm -rdf /opt/hadoop/* /opt/journal/* /opt/zookeeper/v* /opt/zookeeper/z*
+zkServer.sh start(xshell同时启动)
+vim /root/app/hadoop/etc/hadoop/slaves(配置好datanode)
+hadoop-daemon.sh start journalnode(根据hdfs配置文件，n2 n3 n4)
+hdfs namenode -format(选一个NN格式化，一次机会，失败重头再来)
+hadoop-daemon.sh start namenode(格式化的NN上)
+hdfs namenode -bootstrapStandby(n2,没有格式化的NN上)
+hdfs zkfc -formatZK(n1)
+start-all.sh(n1)
+yarn-daemon.sh start resourcemanager(指定的机器，n3 n4)
+```
 
 ## mr yarn理论
 
