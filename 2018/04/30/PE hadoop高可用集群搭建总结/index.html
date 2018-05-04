@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="初心">
 <meta property="og:description" content="本文简单记录生产环境中的hadoop高可用集群搭建总结。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-01T13:16:37.976Z">
+<meta property="og:updated_time" content="2018-05-04T08:49:44.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PE hadoop高可用集群搭建总结">
 <meta name="twitter:description" content="本文简单记录生产环境中的hadoop高可用集群搭建总结。">
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  272
+                  414
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -451,14 +451,25 @@
 <li>edits记录日志文件，保障一致性，交给第三方JNs来管理，奇数个，不用NFS不可靠</li>
 <li>zookeeper，奇数个，它的ZKFC心跳监控NN；管理和切换zkfc</li>
 </ul>
-<h2 id="hdfs-ha搭建总结"><a href="#hdfs-ha搭建总结" class="headerlink" title="hdfs ha搭建总结"></a>hdfs ha搭建总结</h2><ul>
-<li>edits交给JN,手动启动三个JN</li>
-<li>格式化一台NN，并启动这一台</li>
-<li>另外一台NN执行同步standby</li>
-<li>zookeeper进行操作</li>
+<h2 id="yarn-ha搭建过程总结"><a href="#yarn-ha搭建过程总结" class="headerlink" title="yarn ha搭建过程总结"></a>yarn ha搭建过程总结</h2><ul>
+<li>删除所有的临时文件夹(重要)</li>
 <li>启动zk集群，三台，最好在xshell下面一起启动，并且查看状态status</li>
+<li>edits交给JN,手动启动三个JN</li>
+<li>格式化一台NN，并启动这一台(只能格式化一次，不然重新来)</li>
+<li>另外一台NN执行同步standby</li>
 <li>格式化zk</li>
-<li>启动dfs</li>
+<li>启动dfs(可以直接全部启动)</li>
+<li>最后启动RS<pre><code>rm -rdf /opt/hadoop/* /opt/journal/* /opt/zookeeper/v* /opt/zookeeper/z*
+zkServer.sh start(xshell同时启动)
+vim /root/app/hadoop/etc/hadoop/slaves(配置好datanode)
+hadoop-daemon.sh start journalnode(根据hdfs配置文件，n2 n3 n4)
+hdfs namenode -format(选一个NN格式化，一次机会，失败重头再来)
+hadoop-daemon.sh start namenode(格式化的NN上)
+hdfs namenode -bootstrapStandby(n2,没有格式化的NN上)
+hdfs zkfc -formatZK(n1)
+start-all.sh(n1)
+yarn-daemon.sh start resourcemanager(指定的机器，n3 n4)
+</code></pre></li>
 </ul>
 <h2 id="mr-yarn理论"><a href="#mr-yarn理论" class="headerlink" title="mr yarn理论"></a>mr yarn理论</h2><ul>
 <li>四个阶段：split，map,shuffle,reduce, 最小的MR程序包含了前面两个</li>
@@ -660,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs-ha理论总结"><span class="nav-number">1.</span> <span class="nav-text">hdfs ha理论总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs-ha搭建总结"><span class="nav-number">2.</span> <span class="nav-text">hdfs ha搭建总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mr-yarn理论"><span class="nav-number">3.</span> <span class="nav-text">mr yarn理论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整合mr到hadoop，实现RS-ha"><span class="nav-number">4.</span> <span class="nav-text">整合mr到hadoop，实现RS ha</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs-ha理论总结"><span class="nav-number">1.</span> <span class="nav-text">hdfs ha理论总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yarn-ha搭建过程总结"><span class="nav-number">2.</span> <span class="nav-text">yarn ha搭建过程总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mr-yarn理论"><span class="nav-number">3.</span> <span class="nav-text">mr yarn理论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整合mr到hadoop，实现RS-ha"><span class="nav-number">4.</span> <span class="nav-text">整合mr到hadoop，实现RS ha</span></a></li></ol></div>
             
 
           </div>
@@ -725,7 +736,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.7k字</span>
+  <span class="post-count">博客全站共24.9k字</span>
 </div>
 
         

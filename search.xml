@@ -42,7 +42,7 @@
   <entry>
     <title><![CDATA[PE hadoop高可用集群搭建总结]]></title>
     <url>%2F2018%2F04%2F30%2FPE%20hadoop%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[本文简单记录生产环境中的hadoop高可用集群搭建总结。 hdfs ha理论总结 NN内存受到限制：federation NN单点故障：edits和fsimage原理，在没有格式化的NN上standby操作 edits记录日志文件，保障一致性，交给第三方JNs来管理，奇数个，不用NFS不可靠 zookeeper，奇数个，它的ZKFC心跳监控NN；管理和切换zkfc hdfs ha搭建总结 edits交给JN,手动启动三个JN 格式化一台NN，并启动这一台 另外一台NN执行同步standby zookeeper进行操作 启动zk集群，三台，最好在xshell下面一起启动，并且查看状态status 格式化zk 启动dfs mr yarn理论 四个阶段：split，map,shuffle,reduce, 最小的MR程序包含了前面两个 split块 map task按行读&lt;K,V&gt;排序 分区partition，memory buffer，sort &amp; combine（手动实现，不能代替reduce，可以提升效率） reduce&lt;K,V&gt;迭代器取数据 整合mr到hadoop，实现RS ha 先停止hdfs 配置mr，配置yarn高可用 resource manager需要单独启动]]></content>
+    <content type="text"><![CDATA[本文简单记录生产环境中的hadoop高可用集群搭建总结。 hdfs ha理论总结 NN内存受到限制：federation NN单点故障：edits和fsimage原理，在没有格式化的NN上standby操作 edits记录日志文件，保障一致性，交给第三方JNs来管理，奇数个，不用NFS不可靠 zookeeper，奇数个，它的ZKFC心跳监控NN；管理和切换zkfc yarn ha搭建过程总结 删除所有的临时文件夹(重要) 启动zk集群，三台，最好在xshell下面一起启动，并且查看状态status edits交给JN,手动启动三个JN 格式化一台NN，并启动这一台(只能格式化一次，不然重新来) 另外一台NN执行同步standby 格式化zk 启动dfs(可以直接全部启动) 最后启动RSrm -rdf /opt/hadoop/* /opt/journal/* /opt/zookeeper/v* /opt/zookeeper/z* zkServer.sh start(xshell同时启动) vim /root/app/hadoop/etc/hadoop/slaves(配置好datanode) hadoop-daemon.sh start journalnode(根据hdfs配置文件，n2 n3 n4) hdfs namenode -format(选一个NN格式化，一次机会，失败重头再来) hadoop-daemon.sh start namenode(格式化的NN上) hdfs namenode -bootstrapStandby(n2,没有格式化的NN上) hdfs zkfc -formatZK(n1) start-all.sh(n1) yarn-daemon.sh start resourcemanager(指定的机器，n3 n4) mr yarn理论 四个阶段：split，map,shuffle,reduce, 最小的MR程序包含了前面两个 split块 map task按行读&lt;K,V&gt;排序 分区partition，memory buffer，sort &amp; combine（手动实现，不能代替reduce，可以提升效率） reduce&lt;K,V&gt;迭代器取数据 整合mr到hadoop，实现RS ha 先停止hdfs 配置mr，配置yarn高可用 resource manager需要单独启动]]></content>
       <categories>
         <category>configuration</category>
       </categories>
@@ -277,8 +277,8 @@
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>配置</tag>
         <tag>eclipse</tag>
+        <tag>配置</tag>
         <tag>git</tag>
       </tags>
   </entry>
@@ -297,17 +297,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[LC_001_TwoSum_HashMap]]></title>
-    <url>%2F2018%2F04%2F03%2FLC_001_TwoSum_HashMap%2F</url>
-    <content type="text"><![CDATA[leetcode第001题，主要用到了hashmap数据结构。 题解package LC; import java.util.Arrays; import java.util.HashMap; /** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */ public class LC_001_TwoSum_HashMap { public static void main(String[] args) { int[] a = {1, 2, 3, 4, 5, 7}; int t = 10; System.out.println(Arrays.toString(twoSum(a, t))); } private static int[] twoSum(int[] nums, int target) { HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) { int diff = target - nums[i]; if (map.containsKey(diff)) return new int[]{map.get(diff), i}; map.put(nums[i], i); } throw new IllegalArgumentException(&quot;-1&quot;); } }]]></content>
+    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
+    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
       <categories>
-        <category>leetcode</category>
+        <category>配置</category>
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>leetcode</tag>
-        <tag>java</tag>
-        <tag>basic algorithm</tag>
+        <tag>配置</tag>
+        <tag>valine</tag>
       </tags>
   </entry>
   <entry>
@@ -324,16 +323,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[如何去掉valine的Powered By信息？]]></title>
-    <url>%2F2018%2F04%2F03%2F%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%89valine%E7%9A%84Powered%20By%E4%BF%A1%E6%81%AF%EF%BC%9F%2F</url>
-    <content type="text"><![CDATA[本文介绍如何去掉valine页面上的Powered By信息。 步骤 找到配置文件blog/themes/next/layout/_third-party/comments/valine.swig 配置如下{% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %} var GUEST = ['nick','mail','link']; var guest = '{{ theme.valine.guest_info }}'; guest = guest.split(',').filter(item=>{ return GUEST.indexOf(item)>-1; }); new Valine({ el: '#comments' , verify: {{ theme.valine.verify }}, notify: {{ theme.valine.notify }}, appId: '{{ theme.valine.appid }}', appKey: '{{ theme.valine.appkey }}', placeholder: '{{ theme.valine.placeholder }}', avatar:'{{ theme.valine.avatar }}', guest_info:guest, pageSize:'{{ theme.valine.pageSize }}' || 10, }); //新增以下代码即可，可以移除.info下所有子节点。 var infoEle = document.querySelector('#comments .info'); if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){ infoEle.childNodes.forEach(function(item) { item.parentNode.removeChild(item); }); } {% endif %}]]></content>
+    <title><![CDATA[LC_001_TwoSum_HashMap]]></title>
+    <url>%2F2018%2F04%2F03%2FLC_001_TwoSum_HashMap%2F</url>
+    <content type="text"><![CDATA[leetcode第001题，主要用到了hashmap数据结构。 题解package LC; import java.util.Arrays; import java.util.HashMap; /** * https://leetcode.com/problems/two-sum/description/ * Given an array of integers, * return indices of the two numbers such that they add up to a specific target. * You may assume that each input would have exactly one solution, * and you may not use the same element twice. * Example: * Given nums = [2, 7, 11, 15], target = 9, * Because nums[0] + nums[1] = 2 + 7 = 9, * return [0, 1]. */ public class LC_001_TwoSum_HashMap { public static void main(String[] args) { int[] a = {1, 2, 3, 4, 5, 7}; int t = 10; System.out.println(Arrays.toString(twoSum(a, t))); } private static int[] twoSum(int[] nums, int target) { HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums.length; i++) { int diff = target - nums[i]; if (map.containsKey(diff)) return new int[]{map.get(diff), i}; map.put(nums[i], i); } throw new IllegalArgumentException(&quot;-1&quot;); } }]]></content>
       <categories>
-        <category>配置</category>
+        <category>leetcode</category>
       </categories>
       <tags>
         <tag>列表</tag>
-        <tag>配置</tag>
-        <tag>valine</tag>
+        <tag>leetcode</tag>
+        <tag>java</tag>
+        <tag>basic algorithm</tag>
       </tags>
   </entry>
   <entry>
