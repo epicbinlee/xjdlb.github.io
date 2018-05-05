@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="列表,HBase,Hadoop," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="路漫漫其修远兮，吾将上下而求索">
-<meta property="og:type" content="website">
-<meta property="og:title" content="初心">
-<meta property="og:url" content="http://yoursite.com/tags/ha/index.html">
+<meta name="description" content="本文介绍如何安装并使用HBase。">
+<meta name="keywords" content="列表,HBase,Hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HBase原理搭建高可用与基本使用">
+<meta property="og:url" content="http://yoursite.com/2018/05/03/HBase原理搭建高可用与基本使用/index.html">
 <meta property="og:site_name" content="初心">
-<meta property="og:description" content="路漫漫其修远兮，吾将上下而求索">
+<meta property="og:description" content="本文介绍如何安装并使用HBase。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-05T08:10:13.871Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初心">
-<meta name="twitter:description" content="路漫漫其修远兮，吾将上下而求索">
+<meta name="twitter:title" content="HBase原理搭建高可用与基本使用">
+<meta name="twitter:description" content="本文介绍如何安装并使用HBase。">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/ha/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/03/HBase原理搭建高可用与基本使用/"/>
 
 
 
 
 
-  <title>标签: ha | 初心</title>
+  <title>HBase原理搭建高可用与基本使用 | 初心</title>
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,54 +285,522 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>ha<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/03/HBase原理搭建高可用与基本使用/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LeeBin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="初心">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/30/PE hadoop 2.x hdfs availablity implement/" itemprop="url">
-              
-                <span itemprop="name">PE hadoop 2.x hdfs availablity implement</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">HBase原理搭建高可用与基本使用</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-30T14:08:31+08:00"
-              content="2018-04-30" >
-          04-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-03T21:34:47+08:00">
+                2018-05-03
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/configuration/" itemprop="url" rel="index">
+                    <span itemprop="name">configuration</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/03/HBase原理搭建高可用与基本使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/03/HBase原理搭建高可用与基本使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/03/HBase原理搭建高可用与基本使用/" class="leancloud_visitors" data-flag-title="HBase原理搭建高可用与基本使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span> 
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  811
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文介绍如何安装并使用HBase。</p>
+<a id="more"></a>
+<h2 id="伪分布式的HBase环境搭建Pseudo-Distributed-Local-Install-参考"><a href="#伪分布式的HBase环境搭建Pseudo-Distributed-Local-Install-参考" class="headerlink" title="伪分布式的HBase环境搭建Pseudo-Distributed Local Install 参考"></a>伪分布式的HBase环境搭建Pseudo-Distributed Local Install <a href="https://hbase.apache.org/book.html#standalone_dist" target="_blank" rel="noopener">参考</a></h2><ul>
+<li><p>配置</p>
+<pre><code>&lt;property&gt;
+&lt;name&gt;hbase.cluster.distributed&lt;/name&gt;
+&lt;value&gt;true&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+&lt;name&gt;hbase.rootdir&lt;/name&gt;
+&lt;value&gt;hdfs://localhost:8020/hbase&lt;/value&gt;
+&lt;/property&gt;
+</code></pre><h2 id="完全分布式安装"><a href="#完全分布式安装" class="headerlink" title="完全分布式安装"></a>完全分布式安装</h2></li>
+<li><p>架构</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>VM</th>
+<th>NN</th>
+<th>DN</th>
+<th>JN</th>
+<th>ZK</th>
+<th>ZKFC</th>
+<th>RS</th>
+<th>HM</th>
+<th>HRS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n1</td>
+<td>y</td>
+<td>n</td>
+<td>n</td>
+<td>y</td>
+<td>y</td>
+<td>n</td>
+<td>y(b)</td>
+<td>n</td>
+</tr>
+<tr>
+<td>n2</td>
+<td>y</td>
+<td>y</td>
+<td>y</td>
+<td>y</td>
+<td>y</td>
+<td>n</td>
+<td>n</td>
+<td>y</td>
+</tr>
+<tr>
+<td>n3</td>
+<td>n</td>
+<td>y</td>
+<td>y</td>
+<td>y</td>
+<td>n</td>
+<td>y</td>
+<td>n</td>
+<td>y</td>
+</tr>
+<tr>
+<td>n4</td>
+<td>n</td>
+<td>y</td>
+<td>y</td>
+<td>n</td>
+<td>n</td>
+<td>y</td>
+<td>n</td>
+<td>y</td>
+</tr>
+<tr>
+<td>n5</td>
+<td>n</td>
+<td>y</td>
+<td>n</td>
+<td>n</td>
+<td>n</td>
+<td>n</td>
+<td>y(m)</td>
+<td>n</td>
+</tr>
+<tr>
+<td>n6</td>
+<td>n</td>
+<td>y</td>
+<td>n</td>
+<td>n</td>
+<td>n</td>
+<td>n</td>
+<td>n</td>
+<td>n</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>hbase-env.sh</p>
+<pre><code>export JAVA_HOME=/root/app/jdk
+export HBASE_MANAGES_ZK=false (不启动自带的zookeeper)
+</code></pre></li>
+<li><p>hbase-site.xml</p>
+<pre><code>&lt;configuration&gt;
+&lt;property&gt;
+  &lt;name&gt;hbase.rootdir&lt;/name&gt;
+  &lt;value&gt;hdfs://sxt:8020/hbase&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+  &lt;name&gt;hbase.cluster.distributed&lt;/name&gt;
+  &lt;value&gt;true&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+  &lt;name&gt;hbase.zookeeper.quorum&lt;/name&gt;
+  &lt;value&gt;n1,n2,n3&lt;/value&gt;
+&lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre></li>
+<li><p>conf/regionservers</p>
+<pre><code>#根据架构把n5设定为HMaster，下面的为HReginServer
+n2
+n3
+n4
+</code></pre></li>
+<li><p>conf/backup-masters file(master的HA)</p>
+<pre><code>vim backup-masters
+n1
+#根据架构将n1设定为HMaster从节点
+</code></pre></li>
+<li><p>HDFS Client Configuration(hbase访问hdfs)</p>
+<pre><code>copy hdfs-site.xml ${HBASE_HOME}/conf
+root@n1:~/app/hbase/conf# pwd
+/root/app/hbase/conf
+cp /root/app/hadoop/etc/hadoop/hdfs-site.xml ./
+</code></pre></li>
+<li><p>启动</p>
+<pre><code>#-----------------------------------
+在n5 HMaster主节点启动
+root@n5:~/app/hbase/conf# jps
+1058 NodeManager
+962 DataNode
+2706 HMaster
+3083 Jps
+#-----------------------------------
+在n2,n3,n4查看HRegionServer
+root@n4:~# jps
+1041 DataNode
+949 JournalNode
+2618 Jps
+2396 HRegionServer
+1198 NodeManager
+1263 ResourceManager
+</code></pre></li>
+<li><p>webUI查看</p>
+<pre><code>主节点 http://n5:16010/master-status
+从节点 http://n1:16010/master-status
+root@n5:~/app/hbase/conf# netstat -ntlp | grep &quot;java&quot;
+tcp        0      0 0.0.0.0:50010           0.0.0.0:*               LISTEN      962/java        
+tcp        0      0 0.0.0.0:50075           0.0.0.0:*               LISTEN      962/java        
+tcp        0      0 0.0.0.0:50020           0.0.0.0:*               LISTEN      962/java        
+tcp        0      0 127.0.0.1:42933         0.0.0.0:*               LISTEN      962/java        
+tcp6       0      0 :::13562                :::*                    LISTEN      1058/java       
+tcp6       0      0 192.168.44.105:16000    :::*                    LISTEN      2706/java       
+tcp6       0      0 :::8040                 :::*                    LISTEN      1058/java       
+tcp6       0      0 :::16010                :::*                    LISTEN      2706/java       
+tcp6       0      0 :::8042                 :::*                    LISTEN      1058/java       
+tcp6       0      0 :::34187                :::*                    LISTEN      1058/java 
+</code></pre></li>
+</ul>
+<h2 id="常见的命令"><a href="#常见的命令" class="headerlink" title="常见的命令"></a>常见的命令</h2><ul>
+<li><p>增删改查</p>
+<pre><code>hbase shell
+help
+#-----------------------------------
+status table_help version whoami
+ddl（disable drop enable exist is_disableed is_enabled list show_filters）
+namespace（alter_namespace ...）
+dml（append put get delete scan）
+tools（balancer flush:menorystore2storefile）
+replication
+snapshots
+#-----------------------------------
+create
+create &#39;person&#39;,&#39;cf1&#39;,&#39;cf2&#39;
+#-----------------------------------
+lsit
+desc &#39;person&#39;
+TTL =&gt; &#39;forever&#39;
+#-----------------------------------
+put
+put &#39;person&#39;,&#39;r1&#39;,&#39;c1&#39;,&#39;value&#39;
+put &#39;person&#39;,&#39;0001&#39;,&#39;cf1:name&#39;,&#39;xiaoming&#39;
+put &#39;person&#39;,&#39;0001&#39;,&#39;cf1:sex&#39;,&#39;boy&#39;
+#-----------------------------------
+scan
+scan &#39;person&#39;
+#-----------------------------------
+get
+get &#39;person&#39;,&#39;0001&#39;,&#39;cf1:name&#39;
+#-----------------------------------
+插入数据
+put &#39;person&#39;,&#39;0001&#39;,&#39;cf1:name&#39;,&#39;xiaoming2&#39;
+get &#39;person&#39;,&#39;0001&#39;,&#39;cf1:name&#39;
+#-----------------------------------
+#查看命名空间
+list_namespace
+default
+hbase
+#-----------------------------------
+#先禁用再删除
+create &#39;tbl&#39;,&#39;cf&#39;
+list
+disable
+disabled &#39;tbl&#39;
+list
+drop &#39;tbl&#39;
+</code></pre></li>
+<li><p>查看hbase的文件<br>单机模式文件在Linux上<br>伪分布式模式在Linux上<br>分布式模式在hdfs上</p>
+<pre><code>D:\HBASE目录结构
+└─namespace
+  ├─主节点HRegionMaster
+  └─域节点HRegionServer
+      └─表table
+          ├─域HRegion
+          │  ├─存储Store
+          │  │  ├─内存存储memoryStore
+          │  │  ├─内存存储memoryStore1
+          │  │  ├─磁盘储存storeFile
+          │  │  └─磁盘储存storeFile1
+          │  └─存储Store1
+          │      ├─内存存储memoryStore
+          │      └─内存存储memoryStore1
+          └─域HRegion1
+              ├─存储Store
+              │  ├─内存存储memoryStore
+              │  └─内存存储memoryStore1
+              └─存储Store1
+                  ├─内存存储memoryStore
+                  └─内存存储memoryStore1
+</code></pre></li>
+<li><p>webUI查看 n1:60010</p>
+</li>
+</ul>
+<h2 id="HBase-的ha验证"><a href="#HBase-的ha验证" class="headerlink" title="HBase 的ha验证"></a>HBase 的ha验证</h2><ul>
+<li><p>创建表</p>
+<pre><code>#--------------------------------------------
+create &#39;tab-1&#39; ,&#39;cf-1&#39;
+put &#39;tab-1&#39;,&#39;rk-0001&#39;,&#39;cf-1:name&#39;,&#39;xiaoli&#39;
+#--------------------------------------------
+hbase(main):007:0&gt; scan &#39;tab-1&#39;
+ROW                        COLUMN+CELL                                                                 
+rk-0001                   column=cf-1:name, timestamp=1525506703143, value=xiaoli                     
+1 row(s) in 0.2510 seconds
+#--------------------------------------------
+hbase(main):008:0&gt; get &#39;tab-1&#39;,&#39;rk-0001&#39;,&#39;cf-1:name&#39;
+COLUMN                     CELL                                                                        
+cf-1:name                 timestamp=1525506703143, value=xiaoli                                       
+1 row(s) in 0.0480 seconds
+#--------------------------------------------
+put &#39;tab-1&#39;,&#39;rk-0001&#39;,&#39;cf-1:age&#39;,&#39;18&#39;
+#--------------------------------------------
+hbase(main):010:0&gt; scan &#39;tab-1&#39;
+ROW                        COLUMN+CELL                                                                 
+rk-0001                   column=cf-1:age, timestamp=1525507159178, value=18                          
+rk-0001                   column=cf-1:name, timestamp=1525506703143, value=xiaoli                     
+1 row(s) in 0.0320 seconds
+#--------------------------------------------
+get &#39;tab-1&#39;,&#39;rk-0001&#39;,&#39;cf-1&#39;
+#--------------------------------------------
+hbase(main):011:0&gt; get &#39;tab-1&#39;,&#39;rk-0001&#39;,&#39;cf-1&#39;
+COLUMN                     CELL                                                                        
+cf-1:age                  timestamp=1525507159178, value=18                                           
+cf-1:name                 timestamp=1525506703143, value=xiaoli                                       
+2 row(s) in 0.0200 seconds
+</code></pre></li>
+<li><p>验证</p>
+<pre><code>#--------------------------------------------
+root@n5:~# jps
+1058 NodeManager
+962 DataNode
+5444 Jps
+3625 HMaster
+#--------------------------------------------
+kill -9 3625
+查看n5:16010
+查看n1:16010
+查看hbase shell
+scan &#39;tab-1&#39;
+#--------------------------------------------
+重新启动n5上的master
+#--------------------------------------------
+</code></pre></li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/列表/" rel="tag"><i class="fa fa-tag"></i> 列表</a>
+          
+            <a href="/tags/HBase/" rel="tag"><i class="fa fa-tag"></i> HBase</a>
+          
+            <a href="/tags/Hadoop/" rel="tag"><i class="fa fa-tag"></i> Hadoop</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/01/MR实例温度/" rel="next" title="MR实例温度">
+                <i class="fa fa-chevron-left"></i> MR实例温度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -338,6 +808,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -358,8 +835,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -426,6 +912,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#伪分布式的HBase环境搭建Pseudo-Distributed-Local-Install-参考"><span class="nav-number">1.</span> <span class="nav-text">伪分布式的HBase环境搭建Pseudo-Distributed Local Install 参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全分布式安装"><span class="nav-number">2.</span> <span class="nav-text">完全分布式安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的命令"><span class="nav-number">3.</span> <span class="nav-text">常见的命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase-的ha验证"><span class="nav-number">4.</span> <span class="nav-text">HBase 的ha验证</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -591,6 +1093,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

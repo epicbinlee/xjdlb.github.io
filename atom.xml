@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-02T07:41:29.961Z</updated>
+  <updated>2018-05-05T08:10:13.871Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HBase原理搭建高可用与基本使用</title>
+    <link href="http://yoursite.com/2018/05/03/HBase%E5%8E%9F%E7%90%86%E6%90%AD%E5%BB%BA%E9%AB%98%E5%8F%AF%E7%94%A8%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2018/05/03/HBase原理搭建高可用与基本使用/</id>
+    <published>2018-05-03T13:34:47.000Z</published>
+    <updated>2018-05-05T08:10:13.871Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍如何安装并使用HBase。</p><a id="more"></a><h2 id="伪分布式的HBase环境搭建Pseudo-Distributed-Local-Install-参考"><a href="#伪分布式的HBase环境搭建Pseudo-Distributed-Local-Install-参考" class="headerlink" title="伪分布式的HBase环境搭建Pseudo-Distributed Local Install 参考"></a>伪分布式的HBase环境搭建Pseudo-Distributed Local Install <a href="https://hbase.apache.org/book.html#standalone_dist" target="_blank" rel="noopener">参考</a></h2><ul><li><p>配置</p><pre><code>&lt;property&gt;&lt;name&gt;hbase.cluster.distributed&lt;/name&gt;&lt;value&gt;true&lt;/value&gt;&lt;/property&gt;&lt;property&gt;&lt;name&gt;hbase.rootdir&lt;/name&gt;&lt;value&gt;hdfs://localhost:8020/hbase&lt;/value&gt;&lt;/property&gt;</code></pre><h2 id="完全分布式安装"><a href="#完全分布式安装" class="headerlink" title="完全分布式安装"></a>完全分布式安装</h2></li><li><p>架构</p></li></ul><table><thead><tr><th>VM</th><th>NN</th><th>DN</th><th>JN</th><th>ZK</th><th>ZKFC</th><th>RS</th><th>HM</th><th>HRS</th></tr></thead><tbody><tr><td>n1</td><td>y</td><td>n</td><td>n</td><td>y</td><td>y</td><td>n</td><td>y(b)</td><td>n</td></tr><tr><td>n2</td><td>y</td><td>y</td><td>y</td><td>y</td><td>y</td><td>n</td><td>n</td><td>y</td></tr><tr><td>n3</td><td>n</td><td>y</td><td>y</td><td>y</td><td>n</td><td>y</td><td>n</td><td>y</td></tr><tr><td>n4</td><td>n</td><td>y</td><td>y</td><td>n</td><td>n</td><td>y</td><td>n</td><td>y</td></tr><tr><td>n5</td><td>n</td><td>y</td><td>n</td><td>n</td><td>n</td><td>n</td><td>y(m)</td><td>n</td></tr><tr><td>n6</td><td>n</td><td>y</td><td>n</td><td>n</td><td>n</td><td>n</td><td>n</td><td>n</td></tr></tbody></table><ul><li><p>hbase-env.sh</p><pre><code>export JAVA_HOME=/root/app/jdkexport HBASE_MANAGES_ZK=false (不启动自带的zookeeper)</code></pre></li><li><p>hbase-site.xml</p><pre><code>&lt;configuration&gt;&lt;property&gt;  &lt;name&gt;hbase.rootdir&lt;/name&gt;  &lt;value&gt;hdfs://sxt:8020/hbase&lt;/value&gt;&lt;/property&gt;&lt;property&gt;  &lt;name&gt;hbase.cluster.distributed&lt;/name&gt;  &lt;value&gt;true&lt;/value&gt;&lt;/property&gt;&lt;property&gt;  &lt;name&gt;hbase.zookeeper.quorum&lt;/name&gt;  &lt;value&gt;n1,n2,n3&lt;/value&gt;&lt;/property&gt;&lt;/configuration&gt;</code></pre></li><li><p>conf/regionservers</p><pre><code>#根据架构把n5设定为HMaster，下面的为HReginServern2n3n4</code></pre></li><li><p>conf/backup-masters file(master的HA)</p><pre><code>vim backup-mastersn1#根据架构将n1设定为HMaster从节点</code></pre></li><li><p>HDFS Client Configuration(hbase访问hdfs)</p><pre><code>copy hdfs-site.xml ${HBASE_HOME}/confroot@n1:~/app/hbase/conf# pwd/root/app/hbase/confcp /root/app/hadoop/etc/hadoop/hdfs-site.xml ./</code></pre></li><li><p>启动</p><pre><code>#-----------------------------------在n5 HMaster主节点启动root@n5:~/app/hbase/conf# jps1058 NodeManager962 DataNode2706 HMaster3083 Jps#-----------------------------------在n2,n3,n4查看HRegionServerroot@n4:~# jps1041 DataNode949 JournalNode2618 Jps2396 HRegionServer1198 NodeManager1263 ResourceManager</code></pre></li><li><p>webUI查看</p><pre><code>主节点 http://n5:16010/master-status从节点 http://n1:16010/master-statusroot@n5:~/app/hbase/conf# netstat -ntlp | grep &quot;java&quot;tcp        0      0 0.0.0.0:50010           0.0.0.0:*               LISTEN      962/java        tcp        0      0 0.0.0.0:50075           0.0.0.0:*               LISTEN      962/java        tcp        0      0 0.0.0.0:50020           0.0.0.0:*               LISTEN      962/java        tcp        0      0 127.0.0.1:42933         0.0.0.0:*               LISTEN      962/java        tcp6       0      0 :::13562                :::*                    LISTEN      1058/java       tcp6       0      0 192.168.44.105:16000    :::*                    LISTEN      2706/java       tcp6       0      0 :::8040                 :::*                    LISTEN      1058/java       tcp6       0      0 :::16010                :::*                    LISTEN      2706/java       tcp6       0      0 :::8042                 :::*                    LISTEN      1058/java       tcp6       0      0 :::34187                :::*                    LISTEN      1058/java </code></pre></li></ul><h2 id="常见的命令"><a href="#常见的命令" class="headerlink" title="常见的命令"></a>常见的命令</h2><ul><li><p>增删改查</p><pre><code>hbase shellhelp#-----------------------------------status table_help version whoamiddl（disable drop enable exist is_disableed is_enabled list show_filters）namespace（alter_namespace ...）dml（append put get delete scan）tools（balancer flush:menorystore2storefile）replicationsnapshots#-----------------------------------createcreate &#39;person&#39;,&#39;cf1&#39;,&#39;cf2&#39;#-----------------------------------lsitdesc &#39;person&#39;TTL =&gt; &#39;forever&#39;#-----------------------------------putput &#39;person&#39;,&#39;r1&#39;,&#39;c1&#39;,&#39;value&#39;put &#39;person&#39;,&#39;0001&#39;,&#39;cf1:name&#39;,&#39;xiaoming&#39;put &#39;person&#39;,&#39;0001&#39;,&#39;cf1:sex&#39;,&#39;boy&#39;#-----------------------------------scanscan &#39;person&#39;#-----------------------------------getget &#39;person&#39;,&#39;0001&#39;,&#39;cf1:name&#39;#-----------------------------------插入数据put &#39;person&#39;,&#39;0001&#39;,&#39;cf1:name&#39;,&#39;xiaoming2&#39;get &#39;person&#39;,&#39;0001&#39;,&#39;cf1:name&#39;#-----------------------------------#查看命名空间list_namespacedefaulthbase#-----------------------------------#先禁用再删除create &#39;tbl&#39;,&#39;cf&#39;listdisabledisabled &#39;tbl&#39;listdrop &#39;tbl&#39;</code></pre></li><li><p>查看hbase的文件<br>单机模式文件在Linux上<br>伪分布式模式在Linux上<br>分布式模式在hdfs上</p><pre><code>D:\HBASE目录结构└─namespace  ├─主节点HRegionMaster  └─域节点HRegionServer      └─表table          ├─域HRegion          │  ├─存储Store          │  │  ├─内存存储memoryStore          │  │  ├─内存存储memoryStore1          │  │  ├─磁盘储存storeFile          │  │  └─磁盘储存storeFile1          │  └─存储Store1          │      ├─内存存储memoryStore          │      └─内存存储memoryStore1          └─域HRegion1              ├─存储Store              │  ├─内存存储memoryStore              │  └─内存存储memoryStore1              └─存储Store1                  ├─内存存储memoryStore                  └─内存存储memoryStore1</code></pre></li><li><p>webUI查看 n1:60010</p></li></ul><h2 id="HBase-的ha验证"><a href="#HBase-的ha验证" class="headerlink" title="HBase 的ha验证"></a>HBase 的ha验证</h2><ul><li><p>创建表</p><pre><code>#--------------------------------------------create &#39;tab-1&#39; ,&#39;cf-1&#39;put &#39;tab-1&#39;,&#39;rk-0001&#39;,&#39;cf-1:name&#39;,&#39;xiaoli&#39;#--------------------------------------------hbase(main):007:0&gt; scan &#39;tab-1&#39;ROW                        COLUMN+CELL                                                                 rk-0001                   column=cf-1:name, timestamp=1525506703143, value=xiaoli                     1 row(s) in 0.2510 seconds#--------------------------------------------hbase(main):008:0&gt; get &#39;tab-1&#39;,&#39;rk-0001&#39;,&#39;cf-1:name&#39;COLUMN                     CELL                                                                        cf-1:name                 timestamp=1525506703143, value=xiaoli                                       1 row(s) in 0.0480 seconds#--------------------------------------------put &#39;tab-1&#39;,&#39;rk-0001&#39;,&#39;cf-1:age&#39;,&#39;18&#39;#--------------------------------------------hbase(main):010:0&gt; scan &#39;tab-1&#39;ROW                        COLUMN+CELL                                                                 rk-0001                   column=cf-1:age, timestamp=1525507159178, value=18                          rk-0001                   column=cf-1:name, timestamp=1525506703143, value=xiaoli                     1 row(s) in 0.0320 seconds#--------------------------------------------get &#39;tab-1&#39;,&#39;rk-0001&#39;,&#39;cf-1&#39;#--------------------------------------------hbase(main):011:0&gt; get &#39;tab-1&#39;,&#39;rk-0001&#39;,&#39;cf-1&#39;COLUMN                     CELL                                                                        cf-1:age                  timestamp=1525507159178, value=18                                           cf-1:name                 timestamp=1525506703143, value=xiaoli                                       2 row(s) in 0.0200 seconds</code></pre></li><li><p>验证</p><pre><code>#--------------------------------------------root@n5:~# jps1058 NodeManager962 DataNode5444 Jps3625 HMaster#--------------------------------------------kill -9 3625查看n5:16010查看n1:16010查看hbase shellscan &#39;tab-1&#39;#--------------------------------------------重新启动n5上的master#--------------------------------------------</code></pre></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍如何安装并使用HBase。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="configuration" scheme="http://yoursite.com/categories/configuration/"/>
+    
+    
+      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+      <category term="HBase" scheme="http://yoursite.com/tags/HBase/"/>
+    
+      <category term="Hadoop" scheme="http://yoursite.com/tags/Hadoop/"/>
+    
+  </entry>
   
   <entry>
     <title>MR实例温度</title>
@@ -493,34 +519,6 @@
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
       <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常见的环境变量配置</title>
-    <link href="http://yoursite.com/2018/04/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2018/04/17/常见的环境变量配置/</id>
-    <published>2018-04-17T03:49:36.000Z</published>
-    <updated>2018-05-01T13:16:37.995Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文介绍常见的环境变量配置方法。</p><a id="more"></a><h2 id="windows常见的环境变量配置"><a href="#windows常见的环境变量配置" class="headerlink" title="windows常见的环境变量配置"></a>windows常见的环境变量配置</h2><ul><li><p>CLASSPATH</p><pre><code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></pre></li><li><p>JAVA_HOME</p><pre><code>C:\app3\Java\jdk1.8.0_144</code></pre></li><li><p>JRE_HOME</p><pre><code>C:\app3\Java\jre1.8.0_144</code></pre></li><li><p>MVN_HOME<br>C:\app3\apache-maven-3.5.3</p></li><li><p>Path</p><pre><code>C:\app3\Python35\Scripts\;C:\app3\Python35\;C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%JAVA_HOME%\bin;%JRE_HOME%\bin;C:\app3\Git\cmd;C:\app3\MinGW\bin;C:\app3\nodejs\;C:\app3\MATLAB\R2017b\runtime\win64;C:\app3\MATLAB\R2017b\bin;%MVN_HOME%\bin;</code></pre></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍常见的环境变量配置方法。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="配置" scheme="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-      <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
-    
-      <category term="配置" scheme="http://yoursite.com/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
-    
-      <category term="环境变量" scheme="http://yoursite.com/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
     
   </entry>
   
