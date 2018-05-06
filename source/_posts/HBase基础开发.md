@@ -50,6 +50,7 @@ start-hbase.sh
 zkServer.sh start(xshell同时启动)
 vim /root/app/hadoop/etc/hadoop/slaves(配置好datanode)
 start-all.sh(n1)
+yarn-daemon.sh start resourcemanager(指定的机器，n3 n4)
 start-hbase.sh
 ```
 
