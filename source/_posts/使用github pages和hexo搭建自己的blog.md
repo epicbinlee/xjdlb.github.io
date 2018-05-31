@@ -37,7 +37,7 @@ cat ~/.ssh/id_rsa.pub
 - 安装hexo、安装扩展插件
 ```
 # 安装hexo
-npm install hexo-cli g
+npm install hexo-cli -g
 # 初始化博客文件夹
 hexo init blog
 # 切换到该路径
