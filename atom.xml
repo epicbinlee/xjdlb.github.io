@@ -248,9 +248,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="ha" scheme="http://yoursite.com/tags/ha/"/>
-    
       <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
+    
+      <category term="ha" scheme="http://yoursite.com/tags/ha/"/>
     
       <category term="hdfs" scheme="http://yoursite.com/tags/hdfs/"/>
     
@@ -518,9 +518,9 @@
     
       <category term="列表" scheme="http://yoursite.com/tags/%E5%88%97%E8%A1%A8/"/>
     
-      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
-    
       <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
+    
+      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
     
   </entry>
   
